@@ -1,6 +1,6 @@
 # Install dependencies only when needed
 FROM node:16-alpine AS deps
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat=1.2.2-r7
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
