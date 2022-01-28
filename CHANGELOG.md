@@ -1,3 +1,10 @@
+## [1.0.2-beta.3](https://github.com/SocialGouv/template/compare/v1.0.2-beta.2...v1.0.2-beta.3) (2022-01-28)
+
+
+### Bug Fixes
+
+* Bump version, again ([76fb5f1](https://github.com/SocialGouv/template/commit/76fb5f12bf0d56d9e25be912e8b85efb2e2f7bbc))
+
 ## [1.0.2-beta.2](https://github.com/SocialGouv/template/compare/v1.0.2-beta.1...v1.0.2-beta.2) (2022-01-28)
 
 
