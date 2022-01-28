@@ -2,19 +2,16 @@ name: Review
 
 on:
   push:
-    branches-ignore:
-      - master
-    tags-ignore:
-      - v*
+    branches: [master]
 
 concurrency:
+  group: preproduction
   cancel-in-progress: true
-  group: review-${{ github.ref }}
 
 jobs:
 
   deploy:
-    name: Deploy review branch
+    name: Deploy production
     runs-on: ubuntu-latest
     steps:
 
@@ -25,7 +22,7 @@ jobs:
     - name: Use autodevops to deploy review branch
       uses: SocialGouv/actions/autodevops@v1
       with:
-        environment: dev
+        environment: preprod
         project: ${{ env.project }}
         token: ${{ secrets.GITHUB_TOKEN }}
         kubeconfig: ${{ secrets.KUBECONFIG }}
