@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/SocialGouv/template/compare/v1.0.2...v1.0.3) (2022-01-28)
+
+
+### Bug Fixes
+
+* dockerfile ([37f0eca](https://github.com/SocialGouv/template/commit/37f0eca7183ab26aee74d80c37fe0b672deb68fb))
+
 ## [1.0.2](https://github.com/SocialGouv/template/compare/v1.0.1...v1.0.2) (2022-01-28)
 
 
