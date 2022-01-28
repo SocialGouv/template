@@ -24,7 +24,7 @@ jobs:
         echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
     - name: Use autodevops to deploy production
-      uses: SocialGouv/actions/autodevops@prod-namespaces
+      uses: SocialGouv/actions/autodevops@v1
       id: autodevops
       with:
         environment: prod
