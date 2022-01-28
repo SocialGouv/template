@@ -1,3 +1,10 @@
+## [1.0.2-beta.1](https://github.com/SocialGouv/template/compare/v1.0.1...v1.0.2-beta.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* prod namespace creation ([bb3ddae](https://github.com/SocialGouv/template/commit/bb3ddaee3d05a2813d38d826c7ec46c278a0666e))
+
 ## [1.0.1](https://github.com/SocialGouv/template/compare/v1.0.0...v1.0.1) (2022-01-28)
 
 
