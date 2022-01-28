@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/SocialGouv/template/compare/v1.0.5...v1.0.6) (2022-01-28)
+
+
+### Bug Fixes
+
+* Add preproduction workflow ([f67cbc6](https://github.com/SocialGouv/template/commit/f67cbc64b75bee6b6f476cd394314ecad343bf16))
+
 ## [1.0.5](https://github.com/SocialGouv/template/compare/v1.0.4...v1.0.5) (2022-01-28)
 
 
