@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/SocialGouv/template/compare/v1.0.6...v1.0.7) (2022-01-28)
+
+
+### Bug Fixes
+
+* Rename preproduction workflow ([42581dd](https://github.com/SocialGouv/template/commit/42581dd43e9c300edbdf7f7cba839c39b3ee954e))
+
 ## [1.0.6](https://github.com/SocialGouv/template/compare/v1.0.5...v1.0.6) (2022-01-28)
 
 
