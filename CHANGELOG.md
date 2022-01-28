@@ -1,3 +1,12 @@
+## [1.0.5-beta.1](https://github.com/SocialGouv/template/compare/v1.0.4...v1.0.5-beta.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* Bump version ([6879bb1](https://github.com/SocialGouv/template/commit/6879bb1eac2feefca3c415ee10cdd5efa273d1e9))
+* Bump version, again ([7ee2163](https://github.com/SocialGouv/template/commit/7ee21634b2fa0e8ab172fce8bf59b381fed4813f))
+* prod namespace creation ([504671f](https://github.com/SocialGouv/template/commit/504671f9464d2d66d30e81f8ced2beaeba37c197))
+
 ## [1.0.4](https://github.com/SocialGouv/template/compare/v1.0.3...v1.0.4) (2022-01-28)
 
 
