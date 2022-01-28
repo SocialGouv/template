@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/SocialGouv/template/compare/v1.0.3...v1.0.4) (2022-01-28)
+
+
+### Bug Fixes
+
+* latest version of libc6 ([96ae1e0](https://github.com/SocialGouv/template/commit/96ae1e0b457fa7eb4d1caaac7fe312f8d7d41867))
+
 ## [1.0.3](https://github.com/SocialGouv/template/compare/v1.0.2...v1.0.3) (2022-01-28)
 
 
