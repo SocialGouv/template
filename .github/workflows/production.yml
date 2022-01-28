@@ -6,7 +6,7 @@ on:
       - v*
 
 concurrency:
-  group: production
+  group: production-temp
   cancel-in-progress: true
 
 jobs:
