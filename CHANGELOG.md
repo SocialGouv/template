@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/SocialGouv/template/compare/v1.0.7...v1.1.0) (2022-02-01)
+
+
+### Features
+
+* **docker:** improve yarn cache ([6c3a0da](https://github.com/SocialGouv/template/commit/6c3a0da35c60428027349af19e3a551900f24bba))
+
 ## [1.0.7](https://github.com/SocialGouv/template/compare/v1.0.6...v1.0.7) (2022-01-28)
 
 
