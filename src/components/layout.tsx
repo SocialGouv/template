@@ -105,7 +105,7 @@ const Index = (props: Props): JSX.Element => {
             alt: "",
             src: "https://dummyimage.com/100x80/000/fff.png&text=logo+4",
           },
-          ministryName: "Ministère des affaires sociaux",
+          ministryName: "Ministère des affaires sociales",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Uenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         }}
