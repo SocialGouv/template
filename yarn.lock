@@ -17,7 +17,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@dataesr/react-dsfr@^0.9.9":
+"@dataesr/react-dsfr@0.9.9":
   version "0.9.9"
   resolved "https://registry.yarnpkg.com/@dataesr/react-dsfr/-/react-dsfr-0.9.9.tgz#3dd74c6366e6c71d44b60a8f78e34ee79d2a6239"
   integrity sha512-R0Lii19K5lUw2ODeLszFV1rxJvDxgBCSTEg5nTEdEIoAvyw4YVDhiEJ9sWo4WU5jVp0wlZzW21lf1T1K4f+uoQ==
