@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/SocialGouv/template/compare/v1.1.0...v1.2.0) (2022-02-10)
+
+
+### Bug Fixes
+
+* name ([998ce56](https://github.com/SocialGouv/template/commit/998ce56369d2095104607f4ec3d8e9cf49489caa))
+
+
+### Features
+
+* add header + footer ([9520140](https://github.com/SocialGouv/template/commit/9520140376e84fd4b9fe2eea815b893d6299a60e))
+
 # [1.1.0](https://github.com/SocialGouv/template/compare/v1.0.7...v1.1.0) (2022-02-01)
 
 
