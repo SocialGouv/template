@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/SocialGouv/template/compare/v1.2.0...v1.2.1) (2022-02-10)
+
+
+### Bug Fixes
+
+* dsfr maj ([9977130](https://github.com/SocialGouv/template/commit/99771302b9ec30f9b99b0bdf23d7a4d1171aa33b))
+
 # [1.2.0](https://github.com/SocialGouv/template/compare/v1.1.0...v1.2.0) (2022-02-10)
 
 
