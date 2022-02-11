@@ -1,11 +1,11 @@
 import { Footer, Header } from "@components";
 import {
-  footerBodySectionProps,
-  footerBottomSectionProps,
-  footerPartnerSectionProps,
-  footerTopSectionProps,
-  headerBodyProps,
-  headerNavProps,
+  footerBodySection,
+  footerBottomSection,
+  footerPartnerSection,
+  footerTopSection,
+  headerBody,
+  headerNav,
 } from "@config";
 import { Container } from "@dataesr/react-dsfr";
 
@@ -16,13 +16,13 @@ type Props = {
 const Index = (props: Props): JSX.Element => {
   return (
     <>
-      <Header bodySection={headerBodyProps} navSection={headerNavProps} />
+      <Header bodySection={headerBody} navSection={headerNav} />
       <Container>{props.children}</Container>
       <Footer
-        topSection={footerTopSectionProps}
-        bodySection={footerBodySectionProps}
-        partnerSection={footerPartnerSectionProps}
-        bottomSection={footerBottomSectionProps}
+        topSection={footerTopSection}
+        bodySection={footerBodySection}
+        partnerSection={footerPartnerSection}
+        bottomSection={footerBottomSection}
       />
     </>
   );

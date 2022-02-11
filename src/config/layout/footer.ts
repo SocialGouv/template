@@ -5,7 +5,7 @@ import {
   FooterTopSectionProps,
 } from "@components";
 
-export const footerTopSectionProps: FooterTopSectionProps = {
+export const footerTopSection: FooterTopSectionProps = {
   links: [
     {
       title: "Liens utiles I",
@@ -75,7 +75,7 @@ export const footerTopSectionProps: FooterTopSectionProps = {
   ],
 };
 
-export const footerBodySectionProps: FooterBodySectionProps = {
+export const footerBodySection: FooterBodySectionProps = {
   links: [
     {
       title: "Lien utile 3",
@@ -95,7 +95,7 @@ export const footerBodySectionProps: FooterBodySectionProps = {
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Uenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 };
 
-export const footerPartnerSectionProps: FooterPartnerSectionProps = {
+export const footerPartnerSection: FooterPartnerSectionProps = {
   title: "Partenaires",
   logos: [
     {
@@ -117,7 +117,7 @@ export const footerPartnerSectionProps: FooterPartnerSectionProps = {
   ],
 };
 
-export const footerBottomSectionProps: FooterBottomSectionProps = {
+export const footerBottomSection: FooterBottomSectionProps = {
   links: [
     {
       title: "Lien utile 1",

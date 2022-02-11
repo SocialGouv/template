@@ -1,6 +1,6 @@
 import { HeaderBodyProps, HeaderNavProps } from "@components";
 
-export const headerBodyProps: HeaderBodyProps = {
+export const headerBody: HeaderBodyProps = {
   mainTitle: "République Française",
   splitTitleLength: 10,
   image: {
@@ -18,7 +18,7 @@ export const headerBodyProps: HeaderBodyProps = {
   ],
 };
 
-export const headerNavProps: HeaderNavProps = {
+export const headerNav: HeaderNavProps = {
   items: [
     {
       title: "Titre 1",
