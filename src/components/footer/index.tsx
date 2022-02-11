@@ -1,19 +1,4 @@
-import {
-  Footer,
-  FooterTopCategory,
-  FooterLink,
-  FooterTop,
-  FooterBody,
-  FooterOperator,
-  FooterBodyItem,
-  FooterPartners,
-  FooterPartnersTitle,
-  FooterPartnersLogo,
-  FooterBottom,
-  FooterCopy,
-  Link,
-  Logo,
-} from "@dataesr/react-dsfr";
+import { Footer } from "@dataesr/react-dsfr";
 import { Body } from "./body";
 import { Bottom } from "./bottom";
 import { Partners } from "./partner";

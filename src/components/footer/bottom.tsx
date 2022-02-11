@@ -1,7 +1,7 @@
 import { FooterBottom, FooterCopy, FooterLink } from "@dataesr/react-dsfr";
-import { BottomSectionProps } from "./type";
+import { FooterBottomSectionProps } from "./type";
 
-export const Bottom = (props: BottomSectionProps): JSX.Element => (
+export const Bottom = (props: FooterBottomSectionProps): JSX.Element => (
   <FooterBottom>
     {props.links.map((link, index) => (
       <FooterLink key={`${index}-${link.title}`} href={link.href}>

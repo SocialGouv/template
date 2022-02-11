@@ -14,7 +14,11 @@ export const Body = (props: HeaderBodyProps): JSX.Element => (
     <Logo splitCharacter={props.splitTitleLength ?? 10}>{props.mainTitle}</Logo>
     {props.image && (
       <HeaderOperator>
-        <img src={props.image.src} alt={props.image.alt} />
+        <img
+          src={props.image.src}
+          alt={props.image.alt}
+          style={{ height: props.image.height, width: props.image.width }}
+        />
       </HeaderOperator>
     )}
     <Service

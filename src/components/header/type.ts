@@ -15,6 +15,8 @@ type NavItem = ItemLink & { links: Array<Link> };
 type Image = {
   alt: string;
   src: string;
+  height: string;
+  width: string;
 };
 
 type RegularNavProps = {
@@ -33,7 +35,7 @@ export type MegaNavProps = {
   items: Array<NavItem>;
 };
 
-export type NavProps = {
+export type HeaderNavProps = {
   items: Array<RegularNavProps | MegaNavProps>;
 };
 
@@ -47,6 +49,6 @@ export type HeaderBodyProps = {
 };
 
 export type HeaderProps = {
-  navSection?: NavProps;
+  navSection?: HeaderNavProps;
   bodySection: HeaderBodyProps;
 };

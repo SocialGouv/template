@@ -17,6 +17,11 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@corex/deepmerge@^2.6.148":
+  version "2.6.148"
+  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-2.6.148.tgz#8fa825d53ffd1cbcafce1b6a830eefd3dcc09dd5"
+  integrity sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==
+
 "@dataesr/react-dsfr@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@dataesr/react-dsfr/-/react-dsfr-1.0.2.tgz#1d925c4f8ddee6761385a813e3c5bc67f0bc90dd"
@@ -1226,7 +1231,7 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.2.0:
+minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
@@ -1255,6 +1260,19 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
+
+next-seo@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.1.0.tgz#aa9fd6249a11bf93e6da06fa2a6bc89268936edf"
+  integrity sha512-ampuQfNTOi1x+xtRIb6CZGunIo6rQXtMo2Tyu861d5GjJFIwfOXsA4lzCa4+e2rLkyXDyVpavNNUZWa3US9ELw==
+
+next-sitemap@^2.1.14:
+  version "2.1.14"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-2.1.14.tgz#d800a85c2d045dfdfe8982c8fdb3304087950515"
+  integrity sha512-7IqZjCGYSoA7csSc7B3m3m7hlFYd7Csg2PrNX97wH6/yJZ58nXiBR2JYQhHOZE3CzP3BAUKxwhiv2SlDiRzNXA==
+  dependencies:
+    "@corex/deepmerge" "^2.6.148"
+    minimist "^1.2.5"
 
 next@12.0.9:
   version "12.0.9"
