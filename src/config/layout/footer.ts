@@ -5,87 +5,44 @@ import {
   FooterTopSectionProps,
 } from "@components";
 
+const links = [
+  {
+    title: "Lien utile 1",
+    href: "/",
+  },
+  {
+    title: "Lien utile 2",
+    href: "/",
+  },
+];
+
 export const footerTopSection: FooterTopSectionProps = {
   links: [
     {
       title: "Liens utiles I",
-      links: [
-        {
-          title: "Lien utile 1",
-          href: "/",
-        },
-        {
-          title: "Lien utile 2",
-          href: "/",
-        },
-      ],
+      links,
     },
     {
       title: "Liens utiles II",
-      links: [
-        {
-          title: "Lien utile 3",
-          href: "/",
-        },
-        {
-          title: "Lien utile 4",
-          href: "/",
-        },
-      ],
+      links,
     },
     {
       title: "Liens utiles III",
-      links: [
-        {
-          title: "Lien utile 5",
-          href: "/",
-        },
-        {
-          title: "Lien utile 6",
-          href: "/",
-        },
-      ],
+      links,
     },
     {
       title: "Liens utiles IV",
-      links: [
-        {
-          title: "Lien utile 7",
-          href: "/",
-        },
-        {
-          title: "Lien utile 8",
-          href: "/",
-        },
-      ],
+      links,
     },
     {
       title: "Liens utiles V",
-      links: [
-        {
-          title: "Lien utile 9",
-          href: "/",
-        },
-        {
-          title: "Lien utile 10",
-          href: "/",
-        },
-      ],
+      links,
     },
   ],
 };
 
 export const footerBodySection: FooterBodySectionProps = {
-  links: [
-    {
-      title: "Lien utile 11",
-      href: "/",
-    },
-    {
-      title: "Lien utile 12",
-      href: "/",
-    },
-  ],
+  links,
   image: {
     alt: "",
     src: "https://dummyimage.com/100x80/000/fff.png&text=logo+1",
@@ -118,15 +75,6 @@ export const footerPartnerSection: FooterPartnerSectionProps = {
 };
 
 export const footerBottomSection: FooterBottomSectionProps = {
-  links: [
-    {
-      title: "Lien utile 13",
-      href: "/",
-    },
-    {
-      title: "Lien utile 14",
-      href: "/",
-    },
-  ],
+  links,
   copyright: "© République Française 2022",
 };
