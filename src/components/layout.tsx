@@ -1,29 +1,21 @@
 import { Footer, Header } from "@components";
-import {
-  footerBodySection,
-  footerBottomSection,
-  footerPartnerSection,
-  footerTopSection,
-  headerBody,
-  headerNav,
-} from "@config";
+
 import { Container } from "@dataesr/react-dsfr";
+import { FooterProps } from "./footer/type";
+import { HeaderProps } from "./header/type";
 
 type Props = {
   children: React.ReactNode;
+  headerProps: HeaderProps;
+  footerProps: FooterProps;
 };
 
 const Index = (props: Props): JSX.Element => {
   return (
     <>
-      <Header bodySection={headerBody} navSection={headerNav} />
+      <Header {...props.headerProps} />
       <Container>{props.children}</Container>
-      <Footer
-        topSection={footerTopSection}
-        bodySection={footerBodySection}
-        partnerSection={footerPartnerSection}
-        bottomSection={footerBottomSection}
-      />
+      <Footer {...props.footerProps} />
     </>
   );
 };
