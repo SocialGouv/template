@@ -24,11 +24,11 @@ export const footerTopSection: FooterTopSectionProps = {
       title: "Liens utiles II",
       links: [
         {
-          title: "Lien utile 1",
+          title: "Lien utile 3",
           href: "/",
         },
         {
-          title: "Lien utile 2",
+          title: "Lien utile 4",
           href: "/",
         },
       ],
@@ -37,11 +37,11 @@ export const footerTopSection: FooterTopSectionProps = {
       title: "Liens utiles III",
       links: [
         {
-          title: "Lien utile 1",
+          title: "Lien utile 5",
           href: "/",
         },
         {
-          title: "Lien utile 2",
+          title: "Lien utile 6",
           href: "/",
         },
       ],
@@ -50,11 +50,11 @@ export const footerTopSection: FooterTopSectionProps = {
       title: "Liens utiles IV",
       links: [
         {
-          title: "Lien utile 1",
+          title: "Lien utile 7",
           href: "/",
         },
         {
-          title: "Lien utile 2",
+          title: "Lien utile 8",
           href: "/",
         },
       ],
@@ -63,11 +63,11 @@ export const footerTopSection: FooterTopSectionProps = {
       title: "Liens utiles V",
       links: [
         {
-          title: "Lien utile 1",
+          title: "Lien utile 9",
           href: "/",
         },
         {
-          title: "Lien utile 2",
+          title: "Lien utile 10",
           href: "/",
         },
       ],
@@ -78,11 +78,11 @@ export const footerTopSection: FooterTopSectionProps = {
 export const footerBodySection: FooterBodySectionProps = {
   links: [
     {
-      title: "Lien utile 3",
+      title: "Lien utile 11",
       href: "/",
     },
     {
-      title: "Lien utile 4",
+      title: "Lien utile 12",
       href: "/",
     },
   ],
@@ -120,11 +120,11 @@ export const footerPartnerSection: FooterPartnerSectionProps = {
 export const footerBottomSection: FooterBottomSectionProps = {
   links: [
     {
-      title: "Lien utile 1",
+      title: "Lien utile 13",
       href: "/",
     },
     {
-      title: "Lien utile 2",
+      title: "Lien utile 14",
       href: "/",
     },
   ],
