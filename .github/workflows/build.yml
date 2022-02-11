@@ -29,8 +29,3 @@ jobs:
       - name: Build code
         run: |
           yarn build
-      - name: Cache build
-        uses: actions/cache@v2
-        with:
-          path: ./*
-          key: ${{ github.sha }}
