@@ -18,21 +18,21 @@ type Logo = Image & {
   href: string;
 };
 
-export type PartnerSectionProps = {
+export type FooterPartnerSectionProps = {
   title: string;
   logos: Array<Logo>;
 };
 
-export type BottomSectionProps = {
+export type FooterBottomSectionProps = {
   links: Array<Link>;
   copyright: string;
 };
 
-export type TopSectionProps = {
+export type FooterTopSectionProps = {
   links: Array<LinksWithCategory>;
 };
 
-export type BodySectionProps = {
+export type FooterBodySectionProps = {
   links?: Array<Link>;
   image?: Image;
   ministryName: string;
@@ -40,8 +40,8 @@ export type BodySectionProps = {
 };
 
 export type FooterProps = {
-  topSection?: TopSectionProps;
-  bodySection?: BodySectionProps;
-  partnerSection?: PartnerSectionProps;
-  bottomSection?: BottomSectionProps;
+  topSection?: FooterTopSectionProps;
+  bodySection?: FooterBodySectionProps;
+  partnerSection?: FooterPartnerSectionProps;
+  bottomSection?: FooterBottomSectionProps;
 };

@@ -3,9 +3,9 @@ import {
   FooterPartnersTitle,
   FooterPartnersLogo,
 } from "@dataesr/react-dsfr";
-import { PartnerSectionProps } from "./type";
+import { FooterPartnerSectionProps } from "./type";
 
-export const Partners = (props: PartnerSectionProps): JSX.Element => (
+export const Partners = (props: FooterPartnerSectionProps): JSX.Element => (
   <FooterPartners>
     <FooterPartnersTitle>{props.title}</FooterPartnersTitle>
     {props.logos?.map((logo, index) => (

@@ -38,3 +38,7 @@ yarn-error.log*
 
 # VSCode
 .vscode
+
+# Cypress
+cypress/videos
+cypress/screenshots

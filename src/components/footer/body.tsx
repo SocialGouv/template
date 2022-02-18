@@ -5,9 +5,9 @@ import {
   Link,
   FooterOperator,
 } from "@dataesr/react-dsfr";
-import { BodySectionProps } from "./type";
+import { FooterBodySectionProps } from "./type";
 
-export const Body = (props: BodySectionProps): JSX.Element => (
+export const Body = (props: FooterBodySectionProps): JSX.Element => (
   <FooterBody description={props.description}>
     <Logo>{props.ministryName}</Logo>
     {props.image && (

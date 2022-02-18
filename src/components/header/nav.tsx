@@ -1,8 +1,8 @@
 import { HeaderNav, NavItem, NavSubItem } from "@dataesr/react-dsfr";
 import { MegaNav } from "./megaNav";
-import { NavProps } from "./type";
+import { HeaderNavProps } from "./type";
 
-export const Nav = (props: NavProps): JSX.Element => (
+export const Nav = (props: HeaderNavProps): JSX.Element => (
   <HeaderNav>
     {props.items.map((item, index) => {
       if ("headingLevel" in item) {

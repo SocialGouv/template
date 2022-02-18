@@ -1,7 +1,7 @@
 import { FooterTop, FooterTopCategory, FooterLink } from "@dataesr/react-dsfr";
-import { TopSectionProps } from "./type";
+import { FooterTopSectionProps } from "./type";
 
-export const Top = (props: TopSectionProps): JSX.Element => (
+export const Top = (props: FooterTopSectionProps): JSX.Element => (
   <FooterTop>
     {props.links.map((item, index) => (
       <FooterTopCategory key={`${index}-${item.title}`} title={item.title}>
