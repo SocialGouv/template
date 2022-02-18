@@ -24,11 +24,7 @@ ARG PRODUCTION
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN if [ -z "$PRODUCTION" ]; then \
-      echo "Copy staging values"; \
-      cp .env.staging .env.production; cp ./public/robots.staging.txt ./public/robots.txt; \
-    fi \
-    && yarn build:export
+RUN if [ -z "$PRODUCTION" ]; then  echo "Copy staging values"; cp .env.staging .env.production; cp ./public/robots.staging.txt ./public/robots.txt; fi && yarn build:export
 
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
