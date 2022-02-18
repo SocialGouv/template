@@ -6,13 +6,14 @@ import {
   FooterOperator,
 } from "@dataesr/react-dsfr";
 import { FooterBodySectionProps } from "./type";
+import Image from "next/image";
 
 export const Body = (props: FooterBodySectionProps): JSX.Element => (
   <FooterBody description={props.description}>
     <Logo>{props.ministryName}</Logo>
     {props.image && (
       <FooterOperator>
-        <img src={props.image.src} alt={props.image.alt} />
+        <Image src={props.image.src} alt={props.image.alt} />
       </FooterOperator>
     )}
     {props.links?.map((link, index) => (
