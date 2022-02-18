@@ -12,23 +12,23 @@ concurrency:
   group: review-${{ github.ref }}
 
 jobs:
-
   deploy:
     name: Deploy review branch
     runs-on: ubuntu-latest
     steps:
+      - name: Get project name
+        run: |
+          echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
-    - name: Get project name
-      run: |
-        echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-
-    - name: Use autodevops to deploy review branch
-      uses: SocialGouv/actions/autodevops@v1
-      with:
-        environment: dev
-        project: ${{ env.project }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        kubeconfig: ${{ secrets.KUBECONFIG }}
-        imageName: fabrique/${{ env.project }}
-        rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
-        socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+      - name: Use autodevops to deploy review branch
+        uses: SocialGouv/actions/autodevops@v1
+        with:
+          environment: dev
+          project: ${{ env.project }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+          imageName: fabrique/${{ env.project }}
+          rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+          socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+          dockerbuildargs: |
+            PROJECT_ENV=staging

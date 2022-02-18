@@ -10,10 +10,8 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-
-    - uses: SocialGouv/actions/autodevops-release@v1
-      with:
-        author-name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
-        author-email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
-        github-token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
-
+      - uses: SocialGouv/actions/autodevops-release@v1
+        with:
+          author-name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
+          author-email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
+          github-token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
