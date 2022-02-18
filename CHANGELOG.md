@@ -1,3 +1,25 @@
+# [1.3.0](https://github.com/SocialGouv/template/compare/v1.2.1...v1.3.0) (2022-02-18)
+
+
+### Bug Fixes
+
+* approach ([076b3e2](https://github.com/SocialGouv/template/commit/076b3e25f5a33ce9a7db62038446e20dded7ca4e))
+* approach ([2a448f8](https://github.com/SocialGouv/template/commit/2a448f8b411ddc06ca6f747b5832acbb60c9da4e))
+* build ([84b9c35](https://github.com/SocialGouv/template/commit/84b9c35f58e9b566c1e83dceda9412f4ede72b9c))
+* css on load ([d0c924c](https://github.com/SocialGouv/template/commit/d0c924c4ed804c83a9389b3ff95cf2442b64bcee))
+* giignore ([3f4442e](https://github.com/SocialGouv/template/commit/3f4442e225e5da6a0b0ffe0378f0c61b64038ecc))
+* naming ([f4facf3](https://github.com/SocialGouv/template/commit/f4facf3b9b9cf96ea11e69abf934099401a19c32))
+* remove duplicate ([85ca15e](https://github.com/SocialGouv/template/commit/85ca15e2769ab70c75a500b1ee7e40e0d3b0fe26))
+* remove duplicate code ([e48993d](https://github.com/SocialGouv/template/commit/e48993dcf356418c8d28867f4a99ba483419f016))
+
+
+### Features
+
+* add cypress + jest ([b9659cb](https://github.com/SocialGouv/template/commit/b9659cb9858ecdf4bcb150b68ed2d56783fd0ab9))
+* add github action ([9acb4f0](https://github.com/SocialGouv/template/commit/9acb4f02294470f813d2beb26f15de88fc9f6f95))
+* add ts support ([59630d1](https://github.com/SocialGouv/template/commit/59630d1c2748eb2e7e732fa1c9bf7c7f6b181264))
+* sitemap + seo ([f6d7b26](https://github.com/SocialGouv/template/commit/f6d7b261808be90c7df892be7581f374c2d706f6))
+
 ## [1.2.1](https://github.com/SocialGouv/template/compare/v1.2.0...v1.2.1) (2022-02-10)
 
 
