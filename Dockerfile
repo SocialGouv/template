@@ -15,7 +15,7 @@ RUN node -e " \
 FROM node:$NODE_VERSION as deps
 WORKDIR /app
 COPY --from=prepare /app/package.json /app/yarn.lock ./
-RUN yarn install --frozen-lockfile && yarn sitemap
+RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:$NODE_VERSION AS builder
@@ -23,14 +23,14 @@ ENV NODE_ENV production
 ARG PRODUCTION
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/public ./public
 COPY . .
-RUN if [ -z "$PRODUCTION" ]; then \
+RUN yarn build && \
+    if [ -z "$PRODUCTION" ]; then \
       echo "Copy staging values"; \
       cp .env.staging .env.production; \
       cp ./public/robots.staging.txt ./public/robots.txt; \
     fi \
-    && yarn build:export
+    && yarn export
 
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
