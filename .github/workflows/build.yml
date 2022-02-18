@@ -7,8 +7,8 @@ concurrency:
   group: build-${{ github.ref }}
 
 jobs:
-  code:
-    name: Build
+  build:
+    name: Build and export
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -26,6 +26,6 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --prefer-offline --frozen-lockfile
-      - name: Lint
+      - name: Build and export
         run: |
           yarn build:export
