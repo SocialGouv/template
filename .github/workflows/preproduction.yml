@@ -24,6 +24,6 @@ jobs:
           project: ${{ env.project }}
           token: ${{ secrets.GITHUB_TOKEN }}
           kubeconfig: ${{ secrets.KUBECONFIG }}
-          imageName: fabrique/${{ env.project }}
+          imageName: ${{ env.project }}/app
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}

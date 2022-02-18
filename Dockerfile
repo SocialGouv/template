@@ -24,7 +24,8 @@ ARG PRODUCTION
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN if [ -z "$PRODUCTION" ]; then \
+RUN yarn sitemap && \
+    if [ -z "$PRODUCTION" ]; then \
       echo "Copy staging values"; \
       cp .env.staging .env.production; \
       cp ./public/robots.staging.txt ./public/robots.txt; \
