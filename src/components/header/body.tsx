@@ -8,18 +8,16 @@ import {
   Tool,
 } from "@dataesr/react-dsfr";
 import { HeaderBodyProps } from "./type";
-import Image from "next/image";
 
 export const Body = (props: HeaderBodyProps): JSX.Element => (
   <HeaderBody>
     <Logo splitCharacter={props.splitTitleLength ?? 10}>{props.mainTitle}</Logo>
     {props.image && (
       <HeaderOperator>
-        <Image
+        <img
           src={props.image.src}
           alt={props.image.alt}
-          height={props.image.height}
-          width={props.image.width}
+          style={{ height: props.image.height, width: props.image.width }}
         />
       </HeaderOperator>
     )}
