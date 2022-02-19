@@ -24,13 +24,15 @@ ARG PRODUCTION
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN yarn build && \
-    if [ -z "$PRODUCTION" ]; then \
-      echo "Copy staging values"; \
+RUN if [ -z "$PRODUCTION" ]; then \
+      echo "Overriding .env for staging"; \
       cp .env.staging .env.production; \
-      cp ./public/robots.staging.txt ./public/robots.txt; \
-    fi \
-    && yarn export
+    fi && \
+    yarn build:export \
+    && if [ -z "$PRODUCTION" ]; then \
+      echo "Overriding robots.txt for staging"; \
+      mv ./out/robots.staging.txt ./out/robots.txt; \
+    fi
 
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
