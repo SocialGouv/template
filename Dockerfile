@@ -28,8 +28,9 @@ RUN yarn build:export
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
 
 # Rootless container
+RUN chown 1000:1000 /usr/share/nginx/html
+USER 1000
 ENV PORT=3000
 EXPOSE 3000
-USER 1000
 
 COPY --from=builder /app/out /usr/share/nginx/html
