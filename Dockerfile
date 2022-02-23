@@ -28,8 +28,10 @@ RUN yarn build:export
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
 
 # Rootless container
-RUN chown 1000:1000 /usr/share/nginx/html
-USER 1000
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+RUN chown 1001:1001 /usr/share/nginx/html
+USER 1001
 ENV PORT=3000
 EXPOSE 3000
 
