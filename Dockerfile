@@ -28,10 +28,8 @@ RUN yarn build:export
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
 
 # Rootless container
-RUN chown 101:101 /usr/share/nginx/html
 USER 101
 ENV PORT=3000
-EXPOSE 3000
 
 # Disable nextjs telemetry
 ENV NEXT_TELEMETRY_DISABLED 1
