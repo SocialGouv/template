@@ -27,4 +27,9 @@ RUN yarn build:export
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
 
+# Rootless container
+ENV PORT=3000
+EXPOSE 3000
+USER 1000
+
 COPY --from=builder /app/out /usr/share/nginx/html
