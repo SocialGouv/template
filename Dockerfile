@@ -33,4 +33,7 @@ USER 1000
 ENV PORT=3000
 EXPOSE 3000
 
+# Disable nextjs telemetry
+ENV NEXT_TELEMETRY_DISABLED 1
+
 COPY --from=builder /app/out /usr/share/nginx/html
