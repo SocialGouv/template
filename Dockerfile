@@ -38,3 +38,4 @@ RUN if [ -z "$PRODUCTION" ]; then \
 FROM ghcr.io/socialgouv/docker/nginx:6.64.2 AS runner
 
 COPY --from=builder /app/out /usr/share/nginx/html
+

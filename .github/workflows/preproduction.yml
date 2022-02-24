@@ -18,7 +18,7 @@ jobs:
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
       - name: Use autodevops to deploy review branch
-        uses: SocialGouv/actions/autodevops@v1
+        uses: SocialGouv/actions/autodevops-helm@v1
         with:
           environment: preprod
           project: ${{ env.project }}
@@ -26,4 +26,5 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }}
           imageName: ${{ env.project }}/app
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+          rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}

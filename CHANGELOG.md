@@ -1,3 +1,20 @@
+## [1.3.1](https://github.com/SocialGouv/template/compare/v1.3.0...v1.3.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* **ci:** autodevops-helm ([62d2f8f](https://github.com/SocialGouv/template/commit/62d2f8f442e50c46c6444d21edcf5bc4e2d6da07))
+* **ci:** autodevops-helm ([48be757](https://github.com/SocialGouv/template/commit/48be757865f4be1a11bb54fd98ca8f0494b89efb))
+* **ci:** autodevops-helm ([bc3d79b](https://github.com/SocialGouv/template/commit/bc3d79b6d41229be03c7cb66b379954aaf3b1613))
+* **ci:** autodevops-helm ([d71c7bf](https://github.com/SocialGouv/template/commit/d71c7bfcbb68d536c873aaaefb96de11e41b367c))
+* **ci:** autodevops-helm ([0400fd5](https://github.com/SocialGouv/template/commit/0400fd5f4f6394a4fb01a53c0782856fdab4b3c0))
+* **ci:** autodevops-helm ([0277ada](https://github.com/SocialGouv/template/commit/0277ada8276ff5d0000012c12eb7e2c7eb72185d))
+* **ci:** autodevops-helm ([f94ab63](https://github.com/SocialGouv/template/commit/f94ab6331289c6d8eee00efce3d0eb70ee471816))
+* **ci:** autodevops-helm ([9ff36c7](https://github.com/SocialGouv/template/commit/9ff36c7e83bfffb8a1e5c67be2cefd38f813e086))
+* **ci:** autodevops-helm ([7fab225](https://github.com/SocialGouv/template/commit/7fab225218ecdd868f9a84b57a4ca14d1fd1f03d))
+* **ci:** autodevops-helm ([9604bf9](https://github.com/SocialGouv/template/commit/9604bf9ab8492558e3460c228563761304691e89))
+* **ci:** autodevops-helm ([91d1b6a](https://github.com/SocialGouv/template/commit/91d1b6acd24dbe6a86f23033e98971b737c12f73))
+
 # [1.3.0](https://github.com/SocialGouv/template/compare/v1.2.1...v1.3.0) (2022-02-18)
 
 
