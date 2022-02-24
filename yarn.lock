@@ -352,7 +352,7 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@dataesr/react-dsfr@^1.0.2":
+"@dataesr/react-dsfr@1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@dataesr/react-dsfr/-/react-dsfr-1.0.2.tgz#1d925c4f8ddee6761385a813e3c5bc67f0bc90dd"
   integrity sha512-eAmFujCOq86d6ZVFODBRCrKbv9F4vZxEia1KBHn0E6a+ok5hpuGJ/0/Hr4WJ42Dhsr8ug43+XdYVBu6GjInj6Q==
@@ -379,7 +379,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gouvfr/dsfr@1.3.1", "@gouvfr/dsfr@^1.3.1":
+"@gouvfr/dsfr@1.3.1":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@gouvfr/dsfr/-/dsfr-1.3.1.tgz#fdee185b0fa84c930120a2ea46626462786dd455"
   integrity sha512-11TYlm2nqJVN7VezjManBNUy/O3o/nJ5X9F1N6wkstf0x0N6Ucmtys4yTCPdC036AHqQj7X3v/OwIuvSUDOx5A==
@@ -767,7 +767,7 @@
     "@sentry/types" "6.17.9"
     tslib "^1.9.3"
 
-"@sentry/nextjs@^6.17.9":
+"@sentry/nextjs@6.17.9":
   version "6.17.9"
   resolved "https://registry.yarnpkg.com/@sentry/nextjs/-/nextjs-6.17.9.tgz#0f3d4000e74c4df4177790a68aad35e583515ddd"
   integrity sha512-13LG9BRu0Q3iYxzlamY5ngMZnUhApbLnrQsQQ93nkWcjtZ7ZJJxLjqIxUO/EVr8lwTAXU5fOTtRollJeKIrRhg==
@@ -871,7 +871,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@socialgouv/matomo-next@^1.2.2":
+"@socialgouv/matomo-next@1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@socialgouv/matomo-next/-/matomo-next-1.2.2.tgz#0fe3c8978a38f23411fbbdcaf4e3a7edaf8eecbf"
   integrity sha512-VWIToHeF0rFtLlGGkjdfUCtLckZebwXwYlnAVYwqMivUboqRgxl7wsUGkGfp6HM4cfYla9NQw4mbqRPXfTGu5Q==
@@ -890,7 +890,7 @@
     lz-string "^1.4.4"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@^5.16.2":
+"@testing-library/jest-dom@5.16.2":
   version "5.16.2"
   resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.2.tgz#f329b36b44aa6149cd6ced9adf567f8b6aa1c959"
   integrity sha512-6ewxs1MXWwsBFZXIk4nKKskWANelkdUehchEOokHsN8X7c2eKXGw+77aRV63UU8f/DTSVUPLaGxdrj4lN7D/ug==
@@ -905,7 +905,7 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react@^12.1.2":
+"@testing-library/react@12.1.2":
   version "12.1.2"
   resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-12.1.2.tgz#f1bc9a45943461fa2a598bb4597df1ae044cfc76"
   integrity sha512-ihQiEOklNyHIpo2Y8FREkyD1QAea054U0MVbwH1m8N9TxeFz+KoJ9LkqoKqJlzx2JDm56DVwaJ1r36JYxZM05g==
@@ -1795,7 +1795,7 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.10.tgz#2ad3a7bed70f35b965707c092e5f30b327c290e5"
   integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
 
-cypress@^9.4.1:
+cypress@9.4.1:
   version "9.4.1"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-9.4.1.tgz#1a4ba706435829c24b7edf350c2b059e05da9084"
   integrity sha512-+JgMG9uT+QFx97JU9kOHE3jO3+0UdkQ9H1oCBiC7A74qme7Jkdy2sYDBCPjjGczutnWnGUTMRlwiNMP/Uq6LrQ==
@@ -3571,7 +3571,7 @@ jest-worker@^27.5.1:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest@^27.5.1:
+jest@27.5.1:
   version "27.5.1"
   resolved "https://registry.yarnpkg.com/jest/-/jest-27.5.1.tgz#dadf33ba70a779be7a6fc33015843b51494f63fc"
   integrity sha512-Yn0mADZB89zTtjkPJEXwrac3LHudkQMR+Paqa8uxJHCBr9agxztUifWCyiYrjhMPBoUVBjyny0I7XH6ozDr7QQ==
@@ -3971,12 +3971,12 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-seo@^5.1.0:
+next-seo@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.1.0.tgz#aa9fd6249a11bf93e6da06fa2a6bc89268936edf"
   integrity sha512-ampuQfNTOi1x+xtRIb6CZGunIo6rQXtMo2Tyu861d5GjJFIwfOXsA4lzCa4+e2rLkyXDyVpavNNUZWa3US9ELw==
 
-next-sitemap@^2.1.14:
+next-sitemap@2.1.14:
   version "2.1.14"
   resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-2.1.14.tgz#d800a85c2d045dfdfe8982c8fdb3304087950515"
   integrity sha512-7IqZjCGYSoA7csSc7B3m3m7hlFYd7Csg2PrNX97wH6/yJZ58nXiBR2JYQhHOZE3CzP3BAUKxwhiv2SlDiRzNXA==
@@ -4737,7 +4737,7 @@ stack-utils@^2.0.3:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-start-server-and-test@^1.14.0:
+start-server-and-test@1.14.0:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.14.0.tgz#c57f04f73eac15dd51733b551d775b40837fdde3"
   integrity sha512-on5ELuxO2K0t8EmNj9MtVlFqwBMxfWOhu4U7uZD1xccVpFlOQKR93CSe0u98iQzfNxRyaNTb/CdadbNllplTsw==
