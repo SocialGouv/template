@@ -19,10 +19,20 @@ RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:$NODE_VERSION AS builder
+ENV NODE_ENV production
+ARG PRODUCTION
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN yarn build:export
+RUN if [ -z "$PRODUCTION" ]; then \
+      echo "Overriding .env for staging"; \
+      cp .env.staging .env.production; \
+    fi && \
+    yarn build:export \
+    && if [ -z "$PRODUCTION" ]; then \
+      echo "Overriding robots.txt for staging"; \
+      mv ./out/robots.staging.txt ./out/robots.txt; \
+    fi
 
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:6.70.1 AS runner

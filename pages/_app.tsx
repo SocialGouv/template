@@ -9,8 +9,17 @@ import {
   headerBody,
   headerNav,
 } from "@config";
+import { useEffect } from "react";
+import { init } from "@socialgouv/matomo-next";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    init({
+      url: process.env.NEXT_PUBLIC_MATOMO_URL ?? "",
+      siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID ?? "",
+    });
+  }, []);
+
   return (
     <Layout
       headerProps={{ bodySection: headerBody, navSection: headerNav }}
