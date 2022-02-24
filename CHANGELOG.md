@@ -1,3 +1,12 @@
+## [1.3.2](https://github.com/SocialGouv/template/compare/v1.3.1...v1.3.2) (2022-02-24)
+
+
+### Bug Fixes
+
+* **secu:** rootless container ([34f0134](https://github.com/SocialGouv/template/commit/34f0134fb482d2240b67ecd1e58ce17db48ffc64))
+* **secu:** rootless container ([b557798](https://github.com/SocialGouv/template/commit/b557798aa601a85cf0df18bf73d82f80ca42b8a2))
+* **secu:** rootless container fix [#23](https://github.com/SocialGouv/template/issues/23) ([85e529b](https://github.com/SocialGouv/template/commit/85e529b4ed1cb3e9544616ec30042919296c9839))
+
 ## [1.3.1](https://github.com/SocialGouv/template/compare/v1.3.0...v1.3.1) (2022-02-23)
 
 
