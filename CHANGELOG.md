@@ -1,3 +1,24 @@
+# [1.4.0](https://github.com/SocialGouv/template/compare/v1.3.2...v1.4.0) (2022-02-24)
+
+
+### Bug Fixes
+
+* build ([53cd187](https://github.com/SocialGouv/template/commit/53cd187548a4c24e9765121f9599d0a63d5dd4b6))
+* build && export ([f10de92](https://github.com/SocialGouv/template/commit/f10de9201bd6ea1340d9aef2291d5adf0f6a9962))
+* conflict( ([53e7f97](https://github.com/SocialGouv/template/commit/53e7f975614bc1bb0cdedb205332208cbcca9ed2))
+* dep ([cab2571](https://github.com/SocialGouv/template/commit/cab257199529abb4a39f6f997a73da8101d9b4a2))
+* dockefile ([8bc5351](https://github.com/SocialGouv/template/commit/8bc5351dfe5a741d0da6940fd3625480570549af))
+* dockerfile ([53ff755](https://github.com/SocialGouv/template/commit/53ff755191de781eba802b53a04a6224d3705a14))
+* dockerfile ([17f9d6a](https://github.com/SocialGouv/template/commit/17f9d6a2d37b1028163644e2755d177e1c6a7b2b))
+* sitemap ([7ec9dc6](https://github.com/SocialGouv/template/commit/7ec9dc64633cc4fd5b333a0e74bd15d6ad1ee6f3))
+* staging ([156ecb5](https://github.com/SocialGouv/template/commit/156ecb5452fe4b202d531edafd8e4ce01d47c5ec))
+* workflow ([82fe110](https://github.com/SocialGouv/template/commit/82fe110e9b50ae3dc251001c3a3925a319aeaca9))
+
+
+### Features
+
+* add build ([478d434](https://github.com/SocialGouv/template/commit/478d434ac18e43444b23c7dcb0d3ab8e63ab8f83))
+
 ## [1.3.2](https://github.com/SocialGouv/template/compare/v1.3.1...v1.3.2) (2022-02-24)
 
 
