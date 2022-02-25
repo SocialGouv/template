@@ -1,8 +1,8 @@
 import { Footer, Header } from "@components";
 
 import { Container } from "@dataesr/react-dsfr";
-import { FooterProps } from "./footer/type";
-import { HeaderProps } from "./header/type";
+import { FooterProps } from "../footer/type";
+import { HeaderProps } from "../header/type";
 
 type Props = {
   children: React.ReactNode;
