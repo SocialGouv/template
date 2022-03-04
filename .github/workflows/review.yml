@@ -19,7 +19,9 @@ jobs:
       - name: Get project name
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-
+      - name: Get commit sha
+        run: |
+          echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Use autodevops to deploy review branch
         uses: SocialGouv/actions/autodevops-helm@v1
         with:

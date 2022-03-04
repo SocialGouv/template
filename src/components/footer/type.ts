@@ -25,7 +25,9 @@ export type FooterPartnerSectionProps = {
 
 export type FooterBottomSectionProps = {
   links: Array<Link>;
-  copyright: string;
+  version: string;
+  repositoryUrl: string;
+  commitHash: string;
 };
 
 export type FooterTopSectionProps = {

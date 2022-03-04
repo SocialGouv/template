@@ -4,6 +4,10 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 const { withSentryConfig } = require("@sentry/nextjs");
 
+const { version } = require("./package.json");
+
+const commitSha = process.env.GITHUB_SHA || "dev";
+
 /** @type {import('next').NextConfig} */
 const moduleExports = {
   reactStrictMode: true,
@@ -23,6 +27,10 @@ const sentryWebpackPluginOptions = {
   silent: true, // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
+  env: {
+    NEXT_PUBLIC_APP_VERSION: version,
+    NEXT_PUBLIC_APP_VERSION_COMMIT: commitSha,
+  },
 };
 
 // Make sure adding Sentry options is the last code to run before exporting, to

@@ -20,6 +20,9 @@ jobs:
       - name: Get project name
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+      - name: Get commit sha
+        run: |
+          echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Use autodevops to deploy production
         uses: SocialGouv/actions/autodevops-helm@v1
         id: autodevops
@@ -33,3 +36,4 @@ jobs:
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
           dockerbuildargs: |
             PRODUCTION=true
+            GITHUB_SHA=${{ env.GITHUB_SHA }}

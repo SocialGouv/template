@@ -35,23 +35,16 @@ export type MegaNavProps = {
   items: Array<NavItem>;
 };
 
-export type HeaderNavProps = {
-  items: Array<RegularNavProps | MegaNavProps>;
-};
-
-export type HeaderBodyProps = {
+export type HeaderProps = {
   mainTitle: string;
   splitTitleLength?: number;
   image?: Image;
   serviceTitle: string;
   serviceDescription: string;
-  items?: Array<Omit<Link, "name">>;
+  bodyItems?: Array<Omit<Link, "name">>;
   switchProps?: SwitchProps;
-};
-
-export type HeaderProps = {
-  navSection?: HeaderNavProps;
-  bodySection: HeaderBodyProps;
+  closeButtonLabel?: string;
+  navItems: Array<RegularNavProps | MegaNavProps>;
 };
 
 export type SwitchProps = {
