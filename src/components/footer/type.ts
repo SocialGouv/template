@@ -14,7 +14,6 @@ type Image = {
 };
 
 type Logo = Image & {
-  isMain?: boolean;
   href: string;
 };
 

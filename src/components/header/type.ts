@@ -45,8 +45,13 @@ export type HeaderProps = {
   switchProps?: SwitchProps;
   closeButtonLabel?: string;
   navItems: Array<RegularNavProps | MegaNavProps>;
+  skipLinksProps?: SkipLinksProps;
 };
 
 export type SwitchProps = {
   label: string;
+};
+
+export type SkipLinksProps = {
+  items: Array<Omit<Link, "name">>;
 };

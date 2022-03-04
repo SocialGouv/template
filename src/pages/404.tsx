@@ -10,9 +10,9 @@ const Index: NextPage = () => {
   }, []);
 
   return (
-    <>
-      <div style={{ height: "800px" }}>404</div>
-    </>
+    <div className="fr-container fr-my-6w">
+      <h1>404 - Page non trouvée</h1>
+    </div>
   );
 };
 

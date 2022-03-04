@@ -3,6 +3,7 @@ import {
   Logo,
   FooterBodyItem,
   Link,
+  //@ts-ignore
   FooterOperator,
 } from "@dataesr/react-dsfr";
 import { FooterBodySectionProps } from "./type";

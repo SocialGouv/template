@@ -6,6 +6,17 @@ import {
   HeaderProps,
 } from "@components";
 
+const links = [
+  {
+    title: "Lien utile 1",
+    href: "/",
+  },
+  {
+    title: "Lien utile 2",
+    href: "/",
+  },
+];
+
 export const headerProps: HeaderProps = {
   mainTitle: "République Française",
   splitTitleLength: 10,
@@ -24,6 +35,9 @@ export const headerProps: HeaderProps = {
   ],
   switchProps: {
     label: "Paramètre d'affichage",
+  },
+  skipLinksProps: {
+    items: links,
   },
   navItems: [
     {
@@ -76,17 +90,6 @@ export const headerProps: HeaderProps = {
   closeButtonLabel: "Fermer",
 };
 
-const links = [
-  {
-    title: "Lien utile 1",
-    href: "/",
-  },
-  {
-    title: "Lien utile 2",
-    href: "/",
-  },
-];
-
 export const footerTopSection: FooterTopSectionProps = {
   links: [
     {
@@ -127,7 +130,6 @@ export const footerPartnerSection: FooterPartnerSectionProps = {
   title: "Partenaires",
   logos: [
     {
-      isMain: true,
       href: "/",
       alt: "",
       src: "https://dummyimage.com/100x80/000/fff.png&text=logo+1",

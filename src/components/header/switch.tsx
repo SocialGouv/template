@@ -1,4 +1,8 @@
-import { SwitchTheme, ToolItem } from "@dataesr/react-dsfr";
+import {
+  SwitchTheme,
+  //@ts-ignore
+  ToolItem,
+} from "@dataesr/react-dsfr";
 import { useState } from "react";
 import { SwitchProps } from "./type";
 

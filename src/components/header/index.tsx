@@ -1,22 +1,30 @@
 import {
   HeaderNav,
+  //@ts-ignore
   NavItem,
+  //@ts-ignore
   NavSubItem,
   Header,
+  //@ts-ignore
   ToolItem,
   Logo,
   HeaderBody,
+  //@ts-ignore
   Service,
   HeaderOperator,
+  //@ts-ignore
   ToolItemGroup,
+  //@ts-ignore
   Tool,
 } from "@dataesr/react-dsfr";
 import { MegaNav } from "./megaNav";
 import { HeaderProps } from "./type";
 import { SwitchThemeMode } from "./switch";
+import { SkipLinks } from "./skipLinks";
 
 const Index = (props: HeaderProps): JSX.Element => (
   <Header>
+    {props.skipLinksProps && <SkipLinks {...props.skipLinksProps} />}
     <HeaderBody>
       <Logo splitCharacter={props.splitTitleLength ?? 10}>
         {props.mainTitle}

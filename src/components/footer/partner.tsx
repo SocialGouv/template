@@ -11,7 +11,6 @@ export const Partners = (props: FooterPartnerSectionProps): JSX.Element => (
     {props.logos?.map((logo, index) => (
       <FooterPartnersLogo
         key={`${index}-${logo.src}`}
-        isMain={logo.isMain}
         href={logo.href}
         imageSrc={logo.src}
         imageAlt={logo.alt}

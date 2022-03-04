@@ -1,4 +1,10 @@
-import { MegaNavItem, MegaNavSubItem, Link } from "@dataesr/react-dsfr";
+import {
+  //@ts-ignore
+  MegaNavItem,
+  //@ts-ignore
+  MegaNavSubItem,
+  Link,
+} from "@dataesr/react-dsfr";
 import { MegaNavProps } from "./type";
 
 export const MegaNav = (props: MegaNavProps): JSX.Element => (
