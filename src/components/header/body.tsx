@@ -7,9 +7,8 @@ import {
   ToolItemGroup,
   Tool,
 } from "@dataesr/react-dsfr";
-import { Switch } from "./switch";
+import { SwitchThemeMode } from "./switch";
 import { HeaderBodyProps } from "./type";
-import { isSwitch } from "./utils";
 
 export const Body = (props: HeaderBodyProps): JSX.Element => (
   <HeaderBody>
@@ -28,21 +27,14 @@ export const Body = (props: HeaderBodyProps): JSX.Element => (
       description={props.serviceDescription}
     />
     <Tool>
-      {props.items && (
-        <ToolItemGroup>
-          {props.items.map((item, index) => (
-            <>
-              {isSwitch(item) ? (
-                <Switch {...item} />
-              ) : (
-                <ToolItem key={`${index}-${item.title}`} link={item.href}>
-                  {item.title}
-                </ToolItem>
-              )}
-            </>
-          ))}
-        </ToolItemGroup>
-      )}
+      <ToolItemGroup>
+        {props.items?.map((item, index) => (
+          <ToolItem key={`${index}-${item.title}`} link={item.href}>
+            {item.title}
+          </ToolItem>
+        ))}
+        {props.switchProps && <SwitchThemeMode {...props.switchProps} />}
+      </ToolItemGroup>
     </Tool>
   </HeaderBody>
 );

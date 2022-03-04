@@ -45,7 +45,8 @@ export type HeaderBodyProps = {
   image?: Image;
   serviceTitle: string;
   serviceDescription: string;
-  items?: Array<Omit<Link, "name"> | SwitchProps>;
+  items?: Array<Omit<Link, "name">>;
+  switchProps?: SwitchProps;
 };
 
 export type HeaderProps = {
@@ -54,6 +55,5 @@ export type HeaderProps = {
 };
 
 export type SwitchProps = {
-  isSwitch: true;
   label: string;
 };

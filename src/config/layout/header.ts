@@ -15,11 +15,10 @@ export const headerBody: HeaderBodyProps = {
   items: [
     { href: "/", title: "Lien A" },
     { href: "/", title: "Lien B" },
-    {
-      label: "Paramètre d'affichage",
-      isSwitch: true,
-    },
   ],
+  switchProps: {
+    label: "Paramètre d'affichage",
+  },
 };
 
 export const headerNav: HeaderNavProps = {

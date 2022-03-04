@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Header from "./";
+import Header from ".";
 import { headerBody, headerNav } from "@config";
 
 export default {
