@@ -45,10 +45,15 @@ export type HeaderBodyProps = {
   image?: Image;
   serviceTitle: string;
   serviceDescription: string;
-  items?: Array<Omit<Link, "name">>;
+  items?: Array<Omit<Link, "name"> | SwitchProps>;
 };
 
 export type HeaderProps = {
   navSection?: HeaderNavProps;
   bodySection: HeaderBodyProps;
+};
+
+export type SwitchProps = {
+  isSwitch: true;
+  label: string;
 };
