@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "build:export": "next build && next export",
+    "build:export": "npm run build && npm run export",
     "e2e": "cypress open",
     "e2e:headless": "cypress run",
     "test": "jest",

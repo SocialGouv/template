@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Bottom } from "../bottom";
 
-describe("Bottom", () => {
+describe("Footer - Bottom", () => {
   it("renders version", async () => {
     const version = "1.0.0";
     render(
@@ -12,6 +12,6 @@ describe("Bottom", () => {
         links={[{ href: "/", title: "Yo" }]}
       />
     );
-    expect(screen.getByText(version)).toBeDefined();
+    expect(screen.getByText(/Version/i)).toHaveTextContent(version);
   });
 });
