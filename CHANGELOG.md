@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/SocialGouv/template/compare/v1.4.1...v1.5.0) (2022-03-04)
+
+
+### Bug Fixes
+
+* lint ([d4fa892](https://github.com/SocialGouv/template/commit/d4fa8929917526a4250b5a50e7a8ca3cde8fc9d1))
+
+
+### Features
+
+* add storybook ([cef0997](https://github.com/SocialGouv/template/commit/cef09970c38d54f838c85a9ea73ea4d850ac3a58))
+* typing ([817d1be](https://github.com/SocialGouv/template/commit/817d1bedc317eda68970f7bc563a6a27617ddfdd))
+
 ## [1.4.1](https://github.com/SocialGouv/template/compare/v1.4.0...v1.4.1) (2022-02-25)
 
 
