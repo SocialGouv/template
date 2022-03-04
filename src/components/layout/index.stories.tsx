@@ -3,12 +3,11 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Layout from "./";
 import {
-  headerBody,
-  headerNav,
   footerBodySection,
   footerBottomSection,
   footerPartnerSection,
   footerTopSection,
+  headerProps,
 } from "@config";
 
 export default {
@@ -21,7 +20,7 @@ const Template: ComponentStory<typeof Layout> = args => <Layout {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   children: <p>Hello World</p>,
-  headerProps: { bodySection: headerBody, navSection: headerNav },
+  headerProps: headerProps,
   footerProps: {
     bodySection: footerBodySection,
     bottomSection: footerBottomSection,

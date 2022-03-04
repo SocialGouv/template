@@ -25,5 +25,13 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "next-sitemap.js"]
+  "exclude": [
+    "node_modules",
+    "next-sitemap.js",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "cypress/**/*"
+  ]
 }

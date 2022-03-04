@@ -19,7 +19,9 @@
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook -c .storybook -o .out",
     "storybook:deploy": "npm run storybook:build && gh-pages -d .out",
-    "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\""
+    "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\"",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "dependencies": {
     "@dataesr/react-dsfr": "^1.0.4",

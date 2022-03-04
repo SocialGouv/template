@@ -2,11 +2,16 @@ import { render, screen } from "@testing-library/react";
 import { Bottom } from "../bottom";
 
 describe("Bottom", () => {
-  it("renders copyright", async () => {
-    const copyright = "© République Française 2022";
+  it("renders version", async () => {
+    const version = "1.0.0";
     render(
-      <Bottom copyright={copyright} links={[{ href: "/", title: "Yo" }]} />
+      <Bottom
+        version={version}
+        commitHash="master"
+        repositoryUrl="https://github.com/SocialGouv/template"
+        links={[{ href: "/", title: "Yo" }]}
+      />
     );
-    expect(screen.getByText(copyright)).toBeDefined();
+    expect(screen.getByText(version)).toBeDefined();
   });
 });
