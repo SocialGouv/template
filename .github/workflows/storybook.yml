@@ -1,8 +1,6 @@
 name: Storybook
 
-on:
-  push:
-    branches: [master]
+on: push
 
 concurrency:
   cancel-in-progress: true
