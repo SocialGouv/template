@@ -16,8 +16,10 @@
     "test:watch": "jest --watch",
     "test:e2e": "start-server-and-test dev http://localhost:3000 e2e",
     "test:e2e:headless": "start-server-and-test dev http://localhost:3000 e2e:headless",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook:start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook -c .storybook -o .out",
+    "storybook:deploy": "npm run storybook:build && gh-pages -d .out",
+    "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\""
   },
   "dependencies": {
     "@dataesr/react-dsfr": "^1.0.2",
@@ -46,6 +48,7 @@
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
     "eslint-plugin-storybook": "^0.5.7",
+    "gh-pages": "^3.2.3",
     "jest": "^27.5.1",
     "next-sitemap": "^2.1.14",
     "start-server-and-test": "^1.14.0",
