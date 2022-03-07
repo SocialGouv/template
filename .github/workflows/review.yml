@@ -33,3 +33,5 @@ jobs:
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
           rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+          dockerbuildargs: |
+            GITHUB_SHA=${{ env.GITHUB_SHA }}

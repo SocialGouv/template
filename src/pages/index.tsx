@@ -1,5 +1,5 @@
 import { Head, Testimonial, Tile } from "@components";
-import { Container, Row } from "@dataesr/react-dsfr";
+import { Row } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
