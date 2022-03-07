@@ -1,20 +1,14 @@
 import {
   HeaderNav,
-  //@ts-ignore
   NavItem,
-  //@ts-ignore
   NavSubItem,
   Header,
-  //@ts-ignore
   ToolItem,
   Logo,
   HeaderBody,
-  //@ts-ignore
   Service,
   HeaderOperator,
-  //@ts-ignore
   ToolItemGroup,
-  //@ts-ignore
   Tool,
 } from "@dataesr/react-dsfr";
 import { MegaNav } from "./megaNav";
@@ -55,7 +49,7 @@ const Index = (props: HeaderProps): JSX.Element => (
     </HeaderBody>
     <HeaderNav>
       {props.navItems.map((item, index) => {
-        if ("headingLevel" in item) {
+        if ("linkName" in item) {
           return <MegaNav key={`${index}-${item.title}`} {...item} />;
         } else if ("items" in item) {
           return (

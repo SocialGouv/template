@@ -28,7 +28,6 @@ type RegularNavProps = {
 export type MegaNavProps = {
   title: string;
   description: string;
-  headingLevel: string;
   linkHref: string;
   linkName: string;
   closeButtonLabel: string;

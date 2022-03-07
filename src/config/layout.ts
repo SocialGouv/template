@@ -61,7 +61,6 @@ export const headerProps: HeaderProps = {
     {
       title: "Titre 3",
       description: "Navigation",
-      headingLevel: "h5",
       linkHref: "/",
       linkName: "Link",
       closeButtonLabel: "Fermer",
