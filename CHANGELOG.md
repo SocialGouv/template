@@ -1,3 +1,23 @@
+# [1.6.0](https://github.com/SocialGouv/template/compare/v1.5.0...v1.6.0) (2022-03-10)
+
+
+### Bug Fixes
+
+* footer ([7b4e86d](https://github.com/SocialGouv/template/commit/7b4e86dbbddce05f0fc6f44ebd6a7ce392e0d76f))
+* header ([c9de1f0](https://github.com/SocialGouv/template/commit/c9de1f054f8e7b841c07254048f16c53cfb67c19))
+* storybook ([df7fa7f](https://github.com/SocialGouv/template/commit/df7fa7fd0c314207704308c20b6f6c6077c3749f))
+* storybook url ([92140e0](https://github.com/SocialGouv/template/commit/92140e0edb76e8204e9900b8d06cd539149bef69))
+* structure ([c3a1893](https://github.com/SocialGouv/template/commit/c3a1893d454d6d5f84b12daf1b4a60d9152f7fa8))
+* tu ([61a9ac5](https://github.com/SocialGouv/template/commit/61a9ac530624f5e1b11705fcec9ef9fc0ca2fc7b))
+* type-checking ([bb60d60](https://github.com/SocialGouv/template/commit/bb60d601a940e58468e7e0d931bc4c7231d8ddfa))
+* typing ([c5db38f](https://github.com/SocialGouv/template/commit/c5db38f78c9defb2f8685cd74f1411243f9254ea))
+
+
+### Features
+
+* add header ([60b1844](https://github.com/SocialGouv/template/commit/60b18445e25c8d808cd224c2eb1981acf308ac2a))
+* add storybook ([f92e634](https://github.com/SocialGouv/template/commit/f92e63430df62ed2604444e2a08187ad3e6992c6))
+
 # [1.5.0](https://github.com/SocialGouv/template/compare/v1.4.1...v1.5.0) (2022-03-04)
 
 
