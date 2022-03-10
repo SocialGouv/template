@@ -19,7 +19,9 @@ jobs:
       - name: Get project name
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-
+      - name: Get commit sha
+        run: |
+          echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Use autodevops to deploy review branch
         uses: SocialGouv/actions/autodevops-helm@v1
         with:
@@ -31,3 +33,5 @@ jobs:
           rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
           rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
           socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+          dockerbuildargs: |
+            GITHUB_SHA=${{ env.GITHUB_SHA }}

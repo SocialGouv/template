@@ -8,6 +8,28 @@ export const Bottom = (props: FooterBottomSectionProps): JSX.Element => (
         {link.title}
       </FooterLink>
     ))}
-    <FooterCopy>{props.copyright}</FooterCopy>
+    <FooterCopy>
+      <p>
+        Sauf mention contraire, tous les contenus de ce site sont sous{" "}
+        <a
+          href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
+          rel="noreferrer"
+          target="_blank"
+        >
+          licence etalab-2.0
+        </a>
+      </p>
+      <p>
+        Version {props.version} (
+        <a
+          target="_blank"
+          href={`${props.repositoryUrl}/tree/${props.commitHash}`}
+          rel="noreferrer"
+        >
+          {props.commitHash.substring(0, 8)}
+        </a>
+        )
+      </p>
+    </FooterCopy>
   </FooterBottom>
 );

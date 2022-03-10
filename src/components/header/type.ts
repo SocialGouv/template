@@ -28,32 +28,29 @@ type RegularNavProps = {
 export type MegaNavProps = {
   title: string;
   description: string;
-  headingLevel: string;
   linkHref: string;
   linkName: string;
   closeButtonLabel: string;
   items: Array<NavItem>;
 };
 
-export type HeaderNavProps = {
-  items: Array<RegularNavProps | MegaNavProps>;
-};
-
-export type HeaderBodyProps = {
+export type HeaderProps = {
   mainTitle: string;
   splitTitleLength?: number;
   image?: Image;
   serviceTitle: string;
   serviceDescription: string;
-  items?: Array<Omit<Link, "name"> | SwitchProps>;
-};
-
-export type HeaderProps = {
-  navSection?: HeaderNavProps;
-  bodySection: HeaderBodyProps;
+  bodyItems?: Array<Omit<Link, "name">>;
+  switchProps?: SwitchProps;
+  closeButtonLabel?: string;
+  navItems: Array<RegularNavProps | MegaNavProps>;
+  skipLinksProps?: SkipLinksProps;
 };
 
 export type SwitchProps = {
-  isSwitch: true;
   label: string;
+};
+
+export type SkipLinksProps = {
+  items: Array<Omit<Link, "name">>;
 };

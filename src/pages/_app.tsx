@@ -6,8 +6,7 @@ import {
   footerBottomSection,
   footerPartnerSection,
   footerTopSection,
-  headerBody,
-  headerNav,
+  headerProps,
 } from "@config";
 import { useEffect } from "react";
 import { init } from "@socialgouv/matomo-next";
@@ -22,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Layout
-      headerProps={{ bodySection: headerBody, navSection: headerNav }}
+      headerProps={{ ...headerProps }}
       footerProps={{
         bodySection: footerBodySection,
         bottomSection: footerBottomSection,

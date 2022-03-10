@@ -1,17 +1,13 @@
-import { SwitchTheme } from "@dataesr/react-dsfr";
-import { ToolItem } from "@dataesr/react-dsfr";
-import { useHeaderStore } from "./store";
+import { SwitchTheme, ToolItem } from "@dataesr/react-dsfr";
+import { useState } from "react";
 import { SwitchProps } from "./type";
 
-export const Switch = (props: SwitchProps): JSX.Element => {
-  const [isOpen, onSwitchMode] = useHeaderStore(state => [
-    state.isSwitchModeOpen,
-    state.onSwitchMode,
-  ]);
+export const SwitchThemeMode = (props: SwitchProps): JSX.Element => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <ToolItem onClick={onSwitchMode}>
+      <ToolItem onClick={() => setIsOpen(!isOpen)}>
         <span
           className="fr-fi-theme-fill fr-link--icon-left"
           aria-controls="fr-theme-modal"
@@ -20,7 +16,7 @@ export const Switch = (props: SwitchProps): JSX.Element => {
           {props.label}
         </span>
       </ToolItem>
-      <SwitchTheme isOpen={isOpen} setIsOpen={onSwitchMode} />
+      <SwitchTheme isOpen={isOpen} setIsOpen={() => setIsOpen(!isOpen)} />
     </>
   );
 };

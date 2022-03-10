@@ -26,6 +26,7 @@ const customJestConfig = {
     "@modules": "<rootDir>/src/modules",
     "@lib": "<rootDir>/src/lib",
   },
+  setupFilesAfterEnv: ["<rootDir>/jest-setup.ts"],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

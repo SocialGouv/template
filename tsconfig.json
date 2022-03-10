@@ -24,6 +24,14 @@
       "@lib": ["./src/lib"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "next-sitemap.js"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest-setup.ts"],
+  "exclude": [
+    "node_modules",
+    "next-sitemap.js",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "cypress/**/*"
+  ]
 }
