@@ -2,34 +2,41 @@
 
 Template est une application [next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/).
 
-Storybook URL : <https://socialgouv.github.io/template/>
-Production URL : <https://template.fabrique.social.gouv.fr/>
+Pour accéder à la version en production du projet, c'est [ici](https://template.social.gouv.fr/).
+Pour accéder aux storybook du projet, c'est [là](https://socialgouv.github.io/template/).
 
 ## Description
+
+### D'un point de vue fonctionnelle
 
 Ce template est composé de page :
 
 - Page principale
 - Politique de confidentialité
 - Mention légale avec une référence à l'accessibilité
-- Healthz
 - Conditions générales d'utilisation
 - Statistiques d'utilisation (fonctionnant avec matomo)
+- Healthz
+- Page 404
 
-D'un point de vue technique :
+### D'un point de vue technique
 
-- Storybook
-- @testing-library pour les tests côté frontend
-- jest pour les tests unitaires
-- cypress pour les tests e2e
-- matomo pour les statistiques
-- react-dsfr pour le design systeme de l'état
-- next-seo pour gérer les balises meta
-- sentry pour la gestion des erreurs
+- [react-dsfr](https://dataesr.github.io/react-dsfr/) pour l'utilisation du [design système de l'état](https://www.systeme-de-design.gouv.fr/)
+- [next-seo](https://github.com/garmeeh/next-seo) pour gérer les balises meta au sein de l'application
+- [storybook](https://storybook.js.org/) permettant de réaliser des stories pour les composants
+- [@testing-library](https://testing-library.com/) pour tester de manière unitaire les composants
+- [jest](https://jestjs.io/) pour tester de manière unitaire le code
+- [cypress](https://www.cypress.io/) pour tester en e2e le frontend
+- [matomo](https://matomo.org/) pour sauvegarder de manière anonyme les statistiques d'utilisation
+- [sentry](https://sentry.io/) pour gérer les erreurs
+
+#### Gestion des environnements
+
+Elle se divise en deux parties, concernant les variables issues des docker build args, il faut les passer dans le `next.config.js`, sinon utiliser les différents `.env`. Les variables d'environnements sont des variables publiques.
 
 ## Lancer le code
 
-Après avoir clean le projet :
+Après avoir cloner le projet :
 
 ### Développement
 
