@@ -30,11 +30,7 @@ RUN if [ -z "$PRODUCTION" ]; then \
       echo "Overriding .env for staging"; \
       cp .env.staging .env.production; \
     fi && \
-    yarn build:export \
-    && if [ -z "$PRODUCTION" ]; then \
-      echo "Overriding robots.txt for staging"; \
-      mv ./out/robots.staging.txt ./out/robots.txt; \
-    fi
+    yarn build:export 
 
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:6.70.1 AS runner

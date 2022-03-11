@@ -115,7 +115,28 @@ export const footerTopSection: FooterTopSectionProps = {
 };
 
 export const footerBodySection: FooterBodySectionProps = {
-  links,
+  links: [
+    {
+      title: "gouvernement.fr",
+      href: "https://www.gouvernement.fr/",
+    },
+    {
+      title: "service-public.fr",
+      href: "https://www.service-public.fr/",
+    },
+    {
+      title: "legifrance.gouv.fr",
+      href: "https://www.legifrance.gouv.fr/",
+    },
+    {
+      title: "data.gouv.fr",
+      href: "https://data.gouv.fr/",
+    },
+    {
+      title: "solidarites-sante.gouv.fr",
+      href: "https://solidarites-sante.gouv.fr/",
+    },
+  ],
   image: {
     alt: "",
     src: "https://dummyimage.com/100x80/000/fff.png&text=logo+1",
@@ -147,7 +168,28 @@ export const footerPartnerSection: FooterPartnerSectionProps = {
 };
 
 export const footerBottomSection: FooterBottomSectionProps = {
-  links,
+  links: [
+    {
+      title: "Accessibilité : non conforme",
+      href: "/mention-legales#accessibilite",
+    },
+    {
+      title: "Mentions légales",
+      href: "/mention-legales",
+    },
+    {
+      title: "Conditions générales d'utilisation",
+      href: "/cgu",
+    },
+    {
+      title: "Politique de confidentialité",
+      href: "/politique-confidentialite",
+    },
+    {
+      title: "Statistiques",
+      href: "/stats",
+    },
+  ],
   version: process.env.NEXT_PUBLIC_APP_VERSION ?? "X.X.X",
   repositoryUrl: process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? "",
   commitHash: process.env.NEXT_PUBLIC_APP_VERSION_COMMIT ?? "master",

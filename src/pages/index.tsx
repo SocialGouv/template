@@ -3,7 +3,7 @@ import { Row } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
   return (
     <>
       <NextSeo
@@ -113,4 +113,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Index;

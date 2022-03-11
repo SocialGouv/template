@@ -42,3 +42,6 @@ yarn-error.log*
 # Cypress
 cypress/videos
 cypress/screenshots
+
+# Robots.txt
+robots.txt
