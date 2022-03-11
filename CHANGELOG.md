@@ -1,3 +1,32 @@
+# [1.7.0](https://github.com/SocialGouv/template/compare/v1.6.0...v1.7.0) (2022-03-11)
+
+
+### Bug Fixes
+
+* build ([61d652b](https://github.com/SocialGouv/template/commit/61d652b65e7e48bda7b31b1bc68ee4b4d98ec075))
+* build ([8fc3628](https://github.com/SocialGouv/template/commit/8fc362801bcdd7a862a86cb6137ab7dbdb12c495))
+* cgu ([224cf3c](https://github.com/SocialGouv/template/commit/224cf3cc0948617236aca32b7738fb11fa1dc745))
+* const ([444d93b](https://github.com/SocialGouv/template/commit/444d93bdb20865fe1235dc354db5f16eeff41234))
+* customization ([c133b2e](https://github.com/SocialGouv/template/commit/c133b2e1e5739c236f58169f1e32ed9afe9d7e25))
+* deployment ([07e9514](https://github.com/SocialGouv/template/commit/07e95148064a8bf145c35a0317c32ddc981b1dc1))
+* doc ([73709f7](https://github.com/SocialGouv/template/commit/73709f73b410f4d89054276caeed1ca688fcc899))
+* doc ([168a48c](https://github.com/SocialGouv/template/commit/168a48c8eb82d5b3165c60ebec2b7f28ccf11ba6))
+* doc ([ba646fc](https://github.com/SocialGouv/template/commit/ba646fc172d8e372a5508d8343541ec0e59cffac))
+* doc ([d148539](https://github.com/SocialGouv/template/commit/d1485398f2b8efa63a22ba5c0e07f46a85e64345))
+* doc ([d59f46b](https://github.com/SocialGouv/template/commit/d59f46bf29989c66d4040f5f479927b8e10a062b))
+* dockerfile ([436549f](https://github.com/SocialGouv/template/commit/436549f04fe58e6b1c67cf97adbf0fe33c60000d))
+* fote dortografe ([2f00977](https://github.com/SocialGouv/template/commit/2f009776eebe7873e2b14c8547564b819ef77c68))
+* readme.md ([49dce81](https://github.com/SocialGouv/template/commit/49dce8110618256e77f684faa8281dfec3e36d73))
+* readme.md ([7f98534](https://github.com/SocialGouv/template/commit/7f98534b3c7f925af350047e9ef592b1ec447cd7))
+* socialgouv ([a032b1b](https://github.com/SocialGouv/template/commit/a032b1b5db2ecab10a39b1f2e7f6f565ff333b9f))
+* stats ([f9c6134](https://github.com/SocialGouv/template/commit/f9c6134da862729bbbb1c4f63ee1ea158bc5ab65))
+* stats ([5082788](https://github.com/SocialGouv/template/commit/5082788360032801409f3439cdf18c5613616e80))
+
+
+### Features
+
+* add page ([e7118e4](https://github.com/SocialGouv/template/commit/e7118e4d2c7ecd267b24a8464b7021958eafe0f5))
+
 # [1.6.0](https://github.com/SocialGouv/template/compare/v1.5.0...v1.6.0) (2022-03-10)
 
 
