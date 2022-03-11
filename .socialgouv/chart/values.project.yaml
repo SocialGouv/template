@@ -1,0 +1,5 @@
+components:
+  app: true
+app:
+  imagePackage: template
+  probesPath: /healthz

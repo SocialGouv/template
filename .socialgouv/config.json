@@ -1,7 +1,0 @@
-{
-  "name": "template",
-  "type": "static",
-  "subdomain": "template",
-  "registry": "ghcr",
-  "project": "fabrique"
-}
