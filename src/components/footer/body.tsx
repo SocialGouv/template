@@ -17,7 +17,9 @@ export const Body = (props: FooterBodySectionProps): JSX.Element => (
     )}
     {props.links?.map((link, index) => (
       <FooterBodyItem key={`${index}-${link.title}`}>
-        <Link href={link.href}>{link.title}</Link>
+        <Link href={link.href} target="_blank">
+          {link.title}
+        </Link>
       </FooterBodyItem>
     ))}
   </FooterBody>
