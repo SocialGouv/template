@@ -4,3 +4,4 @@ export { default as Layout } from "./layout";
 export * from "./header/type";
 export * from "./footer/type";
 export * from "./landing";
+export * from "./mention";

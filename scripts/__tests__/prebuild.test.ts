@@ -11,8 +11,7 @@ describe("robots.txt", () => {
     const host = "localhost";
     const robotsProd = [
       "User-agent: *",
-      "Disallow: /assets/",
-      "Disallow: /images/",
+      "Allow: /",
       "",
       `Sitemap: https://${host}/sitemap.xml`,
     ].join("\n");
