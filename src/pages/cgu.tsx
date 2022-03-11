@@ -17,7 +17,7 @@ const Index: NextPage = () => {
         ]}
       />
       <div className="fr-container fr-my-6w">
-        <h1 id="mentions-legales">Conditions générales d&apos;utilisation</h1>
+        <h1>Conditions générales d&apos;utilisation</h1>
         <div>
           <MentionPart
             title="Présentation"
