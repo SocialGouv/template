@@ -33,11 +33,15 @@ Ce template est composé de page :
 
 #### Gestion des environnements
 
-Elle se divise en deux parties, concernant les variables issues des docker build args, il faut les passer dans le `next.config.js`, sinon utiliser les différents `.env`. Les variables d'environnements sont des variables publiques.
+Les variables issues des docker build-args, sont à utiliser dans `next.config.js`, pour les autres, il faut les définir dans les différents [`.env.*`](https://nextjs.org/docs/basic-features/environment-variables#environment-variable-load-order).
+
+Le fichier `.env.staging` est utilisé pour les environnements de review et de pré-production.
+
+:warning: Les variables d'environnement sont publiques (utilisée durant le build), ne commitez donc pas de variables privées dans ces fichiers.
 
 ## Lancer le code
 
-Après avoir cloner le projet :
+Après avoir cloné le projet :
 
 ### Développement
 
