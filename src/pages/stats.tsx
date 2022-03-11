@@ -5,7 +5,11 @@ import { NextSeo } from "next-seo";
 import React, { useEffect } from "react";
 
 const Index: NextPage = () => {
-  const [matomoData, setMatomoData] = React.useState<MatomoResult>();
+  const [matomoData, setMatomoData] = React.useState<MatomoResult>({
+    nbPageViews: 0,
+    nbVisits: 0,
+    nbUniqPageViews: 0,
+  });
 
   useEffect(() => {
     (async () => {
@@ -30,17 +34,17 @@ const Index: NextPage = () => {
         <div className="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-px-3w">
           <StatsTile
             title="Nombre de visites"
-            stats={matomoData?.nbVisits ?? 0}
+            stats={matomoData.nbVisits}
             description="C'est le nombre de visites total du site sur les 12 derniers mois"
           />
           <StatsTile
             title="Nombre de pages vues (total)"
-            stats={matomoData?.nbPageViews ?? 0}
+            stats={matomoData.nbPageViews}
             description="C'est le nombre de pages vues au total sur le site sur les 12 derniers mois"
           />
           <StatsTile
             title="Nombre de pages vues (uniques)"
-            stats={matomoData?.nbUniqPageViews ?? 0}
+            stats={matomoData.nbUniqPageViews}
             description="C'est le nombre de pages vues uniques sur le site sur les 12 derniers mois"
           />
         </div>
