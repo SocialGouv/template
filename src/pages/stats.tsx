@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import React, { useEffect } from "react";
 
-const Index: NextPage = () => {
+const Stats: NextPage = () => {
   const [matomoData, setMatomoData] = React.useState<MatomoResult>({
     nbPageViews: 0,
     nbVisits: 0,
@@ -13,8 +13,8 @@ const Index: NextPage = () => {
 
   useEffect(() => {
     (async () => {
-      const matomoData = await fetchMatomoData();
-      setMatomoData(matomoData);
+      const data = await fetchMatomoData();
+      setMatomoData(data);
     })();
   }, []);
   return (
@@ -53,4 +53,4 @@ const Index: NextPage = () => {
   );
 };
 
-export default Index;
+export default Stats;

@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
 
-const Index: NextPage = () => {
+const Cgu: NextPage = () => {
   return (
     <>
       <NextSeo
@@ -49,4 +49,4 @@ const Index: NextPage = () => {
   );
 };
 
-export default Index;
+export default Cgu;

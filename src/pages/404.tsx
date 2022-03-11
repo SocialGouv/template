@@ -3,7 +3,7 @@ import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 import { push } from "@socialgouv/matomo-next";
 
-const Index: NextPage = () => {
+const NotFound: NextPage = () => {
   useEffect(() => {
     Sentry.captureMessage("Page non trouvée");
     push(["trackEvent", "404", "Page non trouvée"]);
@@ -16,4 +16,4 @@ const Index: NextPage = () => {
   );
 };
 
-export default Index;
+export default NotFound;

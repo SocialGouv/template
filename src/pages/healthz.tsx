@@ -2,12 +2,12 @@ import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
 
-const Index: NextPage = () => {
+const HealthZ: NextPage = () => {
   return (
     <>
       <NextSeo
-        title="Template | Healthz"
-        description="Page healthz de l'application Template."
+        title="Template | HealthZ"
+        description="Page healthZ de l'application Template."
         additionalLinkTags={[
           {
             rel: "icon",
@@ -22,4 +22,4 @@ const Index: NextPage = () => {
   );
 };
 
-export default Index;
+export default HealthZ;

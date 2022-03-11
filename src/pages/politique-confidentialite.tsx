@@ -10,7 +10,7 @@ const URL = [
   },
 ];
 
-const Index: NextPage = () => {
+const Confidentiality: NextPage = () => {
   return (
     <>
       <NextSeo
@@ -198,4 +198,4 @@ const Index: NextPage = () => {
   );
 };
 
-export default Index;
+export default Confidentiality;
