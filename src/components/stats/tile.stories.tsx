@@ -14,8 +14,7 @@ const Template: ComponentStory<typeof StatsTile> = args => (
 export const Default = Template.bind({});
 Default.args = {
   title: "Nombre de visites",
-  stats: "1.000.000",
-  description: "C'est le nombre d'utilisateur unique ayant visité le site",
+  stats: "1.000.000"
 };
 
 export const WithDescription = Template.bind({});
