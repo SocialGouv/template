@@ -2,7 +2,7 @@
 
 Template est une application [next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/).
 
-Version en production du projet : <https://template.fabriquesocial.gouv.fr/>.
+Version en production du projet : <https://template.fabrique.social.gouv.fr/>.
 
 Storybook liés à la branche principale du projet : <https://socialgouv.github.io/template/>.
 
