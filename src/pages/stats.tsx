@@ -31,17 +31,17 @@ const Index: NextPage = () => {
           <StatsTile
             title="Nombre de visites"
             stats={matomoData?.nbVisits ?? 0}
-            description="C'est le nombre de visites total du site"
+            description="C'est le nombre de visites total du site sur les 12 derniers mois"
           />
           <StatsTile
             title="Nombre de pages vues (total)"
             stats={matomoData?.nbPageViews ?? 0}
-            description="C'est le nombre de pages vues au total sur le site"
+            description="C'est le nombre de pages vues au total sur le site sur les 12 derniers mois"
           />
           <StatsTile
             title="Nombre de pages vues (uniques)"
             stats={matomoData?.nbUniqPageViews ?? 0}
-            description="C'est le nombre de pages vues uniques sur le site"
+            description="C'est le nombre de pages vues uniques sur le site sur les 12 derniers mois"
           />
         </div>
       </div>
