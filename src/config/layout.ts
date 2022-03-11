@@ -185,6 +185,10 @@ export const footerBottomSection: FooterBottomSectionProps = {
       title: "Politique de confidentialité",
       href: "/politique-confidentialite",
     },
+    {
+      title: "Statistiques",
+      href: "/stats",
+    },
   ],
   version: process.env.NEXT_PUBLIC_APP_VERSION ?? "X.X.X",
   repositoryUrl: process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? "",

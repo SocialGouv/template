@@ -5,3 +5,4 @@ export * from "./header/type";
 export * from "./footer/type";
 export * from "./landing";
 export * from "./mention";
+export * from "./stats";
