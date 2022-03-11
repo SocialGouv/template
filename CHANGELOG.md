@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/SocialGouv/template/compare/v1.7.0...v1.7.1) (2022-03-11)
+
+
+### Bug Fixes
+
+* stories ([474fd20](https://github.com/SocialGouv/template/commit/474fd206c269e16c5e60d10d21937f9a2b5c3991))
+
 # [1.7.0](https://github.com/SocialGouv/template/compare/v1.6.0...v1.7.0) (2022-03-11)
 
 
