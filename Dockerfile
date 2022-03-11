@@ -26,6 +26,7 @@ ENV GITHUB_SHA $GITHUB_SHA
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN yarn build:export
 
 # Production image, copy all the files and run next
 FROM ghcr.io/socialgouv/docker/nginx:6.70.1 AS runner
