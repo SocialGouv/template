@@ -57,5 +57,6 @@ yarn export
 ## Todo
 
 - Ajouter des CSP
+- Husky pour avant de commit faire des verifications
 - Finir la documentation, en mode si vous créez un fichier faut le mettre là, etc.
 - Rajouter une config sur <https://github.com/SocialGouv/linters> un linter pour next 12 et accessibilité plugin
