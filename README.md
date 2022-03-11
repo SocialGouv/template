@@ -8,7 +8,7 @@ Storybook liés à la branche principale du projet : <https://socialgouv.github.
 
 ## Description
 
-### D'un point de vue fonctionnelle
+### D'un point de vue fonctionnel
 
 Ce template est composé de page :
 
