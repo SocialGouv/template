@@ -1,6 +1,5 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Testimonial } from "./testimonial";
 import { Tile } from "./tile";
 
 export default {

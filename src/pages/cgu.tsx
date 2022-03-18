@@ -1,12 +1,12 @@
 import { MentionPart } from "@components";
 import type { NextPage } from "next";
-import { DefaultSeo } from "next-seo";
+import { NextSeo } from "next-seo";
 import React from "react";
 
 const Cgu: NextPage = () => {
   return (
     <>
-      <DefaultSeo
+      <NextSeo
         title="Template | Conditions générales d'utilisation"
         description="Conditions générales d'utilisation de l'application template."
         additionalLinkTags={[
@@ -22,7 +22,7 @@ const Cgu: NextPage = () => {
           },
           {
             name: "application-name",
-            content: "DefaultSeo",
+            content: "NextSeo",
           },
           {
             httpEquiv: "x-ua-compatible",

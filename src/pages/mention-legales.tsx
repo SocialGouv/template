@@ -1,13 +1,13 @@
 import { MentionPart } from "@components";
 import { Title } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
-import { DefaultSeo } from "next-seo";
+import { NextSeo } from "next-seo";
 import React from "react";
 
 const LegalMention: NextPage = () => {
   return (
     <>
-      <DefaultSeo
+      <NextSeo
         title="Template | Mention légales"
         description="Mentions légales de l'application template."
         additionalLinkTags={[

@@ -1,12 +1,12 @@
 import { Head, Testimonial, Tile } from "@components";
 import { Row } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
-import { DefaultSeo } from "next-seo";
+import { NextSeo } from "next-seo";
 
 const Index: NextPage = () => {
   return (
     <>
-      <DefaultSeo
+      <NextSeo
         title="Template"
         description="Template de la fabrique des ministères sociaux."
         additionalLinkTags={[

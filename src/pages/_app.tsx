@@ -1,6 +1,6 @@
 import "@gouvfr/dsfr/dist/dsfr/dsfr.min.css";
-import "../../next-seo.config";
 import type { AppProps } from "next/app";
+import SEO from "../../next-seo.config";
 import { Layout } from "@components";
 import {
   footerBodySection,
@@ -11,6 +11,7 @@ import {
 } from "@config";
 import { useEffect } from "react";
 import { init } from "@socialgouv/matomo-next";
+import { DefaultSeo } from "next-seo";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -30,6 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         topSection: footerTopSection,
       }}
     >
+      <DefaultSeo {...(SEO as any)} />
       <Component {...pageProps} />
     </Layout>
   );

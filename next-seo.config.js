@@ -1,6 +1,6 @@
 import ContentSecurityPolicy from "./csp.config";
 
-export default {
+const DEFAULT_SEO_CONFIG = {
   additionalLinkTags: [
     {
       rel: "icon",
@@ -14,3 +14,5 @@ export default {
     },
   ],
 };
+
+export default DEFAULT_SEO_CONFIG;
