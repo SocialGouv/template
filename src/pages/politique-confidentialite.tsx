@@ -1,6 +1,6 @@
 import { Table } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
-import { NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import React from "react";
 
 const URL = [
@@ -13,7 +13,7 @@ const URL = [
 const Confidentiality: NextPage = () => {
   return (
     <>
-      <NextSeo
+      <DefaultSeo
         title="Template | Politique de confidentialité"
         description="Politique de confidentialité de l'application template."
         additionalLinkTags={[

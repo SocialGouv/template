@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
-import { NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import React from "react";
 
 const HealthZ: NextPage = () => {
   return (
     <>
-      <NextSeo
+      <DefaultSeo
         title="Template | HealthZ"
         description="Page healthZ de l'application Template."
         additionalLinkTags={[

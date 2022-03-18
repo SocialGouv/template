@@ -1,18 +1,32 @@
 import { MentionPart } from "@components";
 import type { NextPage } from "next";
-import { NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import React from "react";
 
 const Cgu: NextPage = () => {
   return (
     <>
-      <NextSeo
+      <DefaultSeo
         title="Template | Conditions générales d'utilisation"
         description="Conditions générales d'utilisation de l'application template."
         additionalLinkTags={[
           {
             rel: "icon",
             href: "/favicon.ico",
+          },
+        ]}
+        additionalMetaTags={[
+          {
+            property: "dc:creator",
+            content: "Jane Doe",
+          },
+          {
+            name: "application-name",
+            content: "DefaultSeo",
+          },
+          {
+            httpEquiv: "x-ua-compatible",
+            content: "IE=edge; chrome=1",
           },
         ]}
       />

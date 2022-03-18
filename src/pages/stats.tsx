@@ -1,7 +1,7 @@
 import { StatsTile } from "@components";
 import { fetchMatomoData, MatomoResult } from "@lib";
 import type { NextPage } from "next";
-import { NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import React, { useEffect } from "react";
 
 const Stats: NextPage = () => {
@@ -19,7 +19,7 @@ const Stats: NextPage = () => {
   }, []);
   return (
     <>
-      <NextSeo
+      <DefaultSeo
         title="Template | Statistiques d'utilisation"
         description="Statistiques d'utilisation de l'application template."
         additionalLinkTags={[
