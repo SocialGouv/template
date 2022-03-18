@@ -27,6 +27,7 @@ export type FooterBottomSectionProps = {
   version: string;
   repositoryUrl: string;
   commitHash: string;
+  hasSwitchMode: boolean;
 };
 
 export type FooterTopSectionProps = {

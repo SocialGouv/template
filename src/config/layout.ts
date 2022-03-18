@@ -168,6 +168,7 @@ export const footerPartnerSection: FooterPartnerSectionProps = {
 };
 
 export const footerBottomSection: FooterBottomSectionProps = {
+  hasSwitchMode: true,
   links: [
     {
       title: "Accessibilité : non conforme",
