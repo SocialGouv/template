@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/SocialGouv/template/compare/v1.7.1...v1.8.0) (2022-03-21)
+
+
+### Bug Fixes
+
+* csp config ([e3dc26e](https://github.com/SocialGouv/template/commit/e3dc26e01c11f28c2d178132b42e4404ca070e57))
+* csp config ([3d1959c](https://github.com/SocialGouv/template/commit/3d1959cc4afef20b498d4913397c51f08e99bdc5))
+* storybook ([4a8a518](https://github.com/SocialGouv/template/commit/4a8a518c4b3562d10b8509f8636d8c5dbe9f1bec))
+
+
+### Features
+
+* add lint-staged ([09850e7](https://github.com/SocialGouv/template/commit/09850e744203a3482aa7970a3618160c1fb0114c))
+
 ## [1.7.1](https://github.com/SocialGouv/template/compare/v1.7.0...v1.7.1) (2022-03-11)
 
 
