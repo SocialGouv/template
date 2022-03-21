@@ -15,6 +15,20 @@ const Cgu: NextPage = () => {
             href: "/favicon.ico",
           },
         ]}
+        additionalMetaTags={[
+          {
+            property: "dc:creator",
+            content: "Jane Doe",
+          },
+          {
+            name: "application-name",
+            content: "NextSeo",
+          },
+          {
+            httpEquiv: "x-ua-compatible",
+            content: "IE=edge; chrome=1",
+          },
+        ]}
       />
       <div className="fr-container fr-my-6w">
         <h1>Conditions générales d&apos;utilisation</h1>

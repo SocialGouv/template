@@ -16,8 +16,10 @@ export const Tile = (props: TileProps): JSX.Element => {
       <div className="fr-card fr-enlarge-link fr-pt-3w">
         <div className="fr-card__body">
           <h2 className="fr-card__title">
-            <Link href={props.href} passHref>
-              <a className="fr-card__link">{props.title}</a>
+            <Link href={props.href}>
+              <a className="fr-card__link" href={props.href}>
+                {props.title}
+              </a>
             </Link>
           </h2>
           <p className="fr-card__desc">{props.description}</p>
