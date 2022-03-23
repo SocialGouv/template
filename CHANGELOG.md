@@ -1,3 +1,10 @@
+## [1.8.4](https://github.com/SocialGouv/template/compare/v1.8.3...v1.8.4) (2022-03-23)
+
+
+### Bug Fixes
+
+* img ([ad2b5b3](https://github.com/SocialGouv/template/commit/ad2b5b3da70345418f142ed257cd0885399cc83f))
+
 ## [1.8.3](https://github.com/SocialGouv/template/compare/v1.8.2...v1.8.3) (2022-03-23)
 
 
