@@ -7,7 +7,6 @@ const ContentSecurityPolicy = `
   frame-src 'self' *.fabrique.social.gouv.fr;
   style-src 'self' 'unsafe-inline';
   font-src 'self' data: blob:;
-  prefetch-src 'self' *.fabrique.social.gouv.fr;
 `;
 
 module.exports = ContentSecurityPolicy;
