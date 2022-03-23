@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/SocialGouv/template/compare/v1.8.0...v1.8.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* **csp:** remove prefetch-src ([7b16aa1](https://github.com/SocialGouv/template/commit/7b16aa1248d91be360c0e455dc23fdb374ef711f))
+
 # [1.8.0](https://github.com/SocialGouv/template/compare/v1.7.1...v1.8.0) (2022-03-21)
 
 
