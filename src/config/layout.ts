@@ -21,7 +21,7 @@ export const headerProps: HeaderProps = {
   mainTitle: "République Française",
   splitTitleLength: 10,
   image: {
-    src: "/assets/marianne.jpeg",
+    src: "/img/marianne.jpeg",
     alt: "Logo",
     height: "80px",
     width: "80px",
