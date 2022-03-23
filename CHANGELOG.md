@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/SocialGouv/template/compare/v1.8.2...v1.8.3) (2022-03-23)
+
+
+### Bug Fixes
+
+* fonts ([95f9af0](https://github.com/SocialGouv/template/commit/95f9af0391cf358f847917566da69f83659bb189))
+
 ## [1.8.2](https://github.com/SocialGouv/template/compare/v1.8.1...v1.8.2) (2022-03-23)
 
 
