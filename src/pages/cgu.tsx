@@ -1,4 +1,5 @@
 import { MentionPart } from "@components";
+import { Alert } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
@@ -31,6 +32,8 @@ const Cgu: NextPage = () => {
         ]}
       />
       <div className="fr-container fr-my-6w">
+        <Alert title="Cette page doit être mise à jour. " type="info" />
+        <br />
         <h1>Conditions générales d&apos;utilisation</h1>
         <div>
           <MentionPart

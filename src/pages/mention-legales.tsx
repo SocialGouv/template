@@ -1,5 +1,5 @@
 import { MentionPart } from "@components";
-import { Title } from "@dataesr/react-dsfr";
+import { Alert, Title } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
@@ -18,6 +18,8 @@ const LegalMention: NextPage = () => {
         ]}
       />
       <div className="fr-container fr-my-6w">
+        <Alert title="Cette page doit être mise à jour. " type="info" />
+        <br />
         <h1>Mentions légales</h1>
         <div>
           <MentionPart
