@@ -2,6 +2,8 @@
 
 Template est une application [next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/).
 
+La version actuelle produit un site statique, mais le Dockerfile peut facilement être adapté.
+
 Version en production du projet : <https://template.fabrique.social.gouv.fr/>.
 
 Storybook liés à la branche principale du projet : <https://socialgouv.github.io/template/>.
@@ -37,7 +39,7 @@ Les variables issues des docker build-args, sont à utiliser dans `next.config.j
 
 Le fichier `.env.staging` est utilisé pour les environnements de review et de pré-production.
 
-:warning: Les variables d'environnement sont publiques (utilisée durant le build), ne commitez donc pas de variables privées dans ces fichiers.
+:warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
 
 ## Lancer le code
 
