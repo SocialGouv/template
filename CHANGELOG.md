@@ -1,3 +1,10 @@
+## [1.8.5](https://github.com/SocialGouv/template/compare/v1.8.4...v1.8.5) (2022-03-24)
+
+
+### Bug Fixes
+
+* Add missing enabled=true ([37f3c36](https://github.com/SocialGouv/template/commit/37f3c36fd9dba08cc18d59fdacad119968f217e6))
+
 ## [1.8.4](https://github.com/SocialGouv/template/compare/v1.8.3...v1.8.4) (2022-03-23)
 
 
