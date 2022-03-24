@@ -37,7 +37,7 @@ jobs:
       url: https://template-preprod.dev.fabrique.social.gouv.fr
     steps:
     - name: Use kube-workflow deployment
-      uses: SocialGouv/kube-workflow@master
+      uses: SocialGouv/kube-workflow@v1
       with:
         environment: preprod
         token: ${{ secrets.GITHUB_TOKEN }}
