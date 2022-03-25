@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/SocialGouv/template/compare/v1.8.5...v1.9.0) (2022-03-25)
+
+
+### Features
+
+* add page accessibilite ([0eeb6a6](https://github.com/SocialGouv/template/commit/0eeb6a6dfa84f00d93ef5d2454ced04714babe4f))
+
 ## [1.8.5](https://github.com/SocialGouv/template/compare/v1.8.4...v1.8.5) (2022-03-24)
 
 
