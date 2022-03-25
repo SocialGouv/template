@@ -172,7 +172,7 @@ export const footerBottomSection: FooterBottomSectionProps = {
   links: [
     {
       title: "Accessibilité : non conforme",
-      href: "/mention-legales#accessibilite",
+      href: "/accessibilite",
     },
     {
       title: "Mentions légales",

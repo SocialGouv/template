@@ -1,4 +1,4 @@
-import { Table } from "@dataesr/react-dsfr";
+import { Alert, Table } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import React from "react";
@@ -24,6 +24,8 @@ const Confidentiality: NextPage = () => {
         ]}
       />
       <div className="fr-container fr-my-6w">
+        <Alert title="Cette page doit être mise à jour. " type="info" />
+        <br />
         <h1>Politique de confidentialité</h1>
         <div>
           <h2>Traitement des données à caractère personnel</h2>
@@ -76,7 +78,7 @@ const Confidentiality: NextPage = () => {
           </p>
           <h2>Hébergement</h2>
           <Table
-            rowKey={row => row.name}
+            rowKey={(row) => row.name}
             data={[
               {
                 name: "Microsoft Azure",
@@ -100,7 +102,7 @@ const Confidentiality: NextPage = () => {
                     title={urlName}
                     target="_blank"
                     rel="nofollow, noopener, noreferrer"
-                    href={URL.find(v => v.name === urlName)?.value}
+                    href={URL.find((v) => v.name === urlName)?.value}
                   >
                     {urlName}
                   </a>
@@ -120,7 +122,7 @@ const Confidentiality: NextPage = () => {
             appelés “cookies” permettant d’établir des mesures statistiques.
           </p>
           <Table
-            rowKey={row => row.name}
+            rowKey={(row) => row.name}
             data={[
               {
                 type: "Mesure d’audience anonymisée",
