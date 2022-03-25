@@ -16,9 +16,10 @@ Ce template est composé de page :
 
 - Page principale
 - Politique de confidentialité
-- Mention légale avec une référence à l'accessibilité
+- Mentions légales
 - Conditions générales d'utilisation
 - Statistiques d'utilisation (fonctionnant avec matomo)
+- Déclaration d'accessibilité
 - Healthz
 - Page 404
 
