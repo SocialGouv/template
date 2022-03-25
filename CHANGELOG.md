@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/SocialGouv/template/compare/v1.9.0...v1.10.0) (2022-03-25)
+
+
+### Features
+
+* test e2e ([0296b3f](https://github.com/SocialGouv/template/commit/0296b3f73334269e74914fa680c64356eccf14af))
+
 # [1.9.0](https://github.com/SocialGouv/template/compare/v1.8.5...v1.9.0) (2022-03-25)
 
 
