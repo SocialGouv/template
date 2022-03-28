@@ -193,5 +193,5 @@ export const footerBottomSection: FooterBottomSectionProps = {
   ],
   version: process.env.NEXT_PUBLIC_APP_VERSION ?? "X.X.X",
   repositoryUrl: process.env.NEXT_PUBLIC_APP_REPOSITORY_URL ?? "",
-  commitHash: process.env.NEXT_PUBLIC_APP_VERSION_COMMIT ?? "master",
+  commitHash: process.env.NEXT_PUBLIC_APP_VERSION_COMMIT ?? "main",
 };

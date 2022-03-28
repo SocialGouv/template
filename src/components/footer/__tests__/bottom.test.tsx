@@ -7,7 +7,7 @@ describe("Footer - Bottom", () => {
     render(
       <Bottom
         version={version}
-        commitHash="master"
+        commitHash="main"
         repositoryUrl="https://github.com/SocialGouv/template"
         links={[{ href: "/", title: "Yo" }]}
       />
