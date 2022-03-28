@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/SocialGouv/template/compare/v1.10.2...v1.10.3) (2022-03-28)
+
+
+### Bug Fixes
+
+* switch mode ([716506c](https://github.com/SocialGouv/template/commit/716506ca887dba520a7da7fa1c5dee573314c44b))
+
 ## [1.10.2](https://github.com/SocialGouv/template/compare/v1.10.1...v1.10.2) (2022-03-28)
 
 
