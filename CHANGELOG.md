@@ -1,3 +1,11 @@
+## [1.10.1](https://github.com/SocialGouv/template/compare/v1.10.0...v1.10.1) (2022-03-28)
+
+
+### Bug Fixes
+
+* release ([571d81a](https://github.com/SocialGouv/template/commit/571d81acb4ad251e990b671380acd1776a89d75a))
+* rename master => main ([2f5e311](https://github.com/SocialGouv/template/commit/2f5e3110da0ffd02729d74a4929235888dcd9ba7))
+
 # [1.10.0](https://github.com/SocialGouv/template/compare/v1.9.0...v1.10.0) (2022-03-25)
 
 
