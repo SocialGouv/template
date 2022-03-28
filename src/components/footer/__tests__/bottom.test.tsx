@@ -10,6 +10,7 @@ describe("Footer - Bottom", () => {
         commitHash="main"
         repositoryUrl="https://github.com/SocialGouv/template"
         links={[{ href: "/", title: "Yo" }]}
+        hasSwitchMode={false}
       />
     );
     expect(screen.getByText(/Version/i)).toHaveTextContent(version);
