@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/SocialGouv/template/compare/v1.10.1...v1.10.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* release ([c6bfe24](https://github.com/SocialGouv/template/commit/c6bfe243159692abd3b878d3b1f715709ff9bf76))
+
 ## [1.10.1](https://github.com/SocialGouv/template/compare/v1.10.0...v1.10.1) (2022-03-28)
 
 
