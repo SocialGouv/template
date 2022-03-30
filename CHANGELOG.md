@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/SocialGouv/template/compare/v1.10.3...v1.10.4) (2022-03-30)
+
+
+### Bug Fixes
+
+* remove useless husky config ([0d0db45](https://github.com/SocialGouv/template/commit/0d0db45e3eb7ad2446288697db31c18a612c61ff))
+
 ## [1.10.3](https://github.com/SocialGouv/template/compare/v1.10.2...v1.10.3) (2022-03-28)
 
 
