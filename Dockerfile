@@ -33,7 +33,7 @@ RUN if [ -z "$PRODUCTION" ]; then \
     yarn build:export 
 
 # Production image, copy all the files and run next
-FROM ghcr.io/socialgouv/docker/nginx:6.70.1 AS runner
+FROM ghcr.io/socialgouv/docker/nginx:7.0.0 AS runner
 
 COPY --from=builder --chown=101:101 /app/out /usr/share/nginx/html
 
