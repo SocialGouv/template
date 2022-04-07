@@ -11,14 +11,14 @@ jobs:
   enabled: true
   runs:
     - name: run-tests
-      use: SocialGouv/kube-workflow/jobs/build@master
+      use: SocialGouv/kube-workflow/jobs/build@v1
       with:
         registrySecretRefName: harbor
         imagePackage: app
         target: run-tests
 
     - name: run-e2e-tests
-      use: SocialGouv/kube-workflow/jobs/build@master
+      use: SocialGouv/kube-workflow/jobs/build@v1
       with:
         registrySecretRefName: harbor
         imagePackage: app
@@ -26,7 +26,7 @@ jobs:
 
     - name: build-app
       needs: [run-tests, run-e2e-tests]
-      use: SocialGouv/kube-workflow/jobs/build@master
+      use: SocialGouv/kube-workflow/jobs/build@v1
       with:
         registrySecretRefName: harbor
         imagePackage: app
