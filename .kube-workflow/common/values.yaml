@@ -1,4 +1,32 @@
+global:
+  registry: harbor.fabrique.social.gouv.fr
+  imageProject: fabrique
 # here you can customize your deployment according to : https://github.com/SocialGouv/actions/blob/master/autodevops-helm-deploy/chart/values.yaml
 app:
   enabled: true
+  needs: [build-app]
   probesPath: /healthz
+
+jobs:
+  enabled: true
+  runs:
+    - name: run-tests
+      use: SocialGouv/kube-workflow/jobs/build@master
+      with:
+        registrySecretRefName: harbor
+        imagePackage: app
+        target: run-tests
+
+    - name: run-e2e-tests
+      use: SocialGouv/kube-workflow/jobs/build@master
+      with:
+        registrySecretRefName: harbor
+        imagePackage: app
+        target: run-e2e-tests
+
+    - name: build-app
+      needs: [run-tests, run-e2e-tests]
+      use: SocialGouv/kube-workflow/jobs/build@master
+      with:
+        registrySecretRefName: harbor
+        imagePackage: app

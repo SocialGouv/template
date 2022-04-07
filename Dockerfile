@@ -17,6 +17,27 @@ WORKDIR /app
 COPY --from=prepare /app/package.json /app/yarn.lock ./
 RUN yarn install --frozen-lockfile
 
+FROM deps as run-tests
+ENV NODE_ENV dev
+ARG GITHUB_SHA
+ENV GITHUB_SHA $GITHUB_SHA
+WORKDIR /app
+COPY . .
+RUN yarn lint
+RUN yarn test 
+
+FROM cypress/browsers:node16.13.2-chrome97-ff96 as run-e2e-tests
+ENV NODE_ENV dev
+ARG GITHUB_SHA
+ENV GITHUB_SHA $GITHUB_SHA
+
+WORKDIR /app
+COPY --from=prepare /app/package.json /app/yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+COPY . .
+RUN yarn test:e2e:headless
+
 # Rebuild the source code only when needed
 FROM node:$NODE_VERSION AS builder
 ARG PRODUCTION
