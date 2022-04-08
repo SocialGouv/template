@@ -16,6 +16,7 @@ jobs:
         registrySecretRefName: harbor
         imagePackage: app
         target: run-tests
+        noPush: true
 
     - name: run-e2e-tests
       use: SocialGouv/kube-workflow/jobs/build@v1
@@ -23,6 +24,7 @@ jobs:
         registrySecretRefName: harbor
         imagePackage: app
         target: run-e2e-tests
+        noPush: true
 
     - name: build-app
       needs: [run-tests, run-e2e-tests]
