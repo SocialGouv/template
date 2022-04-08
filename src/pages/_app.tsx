@@ -13,19 +13,10 @@ import { useEffect } from "react";
 import { init } from "@socialgouv/matomo-next";
 import { DefaultSeo } from "next-seo";
 import cookie from "cookie";
-import * as React from "react";
-import type { IncomingMessage } from "http";
 
-import { SSRKeycloakProvider, SSRCookies } from "@react-keycloak/ssr";
-
-const keycloakCfg = {
-  url: "http://localhost:8080",
-  realm: "realme-app",
-  clientId: "react-client",
-};
-
+import { SSRKeycloakProvider, SSRCookies, Cookies } from "@react-keycloak/ssr";
 interface InitialProps {
-  cookies: unknown;
+  cookies: Cookies;
 }
 
 function MyApp({ Component, pageProps, cookies }: AppProps & InitialProps) {
@@ -38,7 +29,11 @@ function MyApp({ Component, pageProps, cookies }: AppProps & InitialProps) {
 
   return (
     <SSRKeycloakProvider
-      keycloakConfig={keycloakCfg}
+      keycloakConfig={{
+        url: process.env.NEXT_PUBLIC_KEYCLOAK_URL ?? "",
+        realm: process.env.NEXT_PUBLIC_KEYCLOAK_REALM ?? "",
+        clientId: process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID ?? "",
+      }}
       persistor={SSRCookies(cookies)}
     >
       <Layout
@@ -51,24 +46,19 @@ function MyApp({ Component, pageProps, cookies }: AppProps & InitialProps) {
         }}
       >
         <DefaultSeo {...(SEO as any)} />
-        {/* <SessionProvider session={pageProps.session}> */}
-
         <Component {...pageProps} />
-
-        {/* </SessionProvider> */}
       </Layout>
     </SSRKeycloakProvider>
   );
 }
 
-function parseCookies(req: IncomingMessage) {
-  return cookie.parse(req.headers.cookie || "");
-}
-
-MyApp.getInitialProps = async (context: AppContext) => {
-  // Extract cookies from AppContext
+export const getServerSideProps = async (context: AppContext) => {
   return {
-    cookies: context.ctx.req ? parseCookies(context.ctx.req) : {},
+    props: {
+      cookies: context.ctx.req
+        ? cookie.parse(context.ctx.req.headers.cookie || "")
+        : {},
+    },
   };
 };
 

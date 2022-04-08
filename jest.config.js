@@ -25,6 +25,7 @@ const customJestConfig = {
     "@hooks": "<rootDir>/src/hooks",
     "@modules": "<rootDir>/src/modules",
     "@lib": "<rootDir>/src/lib",
+    "@types": "<rootDir>/src/types",
   },
   setupFilesAfterEnv: ["<rootDir>/jest-setup.ts"],
 };
