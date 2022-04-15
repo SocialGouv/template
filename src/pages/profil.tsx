@@ -1,3 +1,4 @@
+import { withAuth } from "@lib";
 import { useKeycloak } from "@react-keycloak/ssr";
 import { ParsedToken } from "@types";
 import type { KeycloakInstance } from "keycloak-js";
@@ -36,5 +37,9 @@ const IndexPage = () => {
     </div>
   );
 };
+
+export const getServerSideProps = withAuth(() => {
+  return { props: {} };
+});
 
 export default IndexPage;

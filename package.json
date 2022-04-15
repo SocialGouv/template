@@ -32,6 +32,7 @@
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.2.2",
     "cookie": "^0.4.2",
+    "cookies-next": "^2.0.4",
     "keycloak-js": "^11.0.2",
     "next": "12.1.4",
     "next-seo": "^5.1.0",

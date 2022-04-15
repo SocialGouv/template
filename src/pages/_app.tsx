@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { init } from "@socialgouv/matomo-next";
 import { DefaultSeo } from "next-seo";
 import cookie from "cookie";
+import { setCookies, removeCookies } from "cookies-next";
 
 import { SSRKeycloakProvider, SSRCookies, Cookies } from "@react-keycloak/ssr";
 interface InitialProps {
@@ -35,6 +36,11 @@ function MyApp({ Component, pageProps, cookies }: AppProps & InitialProps) {
         clientId: process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID ?? "",
       }}
       persistor={SSRCookies(cookies)}
+      onTokens={({ token }) =>
+        token
+          ? setCookies("isAuthenticated", true)
+          : removeCookies("isAuthenticated")
+      }
     >
       <Layout
         headerProps={{ ...headerProps }}
