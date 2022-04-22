@@ -7,3 +7,4 @@ export * from "./footer/type";
 export * from "./landing";
 export * from "./mention";
 export * from "./stats";
+export * from "./auth";

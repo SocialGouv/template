@@ -1,16 +1,16 @@
 import { NextPageContext } from "next";
-import cookie from "cookie";
+import { getSession } from "next-auth/react";
 
 export function withAuth(
   getServerSideProps: (context: NextPageContext) => any
 ) {
   return async (context: NextPageContext) => {
-    const parsedCookie = cookie.parse(context.req?.headers.cookie || "");
-    if (!parsedCookie.isAuthenticated) {
+    const session = await getSession({ req: context.req });
+    if (!session) {
       return {
         redirect: {
           permanent: false,
-          destination: "/",
+          destination: "/api/auth/signin",
         },
       };
     }

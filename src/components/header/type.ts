@@ -45,6 +45,7 @@ export type HeaderProps = {
   closeButtonLabel?: string;
   navItems: Array<RegularNavProps | MegaNavProps>;
   skipLinksProps?: SkipLinksProps;
+  authHeader?: () => JSX.Element;
 };
 
 export type SwitchProps = {
