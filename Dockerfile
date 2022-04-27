@@ -30,16 +30,6 @@ RUN if [ -z "$PRODUCTION" ]; then \
       echo "Overriding .env for staging"; \
       cp .env.staging .env.production; \
     fi && \
-    yarn build:export 
+    yarn build
 
-# Production image, copy all the files and run next
-FROM ghcr.io/socialgouv/docker/nginx:6.70.1 AS runner
-
-COPY --from=builder --chown=101:101 /app/out /usr/share/nginx/html
-
-# Rootless container
-USER 101
-ENV PORT=3000
-
-# Disable nextjs telemetry
-ENV NEXT_TELEMETRY_DISABLED 1
+ENTRYPOINT [ "yarn", "start" ]
