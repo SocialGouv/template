@@ -34,7 +34,7 @@ jobs:
     needs: [register]
     steps:
       - name: Use kube-workflow deployment
-        uses: SocialGouv/kube-workflow@v1
+        uses: SocialGouv/kube-workflow@keycloak
         with:
           environment: dev
           token: ${{ secrets.GITHUB_TOKEN }}
