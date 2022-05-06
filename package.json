@@ -10,8 +10,6 @@
     "lint": "next lint",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "export": "next export",
-    "build:export": "npm run build && npm run export",
     "e2e": "cypress open",
     "e2e:headless": "cypress run",
     "test": "jest",

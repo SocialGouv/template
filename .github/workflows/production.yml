@@ -14,18 +14,24 @@ jobs:
     name: Build & Register application
     runs-on: ubuntu-latest
     steps:
-    - name: Get commit sha
-      run: |
+      - name: Get commit sha
+        run: |
           echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
-    - name: Use autodevops build and register
-      uses: SocialGouv/actions/autodevops-build-register@v1
-      with:
-        environment: prod
-        imagePackage: app
-        token: ${{ secrets.GITHUB_TOKEN }}
-        dockerbuildargs: |
+      - name: Use autodevops build and register
+        uses: SocialGouv/actions/autodevops-build-register@v1
+        with:
+          environment: prod
+          imagePackage: app
+          token: ${{ secrets.GITHUB_TOKEN }}
+          dockerbuildargs: |
             PRODUCTION=true
             GITHUB_SHA=${{ env.GITHUB_SHA }}
+            SITE_URL="https://template.fabrique.social.gouv.fr/"
+            SENTRY_DSN="https://67a92c8c0f70486d9f36f2352eff1d19@sentry.fabrique.social.gouv.fr/68"
+            SENTRY_ENV="production"
+            MATOMO_URL="https://matomo.fabrique.social.gouv.fr"
+            MATOMO_SITE_ID=63
+            APP_REPOSITORY_URL="https://github.com/SocialGouv/template"
 
   deploy:
     name: Deploy application
@@ -35,11 +41,11 @@ jobs:
       name: production
       url: https://template.fabrique.social.gouv.fr
     steps:
-    - name: Use kube-workflow deployment
-      uses: SocialGouv/kube-workflow@v1
-      with:
-        environment: prod
-        token: ${{ secrets.GITHUB_TOKEN }}
-        kubeconfig: ${{ secrets.KUBECONFIG }}
-        rancherProjectId: ${{ secrets.RANCHER_PROJECT_ID }}
-        rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}
+      - name: Use kube-workflow deployment
+        uses: SocialGouv/kube-workflow@v1
+        with:
+          environment: prod
+          token: ${{ secrets.GITHUB_TOKEN }}
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+          rancherProjectId: ${{ secrets.RANCHER_PROJECT_ID }}
+          rancherProjectName: ${{ secrets.RANCHER_PROJECT_NAME }}

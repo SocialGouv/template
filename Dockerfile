@@ -1,45 +1,46 @@
-ARG NODE_VERSION=16-alpine
+ARG NODE_VERSION=18-alpine
 
-# Install dependencies only when needed
-FROM node:$NODE_VERSION AS prepare
-RUN apk add --no-cache libc6-compat=1.2.2-r7
-WORKDIR /app
-COPY package.json yarn.lock ./
-
-# Keep yarn install cache when bumping version and dependencies still the sames
-RUN node -e " \
-  const package = JSON.parse(fs.readFileSync('/app/package.json')); \
-  const packageZero = { ...package, version: '0.0.0' };  \
-  fs.writeFileSync('/app/package.json', JSON.stringify(packageZero));"
-
-FROM node:$NODE_VERSION as deps
-WORKDIR /app
-COPY --from=prepare /app/package.json /app/yarn.lock ./
-RUN yarn install --frozen-lockfile
-
-# Rebuild the source code only when needed
+# Builder
 FROM node:$NODE_VERSION AS builder
+
+WORKDIR /app
+COPY . .
+RUN yarn install --frozen-lockfile && yarn build && yarn install --production
+
+# Runner
+FROM node:$NODE_VERSION AS runner
+
+WORKDIR /app
+
 ARG PRODUCTION
+ENV PRODUCTION $PRODUCTION
 ENV NODE_ENV production
 ARG GITHUB_SHA
 ENV GITHUB_SHA $GITHUB_SHA
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN if [ -z "$PRODUCTION" ]; then \
-      echo "Overriding .env for staging"; \
-      cp .env.staging .env.production; \
-    fi && \
-    yarn build:export 
+ARG NEXT_TELEMETRY_DISABLED
+ENV NEXT_TELEMETRY_DISABLED $NEXT_TELEMETRY_DISABLED
+ARG SITE_URL
+ENV SITE_URL $SITE_URL
+ARG SENTRY_DSN
+ENV SENTRY_DSN $SENTRY_DSN
+ARG SENTRY_ENV
+ENV SENTRY_ENV $SENTRY_ENV
+ARG MATOMO_URL
+ENV MATOMO_URL $MATOMO_URL
+ARG MATOMO_SITE_ID
+ENV MATOMO_SITE_ID $MATOMO_SITE_ID
+ARG APP_REPOSITORY_URL
+ENV APP_REPOSITORY_URL $APP_REPOSITORY_URL
 
-# Production image, copy all the files and run next
-FROM ghcr.io/socialgouv/docker/nginx:6.70.1 AS runner
+COPY --from=builder /app/next.config.js .
+COPY --from=builder /app/sentry.client.config.ts .
+COPY --from=builder /app/sentry.server.config.ts .
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/.next ./.next
 
-COPY --from=builder --chown=101:101 /app/out /usr/share/nginx/html
+USER node
 
-# Rootless container
-USER 101
-ENV PORT=3000
-
-# Disable nextjs telemetry
-ENV NEXT_TELEMETRY_DISABLED 1
+CMD ["yarn", "start"]
