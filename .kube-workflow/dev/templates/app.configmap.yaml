@@ -6,3 +6,4 @@ data:
   NEXT_TELEMETRY_DISABLED: 1
   KEYCLOAK_URL: ""
   NEXTAUTH_URL: ""
+  
