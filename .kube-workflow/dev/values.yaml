@@ -1,6 +1,3 @@
-app:
-  needs: [seed]
-
 jobs:
   runs:
     db-keycloak:

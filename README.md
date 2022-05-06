@@ -49,6 +49,7 @@ Après avoir cloné le projet :
 ### Développement
 
 ```bash
+docker-compose up -d # to run keycloak and postgres in background
 yarn
 yarn dev
 ```

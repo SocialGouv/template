@@ -37,6 +37,8 @@ keycloak:
       value: "$(PGUSER)"
     - name: DB_PASSWORD
       value: "$(PGPASSWORD)"
+    - name: JAVA_OPTS
+      value: -Dkeycloak.profile=preview
 
   extraVolumes: |
     - name: keycloak-realm-tpl
@@ -49,34 +51,21 @@ keycloak:
     - name: keycloak-realm
       mountPath: "/realm/"
       readOnly: true
+    - name: extensions
+      mountPath: /opt/keycloak/providers
 
   extraInitContainers: |
-    - name: compile-realm
-      image: hairyhenderson/gomplate:v3.10.0-alpine
+    - name: realm-ext-provider
+      image: curlimages/curl
       imagePullPolicy: IfNotPresent
-      volumeMounts:
-      - name: keycloak-realm-tpl
-        mountPath: "/realm-tpl/"
-        readOnly: true
-      - name: keycloak-realm
-        mountPath: "/realm/"
-      envFrom:
-      - secretRef:
-          name: app-sealed-secret
-      env:
-      - name: SMTP_HOST
-        value: "smtp.tipimail.com"
-      - name: SMTP_PORT
-        value: "587"
-      - name: SMTP_USER
-        value: "$(MAIL_AUTH_USER)"
-      - name: SMTP_PASSWORD
-        value: "$(MAIL_AUTH_PASS)"
       command:
         - sh
       args:
         - -c
-        - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
+        - curl -L -f -S -o /extensions/keycloak-dsfr-1.0.1.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar
+      volumeMounts:
+        - name: extensions
+          mountPath: /extensions
 
   ingress:
     enabled: true

@@ -9,7 +9,7 @@ data:
       "realm": "app",
       "enabled": true,
       "sslRequired": "external",
-      "registrationAllowed": false,
+      "registrationAllowed": true,
       "registrationEmailAsUsername": true,
       "rememberMe": true,
       "verifyEmail": false,
@@ -37,16 +37,6 @@ data:
         "description": "${role_default-roles}",
         "composite": true,
         "clientRole": false
-      },
-      "smtpServer": {
-        "password": "{{`{{ getenv "SMTP_PASSWORD" }}`}}",
-        "starttls": "{{`{{ or (getenv "SMTP_STARTTLS") "true" }}`}}",
-        "auth": "{{`{{ or (getenv "SMTP_AUTH") "true" }}`}}",
-        "host": "{{`{{ getenv "SMTP_HOST" }}`}}",
-        "from": "{{`{{ or (getenv "SMTP_FROM") "" }}`}}",
-        "port": "{{`{{ or (getenv "SMTP_PORT") "587" }}`}}",
-        "ssl": "{{`{{ or (getenv "SMTP_SSL") "true" }}`}}",
-        "user": "{{`{{ getenv "SMTP_USER" }}`}}"
       },
       "roles": {
         "realm": [
