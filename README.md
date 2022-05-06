@@ -50,14 +50,14 @@ Après avoir cloné le projet :
 
 ```bash
 docker-compose up -d # to run keycloak and postgres in background
-yarn
-yarn dev
+yarn # to install dependencies
+yarn dev # to run in dev mode
 ```
 
 ### Production
 
 ```bash
-yarn
-yarn build
-yarn export
+yarn # to install dependencies
+yarn build # to build code
+yarn start # to start
 ```
