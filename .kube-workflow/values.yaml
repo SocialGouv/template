@@ -1,0 +1,94 @@
+# here you can customize your deployment according to : https://github.com/SocialGouv/actions/blob/master/autodevops-helm-deploy/chart/values.yaml
+app:
+  enabled: true
+  probesPath: /healthz
+
+keycloak:
+  postgresql:
+    enabled: false
+
+  statefulsetAnnotations:
+    kapp.k14s.io/nonce: ""
+    kapp.k14s.io/update-strategy: fallback-on-replace
+    kapp.k14s.io/change-group: "kube-workflow/keycloak.{{ .Values.global.namespace }}"
+    kapp.k14s.io/disable-original: ""
+    kapp.k14s.io/create-strategy: fallback-on-update
+
+  extraEnvFrom: |
+    - secretRef:
+        name: keycloak-db
+    - secretRef:
+        name: keycloak-secrets
+
+  extraEnv: |
+    - name: KEYCLOAK_IMPORT
+      value: /realm/realm.json
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
+    - name: DB_VENDOR
+      value: postgres
+    - name: DB_ADDR
+      value: "$(PGHOST)"
+    - name: DB_PORT
+      value: "5432"
+    - name: DB_DATABASE
+      value: "$(PGDATABASE)"
+    - name: DB_USER
+      value: "$(PGUSER)"
+    - name: DB_PASSWORD
+      value: "$(PGPASSWORD)"
+
+  extraVolumes: |
+    - name: keycloak-realm-tpl
+      configMap:
+        name: keycloak-realm
+    - name: keycloak-realm
+      emptyDir: {}
+
+  extraVolumeMounts: |
+    - name: keycloak-realm
+      mountPath: "/realm/"
+      readOnly: true
+
+  extraInitContainers: |
+    - name: compile-realm
+      image: hairyhenderson/gomplate:v3.10.0-alpine
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+      - name: keycloak-realm-tpl
+        mountPath: "/realm-tpl/"
+        readOnly: true
+      - name: keycloak-realm
+        mountPath: "/realm/"
+      envFrom:
+      - secretRef:
+          name: app-sealed-secret
+      env:
+      - name: SMTP_HOST
+        value: "smtp.tipimail.com"
+      - name: SMTP_PORT
+        value: "587"
+      - name: SMTP_USER
+        value: "$(MAIL_AUTH_USER)"
+      - name: SMTP_PASSWORD
+        value: "$(MAIL_AUTH_PASS)"
+      command:
+        - sh
+      args:
+        - -c
+        - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
+
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+      kubernetes.io/ingress.class: nginx
+    tls:
+      - hosts:
+          - "keycloak-{{ .Values.global.host }}"
+        secretName: wildcard-crt
+    rules:
+      - host: "keycloak-{{ .Values.global.host }}"
+        paths:
+          - path: /
+            pathType: Prefix

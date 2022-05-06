@@ -1,0 +1,121 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-realm
+data:
+  realm.json.envtpl: |
+    {
+      "id": "app",
+      "realm": "app",
+      "enabled": true,
+      "sslRequired": "external",
+      "registrationAllowed": false,
+      "registrationEmailAsUsername": true,
+      "rememberMe": true,
+      "verifyEmail": false,
+      "loginWithEmailAllowed": false,
+      "duplicateEmailsAllowed": false,
+      "resetPasswordAllowed": true,
+      "editUsernameAllowed": false,
+      "bruteForceProtected": true,
+      "passwordPolicy": "forceExpiredPasswordChange(90) and length(8) and specialChars(1) and digits(1)",
+      "groups": [
+        {
+          "name": "anonymous",
+          "path": "/anonymous",
+          "attributes": {
+            "default-role": ["anonymous"],
+            "allowed-roles": ["anonymous##book-creator##book-reader"]
+          },
+          "realmRoles": [],
+          "clientRoles": {},
+          "subGroups": []
+        }
+      ],
+      "defaultRole": {
+        "name": "default-roles",
+        "description": "${role_default-roles}",
+        "composite": true,
+        "clientRole": false
+      },
+      "smtpServer": {
+        "password": "{{`{{ getenv "SMTP_PASSWORD" }}`}}",
+        "starttls": "{{`{{ or (getenv "SMTP_STARTTLS") "true" }}`}}",
+        "auth": "{{`{{ or (getenv "SMTP_AUTH") "true" }}`}}",
+        "host": "{{`{{ getenv "SMTP_HOST" }}`}}",
+        "from": "{{`{{ or (getenv "SMTP_FROM") "" }}`}}",
+        "port": "{{`{{ or (getenv "SMTP_PORT") "587" }}`}}",
+        "ssl": "{{`{{ or (getenv "SMTP_SSL") "true" }}`}}",
+        "user": "{{`{{ getenv "SMTP_USER" }}`}}"
+      },
+      "roles": {
+        "realm": [
+          {
+            "name": "default-roles",
+            "description": "${role_default-roles}",
+            "composite": true,
+            "composites": {
+              "realm": [],
+              "client": {
+                "account": ["view-profile", "manage-account"]
+              }
+            },
+            "clientRole": false,
+            "attributes": {}
+          }
+        ],
+        "client": {
+          "app": [
+            {
+              "name": "book-creator",
+              "composite": false,
+              "clientRole": true,
+              "attributes": {}
+            },
+            {
+              "name": "book-reader",
+              "composite": false,
+              "clientRole": true,
+              "attributes": {}
+            }
+          ]
+        }
+      },
+      "clients": [
+        {
+          "clientId": "app",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "alwaysDisplayInConsole": false,
+          "clientAuthenticatorType": "client-secret",
+          "redirectUris": ["*"],
+          "webOrigins": ["*"],
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": false,
+          "serviceAccountsEnabled": false,
+          "publicClient": true,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "attributes": {},
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1,
+          "protocolMappers": [],
+          "defaultClientScopes": ["web-origins", "roles", "profile", "email"],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ]
+        }
+      ],
+      "keycloakVersion": "14.0.0",
+      "userManagedAccessAllowed": false,
+      "eventsListeners": ["jboss-logging"],
+      "identityProviders": []
+    }
