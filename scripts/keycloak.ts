@@ -8,40 +8,58 @@ export const keycloakFilePathInput = path.join(
 
 export const keycloakFilePathOutput = path.join(
   __dirname,
-  "../realm-export.json"
+  "../.kube-workflow/files/realm-export-local.json"
 );
+
 export const keycloakKeysToReplace = {
   NEXTAUTH_URL: "http://localhost:3000",
   KEYCLOAK_CLIENT_SECRET: "**********",
 };
 
-export const parseFile = (
-  filePathInput: string,
-  filePathOutput: string,
-  valueContainsWord: string,
-  keysToReplace: Record<string, any>
+export const wordDetection = "env";
+
+const getLatestObject = (
+  object: Record<string, any>,
+  objectKeysToReplace: Record<string, string>,
+  wordToDetect: string
 ) => {
-  const file = fs.readFileSync(filePathInput, "utf8");
-  const newJson: Record<string, any> = { ...JSON.parse(file) };
-  for (let [key, value] of Object.entries(newJson)) {
-    if (typeof value === "string" && value.includes(valueContainsWord)) {
-      for (let [keyToReplace, valueToReplace] of Object.entries(
-        keysToReplace
-      )) {
-        if (typeof value === "string" && newJson[key].includes(keyToReplace))
-          newJson[key] = valueToReplace;
+  for (let [key, value] of Object.entries(object)) {
+    if (typeof value === "object") {
+      getLatestObject(object[key], objectKeysToReplace, wordToDetect);
+    } else {
+      for (let [key, value] of Object.entries(object)) {
+        if (typeof value === "string" && value.includes(wordToDetect)) {
+          for (let [keyToReplace, valueToReplace] of Object.entries(
+            objectKeysToReplace
+          )) {
+            if (typeof value === "string" && object[key].includes(keyToReplace))
+              object[key] = valueToReplace;
+          }
+        }
       }
     }
   }
-  fs.writeFileSync(filePathOutput, JSON.stringify(newJson, null, 2));
+  return object;
+};
+
+export const parseFile = (
+  filePathInput: string,
+  filePathOutput: string,
+  objectKeysToReplace: Record<string, string>,
+  wordToDetect: string
+) => {
+  const file = fs.readFileSync(filePathInput, "utf8");
+  const newJson: Record<string, any> = { ...JSON.parse(file) };
+  const object = getLatestObject(newJson, objectKeysToReplace, wordToDetect);
+  fs.writeFileSync(filePathOutput, JSON.stringify(object, null, 2));
 };
 
 const run = () => {
   parseFile(
     keycloakFilePathInput,
     keycloakFilePathOutput,
-    "getenv",
-    keycloakKeysToReplace
+    keycloakKeysToReplace,
+    wordDetection
   );
   console.log("Keycloak configuration for local configured.");
 };

@@ -45,3 +45,5 @@ cypress/screenshots
 
 # Robots.txt
 robots.txt
+
+realm-export-local.json
