@@ -26,8 +26,7 @@ const moduleExports = {
       "https://github.com/SocialGouv/template",
     KEYCLOAK_URL:
       process.env.KEYCLOAK_URL ?? "http://localhost:8080/auth/realms/app-realm",
-    KEYCLOAK_CLIENT_SECRET:
-      process.env.KEYCLOAK_CLIENT_SECRET ?? "h6wKvvkGA2dwjVn1gkEVXY0pOjM9yr3p",
+    KEYCLOAK_CLIENT_SECRET: process.env.KEYCLOAK_CLIENT_SECRET ?? "**********",
     KEYCLOAK_CLIENT_ID: process.env.KEYCLOAK_CLIENT_ID ?? "app-client",
     NEXTAUTH_URL: process.env.NEXTAUTH_URL ?? "http://localhost:3000",
     NEXTAUTH_SECRET:
