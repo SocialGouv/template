@@ -28,7 +28,7 @@ services:
       - 8080:8080
     depends_on:
       - postgres
-    # volumes:
-    #   - ./imports:/opt/jboss/keycloak/config
-    # command:
-    #   - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/config/realm-export.json"
+    volumes:
+      - ./config:/opt/jboss/keycloak/config
+    command:
+      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/config/realm-export.json"
