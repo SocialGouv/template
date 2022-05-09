@@ -4,4 +4,4 @@ metadata:
   name: keycloak-realm
 data:
   realm.json.envtpl: |
-  {{.Values.file}}
+  {{.Files.Get "files/realm-export.json" | indent 4}}

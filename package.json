@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "node -r @swc-node/register scripts/prebuild.ts",
+    "postinstall": "yarn keycloak",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -22,7 +23,7 @@
     "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "keycloak": "node -r @swc-node/register scripts/keycloak.ts"
+    "keycloak": "chmod +x scripts/keycloak.sh && ./scripts/keycloak.sh"
   },
   "dependencies": {
     "@dataesr/react-dsfr": "^1.0.5",
@@ -54,6 +55,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-storybook": "^0.5.7",
     "gh-pages": "^3.2.3",
+    "gomplate": "https://github.com/gomplate/gomplate-npm",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.7",
