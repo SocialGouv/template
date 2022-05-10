@@ -3,6 +3,6 @@ apiVersion: v1
 metadata:
   name: app
 data:
-  NEXT_TELEMETRY_DISABLED: 1
+  NEXT_TELEMETRY_DISABLED: "1"
   KEYCLOAK_URL: "https://keycloak-{{.Values.global.host}}"
   NEXTAUTH_URL: "https://{{.Values.global.host}}"
