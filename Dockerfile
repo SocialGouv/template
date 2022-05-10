@@ -1,11 +1,17 @@
 ARG NODE_VERSION=16-alpine
 
 # Builder
-FROM node:$NODE_VERSION AS builder
+FROM node:$NODE_VERSION AS dist
 
 WORKDIR /app
 COPY . .
-RUN yarn install --frozen-lockfile && yarn build && yarn install --production
+RUN yarn install --frozen-lockfile && yarn build
+
+FROM node:$NODE_VERSION AS builder
+
+WORKDIR /app
+COPY --from=dist . .
+RUN yarn install --production
 
 # Runner
 FROM node:$NODE_VERSION AS runner
