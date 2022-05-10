@@ -48,7 +48,10 @@ Après avoir cloné le projet :
 
 ### Développement
 
+:warning: Avant de lancer le projet, vous devez installer `gomplate`
+
 ```bash
+brew install gomplate  # to install gomplate
 docker-compose up -d # to run keycloak and postgres in background
 yarn # to install dependencies
 yarn dev # to run in dev mode
