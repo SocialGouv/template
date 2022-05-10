@@ -66,16 +66,7 @@ keycloak:
         mountPath: "/realm/"
       envFrom:
       - secretRef:
-          name: app-sealed-secret
-      env:
-      - name: SMTP_HOST
-        value: "smtp.tipimail.com"
-      - name: SMTP_PORT
-        value: "587"
-      - name: SMTP_USER
-        value: "$(MAIL_AUTH_USER)"
-      - name: SMTP_PASSWORD
-        value: "$(MAIL_AUTH_PASS)"
+          name: app
       command:
         - sh
       args:
