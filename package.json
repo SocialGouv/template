@@ -23,7 +23,7 @@
     "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "fix-gomplate": "ln -s ../gomplate/node_modules/.bin/gomplate node_modules/.bin/gomplate",
+    "fix-gomplate": "[ -f node_modules/.bin/gomplate ] || ln -s ../gomplate/node_modules/.bin/gomplate node_modules/.bin/gomplate",
     "keycloak": "chmod +x scripts/keycloak.sh && ./scripts/keycloak.sh"
   },
   "dependencies": {
