@@ -5,11 +5,15 @@ FROM node:$NODE_VERSION AS builder
 
 WORKDIR /app
 
+COPY --from=hairyhenderson/gomplate:stable /gomplate /bin/gomplate
+
+COPY package.json yarn.lock /app/
+
+RUN yarn install --frozen-lockfile --ignore-scripts
+
 COPY . .
 
-RUN apk add --update git
-
-RUN yarn install --frozen-lockfile 
+RUN yarn postinstall
 
 RUN yarn build
 
