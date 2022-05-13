@@ -13,11 +13,9 @@ RUN yarn install --frozen-lockfile --ignore-scripts
 
 COPY . .
 
-RUN yarn postinstall
-
 RUN yarn build
 
-RUN yarn install --production
+RUN yarn install --production --ignore-scripts
 
 # Runner
 FROM node:$NODE_VERSION AS runner
