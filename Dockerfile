@@ -9,13 +9,13 @@ COPY --from=hairyhenderson/gomplate:stable /gomplate /bin/gomplate
 
 COPY package.json yarn.lock /app/
 
-RUN yarn install --frozen-lockfile --ignore-scripts
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
 RUN yarn build
 
-RUN yarn install --production --ignore-scripts
+RUN yarn install --production
 
 # Runner
 FROM node:$NODE_VERSION AS runner

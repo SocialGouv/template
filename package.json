@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "node -r @swc-node/register scripts/prebuild.ts",
-    "postinstall": "yarn keycloak",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
