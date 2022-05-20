@@ -1,7 +1,8 @@
-# here you can customize your deployment according to : https://github.com/SocialGouv/actions/blob/master/autodevops-helm-deploy/chart/values.yaml
 app:
-  probesPath: /healthz
+  probesPath: "/healthz"
   envFrom:
+    - secretRef:
+        name: "{{ .Values.global.pgSecretName }}"
     - secretRef:
         name: app
     - secretRef:
@@ -41,8 +42,6 @@ keycloak:
       value: "$(PGUSER)"
     - name: DB_PASSWORD
       value: "$(PGPASSWORD)"
-    - name: JAVA_OPTS
-      value: -Dkeycloak.profile=preview
 
   extraVolumes: |
     - name: keycloak-realm-tpl
