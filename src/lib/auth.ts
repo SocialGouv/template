@@ -14,11 +14,6 @@ export function withAuth(
         },
       };
     }
-    const getServerSidePropsData = await getServerSideProps(context);
-    return {
-      props: {
-        ...getServerSidePropsData.props,
-      },
-    };
+    return await getServerSideProps(context);
   };
 }
