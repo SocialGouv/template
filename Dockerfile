@@ -5,17 +5,11 @@ FROM node:$NODE_VERSION AS builder
 
 WORKDIR /app
 
-COPY --from=hairyhenderson/gomplate:stable /gomplate /bin/gomplate
-
 COPY package.json yarn.lock /app/
-
-RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN yarn build
-
-RUN yarn install --production
+RUN yarn install --frozen-lockfile && yarn build && yarn install --production
 
 # Runner
 FROM node:$NODE_VERSION AS runner

@@ -1,7 +1,11 @@
 # here you can customize your deployment according to : https://github.com/SocialGouv/actions/blob/master/autodevops-helm-deploy/chart/values.yaml
 app:
-  enabled: true
   probesPath: /healthz
+  envFrom:
+    - secretRef:
+        name: app
+    - secretRef:
+        name: keycloak-secrets
 
 keycloak:
   postgresql:
