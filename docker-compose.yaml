@@ -30,7 +30,6 @@ services:
       - postgres
     volumes:
       - ./keycloak/config:/opt/jboss/keycloak/config
-      - ./keycloak/extensions:/opt/jboss/keycloak/extensions
-      - ./keycloak/themes:/opt/jboss/keycloak/themes
+      - ./keycloak/extensions:/opt/jboss/keycloak/standalone/deployments
     command:
       - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/config/realm-export-local.json"
