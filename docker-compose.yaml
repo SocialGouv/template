@@ -30,5 +30,7 @@ services:
       - postgres
     volumes:
       - ./.kube-workflow/files:/opt/jboss/keycloak/config
+      - ./.kube-workflow/files:/opt/jboss/keycloakextensions
+      - ./.kube-workflow/files:/opt/jboss/keycloak/providers
     command:
       - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/config/realm-export-local.json"
