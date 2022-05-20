@@ -24,14 +24,8 @@ jobs:
           imagePackage: app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            PRODUCTION=true
-            GITHUB_SHA=${{ env.GITHUB_SHA }}
-            SITE_URL="https://template.fabrique.social.gouv.fr/"
-            SENTRY_DSN="https://67a92c8c0f70486d9f36f2352eff1d19@sentry.fabrique.social.gouv.fr/68"
-            SENTRY_ENV="production"
-            MATOMO_URL="https://matomo.fabrique.social.gouv.fr"
-            MATOMO_SITE_ID=63
-            APP_REPOSITORY_URL="https://github.com/SocialGouv/template"
+            NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT=true
+            NEXT_PUBLIC_APP_VERSION_COMMIT=${{ env.GITHUB_SHA }}
 
   deploy:
     name: Deploy application
