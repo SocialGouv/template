@@ -8,7 +8,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build and export
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -26,6 +26,6 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --prefer-offline --frozen-lockfile
-      - name: Build and export
+      - name: Build
         run: |
-          yarn build:export
+          yarn build

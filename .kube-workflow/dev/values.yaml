@@ -1,0 +1,23 @@
+jobs:
+  runs:
+    db:
+      use: SocialGouv/kube-workflow/jobs/create-db
+      with:
+        pgAdminSecretRefName: pg-scaleway
+    db-keycloak:
+      use: SocialGouv/kube-workflow/jobs/create-db
+      needs: [db]
+      with:
+        pgAdminSecretRefName: pg-scaleway
+        pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+        database: "keycloak_{{ .Values.global.branchSlug32 }}"
+        pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
+
+keycloak:
+  statefulsetAnnotations:
+    kapp.k14s.io/change-rule: "upsert after upserting kube-workflow/db-keycloak.{{ .Values.global.namespace }}"
+  extraEnvFrom: |
+    - secretRef:
+        name: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+    - secretRef:
+        name: keycloak-secrets

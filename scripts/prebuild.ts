@@ -20,7 +20,7 @@ export const generateRobotsTxt = (isOnProduction: boolean, host: string) => {
 const run = () => {
   generateRobotsTxt(
     process.env.NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT ? true : false,
-    process.env.NEXT_PUBLIC_SITE_URL ?? "localhost"
+    process.env.NEXT_PUBLIC_HOST ?? "template.fabrique.social.gouv.fr"
   );
   console.log("Robots.txt generated.");
 };

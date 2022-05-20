@@ -26,7 +26,7 @@ jobs:
           imagePackage: app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            GITHUB_SHA=${{ env.GITHUB_SHA }}
+            NEXT_PUBLIC_APP_VERSION_COMMIT=${{ env.GITHUB_SHA }}
 
   deploy:
     name: Deploy review branch
