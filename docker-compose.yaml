@@ -34,5 +34,3 @@ services:
       - ./keycloak/themes:/opt/jboss/keycloak/themes
     command:
       - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/config/realm-export-local.json"
-      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/extensions/keycloak-franceconnect.jar"
-      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/themes/keycloak-theme.jar"
