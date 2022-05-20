@@ -21,7 +21,7 @@ keycloak:
 
   extraEnvFrom: |
     - secretRef:
-        name: keycloak-db
+        name: pg-user-keycloak
     - secretRef:
         name: keycloak-secrets
   extraEnv: |
