@@ -29,8 +29,10 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./.kube-workflow/files:/opt/jboss/keycloak/config
-      - ./.kube-workflow/files:/opt/jboss/keycloakextensions
-      - ./.kube-workflow/files:/opt/jboss/keycloak/providers
+      - ./keycloak/config:/opt/jboss/keycloak/config
+      - ./keycloak/extensions:/opt/jboss/keycloak/extensions
+      - ./keycloak/themes:/opt/jboss/keycloak/themes
     command:
       - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/config/realm-export-local.json"
+      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/extensions/keycloak-franceconnect.jar"
+      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/themes/keycloak-theme.jar"
