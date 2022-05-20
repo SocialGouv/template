@@ -52,9 +52,7 @@ Après avoir cloné le projet :
 
 ```bash
 docker-compose up -d # to run keycloak and postgres in background
-brew install gomplate  # to install gomplate
 yarn # to install dependencies
-yarn keycloak # to replace keycloak with good values
 yarn dev # to run in dev mode
 ```
 
@@ -65,3 +63,5 @@ yarn # to install dependencies
 yarn build # to build code
 yarn start # to start
 ```
+
+#### Keycloak
