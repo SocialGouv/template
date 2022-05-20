@@ -28,7 +28,7 @@ module.exports = {
           },
           {
             key: "X-Robots-Tag",
-            value: process.env.IS_PRODUCTION_DEPLOYMENT
+            value: process.env.NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT
               ? "all"
               : "noindex, nofollow, nosnippet",
           },
