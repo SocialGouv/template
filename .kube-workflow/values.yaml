@@ -24,7 +24,6 @@ keycloak:
         name: keycloak-db
     - secretRef:
         name: keycloak-secrets
-
   extraEnv: |
     - name: KEYCLOAK_IMPORT
       value: /realm/realm.json
@@ -42,19 +41,16 @@ keycloak:
       value: "$(PGUSER)"
     - name: DB_PASSWORD
       value: "$(PGPASSWORD)"
-
   extraVolumes: |
     - name: keycloak-realm-tpl
       configMap:
         name: keycloak-realm
     - name: keycloak-realm
       emptyDir: {}
-
   extraVolumeMounts: |
     - name: keycloak-realm
       mountPath: "/realm/"
       readOnly: true
-
   extraInitContainers: |
     - name: compile-realm
       image: hairyhenderson/gomplate:v3.10.0-alpine
@@ -75,7 +71,6 @@ keycloak:
       args:
         - -c
         - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
-
   ingress:
     enabled: true
     annotations:
