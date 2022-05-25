@@ -2,11 +2,7 @@ app:
   probesPath: "/healthz"
   envFrom:
     - secretRef:
-        name: "{{ .Values.global.pgSecretName }}"
-    - secretRef:
         name: app
-    - secretRef:
-        name: keycloak-secrets
 
 keycloak:
   postgresql:
@@ -62,8 +58,6 @@ keycloak:
       - name: keycloak-realm
         mountPath: "/realm/"
       envFrom:
-      - secretRef:
-          name: app
       - secretRef:
           name: keycloak-secrets
       command:
