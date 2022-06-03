@@ -580,7 +580,7 @@
     {
       "id": "68a4be1f-06df-470f-88c9-3624f205f201",
       "clientId": "app-client",
-      "rootUrl": "{{ getenv `NEXTAUTH_URL` }}/",
+      "rootUrl": "",
       "adminUrl": "",
       "baseUrl": "{{ getenv `NEXTAUTH_URL` }}/",
       "surrogateAuthRequired": false,
@@ -589,7 +589,7 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "{{ getenv `KEYCLOAK_CLIENT_SECRET` }}",
       "redirectUris": ["{{ getenv `NEXTAUTH_URL` }}/*"],
-      "webOrigins": ["{{ getenv `NEXTAUTH_URL` }}/"],
+      "webOrigins": [""],
       "notBefore": 0,
       "bearerOnly": false,
       "consentRequired": false,
