@@ -37,8 +37,6 @@ keycloak:
       value: "$(PGUSER)"
     - name: DB_PASSWORD
       value: "$(PGPASSWORD)"
-    - name: JAVA_OPTS
-      value: -Dkeycloak.profile=preview
 
   extraVolumes: |
     - name: keycloak-realm-tpl
@@ -61,8 +59,6 @@ keycloak:
       - name: keycloak-realm
         mountPath: "/realm/"
       envFrom:
-      - configMapRef:
-          name: app
       - secretRef:
           name: keycloak-secrets
       command:
