@@ -5,7 +5,7 @@ Template est une application [next](https://nextjs.org/) développée par la [Fa
 L'application dispose de deux branches principales :
 
 - [`main`](https://github.com/SocialGouv/template) qui est la branche principale du projet, celle-ci dispose d'une instance keycloak connectée avec sa base de données `postgres`
-- [`static`](https://github.com/SocialGouv/template/tree/static) qui production un site statique sans authentification
+- [`static`](https://github.com/SocialGouv/template/tree/static) qui est un template de site en statique sans la partie authentification
 
 ## Description
 
