@@ -2,3 +2,4 @@
 app:
   enabled: true
   probesPath: /healthz
+  containerPort: 8080
