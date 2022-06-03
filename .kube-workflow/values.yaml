@@ -38,7 +38,10 @@ keycloak:
     - name: DB_PASSWORD
       value: "$(PGPASSWORD)"
     - name: JAVA_OPTS
-      value: "-Dkeycloak.profile=preview -Dkeycloak.import=/realm/realm.json"
+      value: >-
+        -Dkeycloak.profile=preview
+        -Dkeycloak.profile.feature.upload_scripts=enabled
+        -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 
   extraVolumes: |
     - name: keycloak-realm-tpl

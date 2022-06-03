@@ -14,7 +14,7 @@ services:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: password
   keycloak:
-    image: quay.io/keycloak/keycloak:legacy
+    image: quay.io/keycloak/keycloak:17.0.1-legacy
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
