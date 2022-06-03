@@ -82,8 +82,8 @@ keycloak:
         - name: extensions
           mountPath: /extensions
       extraVolumeMounts: |
-            - name: extensions
-              mountPath: /opt/keycloak/providers
+        - name: extensions
+          mountPath: /opt/keycloak/providers
 
   ingress:
     enabled: true
