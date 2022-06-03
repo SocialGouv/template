@@ -30,7 +30,7 @@ keycloak:
     - name: DB_ADDR
       value: "$(PGHOST)"
     - name: DB_PORT
-      value: "5432"
+      value: "$(PGPORT)"
     - name: DB_DATABASE
       value: "$(PGDATABASE)"
     - name: DB_USER
