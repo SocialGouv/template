@@ -1511,8 +1511,30 @@
       }
     ]
   },
-  "internationalizationEnabled": false,
-  "supportedLocales": [""],
+  "internationalizationEnabled": true,
+  "supportedLocales": [
+    "de",
+    "no",
+    "ru",
+    "sv",
+    "pt-BR",
+    "lt",
+    "en",
+    "it",
+    "fr",
+    "hu",
+    "zh-CN",
+    "es",
+    "cs",
+    "ja",
+    "sk",
+    "pl",
+    "da",
+    "ca",
+    "nl",
+    "tr"
+  ],
+  "defaultLocale": "fr",
   "authenticationFlows": [
     {
       "id": "2f940a40-6d19-467f-a3a6-90aec0735e41",
