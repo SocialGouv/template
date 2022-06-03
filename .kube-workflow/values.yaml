@@ -46,10 +46,14 @@ keycloak:
         name: keycloak-realm
     - name: keycloak-realm
       emptyDir: {}
+    - name: extensions
+      emptyDir: {}
   extraVolumeMounts: |
     - name: keycloak-realm
       mountPath: "/realm/"
       readOnly: true
+    - name: extensions
+      mountPath: "/opt/jboss/keycloak/standalone/deployments"
   extraInitContainers: |
     - name: compile-realm
       image: hairyhenderson/gomplate:v3.10.0-alpine
@@ -64,12 +68,23 @@ keycloak:
       - configMapRef:
           name: app
       - secretRef:
-          name: keycloak-secrets
+          name: app
       command:
         - sh
       args:
         - -c
         - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
+    - name: realm-ext-provider
+      image: curlimages/curl
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+      args:
+        - -c
+        - curl -L -f -S -o /extensions/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar
+      volumeMounts:
+        - name: extensions
+          mountPath: /extensions
 
   ingress:
     enabled: true
