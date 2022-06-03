@@ -1,6 +1,8 @@
 app:
   probesPath: "/healthz"
   envFrom:
+    - configMapRef:
+        name: app
     - secretRef:
         name: app
 
@@ -40,8 +42,6 @@ keycloak:
     - name: JAVA_OPTS
       value: >-
         -Dkeycloak.profile=preview
-        -Dkeycloak.profile.feature.upload_scripts=enabled
-        -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 
   extraVolumes: |
     - name: keycloak-realm-tpl
