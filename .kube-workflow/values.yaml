@@ -84,8 +84,7 @@ keycloak:
         - sh
       args:
         - -c
-        - curl -L -f -S -o /extensions/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar ;
-        - curl -L -f -S -o /extensions/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
+        - curl -L -f -S -o /extensions/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar -o /extensions/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
       volumeMounts:
         - name: extensions
           mountPath: /extensions
