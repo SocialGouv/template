@@ -1,12 +1,11 @@
 # template
 
-Template est une application [next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/).
+Template est une application [next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) suivant les préconisations du [Système de Design de l'État](https://gouvfr.atlassian.net/wiki/spaces/DB/overview).
 
-La version actuelle produit un site statique, mais le Dockerfile peut facilement être adapté.
+L'application dispose de deux branches principales :
 
-Version en production du projet : <https://template.fabrique.social.gouv.fr/>.
-
-Storybook liés à la branche principale du projet : <https://socialgouv.github.io/template/>.
+- [`main`](https://github.com/SocialGouv/template) qui est la branche principale du projet, celle-ci dispose d'une instance keycloak connectée avec sa base de données `postgres`
+- [`static`](https://github.com/SocialGouv/template/tree/static) qui production un site statique sans authentification
 
 ## Description
 
@@ -22,6 +21,9 @@ Ce template est composé de page :
 - Déclaration d'accessibilité
 - Healthz
 - Page 404
+- Page d'authentification gérée par keycloak (exclusive à `main`)
+- Page d'inscription gérée par keycloak (exclusive à `main`)
+- Page profil (exclusive à `main`)
 
 ### D'un point de vue technique
 
@@ -33,14 +35,8 @@ Ce template est composé de page :
 - [cypress](https://www.cypress.io/) pour tester en e2e le frontend
 - [matomo](https://matomo.org/) pour sauvegarder de manière anonyme les statistiques d'utilisation
 - [sentry](https://sentry.io/) pour gérer les erreurs
-
-#### Gestion des environnements
-
-Les variables issues des docker build-args, sont à utiliser dans `next.config.js`, pour les autres, il faut les définir dans les différents [`.env.*`](https://nextjs.org/docs/basic-features/environment-variables#environment-variable-load-order).
-
-Le fichier `.env.staging` est utilisé pour les environnements de review et de pré-production.
-
-:warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
+- [keycloak](https://www.keycloak.org/) qui est un serveur d'authentification (exclusive à `main`)
+- [next-auth](https://next-auth.js.org/) qui est un wrapper pour gérer l'authentification au sein de l'application (exclusive à `main`)
 
 ## Lancer le code
 
@@ -64,4 +60,17 @@ yarn build # to build code
 yarn start # to start
 ```
 
-#### Keycloak
+### Gestion des environnements
+
+Les variables issues des docker build-args, sont à utiliser dans `next.config.js`, pour les autres, il faut les définir dans les différents [`.env.*`](https://nextjs.org/docs/basic-features/environment-variables#environment-variable-load-order).
+
+Le fichier `.env.staging` est utilisé pour les environnements de review et de pré-production.
+
+Le fichier `.env.development` est utilisé pour l'environnement de développement.
+
+:warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
+
+## Liens
+
+- <https://template.fabrique.social.gouv.fr/> : Version en production du projet
+- <https://socialgouv.github.io/template/> : Storybook liés à la branche principale du projet
