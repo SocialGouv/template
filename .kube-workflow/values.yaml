@@ -37,6 +37,8 @@ keycloak:
       value: "$(PGUSER)"
     - name: DB_PASSWORD
       value: "$(PGPASSWORD)"
+    - name: JAVA_OPTS
+      value: -Dkeycloak.profile=preview
 
   extraVolumes: |
     - name: keycloak-realm-tpl
@@ -59,6 +61,8 @@ keycloak:
       - name: keycloak-realm
         mountPath: "/realm/"
       envFrom:
+      - configMapRef:
+          name: app
       - secretRef:
           name: keycloak-secrets
       command:
@@ -66,20 +70,6 @@ keycloak:
       args:
         - -c
         - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
-    - name: realm-ext-provider
-      image: curlimages/curl
-      imagePullPolicy: IfNotPresent
-      command:
-        - sh
-      args:
-        - -c
-        - curl -L -f -S -o /extensions/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar
-      volumeMounts:
-        - name: extensions
-          mountPath: /extensions
-      extraVolumeMounts: |
-        - name: extensions
-          mountPath: /opt/keycloak/providers
 
   ingress:
     enabled: true
