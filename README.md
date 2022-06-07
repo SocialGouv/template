@@ -74,3 +74,4 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
 - <https://socialgouv.github.io/template/> : Storybook liés à la branche principale du projet
+
