@@ -72,6 +72,8 @@ keycloak:
           name: app
       - secretRef:
           name: app
+      - secretRef:
+          name: franceconnect
       command:
         - sh
       args:
