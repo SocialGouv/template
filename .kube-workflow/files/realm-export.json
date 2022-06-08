@@ -1363,7 +1363,16 @@
     "xXSSProtection": "1; mode=block",
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
-  "smtpServer": {},
+  "smtpServer": {
+    "starttls": "{{ or (getenv `SMTP_STARTTLS`) `true` }}",
+    "auth": "{{ or (getenv `SMTP_AUTH`) `true` }}",
+    "host": "{{ getenv `SMTP_HOST` }}",
+    "from": "{{ or (getenv `SMTP_FROM`) `` }}",
+    "port": "{{ or (getenv `SMTP_PORT`) `587` }}",
+    "ssl": "{{ or (getenv `SMTP_SSL`) `true` }}",
+    "user": "{{ getenv `SMTP_USER` }}",
+    "password": "{{ getenv `SMTP_PASSWORD` }}"
+  },
   "loginTheme": "keycloak-dsfr",
   "eventsEnabled": false,
   "eventsListeners": ["jboss-logging"],

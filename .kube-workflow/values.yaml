@@ -74,6 +74,8 @@ keycloak:
           name: app
       - secretRef:
           name: franceconnect
+      - secretRef:
+          name: smtp
       command:
         - sh
       args:
