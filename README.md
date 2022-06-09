@@ -1,6 +1,6 @@
 # template
 
-Template est une application [next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/).
+Template est une application [Next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/).
 
 La version actuelle produit un site statique, mais le Dockerfile peut facilement être adapté.
 
