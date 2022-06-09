@@ -2,7 +2,7 @@ ARG NODE_VERSION=16-alpine
 
 # Install dependencies only when needed
 FROM node:$NODE_VERSION AS prepare
-RUN apk add --no-cache libc6-compat=1.2.2-r7
+RUN apk add --no-cache libc6-compat=1.2.3-r0
 WORKDIR /app
 COPY package.json yarn.lock ./
 
