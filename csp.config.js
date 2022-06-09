@@ -8,6 +8,7 @@ const ContentSecurityPolicy = `
     process.env.NODE_ENV !== "production" && "'unsafe-eval'"
   };
   frame-src 'self' *.fabrique.social.gouv.fr  ${
+    // allow local keycloak in development
     process.env.NODE_ENV !== "production" && "http://localhost:8080"
   };
   style-src 'self' 'unsafe-inline';
