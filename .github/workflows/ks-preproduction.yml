@@ -1,0 +1,16 @@
+name: Preproduction
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - v*
+
+concurrency:
+  cancel-in-progress: true
+  group: preproduction
+
+jobs:
+  follow-deployment:
+    uses: SocialGouv/kontinuous/.github/workflows/workflow-logs.yaml@v1
+    secrets: inherit

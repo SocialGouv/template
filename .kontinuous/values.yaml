@@ -1,0 +1,15 @@
+
+app:
+  needs: [build-app]
+  imagePackage: app
+  containerPort: 8080
+
+jobs:
+  runs:
+    build-app:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@master
+      with:
+        imagePackage: app
+        buildArgs:
+          GITHUB_SHA: "{{ $.Values.global.sha }}"
+

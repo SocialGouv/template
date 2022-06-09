@@ -1,0 +1,15 @@
+name: Production
+
+on:
+  push:
+    tags:
+      - v*
+
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+jobs:
+  follow-deployment:
+    uses: SocialGouv/kontinuous/.github/workflows/workflow-logs.yaml@v1
+    secrets: inherit

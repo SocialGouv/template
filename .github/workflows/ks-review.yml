@@ -1,0 +1,16 @@
+name: Review
+on:
+  push:
+    branches-ignore:
+      - master
+    tags-ignore:
+      - v*
+
+concurrency:
+  cancel-in-progress: true
+  group: review-${{ github.ref }}
+
+jobs:
+  follow-deployment:
+    uses: SocialGouv/kontinuous/.github/workflows/workflow-logs.yaml@v1
+    secrets: inherit
