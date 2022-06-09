@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
             NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT=true
-            NEXT_PUBLIC_APP_VERSION_COMMIT=${{ env.GITHUB_SHA }}
+            NEXT_PUBLIC_APP_VERSION_COMMIT=${{ github.sha }}
 
   deploy:
     name: Deploy application
