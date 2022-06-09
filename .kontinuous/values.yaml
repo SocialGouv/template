@@ -1,4 +1,6 @@
-
+global:
+  registry: harbor.fabrique.social.gouv.fr
+  
 app:
   needs: [build-app]
   imagePackage: app
