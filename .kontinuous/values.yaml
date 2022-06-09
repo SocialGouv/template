@@ -1,6 +1,6 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
-  
+
 app:
   needs: [build-app]
   imagePackage: app
@@ -12,6 +12,7 @@ jobs:
       use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@master
       with:
         imagePackage: app
+        registrySecretRefName: harbor
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
 
