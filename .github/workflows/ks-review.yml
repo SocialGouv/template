@@ -12,5 +12,5 @@ concurrency:
 
 jobs:
   follow-deployment:
-    uses: SocialGouv/kontinuous/.github/workflows/workflow-logs.yaml@v1
+    uses: SocialGouv/kontinuous/.github/workflows/workflow-logs.yaml@master
     secrets: inherit
