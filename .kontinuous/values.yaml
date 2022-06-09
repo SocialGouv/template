@@ -3,18 +3,18 @@ global:
 
 app:
   needs: [build-app]
-  imageProject: fabrique
-  imageRepository: template
-  imagePackage: app
-  containerPort: 8080
+  imageProject: fabrique     # optional
+  imageRepository: template  # optional
+  imagePackage: app          # mandatory
+  containerPort: 8080        # optional, default = 3000
 
 jobs:
   runs:
     build-app:
       use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@master
       with:
-        imageProject: fabrique
-        imageRepository: template
+        imageProject: fabrique.         # optional
+        imageRepository: template       # optional
         imagePackage: app
         registrySecretRefName: harbor
         buildArgs:
