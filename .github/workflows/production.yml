@@ -14,9 +14,6 @@ jobs:
     name: Build & Register application
     runs-on: ubuntu-latest
     steps:
-      - name: Get commit sha
-        run: |
-          echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
