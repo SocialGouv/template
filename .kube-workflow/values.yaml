@@ -81,7 +81,7 @@ keycloak:
       args:
         - -c
         - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
-    - name: realm-ext-provider
+    - name: fetch-keycloak-extensions
       image: curlimages/curl
       imagePullPolicy: IfNotPresent
       command:
