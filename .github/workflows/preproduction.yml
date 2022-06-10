@@ -26,7 +26,7 @@ jobs:
           imagePackage: app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            NEXT_PUBLIC_HOST="template.fabrique.social.gouv.fr"
+            NEXT_PUBLIC_HOST="template-preprod.dev.fabrique.social.gouv.fr"
             NEXT_PUBLIC_APP_VERSION_COMMIT=${{ github.sha }}
 
   deploy:
