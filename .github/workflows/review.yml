@@ -16,9 +16,6 @@ jobs:
     name: Build & Register application
     runs-on: ubuntu-latest
     steps:
-      - name: Get commit sha
-        run: |
-          echo "GITHUB_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
       - name: Use autodevops build and register
         uses: SocialGouv/actions/autodevops-build-register@v1
         with:
@@ -26,7 +23,7 @@ jobs:
           imagePackage: app
           token: ${{ secrets.GITHUB_TOKEN }}
           dockerbuildargs: |
-            NEXT_PUBLIC_HOST="template.fabrique.social.gouv.fr"
+            NEXT_PUBLIC_HOST="${{ env.host }}.dev.fabrique.social.gouv.fr"
             NEXT_PUBLIC_APP_VERSION_COMMIT=${{ github.sha }}
 
   deploy:
