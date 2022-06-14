@@ -9,6 +9,5 @@ ls /opt/keycloak/data/import
 
 /opt/keycloak/bin/kc.sh import --dir /opt/keycloak/data/import
 
-/opt/keycloak/bin/kc.sh --version
 
-/opt/keycloak/bin/kc.sh start doc --db=postgres --features admin2 --http-enabled=true --http-port=8080 --hostname-strict=false --hostname-strict-https=false
+/opt/keycloak/bin/kc.sh start --db=postgres --features admin2 --http-enabled=true --http-port=8080 --hostname-strict=false --hostname-strict-https=false

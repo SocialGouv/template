@@ -87,7 +87,7 @@ keycloakx:
       readOnly: true
     - name: kc-start
       mountPath: "/scripts"
-      defaultMode: 0777
+      defaultMode: 0744
     - name: providers
       mountPath: "/opt/keycloak/providers"
   extraInitContainers: |
