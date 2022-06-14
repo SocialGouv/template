@@ -14,7 +14,7 @@ services:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: password
   keycloak:
-    image: quay.io/keycloak/keycloak:18.0.0
+    image: quay.io/keycloak/keycloak:17.0.1
     environment:
       KC_DB_URL: "jdbc:postgresql://postgres:5432/keycloak"
       KC_DB: postgres
@@ -32,4 +32,5 @@ services:
       - ./keycloak/config:/opt/keycloak/data/import
       - ./keycloak/providers:/opt/keycloak/providers
     command:
-      - "start-dev --auto-build --db=postgres --import-realm --features admin2"
+      # import realm and start server for keycloak@17 - fixed in 18
+      - "import --dir /opt/keycloak/data/import && /opt/keycloak/bin/kc.sh start --auto-build --db=postgres --features admin2"

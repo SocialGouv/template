@@ -36,6 +36,12 @@ keycloakx:
 
   command:
     - "/opt/keycloak/bin/kc.sh"
+    # necessary for keycloak@17
+    - "import"
+    - "--dir=/opt/keycloak/data/import"
+    - "&&"
+    - "/opt/keycloak/bin/kc.sh"
+    # ---
     - "start"
     - "--auto-build"
     - "--http-enabled=true"
