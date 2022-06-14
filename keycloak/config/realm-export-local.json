@@ -1363,7 +1363,16 @@
     "xXSSProtection": "1; mode=block",
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
-  "smtpServer": {},
+  "smtpServer": {
+    "starttls": "true",
+    "auth": "true",
+    "host": "smtp.tipimail.com",
+    "from": "",
+    "port": "587",
+    "ssl": "false",
+    "user": "smtp-user",
+    "password": "smtp-password"
+  },
   "loginTheme": "keycloak-dsfr",
   "eventsEnabled": false,
   "eventsListeners": ["jboss-logging"],
@@ -1386,11 +1395,11 @@
       "config": {
         "eidas_values": "eidas1",
         "isCreated": "true",
-        "clientId": "123",
+        "clientId": "2fd0b7f33db9f547b536fd1f11ef6214c4fad5797acfbda0a6ee4fad8f4887f4",
         "fc_environment": "integration_v1",
         "syncMode": "IMPORT",
-        "clientSecret": "123",
-        "defaultScope": "openid identite_pivot",
+        "clientSecret": "2f68052ed0bccd7ae4b45a2be85527e95e0973d510d68f2b3faf3115165078cd",
+        "defaultScope": "openid email",
         "useJwksUrl": "true"
       }
     }

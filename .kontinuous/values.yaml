@@ -48,7 +48,7 @@ keycloakx:
     - "--http-port=8080"
     - "--hostname-strict=false"
     - "--hostname-strict-https=false"
-    - "--import-realm"
+    #- "--import-realm"
     - "--features=admin2"
     #  - "/opt/keycloak/bin/kc.sh"
     # - "--spi-events-listener-jboss-logging-success-level=info"
