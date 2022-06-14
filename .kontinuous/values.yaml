@@ -27,16 +27,21 @@ jobs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
 
 keycloak:
-  # enabled: true
-
   serviceAccount:
     create: false
 
   database:
     vendor: postgres
 
-  # postgresql:
-  #   enabled: false
+  ærgs:
+    [
+      "start-dev",
+      "--auto-build",
+      "--db=postgres",
+      "--import-realm",
+      "--features",
+      "admin2",
+    ]
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
