@@ -27,6 +27,7 @@ jobs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
 
 keycloakx:
+  fullnameOverride: "keycloakx"
   serviceAccount:
     create: false
 
