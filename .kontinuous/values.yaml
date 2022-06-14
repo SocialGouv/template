@@ -36,7 +36,7 @@ keycloakx:
 
   ærgs:
     [
-      "start-dev",
+      "start",
       "--auto-build",
       "--db=postgres",
       "--import-realm",
@@ -57,7 +57,7 @@ keycloakx:
     - secretRef:
         name: keycloak-secrets
   extraEnv: |
-    - name: KC_DB_URL,
+    - name: KC_DB_URL
       value: "jdbc:$(DATABASE_URL)"
     - name: KC_DB
       value: postgres
