@@ -17,7 +17,7 @@ jobs:
         database: "keycloak_{{ .Values.global.branchSlug32 }}"
         pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
 
-keycloak:
+keycloakx:
   needs: [build-app, db-keycloak]
   #statefulsetAnnotations:
   # kapp.k14s.io/change-rule: "upsert after upserting kube-workflow/db-keycloak.{{ .Values.global.namespace }}"
