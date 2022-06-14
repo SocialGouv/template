@@ -62,18 +62,20 @@ keycloakx:
     - secretRef:
         name: keycloak-secrets
   extraEnv: |
-    - name: KC_DB_URL
-      value: "jdbc:$(DATABASE_URL)"
     - name: KC_DB
       value: postgres
-    - name: KC_METRICS_ENABLED
-      value: "true"
+    - name: KC_DB_URL_HOST
+      value: "$(PGHOST)"
+    - name: KC_DB_URL_PORT
+      value: "$(PGPORT)"
+    - name: KC_DB_URL_DATABASE
+      value: "$(PGDATABASE)"
     - name: KC_DB_USERNAME
       value: "$(PGUSER)"
     - name: KC_DB_PASSWORD
       value: "$(PGPASSWORD)"
-    - name: KC_LOG_LEVEL
-      value: DEBUG
+    - name: KC_METRICS_ENABLED
+      value: "true"
     - name: KC_HOSTNAME
       value: "keycloak-{{ .Values.global.host }}"
     - name: KC_PROXY
