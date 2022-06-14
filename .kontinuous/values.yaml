@@ -35,25 +35,7 @@ keycloakx:
     vendor: postgres
 
   command:
-    - "/opt/keycloak/bin/kc.sh"
-  args:
-    # necessary for keycloak@17
-    - "import"
-    - "--dir=/opt/keycloak/data/import"
-    - "&&"
-    - "/opt/keycloak/bin/kc.sh"
-    # ---
-    - "start"
-    - "--auto-build"
-    - "--http-enabled=true"
-    - "--http-port=8080"
-    - "--hostname-strict=false"
-    - "--hostname-strict-https=false"
-    #- "--import-realm"
-    - "--features=admin2"
-    #  - "/opt/keycloak/bin/kc.sh"
-    # - "--spi-events-listener-jboss-logging-success-level=info"
-    # - "--spi-events-listener-jboss-logging-error-level=warn"
+    - "/scripts/kc-start.sh"
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
@@ -89,6 +71,9 @@ keycloakx:
     - name: keycloak-realm-tpl
       configMap:
         name: keycloak-realm
+    - name: kc-start
+      configMap:
+        name: kc-start
     - name: keycloak-realm
       emptyDir: {}
     - name: providers
@@ -97,6 +82,9 @@ keycloakx:
     - name: keycloak-realm
       mountPath: "/opt/keycloak/data/import"
       readOnly: true
+    - name: kc-start
+      mountPath: "/scripts"
+      defaultMode: 0777
     - name: providers
       mountPath: "/opt/keycloak/providers"
   extraInitContainers: |
