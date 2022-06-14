@@ -35,6 +35,8 @@ keycloakx:
     vendor: postgres
 
   command:
+    - "--version"
+    - "&&"
     - "/scripts/kc-start.sh"
 
   statefulsetAnnotations:
