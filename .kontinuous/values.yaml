@@ -27,7 +27,7 @@ jobs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
 
 keycloak:
-  enabled: true
+  # enabled: true
 
   serviceAccount:
     create: false
