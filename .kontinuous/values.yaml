@@ -69,6 +69,8 @@ keycloakx:
       value: "$(PGPASSWORD)"
     - name: KC_LOG_LEVEL
       value: INFO
+    - name: KC_HOSTNAME
+      value: "keycloak-{{ .Values.global.host }}"
   extraVolumes: |
     - name: keycloak-realm-tpl
       configMap:
