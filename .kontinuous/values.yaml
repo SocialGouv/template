@@ -34,8 +34,8 @@ keycloakx:
   database:
     vendor: postgres
 
-  command:
-    - "/opt/keycloak/bin/kc.sh"
+  args:
+    #  - "/opt/keycloak/bin/kc.sh"
     - "start"
     - "--auto-build"
     - "--http-enabled=true"
