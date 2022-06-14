@@ -36,6 +36,7 @@ keycloakx:
 
   command:
     - "/opt/keycloak/bin/kc.sh"
+  args:
     # necessary for keycloak@17
     - "import"
     - "--dir=/opt/keycloak/data/import"
