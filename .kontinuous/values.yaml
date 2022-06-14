@@ -57,46 +57,26 @@ keycloak:
       value: postgres
     - name: KC_METRICS_ENABLED
       value: "true"
-      KC_DB_USERNAME: keycloak
-      KC_DB_PASSWORD: password
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_LOG_LEVEL: INFO
-
-    - name: KEYCLOAK_IMPORT
-      value: /realm/realm.json
-    - name: PROXY_ADDRESS_FORWARDING
-      value: "true"
-    - name: DB_VENDOR
-      value: postgres
-    - name: DB_ADDR
-      value: "$(PGHOST)"
-    - name: DB_PORT
-      value: "$(PGPORT)"
-    - name: DB_DATABASE
-      value: "$(PGDATABASE)"
-    - name: DB_USER
+    - name: KC_DB_USERNAME
       value: "$(PGUSER)"
-    - name: DB_PASSWORD
+    - name: KC_DB_PASSWORD
       value: "$(PGPASSWORD)"
-    - name: JAVA_OPTS
-      value: >-
-        -Dkeycloak.profile=preview
-
+    - name: KC_LOG_LEVEL
+      value: INFO
   extraVolumes: |
     - name: keycloak-realm-tpl
       configMap:
         name: keycloak-realm
     - name: keycloak-realm
       emptyDir: {}
-    - name: extensions
+    - name: providers
       emptyDir: {}
   extraVolumeMounts: |
     - name: keycloak-realm
-      mountPath: "/realm/"
+      mountPath: "/opt/keycloak/data/import"
       readOnly: true
-    - name: extensions
-      mountPath: "/opt/jboss/keycloak/standalone/deployments"
+    - name: providers
+      mountPath: "/opt/keycloak/providers"
   extraInitContainers: |
     - name: compile-realm
       image: hairyhenderson/gomplate:v3.10.0-alpine
@@ -121,17 +101,17 @@ keycloak:
       args:
         - -c
         - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
-    - name: fetch-keycloak-extensions
+    - name: fetch-keycloak-providers
       image: curlimages/curl
       imagePullPolicy: IfNotPresent
       command:
         - sh
       args:
         - -c
-        - curl -L -f -S -o /extensions/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar -o /extensions/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
+        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
       volumeMounts:
-        - name: extensions
-          mountPath: /extensions
+        - name: providers
+          mountPath: /providers
 
   ingress:
     enabled: true
