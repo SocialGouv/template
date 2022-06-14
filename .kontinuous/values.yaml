@@ -42,9 +42,8 @@ keycloakx:
     - "--http-port=8080"
     - "--hostname-strict=false"
     - "--hostname-strict-https=false"
-    - "--spi-events-listener-jboss-logging-success-level=info"
-    - "--spi-events-listener-jboss-logging-error-level=warn"
-    - "--db=postgres"
+    # - "--spi-events-listener-jboss-logging-success-level=info"
+    # - "--spi-events-listener-jboss-logging-error-level=warn"
     - "--import-realm"
     - "--features=admin2"
 
@@ -72,7 +71,7 @@ keycloakx:
     - name: KC_DB_PASSWORD
       value: "$(PGPASSWORD)"
     - name: KC_LOG_LEVEL
-      value: INFO
+      value: DEBUG
     - name: KC_HOSTNAME
       value: "keycloak-{{ .Values.global.host }}"
   extraVolumes: |
