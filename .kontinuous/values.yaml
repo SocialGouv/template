@@ -36,7 +36,8 @@ keycloakx:
 
   # hack for import + start prior to keycloak 18
   command:
-    - "/scripts/kc-start.sh"
+    - sleep
+    - 50000
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
