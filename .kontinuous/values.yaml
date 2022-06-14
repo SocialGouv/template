@@ -36,7 +36,6 @@ keycloakx:
 
   command:
     - "/opt/keycloak/bin/kc.sh"
-    - "--verbose"
     - "start"
     - "--auto-build"
     - "--http-enabled=true"
@@ -47,8 +46,7 @@ keycloakx:
     - "--spi-events-listener-jboss-logging-error-level=warn"
     - "--db=postgres"
     - "--import-realm"
-    - "--features"
-    - "admin2"
+    - "--features=admin2"
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
