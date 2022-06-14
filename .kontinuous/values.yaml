@@ -35,11 +35,7 @@ keycloakx:
     vendor: postgres
 
   # hack for import + start prior to keycloak 18
-  args:
-    - "--version"
-    - "show-config"
-    - "&&"
-    - "/scripts/kc-start.sh"
+  command: "/scripts/kc-start.sh"
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
