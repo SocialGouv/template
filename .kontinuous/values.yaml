@@ -34,15 +34,21 @@ keycloakx:
   database:
     vendor: postgres
 
-  ærgs:
-    [
-      "start",
-      "--auto-build",
-      "--db=postgres",
-      "--import-realm",
-      "--features",
-      "admin2",
-    ]
+  command:
+    - "/opt/keycloak/bin/kc.sh"
+    - "--verbose"
+    - "start"
+    - "--auto-build"
+    - "--http-enabled=true"
+    - "--http-port=8080"
+    - "--hostname-strict=false"
+    - "--hostname-strict-https=false"
+    - "--spi-events-listener-jboss-logging-success-level=info"
+    - "--spi-events-listener-jboss-logging-error-level=warn"
+    - "--db=postgres"
+    - "--import-realm"
+    - "--features"
+    - "admin2"
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
