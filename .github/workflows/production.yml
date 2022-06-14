@@ -1,9 +1,9 @@
 name: Production
 
-on:
-  push:
-    tags:
-      - v*
+# on:
+#   push:
+#     tags:
+#       - v*
 
 concurrency:
   group: production
