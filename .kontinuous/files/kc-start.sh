@@ -2,9 +2,10 @@
 
 # import realm and start server for keycloak@17 - fixed in 18
 
+echo "ioo"
 ls
 ls /opt/keycloak/data/import
-/opt/keycloak/bin/kc.sh --version
+#/opt/keycloak/bin/kc.sh --version
 
 /opt/keycloak/bin/kc.sh import --dir /opt/keycloak/data/import
 
