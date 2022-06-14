@@ -37,6 +37,7 @@ keycloakx:
 
   # hack for import + start prior to keycloak 18
   command:
+    - "/opt/keycloak/bin/kc.sh"
     - "start"
     - "--auto-build"
     - "--http-enabled=true"
