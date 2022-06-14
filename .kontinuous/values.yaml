@@ -34,9 +34,10 @@ keycloakx:
   database:
     vendor: postgres
 
-  # hack for import + start priori to keycloak 18
+  # hack for import + start prior to keycloak 18
   args:
     - "--version"
+    - "show-config"
     - "&&"
     - "/scripts/kc-start.sh"
 
