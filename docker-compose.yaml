@@ -24,7 +24,6 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_LOG_LEVEL: INFO
-      #KEYCLOAK_IMPORT: /data/import/realm-export-local.json 
     ports:
       - 8080:8080
     depends_on:
