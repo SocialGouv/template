@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: kc-start
 data:
-  kc-start: |
+  kc-start.sh: |
     {{- .Files.Get "files/kc-start.sh" | nindent 4}}
