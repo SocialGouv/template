@@ -6,7 +6,7 @@ app-front:
   imageProject: fabrique
   imageRepository: template
   imagePackage: app
-  containerPort: 8080
+  containerPort: 3000
   probesPath: "/healthz"
   envFrom:
     - configMapRef:
