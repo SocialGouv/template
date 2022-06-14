@@ -27,20 +27,26 @@ jobs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
 
 keycloakx:
-  image:
-    tag: "18.0.0"
   fullnameOverride: "keycloakx"
   serviceAccount:
     create: false
-
+  image:
+    tag: "18.0.0"
   database:
     vendor: postgres
 
   # hack for import + start prior to keycloak 18
   command:
-    - "sh"
-    - "-c"
-    - "sleep 50000"
+    - "start"
+    - "--auto-build"
+    - "--http-enabled=true"
+    - "--http-port=8080"
+    - "--hostname-strict=false"
+    - "--hostname-strict-https=false"
+    - "--import-realm"
+    - "--features=admin2"
+  # - "--spi-events-listener-jboss-logging-success-level=info"
+  # - "--spi-events-listener-jboss-logging-error-level=warn"
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
@@ -76,9 +82,6 @@ keycloakx:
     - name: keycloak-realm-tpl
       configMap:
         name: keycloak-realm
-    - name: kc-start
-      configMap:
-        name: kc-start
     - name: keycloak-realm
       emptyDir: {}
     - name: providers
@@ -87,9 +90,6 @@ keycloakx:
     - name: keycloak-realm
       mountPath: "/opt/keycloak/data/import"
       readOnly: true
-    - name: kc-start
-      mountPath: "/scripts"
-      defaultMode: 0744
     - name: providers
       mountPath: "/opt/keycloak/providers"
   extraInitContainers: |
