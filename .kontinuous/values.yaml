@@ -3,6 +3,7 @@ global:
 
 app-front:
   needs: [build-app]
+  host: "{{.Values.global.host}}"
   imageProject: fabrique
   imageRepository: template
   imagePackage: app
@@ -34,6 +35,12 @@ keycloakx:
     tag: "18.0.0"
   database:
     vendor: postgres
+  cache:
+    stack: custom
+  http:
+    relativePath: /
+  service:
+    httpPort: 8080
 
   # hack for import + start prior to keycloak 18
   command:
@@ -62,8 +69,6 @@ keycloakx:
     - secretRef:
         name: keycloak-secrets
   extraEnv: |
-    - name: KC_DB
-      value: postgres
     - name: KC_DB_URL_HOST
       value: "$(PGHOST)"
     - name: KC_DB_URL_PORT
@@ -74,12 +79,10 @@ keycloakx:
       value: "$(PGUSER)"
     - name: KC_DB_PASSWORD
       value: "$(PGPASSWORD)"
-    - name: KC_METRICS_ENABLED
-      value: "true"
     - name: KC_HOSTNAME
       value: "keycloak-{{ .Values.global.host }}"
-    - name: KC_PROXY
-      value: "passthrough"
+    - name: KC_LOG_LEVEL
+      value: "INFO"
 
   extraVolumes: |
     - name: keycloak-realm-tpl
