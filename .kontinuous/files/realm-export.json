@@ -458,7 +458,7 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": ["/realms/app-realm/account/*"],
-      "webOrigins": [],
+      "webOrigins": ["${authBaseUrl}"],
       "notBefore": 0,
       "bearerOnly": false,
       "consentRequired": false,
@@ -2303,7 +2303,7 @@
     "clientOfflineSessionIdleTimeout": "0",
     "cibaInterval": "5"
   },
-  "keycloakVersion": "17.0.1",
+  "keycloakVersion": "18.0.0",
   "userManagedAccessAllowed": true,
   "clientProfiles": {
     "profiles": []
