@@ -27,38 +27,15 @@ keycloakx:
     - secretRef:
         name: keycloak-secrets
 
-# ---
-
-# jobs-dev:
-#   runs:
-#     db:
-#       use: SocialGouv/kontinuous/plugins/fabrique/jobs/create-db@v1
-#       with:
-#         pgAdminSecretRefName: pg-scaleway
-
-# jobs-deactivate:
-#   enabled: false
-#   runs:
-#     deactivate:
-#       use: SocialGouv/kontinuous/plugins/fabrique/jobs/deactivate
-#       with:
-#         pgAdminSecretRefName: pg-scaleway
-
-# jobs:
-#   runs:
-#     db-keycloak:
-#       use: SocialGouv/kube-workflow/jobs/create-db
-#       with:
-#         pgAdminSecretRefName: pg-scaleway
-#         pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
-#         database: "keycloak_{{ .Values.global.branchSlug32 }}"
-#         pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
-
-# keycloak:
-#   statefulsetAnnotations:
-#     kapp.k14s.io/change-rule: "upsert after upserting kube-workflow/db-keycloak.{{ .Values.global.namespace }}"
-#   extraEnvFrom: |
-#     - secretRef:
-#         name: "keycloak-db-{{ .Values.global.branchSlug32 }}"
-#     - secretRef:
-#         name: keycloak-secrets
+jobs-deactivate:
+  enabled: false
+  runs:
+    deactivate:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/deactivate
+      with:
+        pgAdminSecretRefName: pg-scaleway
+    drop-db:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/drop-db
+      with:
+        pgAdminSecretRefName: pg-scaleway
+        database: "keycloak_{{ .Values.global.branchSlug32 }}"
