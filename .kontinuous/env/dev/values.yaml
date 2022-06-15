@@ -36,13 +36,19 @@ keycloakx:
 #       with:
 #         pgAdminSecretRefName: pg-scaleway
 
-# jobs-deactivate:
-#   enabled: false
-#   runs:
-#     deactivate:
-#       use: SocialGouv/kontinuous/plugins/fabrique/jobs/deactivate
-#       with:
-#         pgAdminSecretRefName: pg-scaleway
+jobs-deactivate:
+  enabled: false
+  runs:
+    deactivate:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/deactivate
+      with:
+        pgAdminSecretRefName: pg-scaleway
+    drop-db:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/drop-db
+      with:
+        pgAdminSecretRefName: pg-scaleway
+        database: "keycloak_{{ .Values.global.branchSlug32 }}"
+
 
 # jobs:
 #   runs:
