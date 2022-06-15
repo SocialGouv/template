@@ -458,7 +458,7 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": ["/realms/app-realm/account/*"],
-      "webOrigins": [],
+      "webOrigins": ["${authBaseUrl}"],
       "notBefore": 0,
       "bearerOnly": false,
       "consentRequired": false,
