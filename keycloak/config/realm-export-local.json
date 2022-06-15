@@ -1366,10 +1366,11 @@
   },
   "smtpServer": {},
   "loginTheme": "keycloak-dsfr",
-  "eventsEnabled": false,
+  "eventsEnabled": true,
+  "eventsExpiration": 86400,
   "eventsListeners": ["jboss-logging"],
   "enabledEventTypes": [],
-  "adminEventsEnabled": false,
+  "adminEventsEnabled": true,
   "adminEventsDetailsEnabled": false,
   "identityProviders": [
     {

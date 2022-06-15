@@ -74,6 +74,8 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
 
+Le `realm` par défaut est dans [.kontinuous/files/realm-export.json](.kontinuous/files/realm-export.json). Pour générer realm utilisable par `docker-compose` à partir de celui-ci, utilisez `yarn keycloak`.
+
 #### FranceConnect
 
 Cf https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service
