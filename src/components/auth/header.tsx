@@ -12,7 +12,15 @@ const Index = (): JSX.Element => {
           <Tag as="a" href="/profil">
             {session.user?.email}
           </Tag>
-          <ToolItem onClick={() => signOut()}>Se déconnecter</ToolItem>
+          <ToolItem
+            onClick={() =>
+              signOut({
+                callbackUrl: "/api/logout",
+              })
+            }
+          >
+            Se déconnecter
+          </ToolItem>
         </>
       ) : (
         <ToolItem onClick={() => signIn("keycloak")}>Se connecter</ToolItem>

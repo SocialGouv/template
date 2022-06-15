@@ -70,6 +70,10 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 :warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
 
+### KeyCloak
+
+Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
+
 ## Liens
 
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
