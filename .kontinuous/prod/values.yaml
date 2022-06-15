@@ -1,14 +1,6 @@
-
 jobs:
   runs:
     build-app:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
       with:
-        imageProject: fabrique.         # optional
-        imageRepository: template       # optional
-        imagePackage: app
-        registrySecretRefName: harbor
         buildArgs:
-          GITHUB_SHA: "{{ $.Values.global.sha }}"
-          PRODUCTION: true
-
+          PRODUCTION: "true"
