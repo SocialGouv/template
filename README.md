@@ -74,6 +74,10 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
 
+#### FranceConnect
+
+Cf https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service
+
 ## Liens
 
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
