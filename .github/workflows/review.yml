@@ -1,11 +1,11 @@
 name: Review
 
-on:
-  push:
-    branches-ignore:
-      - main
-    tags-ignore:
-      - v*
+# on:
+#   push:
+#     branches-ignore:
+#       - main
+#     tags-ignore:
+#       - v*
 
 concurrency:
   cancel-in-progress: true

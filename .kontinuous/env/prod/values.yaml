@@ -1,4 +1,4 @@
-keycloak:
+keycloakx:
   ingress:
     annotations:
       cert-manager.io: cluster-issuer
