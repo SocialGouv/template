@@ -1391,7 +1391,7 @@
         "fc_environment": "integration_v1",
         "syncMode": "IMPORT",
         "clientSecret": "123",
-        "defaultScope": "openid identite_pivot",
+        "defaultScope": "openid email",
         "useJwksUrl": "true"
       }
     }
@@ -2295,7 +2295,7 @@
     "clientOfflineSessionIdleTimeout": "0",
     "cibaInterval": "5"
   },
-  "keycloakVersion": "17.0.1",
+  "keycloakVersion": "18.0.0",
   "userManagedAccessAllowed": true,
   "clientProfiles": {
     "profiles": []

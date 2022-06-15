@@ -1400,7 +1400,7 @@
         "fc_environment": "integration_v1",
         "syncMode": "IMPORT",
         "clientSecret": "{{ getenv `FRANCE_CONNECT_CLIENT_SECRET` }}",
-        "defaultScope": "openid identite_pivot",
+        "defaultScope": "openid email",
         "useJwksUrl": "true"
       }
     }
