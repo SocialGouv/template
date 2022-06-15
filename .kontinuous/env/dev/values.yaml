@@ -1,14 +1,5 @@
 jobs:
   runs:
-    build-app:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
-      with:
-        imageProject: fabrique
-        imageRepository: template
-        imagePackage: app
-        registrySecretRefName: harbor
-        buildArgs:
-          GITHUB_SHA: "{{ $.Values.global.sha }}"
     db-keycloak:
       use: SocialGouv/kontinuous/plugins/fabrique/jobs/create-db@v1
       with:
