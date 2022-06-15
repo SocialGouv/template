@@ -8,3 +8,16 @@ keycloakx:
       - hosts:
           - "keycloak-{{ .Values.global.host }}"
         secretName: keycloak-crt
+
+jobs:
+  runs:
+    build-app:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      with:
+        imageProject: fabrique
+        imageRepository: template
+        imagePackage: app
+        registrySecretRefName: harbor
+        buildArgs:
+          NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
+          NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: true

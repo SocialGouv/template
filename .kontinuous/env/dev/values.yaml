@@ -8,7 +8,7 @@ jobs:
         imagePackage: app
         registrySecretRefName: harbor
         buildArgs:
-          GITHUB_SHA: "{{ $.Values.global.sha }}"
+          NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
     db-keycloak:
       use: SocialGouv/kontinuous/plugins/fabrique/jobs/create-db@v1
       with:
