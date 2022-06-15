@@ -35,7 +35,7 @@
   "duplicateEmailsAllowed": false,
   "resetPasswordAllowed": true,
   "editUsernameAllowed": true,
-  "bruteForceProtected": false,
+  "bruteForceProtected": true,
   "permanentLockout": false,
   "maxFailureWaitSeconds": 900,
   "minimumQuickLoginWaitSeconds": 60,
@@ -389,6 +389,7 @@
     "containerId": "app-realm"
   },
   "requiredCredentials": ["password"],
+  "passwordPolicy": "length(12) and notUsername(undefined) and notEmail(undefined) and digits(1) and specialChars(1) and forceExpiredPasswordChange(365)",
   "otpPolicyType": "totp",
   "otpPolicyAlgorithm": "HmacSHA1",
   "otpPolicyInitialCounter": 0,
