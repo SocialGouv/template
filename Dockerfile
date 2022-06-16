@@ -2,7 +2,7 @@ ARG NODE_VERSION=16-alpine
 
 # Install dependencies only when needed
 FROM node:$NODE_VERSION AS prepare
-RUN apk add --no-cache libc6-compat=1.2.2-r7
+RUN apk add --no-cache libc6-compat=1.2.3-r0
 WORKDIR /app
 COPY package.json yarn.lock ./
 
@@ -27,13 +27,13 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN if [ -z "$PRODUCTION" ]; then \
-      echo "Overriding .env for staging"; \
-      cp .env.staging .env.production; \
-    fi && \
-    yarn build:export 
+  echo "Overriding .env for staging"; \
+  cp .env.staging .env.production; \
+  fi && \
+  yarn build:export 
 
 # Production image, copy all the files and run next
-FROM ghcr.io/socialgouv/docker/nginx:7.0.0 AS runner
+FROM ghcr.io/socialgouv/docker/nginx:7.0.1 AS runner
 
 COPY --from=builder /app/out /usr/share/nginx/html
 

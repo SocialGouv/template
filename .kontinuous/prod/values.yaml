@@ -1,0 +1,6 @@
+jobs:
+  runs:
+    build-app:
+      with:
+        buildArgs:
+          PRODUCTION: "true"
