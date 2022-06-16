@@ -1,4 +1,4 @@
-keycloak:
+keycloakx:
   ingress:
     annotations:
       cert-manager.io: cluster-issuer
@@ -8,3 +8,10 @@ keycloak:
       - hosts:
           - "keycloak-{{ .Values.global.host }}"
         secretName: keycloak-crt
+
+jobs:
+  runs:
+    build-app:
+      with:
+        buildArgs:
+          NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: "true"

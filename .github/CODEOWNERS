@@ -1,4 +1,4 @@
 # Protect workflow files
 .github/workflows/*.yml @socialgouv/sre
 .github/CODEOWNERS @socialgouv/sre
-.kube-workflow/  @socialgouv/sre
+.kontinuous/  @socialgouv/sre

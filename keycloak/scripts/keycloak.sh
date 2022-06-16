@@ -10,4 +10,4 @@ export SMTP_HOST=smtp.tipimail.com
 export SMTP_USER=smtp-user
 export SMTP_PASSWORD=smtp-password
 export SMTP_SSL=false
-cat .kube-workflow/files/realm-export.json | gomplate > keycloak/config/realm-export-local.json
+cat .kontinuous/files/realm-export.json | gomplate > keycloak/config/realm-export-local.json

@@ -35,7 +35,7 @@
   "duplicateEmailsAllowed": false,
   "resetPasswordAllowed": true,
   "editUsernameAllowed": true,
-  "bruteForceProtected": false,
+  "bruteForceProtected": true,
   "permanentLockout": false,
   "maxFailureWaitSeconds": 900,
   "minimumQuickLoginWaitSeconds": 60,
@@ -389,6 +389,7 @@
     "containerId": "app-realm"
   },
   "requiredCredentials": ["password"],
+  "passwordPolicy": "length(12) and notUsername(undefined) and notEmail(undefined) and digits(1) and specialChars(1) and forceExpiredPasswordChange(365)",
   "otpPolicyType": "totp",
   "otpPolicyAlgorithm": "HmacSHA1",
   "otpPolicyInitialCounter": 0,
@@ -458,7 +459,7 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": ["/realms/app-realm/account/*"],
-      "webOrigins": [],
+      "webOrigins": ["${authBaseUrl}"],
       "notBefore": 0,
       "bearerOnly": false,
       "consentRequired": false,
@@ -1374,10 +1375,11 @@
     "password": "{{ getenv `SMTP_PASSWORD` }}"
   },
   "loginTheme": "keycloak-dsfr",
-  "eventsEnabled": false,
+  "eventsEnabled": true,
+  "eventsExpiration": 86400,
   "eventsListeners": ["jboss-logging"],
   "enabledEventTypes": [],
-  "adminEventsEnabled": false,
+  "adminEventsEnabled": true,
   "adminEventsDetailsEnabled": false,
   "identityProviders": [
     {
@@ -1399,7 +1401,7 @@
         "fc_environment": "integration_v1",
         "syncMode": "IMPORT",
         "clientSecret": "{{ getenv `FRANCE_CONNECT_CLIENT_SECRET` }}",
-        "defaultScope": "openid identite_pivot",
+        "defaultScope": "openid email",
         "useJwksUrl": "true"
       }
     }
@@ -2303,7 +2305,7 @@
     "clientOfflineSessionIdleTimeout": "0",
     "cibaInterval": "5"
   },
-  "keycloakVersion": "17.0.1",
+  "keycloakVersion": "18.0.0",
   "userManagedAccessAllowed": true,
   "clientProfiles": {
     "profiles": []

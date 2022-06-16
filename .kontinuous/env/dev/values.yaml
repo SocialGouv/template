@@ -1,0 +1,41 @@
+jobs:
+  runs:
+    build-app:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      with:
+        imageProject: fabrique
+        imageRepository: template
+        imagePackage: app
+        registrySecretRefName: harbor
+        buildArgs:
+          NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
+    db-keycloak:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/create-db@v1
+      with:
+        pgAdminSecretRefName: pg-scaleway
+        pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+        database: "keycloak_{{ .Values.global.branchSlug32 }}"
+        pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
+
+keycloakx:
+  needs: [build-app, db-keycloak]
+  #statefulsetAnnotations:
+  # kapp.k14s.io/change-rule: "upsert after upserting kube-workflow/db-keycloak.{{ .Values.global.namespace }}"
+  extraEnvFrom: |
+    - secretRef:
+        name: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+    - secretRef:
+        name: keycloak-secrets
+
+jobs-deactivate:
+  enabled: false
+  runs:
+    deactivate:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/deactivate
+      with:
+        pgAdminSecretRefName: pg-scaleway
+    drop-db:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/drop-db
+      with:
+        pgAdminSecretRefName: pg-scaleway
+        database: "keycloak_{{ .Values.global.branchSlug32 }}"

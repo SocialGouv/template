@@ -70,6 +70,20 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 :warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
 
+### KeyCloak
+
+Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
+
+Le `realm` par défaut est dans [.kontinuous/files/realm-export.json](.kontinuous/files/realm-export.json). Pour générer realm utilisable par `docker-compose` à partir de celui-ci, utilisez `yarn keycloak`.
+
+Le thème keycloak est basé sur le design-système de l'état, cf [keycloak-dsfr](https://github.com/SocialGouv/keycloak-dsfr).
+
+#### FranceConnect
+
+Cf https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service
+
+Dans les URLs de callback définies [sur le compte FranceConnect](), utiliser `https://[votre-hostname]/realms/app-realm/broker/franceconnect-particulier/endpoint` et `https://[votre-hostname]/realms/app-realm/broker/franceconnect-particulier/endpoint/logout_response`.
+
 ## Liens
 
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
