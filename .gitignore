@@ -45,3 +45,6 @@ cypress/screenshots
 
 # Robots.txt
 robots.txt
+
+# Keycloak extensions deployed
+*.jar.deployed

@@ -12,6 +12,7 @@ import {
 import { useEffect } from "react";
 import { init } from "@socialgouv/matomo-next";
 import { DefaultSeo } from "next-seo";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -22,18 +23,20 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Layout
-      headerProps={{ ...headerProps }}
-      footerProps={{
-        bodySection: footerBodySection,
-        bottomSection: footerBottomSection,
-        partnerSection: footerPartnerSection,
-        topSection: footerTopSection,
-      }}
-    >
-      <DefaultSeo {...(SEO as any)} />
-      <Component {...pageProps} />
-    </Layout>
+    <SessionProvider session={pageProps.session}>
+      <Layout
+        headerProps={{ ...headerProps }}
+        footerProps={{
+          bodySection: footerBodySection,
+          bottomSection: footerBottomSection,
+          partnerSection: footerPartnerSection,
+          topSection: footerTopSection,
+        }}
+      >
+        <DefaultSeo {...(SEO as any)} />
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
   );
 }
 

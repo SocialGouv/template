@@ -10,8 +10,6 @@
     "lint": "next lint",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "export": "next export",
-    "build:export": "npm run build && npm run export",
     "e2e": "cypress open",
     "e2e:headless": "cypress run",
     "test": "jest",
@@ -23,7 +21,8 @@
     "storybook:deploy": "npm run storybook:build && gh-pages -d .out",
     "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\"",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check -- --watch",
+    "keycloak": "chmod +x keycloak/scripts/keycloak.sh && keycloak/scripts/keycloak.sh"
   },
   "dependencies": {
     "@dataesr/react-dsfr": "^1.0.5",
@@ -31,9 +30,10 @@
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.2.2",
     "next": "12.1.6",
+    "next-auth": "4.5.0",
     "next-seo": "^5.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -46,8 +46,8 @@
     "@swc-node/register": "^1.4.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
-    "@types/node": "17.0.13",
-    "@types/react": "17.0.44",
+    "@types/node": "^17.0.33",
+    "@types/react": "^18.0.9",
     "cypress": "^9.4.1",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.6",

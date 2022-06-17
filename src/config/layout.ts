@@ -1,4 +1,5 @@
 import {
+  AuthHeader,
   FooterBodySectionProps,
   FooterBottomSectionProps,
   FooterPartnerSectionProps,
@@ -87,6 +88,7 @@ export const headerProps: HeaderProps = {
     },
   ],
   closeButtonLabel: "Fermer",
+  authHeader: AuthHeader,
 };
 
 export const footerTopSection: FooterTopSectionProps = {

@@ -1,0 +1,153 @@
+global:
+  registry: harbor.fabrique.social.gouv.fr
+
+app-front:
+  needs: [build-app]
+  host: "{{.Values.global.host}}"
+  imageProject: fabrique
+  imageRepository: template
+  imagePackage: app
+  containerPort: 3000
+  probesPath: "/healthz"
+  envFrom:
+    - configMapRef:
+        name: app
+    - secretRef:
+        name: app
+
+jobs:
+  runs:
+    build-app:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      with:
+        imageProject: fabrique
+        imageRepository: template
+        imagePackage: app
+        registrySecretRefName: harbor
+        buildArgs:
+          NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
+
+keycloakx:
+  fullnameOverride: keycloakx
+  enabled: true
+
+  serviceAccount:
+    create: false
+  image:
+    tag: "18.0.0"
+  database:
+    vendor: postgres
+  cache:
+    stack: custom
+  http:
+    relativePath: /
+  service:
+    httpPort: 8080
+
+  # hack for import + start prior to keycloak 18
+  command:
+    - "/opt/keycloak/bin/kc.sh"
+    - "start"
+    - "--auto-build"
+    - "--http-enabled=true" # SSL is provided at ingress level
+    - "--http-port=8080"
+    - "--hostname-strict=true"
+    - "--hostname-strict-https=true"
+    - "--import-realm"
+    - "--features=admin2"
+    - "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
+  # - "--spi-events-listener-jboss-logging-success-level=info"
+  # - "--spi-events-listener-jboss-logging-error-level=warn"
+
+  statefulsetAnnotations:
+    kapp.k14s.io/nonce: ""
+    kapp.k14s.io/update-strategy: fallback-on-replace
+    kapp.k14s.io/change-group: "kontinuous/keycloak.{{ .Values.global.namespace }}"
+    kapp.k14s.io/disable-original: ""
+    kapp.k14s.io/create-strategy: fallback-on-update
+
+  extraEnvFrom: |
+    - secretRef:
+        name: pg-user-keycloak
+    - secretRef:
+        name: keycloak-secrets
+  extraEnv: |
+    - name: KC_DB_URL_HOST
+      value: "$(PGHOST)"
+    - name: KC_DB_URL_PORT
+      value: "$(PGPORT)"
+    - name: KC_DB_URL_DATABASE
+      value: "$(PGDATABASE)"
+    - name: KC_DB_USERNAME
+      value: "$(PGUSER)"
+    - name: KC_DB_PASSWORD
+      value: "$(PGPASSWORD)"
+    - name: KC_HOSTNAME
+      value: "keycloak-{{ .Values.global.host }}"
+    - name: KC_LOG_LEVEL
+      value: "INFO"
+
+  extraVolumes: |
+    - name: keycloak-realm-tpl
+      configMap:
+        name: keycloak-realm
+    - name: keycloak-realm
+      emptyDir: {}
+    - name: providers
+      emptyDir: {}
+  extraVolumeMounts: |
+    - name: keycloak-realm
+      mountPath: "/opt/keycloak/data/import"
+      readOnly: true
+    - name: providers
+      mountPath: "/opt/keycloak/providers"
+  extraInitContainers: |
+    - name: compile-realm
+      image: hairyhenderson/gomplate:v3.10.0-alpine
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+      - name: keycloak-realm-tpl
+        mountPath: "/realm-tpl/"
+        readOnly: true
+      - name: keycloak-realm
+        mountPath: "/realm/"
+      envFrom:
+      - configMapRef:
+          name: app
+      - secretRef:
+          name: app
+      - secretRef:
+          name: franceconnect
+      - secretRef:
+          name: smtp
+      command:
+        - sh
+      args:
+        - -c
+        - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
+    - name: fetch-keycloak-providers
+      image: curlimages/curl
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+      args:
+        - -c
+        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
+      volumeMounts:
+        - name: providers
+          mountPath: /providers
+
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+      kubernetes.io/ingress.class: nginx
+    tls:
+      - hosts:
+          - "keycloak-{{ .Values.global.host }}"
+        secretName: wildcard-crt
+    rules:
+      - host: "keycloak-{{ .Values.global.host }}"
+        paths:
+          - path: /
+            pathType: Prefix

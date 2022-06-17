@@ -22,6 +22,7 @@ module.exports = {
       "@hooks": path.resolve(__dirname, "../src/hooks"),
       "@modules": path.resolve(__dirname, "../src/modules"),
       "@lib": path.resolve(__dirname, "../src/lib"),
+      "@types": path.resolve(__dirname, "../src/types"),
     };
     return config;
   },

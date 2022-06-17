@@ -1,41 +1,44 @@
 ARG NODE_VERSION=16-alpine
 
-# Install dependencies only when needed
-FROM node:$NODE_VERSION AS prepare
-RUN apk add --no-cache libc6-compat=1.2.2-r7
-WORKDIR /app
-COPY package.json yarn.lock ./
-
-# Keep yarn install cache when bumping version and dependencies still the sames
-RUN node -e " \
-  const package = JSON.parse(fs.readFileSync('/app/package.json')); \
-  const packageZero = { ...package, version: '0.0.0' };  \
-  fs.writeFileSync('/app/package.json', JSON.stringify(packageZero));"
-
-FROM node:$NODE_VERSION as deps
-WORKDIR /app
-COPY --from=prepare /app/package.json /app/yarn.lock ./
-RUN yarn install --frozen-lockfile
-
-# Rebuild the source code only when needed
+# Builder
 FROM node:$NODE_VERSION AS builder
-ARG PRODUCTION
-ENV NODE_ENV production
-ARG GITHUB_SHA
-ENV GITHUB_SHA $GITHUB_SHA
+
+ARG NEXT_PUBLIC_APP_VERSION_COMMIT
+ENV NEXT_PUBLIC_APP_VERSION_COMMIT $NEXT_PUBLIC_APP_VERSION_COMMIT
+ARG NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT
+ENV NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT $NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT
+ARG NEXT_PUBLIC_HOST
+ENV NEXT_PUBLIC_HOST $NEXT_PUBLIC_HOST
+
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+
+COPY package.json yarn.lock /app/
+
 COPY . .
-RUN if [ -z "$PRODUCTION" ]; then \
-      echo "Overriding .env for staging"; \
-      cp .env.staging .env.production; \
-    fi && \
-    yarn build:export 
 
-# Production image, copy all the files and run next
-FROM ghcr.io/socialgouv/docker/nginx:7.0.0 AS runner
+RUN yarn install --frozen-lockfile && yarn build && yarn install --production && if [ -z "$NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
 
-COPY --from=builder /app/out /usr/share/nginx/html
+# Runner
+FROM node:$NODE_VERSION AS runner
 
-# Disable nextjs telemetry
+WORKDIR /app
+
+ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
+
+COPY --from=builder /app/next.config.js .
+COPY --from=builder /app/sentry.client.config.ts .
+COPY --from=builder /app/sentry.server.config.ts .
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/.env.production .
+COPY --from=builder /app/.env.staging .
+COPY --from=builder /app/csp.config.js .
+COPY --from=builder /app/next-seo.config.js .
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/.next ./.next
+
+USER 1001
+
+CMD ["yarn", "start"]

@@ -38,6 +38,7 @@ const Index = (props: HeaderProps): JSX.Element => (
       />
       <Tool {...props.closeButtonLabel}>
         <ToolItemGroup>
+          {props.authHeader?.()}
           {props.bodyItems?.map((item, index) => (
             <ToolItem key={`${index}-${item.title}`} link={item.href}>
               {item.title}
