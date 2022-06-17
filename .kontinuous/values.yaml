@@ -7,11 +7,6 @@ app:
   imageRepository: template
   imagePackage: app
   containerPort: 8080
-  envFrom:
-    - configMapRef:
-        name: app
-    - secretRef:
-        name: app
 
 jobs:
   runs:
