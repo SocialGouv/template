@@ -1,0 +1,10 @@
+
+keycloakx:
+  needs: [build-app]
+  #statefulsetAnnotations:
+  # kapp.k14s.io/change-rule: "upsert after upserting kube-workflow/db-keycloak.{{ .Values.global.namespace }}"
+  extraEnvFrom: |
+    - secretRef:
+        name: "keycloak-db"
+    - secretRef:
+        name: keycloak-secrets
