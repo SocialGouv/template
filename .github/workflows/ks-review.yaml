@@ -3,7 +3,7 @@ name: Review
 on:
   push:
     branches-ignore:
-      - master
+      - main
     tags-ignore:
       - v*
 
