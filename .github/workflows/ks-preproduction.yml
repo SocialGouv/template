@@ -12,8 +12,5 @@ concurrency:
 
 jobs:
   follow-deployment:
-    environment:
-      name: preproduction
-      url: https://template-preprod.dev.fabrique.social.gouv.fr
     uses: SocialGouv/kontinuous/.github/workflows/workflow-logs.yaml@v1
     secrets: inherit
