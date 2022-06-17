@@ -1,0 +1,21 @@
+global:
+  registry: harbor.fabrique.social.gouv.fr
+
+app:
+  needs: [build-app]
+  imageProject: fabrique
+  imageRepository: template
+  imagePackage: app
+  containerPort: 8080
+
+jobs:
+  runs:
+    build-app:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      with:
+        imageProject: fabrique
+        imageRepository: template
+        imagePackage: app
+        registrySecretRefName: harbor
+        buildArgs:
+          GITHUB_SHA: "{{ $.Values.global.sha }}"
