@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/SocialGouv/template/compare/v1.11.1...v1.11.2) (2022-06-17)
+
+
+### Bug Fixes
+
+* **ci:** fix prod secrets ([0d1eef3](https://github.com/SocialGouv/template/commit/0d1eef32389642bce56a4a0338860c60b8cc3abf))
+
 ## [1.11.1](https://github.com/SocialGouv/template/compare/v1.11.0...v1.11.1) (2022-06-17)
 
 
