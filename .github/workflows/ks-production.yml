@@ -11,8 +11,5 @@ concurrency:
 
 jobs:
   follow-deployment:
-    environment:
-      name: production
-      url: https://template.fabrique.social.gouv.fr
     uses: SocialGouv/kontinuous/.github/workflows/workflow-logs.yaml@v1
     secrets: inherit
