@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/SocialGouv/template/compare/v1.10.4...v1.11.0) (2022-06-17)
+
+
+### Features
+
+* **auth:** add authentification with keycloak ([#50](https://github.com/SocialGouv/template/issues/50)) ([18b0bb4](https://github.com/SocialGouv/template/commit/18b0bb42c030e23239d405efa2baefaa4b1ed383))
+
 ## [1.10.4](https://github.com/SocialGouv/template/compare/v1.10.3...v1.10.4) (2022-03-30)
 
 
