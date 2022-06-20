@@ -1,0 +1,8 @@
+{
+  "name": "~kontinuous",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
