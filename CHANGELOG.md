@@ -1,3 +1,10 @@
+## [1.11.3](https://github.com/SocialGouv/template/compare/v1.11.2...v1.11.3) (2022-06-20)
+
+
+### Bug Fixes
+
+* **k8s:** use FC integration secrets ([9faa924](https://github.com/SocialGouv/template/commit/9faa924e650f8c0f82b5a39d653aada472fc6b2f))
+
 ## [1.11.2](https://github.com/SocialGouv/template/compare/v1.11.1...v1.11.2) (2022-06-17)
 
 
