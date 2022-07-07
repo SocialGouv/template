@@ -1,3 +1,10 @@
+## [1.11.4](https://github.com/SocialGouv/template/compare/v1.11.3...v1.11.4) (2022-07-07)
+
+
+### Bug Fixes
+
+* redeploy ([782446f](https://github.com/SocialGouv/template/commit/782446f9624e194f3b6bf6750a46d0fd75c74d99))
+
 ## [1.11.3](https://github.com/SocialGouv/template/compare/v1.11.2...v1.11.3) (2022-06-20)
 
 
