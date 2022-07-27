@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/SocialGouv/template/compare/v1.11.4...v1.12.0) (2022-07-27)
+
+
+### Features
+
+* **main:** add talisman pre-commit hook ([#86](https://github.com/SocialGouv/template/issues/86)) ([8465982](https://github.com/SocialGouv/template/commit/84659824b87834dbeda435b36464391902c68364))
+
 ## [1.11.4](https://github.com/SocialGouv/template/compare/v1.11.3...v1.11.4) (2022-07-07)
 
 
