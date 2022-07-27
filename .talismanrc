@@ -1,0 +1,5 @@
+fileignoreconfig:
+  - filename: package.json
+    checksum: cabbe39a37509941cf44230de1bdedf50c963ca9ba5cc6c4dfc0ebfcb626653f
+scopeconfig:
+  - scope: node
