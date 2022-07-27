@@ -1,5 +1,5 @@
 fileignoreconfig:
-  - filename: yarn.lock
-    checksum: 4191324206add040a579d1d51e78e049208f04f31f7db096668e325bf0f6fca6
   - filename: package.json
     checksum: cabbe39a37509941cf44230de1bdedf50c963ca9ba5cc6c4dfc0ebfcb626653f
+scopeconfig:
+  - scope: node
