@@ -1,3 +1,2 @@
-fileignoreconfig:
-  - filename: yarn.lock
-    checksum: b4e473dc655b234674c7370dc5b1476ffa34459afb2e54d66175962064bb1645
+scopeconfig:
+  - scope: node
