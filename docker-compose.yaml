@@ -9,18 +9,37 @@ services:
     image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./scripts/pg:/docker-entrypoint-initdb.d
     environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: pgadmin
+      POSTGRES_PASSWORD: pgpassword
+      POSTGRES_MULTIPLE_DATABASES: keycloak,hasura_metadata,hasura
+  graphql-engine:
+    image: hasura/graphql-engine:v2.9.0
+    ports:
+    - "8082:8080"
+    depends_on:
+    - "postgres"
+    restart: always
+    volumes:
+      - ./hasura/migrations:/hasura-migrations
+      - ./hasura/metadata:/hasura-metadata
+    environment:
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://pgadmin:pgpassword@postgres:5432/hasura_metadata
+      HASURA_GRAPHQL_DATABASE_URL: postgres://pgadmin:pgpassword@postgres:5432/hasura
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
   keycloak:
-    image: quay.io/keycloak/keycloak:18.0.0
+    image: quay.io/keycloak/keycloak:19.0.0
     environment:
       KC_DB_URL: "jdbc:postgresql://postgres:5432/keycloak"
-      KC_DB: postgres
       KC_METRICS_ENABLED: "true"
-      KC_DB_USERNAME: keycloak
-      KC_DB_PASSWORD: password
+      KC_DB_USERNAME: pgadmin
+      KC_DB_PASSWORD: pgpassword
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_LOG_LEVEL: INFO
@@ -31,4 +50,4 @@ services:
     volumes:
       - ./keycloak/config:/opt/keycloak/data/import
       - ./keycloak/providers:/opt/keycloak/providers
-    command: "start --import-realm --auto-build --db=postgres --features admin2 --http-enabled=true --http-port=8080 --hostname-strict=false --hostname-strict-https=false --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true "
+    command: "start --import-realm --db=postgres --http-enabled=true --http-port=8080 --hostname-strict=false --hostname-strict-https=false --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true "

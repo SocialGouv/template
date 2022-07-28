@@ -52,6 +52,20 @@ yarn # to install dependencies
 yarn dev # to run in dev mode
 ```
 
+#### Hasura
+
+Lancer les seeds :
+
+```sh
+yarn hasura seed apply --file books.sql --project ./hasura --database-name default --endpoint http://127.0.0.1:8082
+```
+
+Mettre à jour les metadatas et migrations :
+
+Lancer la console avec `yarn hasura console --project ./hasura --endpoint http://127.0.0.1:8082`. Les modifs faites dans l'UI seront reportées dans les dossiers `hasura/metadata` et `hasura/migrations`
+
+Cf [migrations documentation](https://hasura.io/docs/latest/migrations-metadata-seeds/manage-migrations/)
+
 ### Production
 
 ```bash
@@ -89,5 +103,3 @@ Dans les URLs de callback définies [sur le compte FranceConnect](), utiliser `h
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
 - <https://socialgouv.github.io/template/> : Storybook liés à la branche principale du projet
 - <https://github.com/socialgouv/keycloak-dsfr> : Thème keycloak-DSFR
-
-

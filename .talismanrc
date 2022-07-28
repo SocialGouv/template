@@ -1,5 +1,13 @@
 fileignoreconfig:
   - filename: package.json
     checksum: cabbe39a37509941cf44230de1bdedf50c963ca9ba5cc6c4dfc0ebfcb626653f
+  - filename: hasura/migrations/default/1659018828697_init/up.sql
+    checksum: 930d2a854c85a2194e25c2824a64d9f31f6c08b2180c18e3c36966a25209eb7b
+  - filename: hasura/seeds/default/books.sql
+    checksum: 592a41a27a9cdbc08c834541a6bd421c7fc442a388ef30c663b00ac2d78dd76c
+  - filename: scripts/pg/create-multiple-postgresql-databases.sh
+    checksum: 2989dcdba68c9586ff81c53ccbddb452225127b9fb8db9bbcea22be26076e922
+  - filename: docker-compose.yaml
+    checksum: 1abf22dd2c6db212c68f9073aa204c9b8bf8ecc14b0c506f62a63ee788ccd1e9
 scopeconfig:
   - scope: node
