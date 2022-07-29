@@ -27,6 +27,33 @@ jobs:
         buildArgs:
           NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
 
+    build-hasura:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      with:
+        imageProject: fabrique
+        imageRepository: template
+        imagePackage: hasura
+        registrySecretRefName: harbor
+        context: ./hasura
+
+hasura:
+  enabled: true
+  image: hasura/graphql-engine:v2.9.0
+  env:
+    - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+      value: "false"
+    - name: HASURA_GRAPHQL_DEV_MODE
+      value: "true"
+    - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+      value: anonymous
+    - name: HASURA_GRAPHQL_JWT_SECRET
+      value: '{"jwk_url": "http://keycloak/realms/app-realm/protocol/openid-connect/certs"}'
+    - name: HASURA_GRAPHQL_ADMIN_SECRET
+      value: "secret"
+  envFrom:
+    - secretRef:
+        name: pg-user-hasura
+
 keycloakx:
   fullnameOverride: keycloakx
   enabled: true
@@ -34,7 +61,7 @@ keycloakx:
   serviceAccount:
     create: false
   image:
-    tag: "18.0.0"
+    tag: "19.0.0"
   database:
     vendor: postgres
   cache:
@@ -48,7 +75,6 @@ keycloakx:
   command:
     - "/opt/keycloak/bin/kc.sh"
     - "start"
-    - "--auto-build"
     - "--http-enabled=true" # SSL is provided at ingress level
     - "--http-port=8080"
     - "--hostname-strict=true"

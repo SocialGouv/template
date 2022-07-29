@@ -29,5 +29,7 @@ fileignoreconfig:
     checksum: f9adad1b9373228c99d82fbf32a9d053540e062e7378e12628674b9dd312caa9
   - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/up.sql
     checksum: 803f634b1833b97fb7a63f28cfd450f28b83dca850c20e5a44df33094e673994
+  - filename: .kontinuous/env/dev/values.yaml
+    checksum: cd117517b1ca0c35f599b29e600e39d8e953ec0ad99b50902674c4e387249262
 scopeconfig:
   - scope: node
