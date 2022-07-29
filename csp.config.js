@@ -1,7 +1,8 @@
 const ContentSecurityPolicy = `
   default-src 'self' *.fabrique.social.gouv.fr  ${
     // allow local keycloak in development
-    process.env.NODE_ENV !== "production" && "http://localhost:8080"
+    process.env.NODE_ENV !== "production" &&
+    "http://localhost:8080 http://localhost:8082"
   };
   img-src 'self' data: *.fabrique.social.gouv.fr https://dummyimage.com/;
   script-src 'self' *.fabrique.social.gouv.fr ${

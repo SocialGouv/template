@@ -9,5 +9,19 @@ fileignoreconfig:
     checksum: 2989dcdba68c9586ff81c53ccbddb452225127b9fb8db9bbcea22be26076e922
   - filename: docker-compose.yaml
     checksum: 5b51abf740e6c71fe90b62e6612000dec8bf6855fdb79f3a75b1e982b58c3276
+  - filename: .env.development
+    checksum: 97444903e5ae114254fadd8b7bf4a60161a4ad5a40d13acbe1443e9b7904eeb6
+  - filename: .env.production
+    checksum: 196498460c9b9fa3b504627e3c6c0f4007e4acf9fc467d6757f88756e7099c22
+  - filename: .env.staging
+    checksum: 5a292792cdac5f90e7ae3467e5c47797d5e21a6a1f201acc2da9b0f2e77dc527
+  - filename: src/lib/auth.ts
+    checksum: 21d0126e0807bcf8ba3a6ef79a6d971b439d8623a48737f681ccfb3511d6ca1f
+  - filename: src/pages/api/auth/\[...nextauth\].ts
+    checksum: 695f5f301551c6d15b51ab60c0a0c70b38d87b36bf1e6bc4145603340b9abdf6
+  - filename: .kontinuous/files/realm-export.json
+    checksum: 5d1c6ce3754d1f5f04559ff311e86d3d4b9eb35d234af9c99f2f8815dc1a13ff
+  - filename: src/pages/books.tsx
+    checksum: 04057f30990497831e15441ae8e0d89ac38bd94d6473fc343a509927dd947eb8
 scopeconfig:
   - scope: node

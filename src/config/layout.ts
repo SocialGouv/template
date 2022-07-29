@@ -56,8 +56,8 @@ export const headerProps: HeaderProps = {
       ],
     },
     {
-      title: "Titre 2",
-      href: "/",
+      title: "Books",
+      href: "/books",
     },
     {
       title: "Titre 3",

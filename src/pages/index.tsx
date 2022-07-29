@@ -2,8 +2,11 @@ import { Head, Testimonial, Tile } from "@components";
 import { Row } from "@dataesr/react-dsfr";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import { useSession } from "next-auth/react";
 
 const Index: NextPage = () => {
+  const { data: session, status } = useSession();
+  console.log("session", { session, status });
   return (
     <>
       <NextSeo

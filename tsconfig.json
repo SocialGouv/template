@@ -22,10 +22,10 @@
       "@hooks": ["./src/hooks"],
       "@modules": ["./src/modules"],
       "@lib": ["./src/lib"],
-      "@types": ["./src/@types"]
+      "@types": ["./src/types"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts","**/*.ts", "**/*.tsx"],
   "exclude": [
     "node_modules",
     "next-sitemap.js",
