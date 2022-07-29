@@ -8,6 +8,6 @@ fileignoreconfig:
   - filename: scripts/pg/create-multiple-postgresql-databases.sh
     checksum: 2989dcdba68c9586ff81c53ccbddb452225127b9fb8db9bbcea22be26076e922
   - filename: docker-compose.yaml
-    checksum: 1abf22dd2c6db212c68f9073aa204c9b8bf8ecc14b0c506f62a63ee788ccd1e9
+    checksum: 5b51abf740e6c71fe90b62e6612000dec8bf6855fdb79f3a75b1e982b58c3276
 scopeconfig:
   - scope: node
