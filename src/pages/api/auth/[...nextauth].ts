@@ -9,6 +9,7 @@ import { refreshAccessToken } from "../../../lib/auth";
 interface ExtendedToken extends JWT {
   accessToken: string;
   refreshToken: string;
+  idToken: string;
   accessTokenExpires: number;
   user: User;
 }
@@ -40,6 +41,7 @@ export default NextAuth({
         return {
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
+          idToken: account.id_token,
           accessTokenExpires: account.expires_at
             ? account.expires_at * 1000
             : null,
@@ -70,6 +72,7 @@ export default NextAuth({
         session.user = token.user;
         session.accessToken = token.accessToken;
         session.refreshToken = token.refreshToken;
+        session.idToken = token.idToken;
         session.accessTokenExpires = token.accessTokenExpires;
         session.error = token.error;
       }

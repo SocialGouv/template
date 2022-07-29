@@ -15,7 +15,7 @@ const Index = (): JSX.Element => {
           <ToolItem
             onClick={() =>
               signOut({
-                callbackUrl: "/api/logout",
+                callbackUrl: `/api/logout?id_token_hint=${session.idToken}`,
               })
             }
           >
