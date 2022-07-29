@@ -22,8 +22,7 @@
     "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "keycloak": "chmod +x keycloak/scripts/keycloak.sh && keycloak/scripts/keycloak.sh",
-    "postinstall": "([ \"$NODE_ENV\" == \"production\" ] || is-ci) || husky install"
+    "keycloak": "chmod +x keycloak/scripts/keycloak.sh && keycloak/scripts/keycloak.sh"
   },
   "dependencies": {
     "@dataesr/react-dsfr": "^1.0.5",

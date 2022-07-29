@@ -1,6 +1,6 @@
 fileignoreconfig:
   - filename: package.json
-    checksum: cabbe39a37509941cf44230de1bdedf50c963ca9ba5cc6c4dfc0ebfcb626653f
+    checksum: d1976abf53624bdf47b07826dbf64a55f1512d23a6625f86218f54ca91c8b212
   - filename: hasura/migrations/default/1659018828697_init/up.sql
     checksum: 930d2a854c85a2194e25c2824a64d9f31f6c08b2180c18e3c36966a25209eb7b
   - filename: hasura/seeds/default/books.sql
