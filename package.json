@@ -34,8 +34,7 @@
     "next-auth": "4.10.2",
     "next-seo": "^5.1.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "is-ci": "^3.0.1"
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -58,6 +57,7 @@
     "gh-pages": "^4.0.0",
     "hasura-cli": "^2.9.0",
     "husky": "^8.0.1",
+    "is-ci": "^3.0.1",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.7",
     "node-talisman": "^1.28.0",
