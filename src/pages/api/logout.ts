@@ -1,6 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getToken } from "next-auth/jwt";
-import { getSession } from "next-auth/react";
 
 const logout = async (req: NextApiRequest, res: NextApiResponse) => {
   const id_token_hint = req.query.id_token_hint;
