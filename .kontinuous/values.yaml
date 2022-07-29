@@ -38,7 +38,9 @@ jobs:
 
 hasura:
   enabled: true
-  image: hasura/graphql-engine:v2.9.0
+  imageProject: fabrique
+  imageRepository: template
+  imagePackage: hasura
   env:
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
       value: "false"

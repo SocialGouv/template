@@ -1,13 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events  */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, {
-  ChangeEvent,
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Button } from "@dataesr/react-dsfr";
 import { fetchHasura, HasuraJsonResponse } from "src/lib/hasura";
