@@ -60,10 +60,4 @@ const BooksPage = ({ accessToken }: { accessToken: string }) => {
   );
 };
 
-export const getServerSideProps = withAuth(async (context) => {
-  return {
-    props: {},
-  };
-});
-
 export default BooksPage;
