@@ -1,7 +1,7 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
 
-app-front:
+app:
   needs: [build-app]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
