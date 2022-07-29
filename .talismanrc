@@ -24,6 +24,10 @@ fileignoreconfig:
   - filename: keycloak/config/realm-export-local.json
     checksum: 9ebc94d1d4542ee609132f6417a07e14f3668d5caeeaa72ac81829ed6a7ecaa7
   - filename: src/pages/books.tsx
-    checksum: 04057f30990497831e15441ae8e0d89ac38bd94d6473fc343a509927dd947eb8
+    checksum: c0b5e51a3504a8cc680d3e0dda76b8f5064d87fca2dadecec964e07b1ed7b784
+  - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/down.sql
+    checksum: f9adad1b9373228c99d82fbf32a9d053540e062e7378e12628674b9dd312caa9
+  - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/up.sql
+    checksum: 803f634b1833b97fb7a63f28cfd450f28b83dca850c20e5a44df33094e673994
 scopeconfig:
   - scope: node

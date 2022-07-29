@@ -4,17 +4,17 @@ const HASURA_GRAPHQL_ENDPOINT_URL =
   process.env.HASURA_GRAPHQL_ENDPOINT_URL || "http://localhost:8082/v1/graphql";
 
 type HasuraParams = {
-  operationName: string;
+  operationName?: string;
   query: string;
-  variables: Record<string, any>;
+  variables?: Record<string, any>;
 };
 
-type HasuraJsonResponse = {
+export type HasuraJsonResponse = {
   data: any;
   errors?: { message: string }[];
 };
 
-type Token = {
+export type Token = {
   accessToken: string;
   refreshToken: string;
   accessTokenExpires: number;
@@ -50,7 +50,9 @@ export const fetchHasura = (
     body: JSON.stringify(params),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token.accessToken}`,
+      ...(token.accessToken
+        ? { Authorization: `Bearer ${token.accessToken}` }
+        : {}),
     },
   })
     .then((r) => r.json())
