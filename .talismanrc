@@ -21,6 +21,8 @@ fileignoreconfig:
     checksum: 695f5f301551c6d15b51ab60c0a0c70b38d87b36bf1e6bc4145603340b9abdf6
   - filename: .kontinuous/files/realm-export.json
     checksum: 5d1c6ce3754d1f5f04559ff311e86d3d4b9eb35d234af9c99f2f8815dc1a13ff
+  - filename: keycloak/config/realm-export-local.json
+    checksum: 9ebc94d1d4542ee609132f6417a07e14f3668d5caeeaa72ac81829ed6a7ecaa7
   - filename: src/pages/books.tsx
     checksum: 04057f30990497831e15441ae8e0d89ac38bd94d6473fc343a509927dd947eb8
 scopeconfig:
