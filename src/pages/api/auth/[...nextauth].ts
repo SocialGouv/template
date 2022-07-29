@@ -6,60 +6,10 @@ import KeycloakProvider from "next-auth/providers/keycloak";
 
 import { refreshAccessToken } from "../../../lib/auth";
 
-// async function refreshAccessToken(token) {
-//   console.log("refreshAccessToken", token);
-//   try {
-//     const url =
-//       "http://localhost:8080/realms/app-realm/protocol/openid-connect/token";
-
-//     // new URLSearchParams({
-//     //   client_id: process.env.KEYCLOAK_CLIENT_ID ?? "",
-//     //   client_secret: process.env.KEYCLOAK_CLIENT_SECRET ?? "",
-//     //   grant_type: "refresh_token",
-//     //   refresh_token: token.refreshToken,
-//     // })
-
-//     const response = await fetch(url, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/x-www-form-urlencoded",
-//       },
-//       body: new URLSearchParams({
-//         client_id: process.env.KEYCLOAK_CLIENT_ID ?? "",
-//         //client_secret: process.env.KEYCLOAK_CLIENT_SECRET ?? "",
-//         grant_type: "refresh_token",
-//         refresh_token: token.refreshToken,
-//       }).toString(),
-//     });
-
-//     const refreshedTokens = await response.json();
-//     console.log("refreshedTokens", refreshedTokens);
-
-//     if (!response.ok) {
-//       console.log("error", response.body);
-//       throw refreshedTokens;
-//     }
-
-//     return {
-//       ...token,
-//       accessToken: refreshedTokens.access_token,
-//       accessTokenExpires: Date.now() + refreshedTokens.expires_at * 1000,
-//       refreshToken: refreshedTokens.refresh_token ?? token.refreshToken, // Fall back to old refresh token
-//     };
-//   } catch (error) {
-//     console.log(error);
-
-//     return {
-//       ...token,
-//       error: "RefreshAccessTokenError",
-//     };
-//   }
-// }
-
 interface ExtendedToken extends JWT {
   accessToken: string;
   refreshToken: string;
-  accessTokenExpires: number | null;
+  accessTokenExpires: number;
   user: User;
 }
 
@@ -120,6 +70,7 @@ export default NextAuth({
         session.user = token.user;
         session.accessToken = token.accessToken;
         session.refreshToken = token.refreshToken;
+        session.accessTokenExpires = token.accessTokenExpires;
         session.error = token.error;
       }
 

@@ -1,5 +1,4 @@
 import { NextPageContext } from "next";
-import { JWT } from "next-auth/jwt";
 import { getSession } from "next-auth/react";
 
 export function withAuth(
@@ -19,8 +18,8 @@ export function withAuth(
   };
 }
 
+// for server only
 export async function refreshAccessToken(token: any) {
-  console.log("refreshAccessToken", token);
   try {
     const url = `${process.env.KEYCLOAK_URL}/protocol/openid-connect/token`;
 
@@ -38,7 +37,6 @@ export async function refreshAccessToken(token: any) {
     });
 
     const refreshedTokens = await response.json();
-    console.log("refreshedTokens", refreshedTokens);
 
     if (!response.ok) {
       console.log("error", response.status, response.statusText);
@@ -48,12 +46,12 @@ export async function refreshAccessToken(token: any) {
     return {
       ...token,
       accessToken: refreshedTokens.access_token,
-      accessTokenExpires: refreshedTokens.expires_at * 1000,
+      accessTokenExpires:
+        new Date().getTime() + refreshedTokens.expires_in * 1000,
       refreshToken: refreshedTokens.refresh_token ?? token.refreshToken, // Fall back to old refresh token
     };
   } catch (error) {
     console.log(error);
-
     return {
       ...token,
       error: "RefreshAccessTokenError",

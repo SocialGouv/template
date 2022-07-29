@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { withAuth } from "@lib";
-import { signIn, useSession } from "next-auth/react";
-import { getToken } from "next-auth/jwt";
+import { useSession } from "next-auth/react";
 
-import { refreshAccessToken } from "../lib/auth";
-
-const HASURA_GRAPHQL_ENDPOINT_URL = "http://localhost:8082/v1/graphql";
+import { fetchHasura } from "src/lib/hasura";
 
 const fetchQuery = `
 query MyQuery {
@@ -21,54 +18,33 @@ type Book = { id: string; name: string };
 const BooksPage = ({ accessToken }: { accessToken: string }) => {
   const { data: session } = useSession();
   const [books, setBooks] = useState([]);
-  console.log("session", session);
 
-  //   useEffect(() => {
-  //     if (session?.error === "RefreshAccessTokenError") {
-  //       signIn(); // Force sign in to hopefully resolve error
-  //     }
-  //   }, [session]);
-
-  console.log("books", books);
-  const fetchBooks = () => {
+  const fetchBooks = useCallback(() => {
     if (session && session.accessToken) {
-      fetch(HASURA_GRAPHQL_ENDPOINT_URL, {
-        method: "POST",
-        body: JSON.stringify({
+      fetchHasura(
+        {
           operationName: "MyQuery",
           query: fetchQuery,
           variables: {},
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.accessToken}`,
         },
-      })
-        .then((r) => r.json())
+        {
+          accessToken: session.accessToken,
+          refreshToken: session.refreshToken,
+          accessTokenExpires: session.accessTokenExpires,
+        }
+      )
         .then((r) => {
-          if (r.errors) {
-            r.errors.forEach((e: Error) => console.error(e));
-            if (
-              r.errors
-                .map((r: any) => r.message)
-                .filter((m: string) => m.match(/JWTExpired/)).length
-            ) {
-              // refresh JWT
-              console.log("should refresh");
-            }
-          } else {
-            setBooks(r.data.books);
-          }
+          setBooks(r.data.books);
         })
+
         .catch((e) => console.error("ERROR", e));
     }
-  };
+  }, [session]);
   useEffect(() => {
-    console.log("fetch");
-    if (session && session.accessToken) {
+    if (!books.length && session && session.accessToken) {
       fetchBooks();
     }
-  }, [session]);
+  }, [books, fetchBooks, session]);
   return (
     <div className="fr-container fr-my-6w">
       <h1>Books ({books.length})</h1>
@@ -85,13 +61,8 @@ const BooksPage = ({ accessToken }: { accessToken: string }) => {
 };
 
 export const getServerSideProps = withAuth(async (context) => {
-  //@ts-ignore
-  const token = (context.req && (await getToken({ req: context.req }))) || null;
-  console.log(token);
   return {
-    props: {
-      // accessToken: token.accessToken,
-    },
+    props: {},
   };
 });
 

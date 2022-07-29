@@ -1,7 +1,6 @@
 import React from "react";
 import { withAuth } from "@lib";
 import { useSession } from "next-auth/react";
-import { getToken } from "next-auth/jwt";
 
 const IndexPage = () => {
   const { data: session } = useSession();
