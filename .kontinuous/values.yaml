@@ -82,8 +82,8 @@ keycloakx:
     - "--hostname-strict=true"
     - "--hostname-strict-https=true"
     - "--import-realm"
-    - "--features=admin2"
-    - "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
+    #- "--features=admin2"
+    #- "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
   # - "--spi-events-listener-jboss-logging-success-level=info"
   # - "--spi-events-listener-jboss-logging-error-level=warn"
 

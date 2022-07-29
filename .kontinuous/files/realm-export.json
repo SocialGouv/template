@@ -845,7 +845,6 @@
       ]
     },
     {
-      "id": "aadfca8d-04df-42e8-91be-4f2fe3b2a08e",
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",

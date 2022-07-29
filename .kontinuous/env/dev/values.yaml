@@ -26,7 +26,7 @@ jobs:
 
 hasura:
   needs: [build-app, build-hasura, db-hasura]
-  extraEnvFrom: |
+  envFrom:
     - secretRef:
         name: "hasura-db-{{ .Values.global.branchSlug32 }}"
 
