@@ -38,6 +38,7 @@ jobs:
 
 hasura:
   enabled: true
+  needs: [keycloakx]
   imageProject: fabrique
   imageRepository: template
   imagePackage: hasura

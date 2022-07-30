@@ -31,7 +31,7 @@ jobs:
         seedPath: hasura/seeds/default/books.sql
 
 hasura:
-  needs: [build-app, build-hasura, db-hasura]
+  needs: [build-app, build-hasura, db-hasura, keycloakx]
   envFrom:
     - secretRef:
         name: "hasura-db-{{ .Values.global.branchSlug32 }}"
