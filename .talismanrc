@@ -10,11 +10,11 @@ fileignoreconfig:
   - filename: docker-compose.yaml
     checksum: 5b51abf740e6c71fe90b62e6612000dec8bf6855fdb79f3a75b1e982b58c3276
   - filename: .env.development
-    checksum: 383b0c54522ca5b2b3327a884d0a30b9b81b1d33bf86a062f056a76285c8ca26
+    checksum: 01c8bd12e80600594a21713d543700ea033eeeee3ed3cad9f5d6e3ea31de094e
   - filename: .env.production
-    checksum: 51d17ed5a2c8435666ecc2bc04388469c3d7f2c099224204f6a7c47e5af50525
+    checksum: 85afa96cd9ada6392aa39804231e743505a1b3e648429ceffc27cbc7538f5075
   - filename: .env.staging
-    checksum: 3082ea5f036c7cf6daae1805c3cd62ef1b79a0b4fdd2cdad29191410ed8d5426
+    checksum: f7e70bc08ec6658b8c622acba19325314d6b8d03aa428dd7615ff4ce5a9eae98
   - filename: src/lib/auth.ts
     checksum: 21d0126e0807bcf8ba3a6ef79a6d971b439d8623a48737f681ccfb3511d6ca1f
   - filename: src/pages/api/auth/\[...nextauth\].ts
@@ -24,7 +24,7 @@ fileignoreconfig:
   - filename: keycloak/config/realm-export-local.json
     checksum: 9ebc94d1d4542ee609132f6417a07e14f3668d5caeeaa72ac81829ed6a7ecaa7
   - filename: src/pages/books.tsx
-    checksum: c0b5e51a3504a8cc680d3e0dda76b8f5064d87fca2dadecec964e07b1ed7b784
+    checksum: f648286c7ecb383f245f35456ffdaab4086b3b4cababe012dc6435cba57bfbe1
   - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/down.sql
     checksum: f9adad1b9373228c99d82fbf32a9d053540e062e7378e12628674b9dd312caa9
   - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/up.sql

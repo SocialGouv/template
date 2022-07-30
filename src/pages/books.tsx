@@ -39,7 +39,7 @@ type Book = { id: string; name: string; user_id: string };
 
 const BooksPage = () => {
   const { data: session } = useSession();
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<any[] | null>(null);
   const [addText, setAddText] = useState("");
 
   const token = {
@@ -47,6 +47,7 @@ const BooksPage = () => {
     refreshToken: session?.refreshToken || "",
     accessTokenExpires: session?.accessTokenExpires || 0,
   };
+
   const fetchBooks = useCallback(() => {
     fetchHasura(
       {
@@ -61,7 +62,7 @@ const BooksPage = () => {
   }, [session]);
 
   useEffect(() => {
-    if (!books.length) {
+    if (!books) {
       fetchBooks();
     }
   }, [books, fetchBooks, session]);
@@ -123,7 +124,7 @@ const BooksPage = () => {
 
   return (
     <div className="fr-container fr-my-6w">
-      <h1>Books ({books.length})</h1>
+      <h1>Books ({(books && books.length) || 0})</h1>
       {/* @ts-ignore */}
       <input
         type="text"
@@ -136,20 +137,21 @@ const BooksPage = () => {
       <Button onClick={addBook}>Add book</Button>
       <div className="fr-px-3w">
         <ul>
-          {books.map((book: Book) => (
-            <li key={book.id}>
-              {/* @ts-ignore */}
-              {session && (
-                <span
-                  style={{ cursor: "pointer" }}
-                  onClick={() => deleteBook(book.id)}
-                >
-                  X
-                </span>
-              )}{" "}
-              {book.name}
-            </li>
-          ))}
+          {books &&
+            books.map((book: Book) => (
+              <li key={book.id}>
+                {/* @ts-ignore */}
+                {session && (
+                  <span
+                    style={{ cursor: "pointer" }}
+                    onClick={() => deleteBook(book.id)}
+                  >
+                    X
+                  </span>
+                )}{" "}
+                {book.name}
+              </li>
+            ))}
         </ul>
       </div>
       <Button onClick={fetchBooks}>reload list</Button>
