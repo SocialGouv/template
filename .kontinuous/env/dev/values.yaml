@@ -26,6 +26,8 @@ hasura:
   envFrom:
     - secretRef:
         name: "hasura-db-{{ .Values.global.branchSlug32 }}"
+    - secretRef:
+        name: hasura
 
 keycloakx:
   needs: [db-keycloak]
