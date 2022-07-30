@@ -33,5 +33,11 @@ fileignoreconfig:
     checksum: 641ce0c76153a7e6454ca38d427735ba589035a0d6ae18173bd986cea6e913db
   - filename: .kontinuous/values.yaml
     checksum: d39bf6a706158f729c6af6904f127a7dca12622c2d89391ee5798c1eb51b214a
+  - filename: .kontinuous/env/preprod/templates/hasura.sealed.secret.yaml
+    checksum: 3df5dbc49f3eb0ce29f02ff0bab1861bf30a43d271517d1a2a51cf5d4407909e
+  - filename: .kontinuous/env/dev/templates/hasura.sealed.secret.yaml
+    checksum: 7a775d6a31628685ac20af5e17ab13725fd69927a0a20eb7c54985b8aa0723a5
+  - filename: .kontinuous/env/prod/templates/hasura.sealed.secret.yaml
+    checksum: f05e1d7a075abecaafec37d390fdd538dbe99eea6e0d1c26a01e29e850c838ff
 scopeconfig:
   - scope: node

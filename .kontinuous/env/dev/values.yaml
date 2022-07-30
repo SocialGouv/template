@@ -1,15 +1,5 @@
 jobs:
   runs:
-    build-app:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
-      with:
-        imageProject: fabrique
-        imageRepository: template
-        imagePackage: app
-        registrySecretRefName: harbor
-        buildArgs:
-          NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
-          NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "https://hasura-{{.Values.global.host}}/v1/graphql"
     db-keycloak:
       use: SocialGouv/kontinuous/plugins/fabrique/jobs/create-db@v1
       with:
@@ -32,13 +22,13 @@ jobs:
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
 
 hasura:
-  needs: [build-app, build-hasura, db-hasura, keycloakx]
+  needs: [build-hasura, db-hasura, keycloakx]
   envFrom:
     - secretRef:
         name: "hasura-db-{{ .Values.global.branchSlug32 }}"
 
 keycloakx:
-  needs: [build-app, db-keycloak]
+  needs: [db-keycloak]
   extraEnvFrom: |
     - secretRef:
         name: "keycloak-db-{{ .Values.global.branchSlug32 }}"
