@@ -13,7 +13,7 @@ services:
     environment:
       POSTGRES_USER: pgadmin
       POSTGRES_PASSWORD: pgpassword
-      POSTGRES_MULTIPLE_DATABASES: keycloak,hasura_metadata,hasura
+      POSTGRES_MULTIPLE_DATABASES: keycloak,hasura
   keycloak:
     image: quay.io/keycloak/keycloak:19.0.0
     environment:
@@ -44,7 +44,6 @@ services:
       - ./hasura/migrations:/hasura-migrations
       - ./hasura/metadata:/hasura-metadata
     environment:
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://pgadmin:pgpassword@postgres:5432/hasura_metadata
       HASURA_GRAPHQL_DATABASE_URL: postgres://pgadmin:pgpassword@postgres:5432/hasura
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
       HASURA_GRAPHQL_DEV_MODE: "true"
