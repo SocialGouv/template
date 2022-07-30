@@ -24,6 +24,11 @@ jobs:
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
         database: "hasura_{{ .Values.global.branchSlug32 }}"
         pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
+    seed-hasura:
+      needs: [hasura]
+      use: SocialGouv/kontinuous/plugins/fabrique/job/seed-db@v1
+      with:
+        seedPath: hasura/seeds/default/books.sql
 
 hasura:
   needs: [build-app, build-hasura, db-hasura]
