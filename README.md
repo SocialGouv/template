@@ -7,6 +7,8 @@ L'application dispose de deux branches principales :
 - [`main`](https://github.com/SocialGouv/template) qui est la branche principale du projet, celle-ci dispose d'une instance [keycloak](https://www.keycloak.org) et d'une API [hasura](https://hasura.io) connectées sur une base de données `postgres`
 - [`static`](https://github.com/SocialGouv/template/tree/static) qui est un template de site en statique sans la partie authentification
 
+Ce template intègre les recommendations de la [documentation technique SocialGouv](https://socialgouv.github.io/support)
+
 ## Description
 
 ### D'un point de vue fonctionnel
