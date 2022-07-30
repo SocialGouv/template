@@ -4,7 +4,7 @@ Template est une application [Next](https://nextjs.org/) développée par la [Fa
 
 L'application dispose de deux branches principales :
 
-- [`main`](https://github.com/SocialGouv/template) qui est la branche principale du projet, celle-ci dispose d'une instance keycloak connectée avec sa base de données `postgres`
+- [`main`](https://github.com/SocialGouv/template) qui est la branche principale du projet, celle-ci dispose d'une instance [keycloak](https://www.keycloak.org) et d'une API [hasura](https://hasura.io) connectées sur une base de données `postgres`
 - [`static`](https://github.com/SocialGouv/template/tree/static) qui est un template de site en statique sans la partie authentification
 
 ## Description
@@ -37,6 +37,7 @@ Ce template est composé de page :
 - [sentry](https://sentry.io/) pour gérer les erreurs
 - [keycloak](https://www.keycloak.org/) qui est un serveur d'authentification (exclusive à `main`)
 - [next-auth](https://next-auth.js.org/) qui est un wrapper pour gérer l'authentification au sein de l'application (exclusive à `main`)
+- [hasura](https://hasura.io) qui permet d'exposer une API GraphQL sur votre Postgres et de gérer les authorisations (RBAC)
 
 ## Lancer le code
 
@@ -57,12 +58,12 @@ yarn dev # to run in dev mode
 Lancer les seeds :
 
 ```sh
-yarn hasura seed apply --file books.sql --project ./hasura --database-name default --endpoint http://127.0.0.1:8082
+yarn hasura seed apply --file books.sql --project ./hasura --database-name default --endpoint http://127.0.0.1:8082 --admin-secret myadminsecretkey
 ```
 
 Mettre à jour les metadatas et migrations :
 
-Lancer la console avec `yarn hasura console --project ./hasura --endpoint http://127.0.0.1:8082`. Les modifs faites dans l'UI seront reportées dans les dossiers `hasura/metadata` et `hasura/migrations`
+Lancer la console avec `yarn hasura console --project ./hasura --endpoint http://127.0.0.1:8082 --admin-secret myadminsecretkey`. Les modifs faites dans l'UI seront reportées dans les dossiers `hasura/metadata` et `hasura/migrations`
 
 Cf [migrations documentation](https://hasura.io/docs/latest/migrations-metadata-seeds/manage-migrations/)
 
@@ -103,3 +104,4 @@ Dans les URLs de callback définies [sur le compte FranceConnect](), utiliser `h
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
 - <https://socialgouv.github.io/template/> : Storybook liés à la branche principale du projet
 - <https://github.com/socialgouv/keycloak-dsfr> : Thème keycloak-DSFR
+- <https://socialgouv.github.io/support> : Documentation technique SocialGouv
