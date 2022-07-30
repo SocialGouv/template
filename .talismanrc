@@ -30,7 +30,7 @@ fileignoreconfig:
   - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/up.sql
     checksum: 803f634b1833b97fb7a63f28cfd450f28b83dca850c20e5a44df33094e673994
   - filename: .kontinuous/env/dev/values.yaml
-    checksum: cd117517b1ca0c35f599b29e600e39d8e953ec0ad99b50902674c4e387249262
+    checksum: 641ce0c76153a7e6454ca38d427735ba589035a0d6ae18173bd986cea6e913db
   - filename: .kontinuous/values.yaml
     checksum: d39bf6a706158f729c6af6904f127a7dca12622c2d89391ee5798c1eb51b214a
 scopeconfig:

@@ -29,6 +29,7 @@ jobs:
       use: SocialGouv/kontinuous/plugins/fabrique/jobs/seed-db@v1
       with:
         seedPath: hasura/seeds/default/books.sql
+        pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
 
 hasura:
   needs: [build-app, build-hasura, db-hasura, keycloakx]
