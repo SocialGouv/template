@@ -91,8 +91,7 @@ keycloakx:
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
     kapp.k14s.io/update-strategy: fallback-on-replace
-    kapp.k14s.io/change-group: "keycloakx/{{ .Values.global.namespace }}"
-    kapp.k14s.io/change-group.keycloakx: kontinuous/keycloakx
+    kapp.k14s.io/change-group.keycloakx: "kontinuous/keycloakx.{{ .Values.global.namespace }}"
     kapp.k14s.io/disable-original: ""
     kapp.k14s.io/create-strategy: fallback-on-update
 

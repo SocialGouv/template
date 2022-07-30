@@ -32,6 +32,6 @@ fileignoreconfig:
   - filename: .kontinuous/env/dev/values.yaml
     checksum: cd117517b1ca0c35f599b29e600e39d8e953ec0ad99b50902674c4e387249262
   - filename: .kontinuous/values.yaml
-    checksum: 82891187f8948422d1248909c0dea24d0e7cf1d171455f47daf1c79b393493e3
+    checksum: d39bf6a706158f729c6af6904f127a7dca12622c2d89391ee5798c1eb51b214a
 scopeconfig:
   - scope: node
