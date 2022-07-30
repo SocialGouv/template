@@ -10,11 +10,11 @@ fileignoreconfig:
   - filename: docker-compose.yaml
     checksum: 5b51abf740e6c71fe90b62e6612000dec8bf6855fdb79f3a75b1e982b58c3276
   - filename: .env.development
-    checksum: 97444903e5ae114254fadd8b7bf4a60161a4ad5a40d13acbe1443e9b7904eeb6
+    checksum: 383b0c54522ca5b2b3327a884d0a30b9b81b1d33bf86a062f056a76285c8ca26
   - filename: .env.production
-    checksum: 196498460c9b9fa3b504627e3c6c0f4007e4acf9fc467d6757f88756e7099c22
+    checksum: 51d17ed5a2c8435666ecc2bc04388469c3d7f2c099224204f6a7c47e5af50525
   - filename: .env.staging
-    checksum: 5a292792cdac5f90e7ae3467e5c47797d5e21a6a1f201acc2da9b0f2e77dc527
+    checksum: 3082ea5f036c7cf6daae1805c3cd62ef1b79a0b4fdd2cdad29191410ed8d5426
   - filename: src/lib/auth.ts
     checksum: 21d0126e0807bcf8ba3a6ef79a6d971b439d8623a48737f681ccfb3511d6ca1f
   - filename: src/pages/api/auth/\[...nextauth\].ts

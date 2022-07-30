@@ -1,7 +1,8 @@
 import { signIn } from "next-auth/react";
 
-const HASURA_GRAPHQL_ENDPOINT_URL =
-  process.env.HASURA_GRAPHQL_ENDPOINT_URL || "http://localhost:8082/v1/graphql";
+const NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL =
+  process.env.NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL ||
+  "http://localhost:8082/v1/graphql";
 
 type HasuraParams = {
   operationName?: string;
@@ -45,7 +46,7 @@ export const fetchHasura = (
 
     return res;
   };
-  return fetch(HASURA_GRAPHQL_ENDPOINT_URL, {
+  return fetch(NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL, {
     method: "POST",
     body: JSON.stringify(params),
     headers: {
