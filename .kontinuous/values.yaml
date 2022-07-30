@@ -49,7 +49,7 @@ hasura:
     - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
       value: anonymous
     - name: HASURA_GRAPHQL_JWT_SECRET
-      value: '{"jwk_url": "http://keycloak:8080/realms/app-realm/protocol/openid-connect/certs"}'
+      value: '{"jwk_url": "http://keycloakx-http:8080/realms/app-realm/protocol/openid-connect/certs"}'
     - name: HASURA_GRAPHQL_ADMIN_SECRET
       value: "secret"
   envFrom:
