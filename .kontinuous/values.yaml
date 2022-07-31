@@ -84,6 +84,7 @@ keycloakx:
     - "--http-port=8080"
     - "--hostname-strict=true"
     - "--hostname-strict-https=true"
+    - "--log-level=debug"
     - "--import-realm"
     #- "--features=admin2"
     #- "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
