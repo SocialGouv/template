@@ -1,0 +1,15 @@
+
+/* fix for DSFR theme icon... */
+.fr-fi-theme-fill::before,
+.fr-fi-theme-fill::after {
+    -webkit-mask-image: url("~@gouvfr/dsfr/dist/icons/system/fr--theme-fill.svg");
+    mask-image: url("~@gouvfr/dsfr/dist/icons/system/fr--theme-fill.svg");
+}
+
+.fr-nav__btn:after {
+    -webkit-mask-image: url("~@gouvfr/dsfr/dist/icons/system/arrow-down-s-line.svg") !important;
+        mask-image: url("~@gouvfr/dsfr/dist/icons/system/arrow-down-s-line.svg")!important;
+        background-size: cover !important;
+        content:"" !important;
+        background-color: black !important;
+}

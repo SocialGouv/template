@@ -12,8 +12,8 @@ const ContentSecurityPolicy = `
     // allow local keycloak in development
     process.env.NODE_ENV !== "production" && "http://localhost:8080"
   };
-  style-src 'self' 'unsafe-inline';
-  font-src 'self' data: blob:;
+  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+  font-src 'self' data: blob: https://cdn.jsdelivr.net;
 `;
 
 module.exports = ContentSecurityPolicy;
