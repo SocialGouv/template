@@ -3,8 +3,8 @@ import {
   NavItem,
   NavSubItem,
   Header,
-  ToolItem,
   Logo,
+  ToolItem,
   HeaderBody,
   Service,
   HeaderOperator,
@@ -15,14 +15,22 @@ import { MegaNav } from "./megaNav";
 import { HeaderProps } from "./type";
 import { SwitchThemeMode } from "./switch";
 import { SkipLinks } from "./skipLinks";
+import Link from "next/link";
 
 const Index = (props: HeaderProps): JSX.Element => (
   <Header>
     {props.skipLinksProps && <SkipLinks {...props.skipLinksProps} />}
     <HeaderBody>
-      <Logo splitCharacter={props.splitTitleLength ?? 10}>
+      <Logo
+        splitCharacter={props.splitTitleLength ?? 10}
+        asLink={
+          <Link href="/" className="fr-nav__link" legacyBehavior={false}></Link>
+        }
+        href="/"
+      >
         {props.mainTitle}
       </Logo>
+
       {props.image && (
         <HeaderOperator>
           <img
@@ -36,11 +44,23 @@ const Index = (props: HeaderProps): JSX.Element => (
         title={props.serviceTitle}
         description={props.serviceDescription}
       />
-      <Tool {...props.closeButtonLabel}>
+      <Tool>
         <ToolItemGroup>
           {props.authHeader?.()}
           {props.bodyItems?.map((item, index) => (
-            <ToolItem key={`${index}-${item.title}`} link={item.href}>
+            <ToolItem
+              key={`${index}-${item.title}`}
+              link={item.href}
+              asLink={
+                <Link
+                  href={item.href}
+                  className="fr-nav__link"
+                  legacyBehavior={false}
+                >
+                  <a href={item.href}>{item.title}</a>
+                </Link>
+              }
+            >
               {item.title}
             </ToolItem>
           ))}
@@ -55,20 +75,40 @@ const Index = (props: HeaderProps): JSX.Element => (
         } else if ("items" in item) {
           return (
             <NavItem key={`${index}-${item.title}`} title={item.title}>
-              {item.items?.map((subItem, index) => (
-                <NavSubItem
-                  key={`${index}-${subItem.title}`}
-                  title={subItem.title}
-                  link={subItem.href}
-                  current={subItem.current}
-                />
-              ))}
+              {item.items
+                ?.filter((i) => i.href)
+                .map((subItem, index) => (
+                  <NavSubItem
+                    key={`${index}-${item.title}`}
+                    title={subItem.title}
+                    link={subItem.href}
+                    current={subItem.current}
+                    asLink={
+                      <Link
+                        href={subItem.href}
+                        className="fr-nav__link"
+                        legacyBehavior={false}
+                      >
+                        <a href={subItem.href}>{subItem.title}</a>
+                      </Link>
+                    }
+                  />
+                ))}
             </NavItem>
           );
-        } else {
+        } else if (item.href) {
           return (
             <NavItem
               key={`${index}-${item.title}`}
+              asLink={
+                <Link
+                  href={item.href}
+                  className="fr-nav__link"
+                  legacyBehavior={false}
+                >
+                  <a href={item.href}>{item.title}</a>
+                </Link>
+              }
               title={item.title}
               link={item.href}
             />
