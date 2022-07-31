@@ -30,6 +30,7 @@ jobs:
 
     build-hasura:
       use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      needs: [build-app]
       with:
         imageProject: fabrique
         imageRepository: template

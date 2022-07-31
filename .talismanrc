@@ -4,7 +4,7 @@ fileignoreconfig:
   - filename: hasura/migrations/default/1659018828697_init/up.sql
     checksum: 930d2a854c85a2194e25c2824a64d9f31f6c08b2180c18e3c36966a25209eb7b
   - filename: hasura/seeds/default/books.sql
-    checksum: 592a41a27a9cdbc08c834541a6bd421c7fc442a388ef30c663b00ac2d78dd76c
+    checksum: 40e5ea9f6cf231cd04fa3c40aa27b4f311f240dac730a26ac55afc3204d1bc14
   - filename: scripts/pg/create-multiple-postgresql-databases.sh
     checksum: 2989dcdba68c9586ff81c53ccbddb452225127b9fb8db9bbcea22be26076e922
   - filename: docker-compose.yaml
@@ -39,5 +39,11 @@ fileignoreconfig:
     checksum: 7a775d6a31628685ac20af5e17ab13725fd69927a0a20eb7c54985b8aa0723a5
   - filename: .kontinuous/env/prod/templates/hasura.sealed.secret.yaml
     checksum: f05e1d7a075abecaafec37d390fdd538dbe99eea6e0d1c26a01e29e850c838ff
+  - filename: .kontinuous/env/prod/templates/app.sealed.secret.yaml
+    checksum: 6869d898af4187aba5744a959b334b16f2ead1c8896f9f1591ecba849ba44a29
+  - filename: .kontinuous/env/preprod/templates/app.sealed.secret.yaml
+    checksum: 6d0bdcef816f00308d8bfdbdb9aeca94dfaee5b54f29f2b868a9085fd6428829
+  - filename: .kontinuous/env/dev/templates/app.sealed.secret.yaml
+    checksum: fcbdb3df446d45096551093aefa6989d48546580171201984d1207b593704597
 scopeconfig:
   - scope: node
