@@ -26,7 +26,7 @@ export const fetchHasura = (
   token: Token,
   retry: number = 5
 ): Promise<HasuraJsonResponse> => {
-  const checkRefreshToken = async (res: HasuraJsonResponse) => {
+  const checkExpiredToken = async (res: HasuraJsonResponse) => {
     if (
       res.errors &&
       res.errors
@@ -57,5 +57,5 @@ export const fetchHasura = (
     },
   })
     .then((r) => r.json())
-    .then(checkRefreshToken);
+    .then(checkExpiredToken);
 };
