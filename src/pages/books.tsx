@@ -1,39 +1,22 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events  */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useSession } from "next-auth/react";
 import { Button } from "@dataesr/react-dsfr";
-import { fetchHasura, HasuraJsonResponse } from "src/lib/hasura";
+import { HasuraJsonResponse } from "src/lib/hasura";
 
-const fetchQuery = `
-query MyQuery {
-  books(order_by: {name: asc}) {
-    id
-    name
-  }
-}
-`;
-
-const insertQuery = `
-mutation MyMutation($name: String!) {
-  insert_books_one(object: {name: $name}) {
-    id
-    name
-    user_id
-  }
-}
-`;
-
-const deleteQuery = `
-mutation MyMutation($id: uuid!) {
-  delete_books_by_pk(id: $id) {
-    id
-    name
-    user_id
-  }
-}
-`;
+import {
+  fetch as fetchBooks,
+  insert as insertBook,
+  delete_py_pk as deleteBookByPk,
+} from "../services/books";
 
 type Book = { id: string; name: string; user_id: string };
 
@@ -42,30 +25,28 @@ const BooksPage = () => {
   const [books, setBooks] = useState<any[] | null>(null);
   const [addText, setAddText] = useState("");
 
-  const token = {
-    accessToken: session?.accessToken || "",
-    refreshToken: session?.refreshToken || "",
-    accessTokenExpires: session?.accessTokenExpires || 0,
-  };
+  const token = useMemo(
+    () => ({
+      accessToken: session?.accessToken || "",
+      refreshToken: session?.refreshToken || "",
+      accessTokenExpires: session?.accessTokenExpires || 0,
+    }),
+    [session]
+  );
 
-  const fetchBooks = useCallback(() => {
-    fetchHasura(
-      {
-        query: fetchQuery,
-      },
-      token
-    )
+  const reloadBooks = useCallback(() => {
+    fetchBooks(token)
       .then((r) => {
         setBooks(r.data.books);
       })
       .catch((e) => console.error("ERROR", e));
-  }, [session]);
+  }, [token]);
 
   useEffect(() => {
     if (!books) {
-      fetchBooks();
+      reloadBooks();
     }
-  }, [books, fetchBooks, session]);
+  }, [books, reloadBooks, session]);
 
   const onInputAddChange = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.currentTarget.value;
@@ -73,23 +54,13 @@ const BooksPage = () => {
   };
 
   const addBook = (e: MouseEvent) => {
-    console.log("addBook", e, addText);
     if (addText) {
-      fetchHasura(
-        {
-          query: insertQuery,
-          variables: {
-            name: addText,
-          },
-        },
-        token
-      )
-        .then((r: HasuraJsonResponse) => {
-          if (r && r.errors && r.errors.length) {
-            throw new Error(r.errors[0].message);
-          }
+      insertBook(token, {
+        name: addText,
+      })
+        .then(() => {
           setAddText("");
-          fetchBooks();
+          reloadBooks();
         })
         .catch((e) => {
           alert(e.message);
@@ -98,24 +69,14 @@ const BooksPage = () => {
   };
 
   const deleteBook = (id: string) => {
-    console.log("deleteBook", id);
-    fetchHasura(
-      {
-        query: deleteQuery,
-        variables: {
-          id,
-        },
-      },
-      token
-    )
+    deleteBookByPk(token, {
+      id,
+    })
       .then((r: HasuraJsonResponse) => {
-        if (r && r.errors && r.errors.length) {
-          throw new Error(r.errors[0].message);
-        }
         if (!r.data.delete_books_by_pk) {
           throw new Error("Cannot delete book");
         }
-        fetchBooks();
+        reloadBooks();
       })
       .catch((e) => {
         alert(e.message);

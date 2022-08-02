@@ -36,16 +36,23 @@ export const fetchHasura = (
       // refresh JWT
       const newToken = await fetch("/api/refresh").then((r) => r.json());
       if (retry > 0) {
-        // restart query
+        // restart query with a retry limit
         return fetchHasura(params, newToken, retry - 1);
       } else {
         console.error("Abort: Too many fails");
         signIn("keycloak");
       }
     }
-
     return res;
   };
+
+  const checkErrorResponse = async (res: HasuraJsonResponse) => {
+    if (res && res.errors && res.errors.length) {
+      throw new Error(res.errors[0].message);
+    }
+    return res;
+  };
+
   return fetch(NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL, {
     method: "POST",
     body: JSON.stringify(params),
@@ -53,9 +60,10 @@ export const fetchHasura = (
       "Content-Type": "application/json",
       ...(token.accessToken
         ? { Authorization: `Bearer ${token.accessToken}` }
-        : {}),
+        : {}), // allow anonymous users with no Authorization header
     },
   })
     .then((r) => r.json())
-    .then(checkExpiredToken);
+    .then(checkExpiredToken) // refresh the JWT if needed
+    .then(checkErrorResponse); //reject the promise when errors in hasura response
 };
