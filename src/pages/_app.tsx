@@ -1,4 +1,5 @@
 import "../shame.css";
+import "remixicon/fonts/remixicon.css";
 import type { AppProps } from "next/app";
 import SEO from "../../next-seo.config";
 import { Layout } from "@components";
@@ -24,10 +25,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-        rel="stylesheet"
-      />
       <Layout
         headerProps={{ ...headerProps }}
         footerProps={{

@@ -27,13 +27,14 @@
   "dependencies": {
     "@dataesr/react-dsfr": "^3.0.0",
     "@gouvfr/dsfr": "^1.7.0",
-    "@sentry/nextjs": "^6.17.9",
+    "@sentry/nextjs": "^7.8.1",
     "@socialgouv/matomo-next": "^1.2.2",
     "next": "12.2.3",
     "next-auth": "4.10.2",
     "next-seo": "^5.1.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "remixicon": "^2.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
