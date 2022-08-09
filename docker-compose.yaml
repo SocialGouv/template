@@ -1,5 +1,8 @@
 version: "3"
 
+# this image is used only in development
+# in production, use the kubernetes definitions in .kontinuous
+
 volumes:
   postgres_data:
     driver: local
@@ -28,17 +31,26 @@ services:
       - 8080:8080
     depends_on:
       - postgres
+    healthcheck:
+      # wait for the JWK url to be available
+      test: curl --fail http://localhost:8080/realms/app-realm/protocol/openid-connect/certs|| exit 1
+      interval: 10s
+      retries: 50
+      start_period: 0s
+      timeout: 1s
     volumes:
       - ./keycloak/config:/opt/keycloak/data/import
       - ./keycloak/providers:/opt/keycloak/providers
     command: "start --import-realm --db=postgres --http-enabled=true --http-port=8080 --hostname-strict=false --hostname-strict-https=false --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true "
   graphql-engine:
-    image: hasura/graphql-engine:v2.9.0
+    image: hasura/graphql-engine:v2.9.0.cli-migrations-v3
     ports:
     - "8082:8080"
     depends_on:
-    - "postgres"
-    - "keycloak"
+      keycloak:
+        condition: service_healthy
+      postgres:
+        condition: service_started
     restart: always
     volumes:
       - ./hasura/migrations:/hasura-migrations
