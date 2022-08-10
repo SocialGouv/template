@@ -2,8 +2,6 @@ name: Review
 
 on:
   push:
-    branches:
-      - "**"
     branches-ignore:
       - main
     tags-ignore:
