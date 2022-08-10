@@ -40,6 +40,7 @@ Ce template est composé de page :
 - [keycloak](https://www.keycloak.org/) qui est un serveur d'authentification (exclusive à `main`)
 - [next-auth](https://next-auth.js.org/) qui est un wrapper pour gérer l'authentification au sein de l'application (exclusive à `main`)
 - [hasura](https://hasura.io) qui permet d'exposer une API GraphQL sur votre Postgres et de gérer les authorisations (RBAC)
+- [talisman](https://github.com/thoughtworks/talisman/) qui permet d'empêcher la publication de secrets dans votre code
 
 ## Lancer le code
 
