@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/SocialGouv/template/compare/v1.12.0...v1.13.0) (2022-08-16)
+
+
+### Features
+
+* hasura ([#87](https://github.com/SocialGouv/template/issues/87)) ([e9a7090](https://github.com/SocialGouv/template/commit/e9a7090e3bb5af0e12ee91a79790d7d6a21ce4df))
+
 # [1.12.0](https://github.com/SocialGouv/template/compare/v1.11.4...v1.12.0) (2022-07-27)
 
 
