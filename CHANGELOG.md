@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/SocialGouv/template/compare/v1.13.1...v1.13.2) (2022-08-16)
+
+
+### Bug Fixes
+
+* **ci:** build-hasura dont need nuid-app ([7a07b3f](https://github.com/SocialGouv/template/commit/7a07b3f41f676f7e8e68da5e7133924a4d2178e4))
+
 ## [1.13.1](https://github.com/SocialGouv/template/compare/v1.13.0...v1.13.1) (2022-08-16)
 
 
