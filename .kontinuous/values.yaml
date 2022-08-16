@@ -43,7 +43,7 @@ jobs:
 
 hasura:
   enabled: true
-  needs: [keycloakx]
+  needs: [build-hasura, keycloakx]
   imageProject: fabrique
   imageRepository: template
   imagePackage: hasura
