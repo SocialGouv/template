@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/SocialGouv/template/compare/v1.13.0...v1.13.1) (2022-08-16)
+
+
+### Bug Fixes
+
+* **ci:** hasura needs build-hasura ([fc7edd1](https://github.com/SocialGouv/template/commit/fc7edd11244e9fb682eed54a0a94a7f33dff8ed5))
+
 # [1.13.0](https://github.com/SocialGouv/template/compare/v1.12.0...v1.13.0) (2022-08-16)
 
 
