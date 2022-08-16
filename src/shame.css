@@ -1,0 +1,8 @@
+
+/* fix for DSFR theme icon... */
+.fr-fi-theme-fill::before,
+.fr-fi-theme-fill::after {
+    -webkit-mask-image: url("~@gouvfr/dsfr/dist/icons/system/fr--theme-fill.svg");
+    mask-image: url("~@gouvfr/dsfr/dist/icons/system/fr--theme-fill.svg");
+}
+

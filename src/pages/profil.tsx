@@ -1,6 +1,7 @@
 import React from "react";
 import { withAuth } from "@lib";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+import { Button } from "@dataesr/react-dsfr";
 
 const IndexPage = () => {
   const { data: session } = useSession();
@@ -18,6 +19,15 @@ const IndexPage = () => {
             <span>{session?.user?.name}</span>
           </li>
         </ul>
+        <Button
+          onClick={() =>
+            signOut({
+              callbackUrl: `/api/logout?id_token_hint=${session?.idToken}`,
+            })
+          }
+        >
+          Se déconnecter
+        </Button>
       </div>
     </div>
   );

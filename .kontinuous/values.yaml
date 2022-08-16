@@ -1,8 +1,8 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
 
-app-front:
-  needs: [build-app]
+app:
+  needs: [build-app, keycloakx, hasura]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
   imageRepository: template
@@ -14,6 +14,9 @@ app-front:
         name: app
     - secretRef:
         name: app
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
 
 jobs:
   runs:
@@ -26,6 +29,38 @@ jobs:
         registrySecretRefName: harbor
         buildArgs:
           NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
+          NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "https://hasura-{{.Values.global.host}}/v1/graphql"
+
+    build-hasura:
+      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      needs: [build-app]
+      with:
+        imageProject: fabrique
+        imageRepository: template
+        imagePackage: hasura
+        registrySecretRefName: harbor
+        context: ./hasura
+
+hasura:
+  enabled: true
+  needs: [keycloakx]
+  imageProject: fabrique
+  imageRepository: template
+  imagePackage: hasura
+  env:
+    - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+      value: "false"
+    - name: HASURA_GRAPHQL_DEV_MODE
+      value: "true"
+    - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+      value: anonymous
+    - name: HASURA_GRAPHQL_JWT_SECRET
+      value: '{"jwk_url": "http://keycloakx-http:8080/realms/app-realm/protocol/openid-connect/certs"}'
+  envFrom:
+    - secretRef:
+        name: pg-user-hasura
+    - secretRef:
+        name: hasura
 
 keycloakx:
   fullnameOverride: keycloakx
@@ -34,7 +69,7 @@ keycloakx:
   serviceAccount:
     create: false
   image:
-    tag: "18.0.0"
+    tag: "19.0.0"
   database:
     vendor: postgres
   cache:
@@ -48,21 +83,21 @@ keycloakx:
   command:
     - "/opt/keycloak/bin/kc.sh"
     - "start"
-    - "--auto-build"
     - "--http-enabled=true" # SSL is provided at ingress level
     - "--http-port=8080"
     - "--hostname-strict=true"
     - "--hostname-strict-https=true"
+    - "--log-level=debug"
     - "--import-realm"
-    - "--features=admin2"
-    - "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
+    #- "--features=admin2"
+    #- "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
   # - "--spi-events-listener-jboss-logging-success-level=info"
   # - "--spi-events-listener-jboss-logging-error-level=warn"
 
   statefulsetAnnotations:
     kapp.k14s.io/nonce: ""
     kapp.k14s.io/update-strategy: fallback-on-replace
-    kapp.k14s.io/change-group: "kontinuous/keycloak.{{ .Values.global.namespace }}"
+    kapp.k14s.io/change-group.keycloakx: "kontinuous/keycloakx.{{ .Values.global.namespace }}"
     kapp.k14s.io/disable-original: ""
     kapp.k14s.io/create-strategy: fallback-on-update
 

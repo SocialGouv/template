@@ -1,6 +1,7 @@
 import { ToolItem, Tag } from "@dataesr/react-dsfr";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
+import Link from "next/link";
 
 const Index = (): JSX.Element => {
   const { data: session } = useSession();
@@ -8,20 +9,9 @@ const Index = (): JSX.Element => {
   return (
     <>
       {session ? (
-        <>
-          <Tag as="a" href="/profil">
-            {session.user?.email}
-          </Tag>
-          <ToolItem
-            onClick={() =>
-              signOut({
-                callbackUrl: "/api/logout",
-              })
-            }
-          >
-            Se déconnecter
-          </ToolItem>
-        </>
+        <Tag>
+          <Link href="/profil">{session.user?.email}</Link>
+        </Tag>
       ) : (
         <ToolItem onClick={() => signIn("keycloak")}>Se connecter</ToolItem>
       )}
