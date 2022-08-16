@@ -15,10 +15,14 @@ fileignoreconfig:
   checksum: 6d0bdcef816f00308d8bfdbdb9aeca94dfaee5b54f29f2b868a9085fd6428829
 - filename: .kontinuous/env/preprod/templates/hasura.sealed.secret.yaml
   checksum: 3df5dbc49f3eb0ce29f02ff0bab1861bf30a43d271517d1a2a51cf5d4407909e
+- filename: .kontinuous/env/preprod/templates/keycloak.sealed.secret.yaml
+  checksum: 8a869a3f175c4a7456b5789467b6a018de606906e9462adf49887d1f48e195d2
 - filename: .kontinuous/env/prod/templates/app.sealed.secret.yaml
   checksum: 6869d898af4187aba5744a959b334b16f2ead1c8896f9f1591ecba849ba44a29
 - filename: .kontinuous/env/prod/templates/hasura.sealed.secret.yaml
   checksum: f05e1d7a075abecaafec37d390fdd538dbe99eea6e0d1c26a01e29e850c838ff
+- filename: .kontinuous/env/prod/templates/keycloak.sealed.secret.yaml
+  checksum: 7f2dcf9c19bfb1f6ae6ce4002ce2c86c8f46ef230b6eec066f3051b10acbd6a6
 - filename: .kontinuous/files/realm-export.json
   checksum: 5d1c6ce3754d1f5f04559ff311e86d3d4b9eb35d234af9c99f2f8815dc1a13ff
 - filename: .kontinuous/values.yaml
