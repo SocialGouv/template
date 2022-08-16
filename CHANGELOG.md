@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/SocialGouv/template/compare/v1.13.2...v1.13.3) (2022-08-16)
+
+
+### Bug Fixes
+
+* **k8s:** fix preprod/prod keycloak logins ([c5b87bd](https://github.com/SocialGouv/template/commit/c5b87bd487d326eb8435b219ffce68fb0c1c3f77))
+
 ## [1.13.2](https://github.com/SocialGouv/template/compare/v1.13.1...v1.13.2) (2022-08-16)
 
 
