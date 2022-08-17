@@ -1,3 +1,10 @@
+## [1.13.6](https://github.com/SocialGouv/template/compare/v1.13.5...v1.13.6) (2022-08-17)
+
+
+### Bug Fixes
+
+* **ci:** prod KEYCLOAK_CLIENT_SECRET ([971a01d](https://github.com/SocialGouv/template/commit/971a01db708a383d382d3502809a8e7fcfdfa7ba))
+
 ## [1.13.5](https://github.com/SocialGouv/template/compare/v1.13.4...v1.13.5) (2022-08-17)
 
 
