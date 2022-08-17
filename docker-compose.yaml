@@ -18,7 +18,7 @@ services:
       POSTGRES_PASSWORD: pgpassword
       POSTGRES_MULTIPLE_DATABASES: keycloak,hasura
   keycloak:
-    image: quay.io/keycloak/keycloak:19.0.0
+    image: quay.io/keycloak/keycloak:19.0.1
     environment:
       KC_DB_URL: "jdbc:postgresql://postgres:5432/keycloak"
       KC_METRICS_ENABLED: "true"
