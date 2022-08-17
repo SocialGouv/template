@@ -1,3 +1,10 @@
+## [1.13.5](https://github.com/SocialGouv/template/compare/v1.13.4...v1.13.5) (2022-08-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next-auth to v4.10.3 [security] ([#82](https://github.com/SocialGouv/template/issues/82)) ([74c291f](https://github.com/SocialGouv/template/commit/74c291f969dea7ac0375f2754d4768b251c72437))
+
 ## [1.13.4](https://github.com/SocialGouv/template/compare/v1.13.3...v1.13.4) (2022-08-17)
 
 
