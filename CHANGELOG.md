@@ -1,3 +1,10 @@
+## [1.13.4](https://github.com/SocialGouv/template/compare/v1.13.3...v1.13.4) (2022-08-17)
+
+
+### Bug Fixes
+
+* **k8s:** preprod keycloak secret ([9230600](https://github.com/SocialGouv/template/commit/9230600d7089cd10e2929670469b9fee2ba1a210))
+
 ## [1.13.3](https://github.com/SocialGouv/template/compare/v1.13.2...v1.13.3) (2022-08-16)
 
 
