@@ -22,8 +22,8 @@ jobs:
   runs:
     build-app:
       use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
-      memoryLimit: 6Gi
-      memoryRequest: 2Gi
+      memoryLimit: 8Gi
+      memoryRequest: 4Gi
       with:
         imageProject: fabrique
         imageRepository: template
