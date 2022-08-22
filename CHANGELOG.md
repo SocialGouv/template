@@ -1,3 +1,10 @@
+## [1.13.7](https://github.com/SocialGouv/template/compare/v1.13.6...v1.13.7) (2022-08-22)
+
+
+### Bug Fixes
+
+* fabrique/jobs to contrib/jobs ([#91](https://github.com/SocialGouv/template/issues/91)) ([6bef50b](https://github.com/SocialGouv/template/commit/6bef50be36b47a627ee6182c7e201fa77817636e))
+
 ## [1.13.6](https://github.com/SocialGouv/template/compare/v1.13.5...v1.13.6) (2022-08-17)
 
 
