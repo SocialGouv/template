@@ -21,7 +21,7 @@ app:
 jobs:
   runs:
     build-app:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
       with:
         imageProject: fabrique
         imageRepository: template
@@ -32,7 +32,7 @@ jobs:
           NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "https://hasura-{{.Values.global.host}}/v1/graphql"
 
     build-hasura:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
       with:
         imageProject: fabrique
         imageRepository: template
