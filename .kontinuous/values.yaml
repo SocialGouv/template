@@ -2,7 +2,7 @@ global:
   registry: harbor.fabrique.social.gouv.fr
 
 app:
-  needs: [build-app, keycloakx, hasura]
+  ~needs: [build-app, keycloakx, hasura]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
   imageRepository: template
@@ -22,7 +22,7 @@ jobs:
   runs:
     build-app:
       use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
-      memoryLimit: 8Gi
+      memoryLimit: 10Gi
       memoryRequest: 4Gi
       with:
         imageProject: fabrique
@@ -44,7 +44,7 @@ jobs:
 
 hasura:
   enabled: true
-  needs: [build-hasura, keycloakx]
+  ~needs: [build-hasura, keycloakx]
   imageProject: fabrique
   imageRepository: template
   imagePackage: hasura
