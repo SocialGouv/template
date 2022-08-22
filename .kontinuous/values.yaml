@@ -2,7 +2,7 @@ global:
   registry: harbor.fabrique.social.gouv.fr
 
 app:
-  needs: [build-app, keycloakx, hasura]
+  ~needs: [build-app, keycloakx, hasura]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
   imageRepository: template
@@ -44,7 +44,7 @@ jobs:
 
 hasura:
   enabled: true
-  needs: [build-hasura, keycloakx]
+  ~needs: [build-hasura, keycloakx]
   imageProject: fabrique
   imageRepository: template
   imagePackage: hasura

@@ -15,14 +15,14 @@ jobs:
         database: "hasura_{{ .Values.global.branchSlug32 }}"
         pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
     seed-hasura:
-      needs: [hasura]
+      ~needs: [hasura]
       use: SocialGouv/kontinuous/plugins/contrib/jobs/seed-db@v1
       with:
         seedPath: hasura/seeds/default/books.sql
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
 
 hasura:
-  needs: [build-hasura, db-hasura, keycloakx]
+  ~needs: [build-hasura, db-hasura, keycloakx]
   envFrom:
     - secretRef:
         name: "hasura-db-{{ .Values.global.branchSlug32 }}"
@@ -30,7 +30,7 @@ hasura:
         name: hasura
 
 keycloakx:
-  needs: [db-keycloak]
+  ~needs: [db-keycloak]
   extraEnvFrom: |
     - secretRef:
         name: "keycloak-db-{{ .Values.global.branchSlug32 }}"
