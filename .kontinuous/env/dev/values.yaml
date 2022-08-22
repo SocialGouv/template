@@ -1,14 +1,14 @@
 jobs:
   runs:
     db-keycloak:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/create-db@v1
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/create-db@v1
       with:
         pgAdminSecretRefName: pg-scaleway
         pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
         database: "keycloak_{{ .Values.global.branchSlug32 }}"
         pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
     db-hasura:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/create-db@v1
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/create-db@v1
       with:
         pgAdminSecretRefName: pg-scaleway
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
@@ -16,7 +16,7 @@ jobs:
         pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
     seed-hasura:
       needs: [hasura]
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/seed-db@v1
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/seed-db@v1
       with:
         seedPath: hasura/seeds/default/books.sql
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
@@ -41,16 +41,16 @@ jobs-deactivate:
   enabled: false
   runs:
     deactivate:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/deactivate
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/deactivate
       with:
         pgAdminSecretRefName: pg-scaleway
     drop-db:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/drop-db
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/drop-db
       with:
         pgAdminSecretRefName: pg-scaleway
         database: "keycloak_{{ .Values.global.branchSlug32 }}"
     drop-db2:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/drop-db
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/drop-db
       with:
         pgAdminSecretRefName: pg-scaleway
         database: "hasura_{{ .Values.global.branchSlug32 }}"
