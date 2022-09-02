@@ -1,13 +1,12 @@
-name: Review Deactivate
+name: Deactivate
 on:
-  pull_request:
-    types: [closed]
+  delete:
 
 concurrency:
   cancel-in-progress: true
-  group: review-deactivate-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.ref }}
 
 jobs:
-  follow-deactivation:
+  kontinuous:
     uses: SocialGouv/kontinuous/.github/workflows/workflow-webhook.yaml@v1
     secrets: inherit

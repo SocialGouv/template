@@ -1,17 +1,16 @@
-name: Preproduction
-
+name: Deploy
 on:
   push:
     branches:
-      - main
+      - "**"
     tags-ignore:
-      - v*
+      - "v*"
 
 concurrency:
   cancel-in-progress: true
-  group: preproduction
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.ref }}
 
 jobs:
-  follow-deployment:
+  kontinuous:
     uses: SocialGouv/kontinuous/.github/workflows/workflow-webhook.yaml@v1
     secrets: inherit
