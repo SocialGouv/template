@@ -37,20 +37,15 @@ keycloakx:
     - secretRef:
         name: keycloak-secrets
 
-jobs-deactivate:
+deactivate:
   enabled: false
-  runs:
-    deactivate:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/deactivate
-      with:
-        pgAdminSecretRefName: pg-scaleway
-    drop-db:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/drop-db
-      with:
-        pgAdminSecretRefName: pg-scaleway
-        database: "keycloak_{{ .Values.global.branchSlug32 }}"
-    drop-db2:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/drop-db
-      with:
-        pgAdminSecretRefName: pg-scaleway
-        database: "hasura_{{ .Values.global.branchSlug32 }}"
+  jobs-deactivate:
+    runs:
+      deactivate:
+        with:
+          pgAdminSecretRefName: pg-scaleway
+      drop-db2:
+        use: drop-db
+        with:
+          pgAdminSecretRefName: pg-scaleway
+          database: "hasura_{{ .Values.global.branchSlug32 }}"
