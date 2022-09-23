@@ -1,17 +1,32 @@
 name: Release
-
 on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
   workflow_dispatch:
-  push:
-    branches: [main, alpha, beta, next]
 
 jobs:
   release:
     name: Release
+    # the closed PR trigger is not necessarily a merge
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - uses: SocialGouv/actions/autodevops-release@v1
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          author-name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
-          author-email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
-          github-token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          fetch-depth: 0
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+      - name: Install additional semantic-release plugins
+        run: npm i --save=false semantic-release @socialgouv/releaserc @semantic-release/changelog @semantic-release/git @semantic-release/npm
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # semantic-release won't run on PRs without the --no-ci flag
+        run: npx semantic-release --no-ci --extends @socialgouv/releaserc
