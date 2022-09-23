@@ -1,3 +1,10 @@
+## [1.13.10-beta.1](https://github.com/SocialGouv/template/compare/v1.13.9...v1.13.10-beta.1) (2022-09-23)
+
+
+### Bug Fixes
+
+* test ([d8b4a81](https://github.com/SocialGouv/template/commit/d8b4a810f31c8a745f1e4324561b7726d1c9d2a5))
+
 ## [1.13.9](https://github.com/SocialGouv/template/compare/v1.13.8...v1.13.9) (2022-08-29)
 
 
