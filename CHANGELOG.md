@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/SocialGouv/template/compare/v1.13.9...v1.14.0) (2022-09-29)
+
+
+### Features
+
+* add sentry example triggers ([#103](https://github.com/SocialGouv/template/issues/103)) ([439f13d](https://github.com/SocialGouv/template/commit/439f13defde8c7703ae1abd607e07e31f8a70745))
+
 ## [1.13.9](https://github.com/SocialGouv/template/compare/v1.13.8...v1.13.9) (2022-08-29)
 
 
