@@ -1,6 +1,6 @@
 fileignoreconfig:
 - filename: .env.development
-  checksum: 01c8bd12e80600594a21713d543700ea033eeeee3ed3cad9f5d6e3ea31de094e
+  checksum: 9487b9d63713290be841abcb50e6fb4101f2e4bc73815fd376d307926d711fe9
 - filename: .env.production
   checksum: 85afa96cd9ada6392aa39804231e743505a1b3e648429ceffc27cbc7538f5075
 - filename: .env.staging
