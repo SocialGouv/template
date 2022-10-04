@@ -1,5 +1,12 @@
 projectName: fabrique
+isLocal: true
+gitBranch: main
 
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
+
+    # contrib:
+    #   validators:
+    #     noPlainSecrets: # should be enable for lebal environment
+    #       enabled: false

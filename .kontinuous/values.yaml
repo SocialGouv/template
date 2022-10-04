@@ -1,11 +1,14 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
+  registrySecretRefName: harbor
+  imageProject: fabrique
+  imageRepository: template
 
 app:
   ~needs: [build-app, keycloakx, hasura]
   host: "{{.Values.global.host}}"
-  imageProject: fabrique
-  imageRepository: template
+  #imageProject: fabrique
+  #imageRepository: template
   imagePackage: app
   containerPort: 3000
   probesPath: "/healthz"
@@ -21,31 +24,31 @@ app:
 jobs:
   runs:
     build-app:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@local
       memoryLimit: 10Gi
       memoryRequest: 4Gi
       with:
-        imageProject: fabrique
-        imageRepository: template
+        #imageProject: fabrique
+        #imageRepository: template
         imagePackage: app
-        registrySecretRefName: harbor
+        #registrySecretRefName: "{{ $.Values.global.registrySecretRefName }}"
         buildArgs:
           NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
           NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "https://hasura-{{.Values.global.host}}/v1/graphql"
 
     build-hasura:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@local
       with:
-        imageProject: fabrique
-        imageRepository: template
+        #imageProject: fabrique
+        #imageRepository: template
         imagePackage: hasura
-        registrySecretRefName: harbor
+        #registrySecretRefName: "{{ $.Values.global.registrySecretRefName }}"
         context: ./hasura
 
 hasura:
   ~needs: [build-hasura, keycloakx]
-  imageProject: fabrique
-  imageRepository: template
+  # imageProject: fabrique
+  # imageRepository: template
   imagePackage: hasura
   env:
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
@@ -61,6 +64,27 @@ hasura:
         name: pg-user-hasura
     - secretRef:
         name: hasura
+
+app-postgres:
+  image: postgres:13
+  containerPort: 5432
+  # readinessProbe:
+  #   exec:
+  #     command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
+  #   initialDelaySeconds: 15
+  #   timeoutSeconds: 2
+  # livenessProbe:
+  #   exec:
+  #     command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
+  #   initialDelaySeconds: 45
+  #   timeoutSeconds: 2
+  ingress:
+    enabled: false
+  env:
+    - name: POSTGRES_USER
+      value: user
+    - name: POSTGRES_PASSWORD
+      value: password
 
 keycloakx:
   fullnameOverride: keycloakx

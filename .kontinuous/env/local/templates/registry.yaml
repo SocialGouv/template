@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: harbor
+  namespace: ci
+type: Opaque
+stringData:
+  CI_REGISTRY: 10.103.1.205
+  CI_REGISTRY_PASSWORD: ""
+  CI_REGISTRY_USER: ""

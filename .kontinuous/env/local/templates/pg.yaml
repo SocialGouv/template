@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pg
+  namespace: ci
+type: Opaque
+stringData:
+  PGUSER: user
+  PGPASSWORD: password
+  PGHOST: postgres
+  PGPORT: "5432"
+  PGSSLMODE: disable
+  PGDATABASE: postgres
