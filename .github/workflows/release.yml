@@ -29,4 +29,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # semantic-release won't run on PRs without the --no-ci flag
-        run: npx semantic-release --no-ci --extends @socialgouv/releaserc
+        run: npx semantic-release --no-ci
