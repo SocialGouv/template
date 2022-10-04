@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: "lts/*"
       - name: Install additional semantic-release plugins
-        run: npm i --save=false semantic-release @socialgouv/releaserc @semantic-release/changelog @semantic-release/git @semantic-release/npm
+        run: npm i --save=false --force semantic-release @socialgouv/releaserc @semantic-release/changelog @semantic-release/git @semantic-release/npm
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
