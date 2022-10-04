@@ -3,6 +3,16 @@
 
 ### Bug Fixes
 
+* dummy ([24b89bd](https://github.com/SocialGouv/template/commit/24b89bd565b3854f62d99624a95434bf77fb4587))
+* dummy ([05abc20](https://github.com/SocialGouv/template/commit/05abc20344fe4b5497c5a5cff95811f4ed8eb50e))
+* test ([#108](https://github.com/SocialGouv/template/issues/108)) ([41e0350](https://github.com/SocialGouv/template/commit/41e0350a79b4011e3246c5c74fda2241c9020488))
+* test local releaserc ([#107](https://github.com/SocialGouv/template/issues/107)) ([86fa77a](https://github.com/SocialGouv/template/commit/86fa77abe05b92a8175757fcc2929e8740d5b02c))
+
+## [1.14.1](https://github.com/SocialGouv/template/compare/v1.14.0...v1.14.1) (2022-10-04)
+
+
+### Bug Fixes
+
 * dummy ([05abc20](https://github.com/SocialGouv/template/commit/05abc20344fe4b5497c5a5cff95811f4ed8eb50e))
 * test local releaserc ([#107](https://github.com/SocialGouv/template/issues/107)) ([86fa77a](https://github.com/SocialGouv/template/commit/86fa77abe05b92a8175757fcc2929e8740d5b02c))
 
