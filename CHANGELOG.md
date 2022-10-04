@@ -1,3 +1,11 @@
+## [1.14.1](https://github.com/SocialGouv/template/compare/v1.14.0...v1.14.1) (2022-10-04)
+
+
+### Bug Fixes
+
+* dummy ([05abc20](https://github.com/SocialGouv/template/commit/05abc20344fe4b5497c5a5cff95811f4ed8eb50e))
+* test local releaserc ([#107](https://github.com/SocialGouv/template/issues/107)) ([86fa77a](https://github.com/SocialGouv/template/commit/86fa77abe05b92a8175757fcc2929e8740d5b02c))
+
 # [1.14.0](https://github.com/SocialGouv/template/compare/v1.13.9...v1.14.0) (2022-09-29)
 
 
