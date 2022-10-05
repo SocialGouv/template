@@ -109,9 +109,3 @@ Dans les URLs de callback définies [sur le compte FranceConnect](), utiliser `h
 - <https://github.com/socialgouv/keycloak-dsfr> : Thème keycloak-DSFR
 - <https://socialgouv.github.io/support> : Documentation technique SocialGouv
 
-
-
-
-
-
-
