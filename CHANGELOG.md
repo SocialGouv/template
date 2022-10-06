@@ -1,3 +1,12 @@
+## [1.14.3](https://github.com/SocialGouv/template/compare/v1.14.2...v1.14.3) (2022-10-06)
+
+
+### Bug Fixes
+
+* disable release wkflw condition ([d5fc203](https://github.com/SocialGouv/template/commit/d5fc2038ff926ef799ddc2e892684a85cff85c2b))
+* **release:** `main` qui trigger la release ([#113](https://github.com/SocialGouv/template/issues/113)) ([a6d4847](https://github.com/SocialGouv/template/commit/a6d4847b62fcb86dbc8bc580d006d86f57526bb6))
+* **release:** remove type close and pull_request ([#111](https://github.com/SocialGouv/template/issues/111)) ([3ae8bc2](https://github.com/SocialGouv/template/commit/3ae8bc22119e16cbd8ed82cc4f7f971acec5b562))
+
 ## [1.14.2](https://github.com/SocialGouv/template/compare/v1.14.1...v1.14.2) (2022-10-04)
 
 
