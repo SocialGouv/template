@@ -1,3 +1,10 @@
+## [1.14.4](https://github.com/SocialGouv/template/compare/v1.14.3...v1.14.4) (2022-10-06)
+
+
+### Bug Fixes
+
+* **ci:** allow prod deploys ([4da9c67](https://github.com/SocialGouv/template/commit/4da9c675345a7be5531a7c4bf3aefaa10964e71d))
+
 ## [1.14.3](https://github.com/SocialGouv/template/compare/v1.14.2...v1.14.3) (2022-10-06)
 
 
