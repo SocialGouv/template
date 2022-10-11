@@ -15,6 +15,7 @@ ENV NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL $NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT
 WORKDIR /app
 
 COPY package.json .
+
 COPY yarn.lock .
 
 RUN yarn install --frozen-lockfile 
