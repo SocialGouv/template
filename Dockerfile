@@ -16,22 +16,13 @@ WORKDIR /app
 
 COPY package.json yarn.lock /app/
 
-COPY . .
-
 RUN yarn install --frozen-lockfile 
 
-RUN yarn build
+COPY . .
 
-RUN if [ -z "$NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
-
-# Dependencies
-FROM node:$NODE_VERSION AS dep
-
-WORKDIR /app
-
-COPY package.json yarn.lock /app/
-
-RUN yarn install --production --frozen-lockfile
+RUN yarn build && \
+  yarn install --production && \
+  if [ -z "$NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
 
 # Runner
 FROM node:$NODE_VERSION AS runner
@@ -51,7 +42,7 @@ COPY --from=builder /app/csp.config.js .
 COPY --from=builder /app/next-seo.config.js .
 COPY --from=builder /app/src ./src
 COPY --from=builder /app/public ./public
-COPY --from=dep /app/node_modules ./node_modules
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder --chown=node:node /app/.next ./.next
 
 USER 1001
