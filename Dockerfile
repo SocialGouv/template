@@ -19,17 +19,7 @@ COPY yarn.lock .
 
 RUN yarn install --frozen-lockfile 
 
-COPY ./next.config.js .
-COPY ./sentry.client.config.ts .
-COPY ./sentry.server.config.ts .
-COPY ./.env.production .
-COPY ./.env.staging .
-COPY ./csp.config.js .
-COPY ./next-seo.config.js .
-COPY ./src ./src
-COPY ./public ./public
-COPY ./scripts ./scripts
-COPY ./tsconfig.json .
+COPY . .
 
 RUN yarn build && \
   yarn install --production && \
