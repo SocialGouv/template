@@ -11,6 +11,7 @@ ARG NEXT_PUBLIC_HOST
 ENV NEXT_PUBLIC_HOST $NEXT_PUBLIC_HOST
 ARG NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL
 ENV NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL $NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL
+ENV NODE_OPTIONS --max_old_space_size=2048
 
 WORKDIR /app
 
@@ -21,7 +22,7 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 RUN yarn build && \
-  # yarn install --production && \
+  yarn install --production && \
   if [ -z "$NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
 
 # Runner
