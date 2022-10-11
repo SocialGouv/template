@@ -1,3 +1,10 @@
+## [1.14.5](https://github.com/SocialGouv/template/compare/v1.14.4...v1.14.5) (2022-10-11)
+
+
+### Bug Fixes
+
+* **ci:** optimize dockerfile and lint tsc only on staged files ([#114](https://github.com/SocialGouv/template/issues/114)) ([6219c1f](https://github.com/SocialGouv/template/commit/6219c1f607723965ecd7592afa50d2c9b5082cfe))
+
 ## [1.14.4](https://github.com/SocialGouv/template/compare/v1.14.3...v1.14.4) (2022-10-06)
 
 
