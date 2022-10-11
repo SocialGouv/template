@@ -11,18 +11,29 @@ ARG NEXT_PUBLIC_HOST
 ENV NEXT_PUBLIC_HOST $NEXT_PUBLIC_HOST
 ARG NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL
 ENV NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL $NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL
-ENV NODE_OPTIONS --max_old_space_size=4096
 
 WORKDIR /app
 
-COPY package.json yarn.lock /app/
+COPY package.json .
+COPY yarn.lock .
 
 RUN yarn install --frozen-lockfile 
 
-COPY . .
+COPY ./next.config.js .
+COPY ./sentry.client.config.ts .
+COPY ./sentry.server.config.ts .
+COPY ./.env.production .
+COPY ./.env.staging .
+COPY ./csp.config.js .
+COPY ./next-seo.config.js .
+COPY ./src ./src
+COPY ./public ./public
+COPY ./scripts ./scripts
+COPY ./tsconfig.json .
 
 RUN yarn build && \
   yarn install --production && \
+  yarn cache clean && \
   if [ -z "$NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
 
 # Runner
