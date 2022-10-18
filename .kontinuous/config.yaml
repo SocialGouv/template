@@ -3,3 +3,9 @@ projectName: fabrique
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
+  contrib:
+    deployWith:
+      kapp:
+        options:
+          kubeApiQps: 10
+          kubeApiBurst: 10
