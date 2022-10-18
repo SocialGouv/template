@@ -10,7 +10,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/templates/hasura.sealed.secret.yaml
   checksum: 7a775d6a31628685ac20af5e17ab13725fd69927a0a20eb7c54985b8aa0723a5
 - filename: .kontinuous/env/dev/values.yaml
-  checksum: ba0474b3ccff7b853ed0708c465918b07079786e1e8fd602fc7df04f1b216d21
+  checksum: 22d96704c294a9977e9db104e1b81cf49afcc1a57175c5110ef9c2afdace5d09
 - filename: .kontinuous/env/preprod/templates/app.sealed.secret.yaml
   checksum: 6d0bdcef816f00308d8bfdbdb9aeca94dfaee5b54f29f2b868a9085fd6428829
 - filename: .kontinuous/env/preprod/templates/hasura.sealed.secret.yaml

@@ -38,7 +38,7 @@ hasura:
 
 pgweb:
   ~needs: [db-hasura]
-  pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
+  ~tpl~pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
 
 metabase:
   ~needs: [db-metabase]
