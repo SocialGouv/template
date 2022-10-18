@@ -42,6 +42,20 @@ jobs:
         registrySecretRefName: harbor
         context: ./hasura
 
+maildev:
+  enabled: true
+
+metabase:
+  enabled: true
+  envFrom:
+    - secretRef:
+        name: pg-user-metabase
+pgweb:
+  enabled: true
+  envFrom:
+    - secretRef:
+        name: pg-user-hasura
+
 hasura:
   ~needs: [build-hasura, keycloakx]
   imageProject: fabrique

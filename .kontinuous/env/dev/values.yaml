@@ -14,6 +14,13 @@ jobs:
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
         database: "hasura_{{ .Values.global.branchSlug32 }}"
         pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
+    db-metabase:
+      use: SocialGouv/kontinuous/plugins/contrib/jobs/create-db@v1
+      with:
+        pgAdminSecretRefName: pg-scaleway
+        pgSecretName: "metabase-db-{{ .Values.global.branchSlug32 }}"
+        database: "metabase_{{ .Values.global.branchSlug32 }}"
+        pgUser: "metabase_{{ .Values.global.branchSlug32 }}"
     seed-hasura:
       ~needs: [hasura]
       use: SocialGouv/kontinuous/plugins/contrib/jobs/seed-db@v1
@@ -28,6 +35,16 @@ hasura:
         name: "hasura-db-{{ .Values.global.branchSlug32 }}"
     - secretRef:
         name: hasura
+
+pgweb:
+  envFrom:
+    - secretRef:
+        name: "hasura-db-{{ .Values.global.branchSlug32 }}"
+
+metabase:
+  envFrom:
+    - secretRef:
+        name: "metabase-db-{{ .Values.global.branchSlug32 }}"
 
 keycloakx:
   ~needs: [db-keycloak]
