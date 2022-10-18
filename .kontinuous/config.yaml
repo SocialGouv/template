@@ -4,6 +4,7 @@ dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
   contrib:
+    import: SocialGouv/kontinuous/plugins/contrib
     deployWith:
       kapp:
         options:
