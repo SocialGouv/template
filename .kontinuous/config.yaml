@@ -3,7 +3,6 @@ projectName: fabrique
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
-  contrib:
     deployWith:
       kapp:
         options:
