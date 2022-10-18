@@ -52,9 +52,7 @@ metabase:
         name: pg-user-metabase
 pgweb:
   enabled: true
-  envFrom:
-    - secretRef:
-        name: pg-user-hasura
+  pgSecretName: pg-user-hasura
 
 hasura:
   ~needs: [build-hasura, keycloakx]

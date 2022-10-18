@@ -10,7 +10,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/templates/hasura.sealed.secret.yaml
   checksum: 7a775d6a31628685ac20af5e17ab13725fd69927a0a20eb7c54985b8aa0723a5
 - filename: .kontinuous/env/dev/values.yaml
-  checksum: 074d41683a91d4b746cc125690cda0090cf10cef06252c4f311822ab354f98dd
+  checksum: ba0474b3ccff7b853ed0708c465918b07079786e1e8fd602fc7df04f1b216d21
 - filename: .kontinuous/env/preprod/templates/app.sealed.secret.yaml
   checksum: 6d0bdcef816f00308d8bfdbdb9aeca94dfaee5b54f29f2b868a9085fd6428829
 - filename: .kontinuous/env/preprod/templates/hasura.sealed.secret.yaml
@@ -26,7 +26,7 @@ fileignoreconfig:
 - filename: .kontinuous/files/realm-export.json
   checksum: 5d1c6ce3754d1f5f04559ff311e86d3d4b9eb35d234af9c99f2f8815dc1a13ff
 - filename: .kontinuous/values.yaml
-  checksum: d39bf6a706158f729c6af6904f127a7dca12622c2d89391ee5798c1eb51b214a
+  checksum: 1706642c3df2cd07feb595371f04394f79a829970bbbc852e4a4ba12f4f948b9
 - filename: docker-compose.yaml
   checksum: 5b51abf740e6c71fe90b62e6612000dec8bf6855fdb79f3a75b1e982b58c3276
 - filename: hasura/migrations/default/1659018828697_init/up.sql
