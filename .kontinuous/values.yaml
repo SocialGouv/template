@@ -52,7 +52,7 @@ metabase:
         name: pg-user-metabase
   env:
     - name: MB_DB_CONNECTION_URI
-      value: "postgresql://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}?sslmode=${PGSSLMODE}"
+      value: "postgresql://$(PGUSER):$(PGPASSWORD)@$(PGHOST):$(PGPORT)/$(PGDATABASE)?sslmode=$(PGSSLMODE)"
     - name: MB_ENCRYPTION_SECRET_KEY
       value: "{{ randAlphaNum 40 }}"
 
