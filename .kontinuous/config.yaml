@@ -5,8 +5,14 @@ dependencies:
     import: SocialGouv/kontinuous/plugins/fabrique
     dependencies:
       contrib:
+        patches:
+          needsUsingInitcontainers:
+            enabled: true
+          needsUsingKapp:
+            enabled: false
         deployWith:
           kapp:
-            options:
-              kubeApiQps: 10
-              kubeApiBurst: 10
+            enabled: false
+          helm:
+            enabled: true
+            
