@@ -12,6 +12,7 @@ const moduleExports = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  ignoreBuildErrors: true,
   sentry: {
     disableClientWebpackPlugin: true,
     disableServerWebpackPlugin: true,
