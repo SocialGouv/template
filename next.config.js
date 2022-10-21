@@ -7,7 +7,7 @@ const ContentSecurityPolicy = require("./csp.config");
 /** @type {import('next').NextConfig} */
 const moduleExports = {
   reactStrictMode: true,
-  slint: {
+  eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
