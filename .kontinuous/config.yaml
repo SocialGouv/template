@@ -1,18 +1,35 @@
 projectName: fabrique
 
+# deployWithPlugin: kapp
+# deployWithPlugin: helm
+deployWithPlugin: kubectl
+
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
     dependencies:
       contrib:
+        preDeploy:
+          namespaces:
+            enabled: true
+        postDeploy:
+          waitRollout:
+            enabled: true
+        deploySidecar:
+          rolloutStatusChecker:
+            enabled: false
         patches:
           needsUsingInitcontainers:
             enabled: true
           needsUsingKapp:
             enabled: false
-        deployWith:
-          kapp:
-            enabled: false
-          helm:
+          filterDisableKapp:
             enabled: true
+          # helm:
+          #   enabled: true
+        # deployWith:
+        #   kapp:
+        #     options: {}
+        #   helm:
+        #     options: {}
             
