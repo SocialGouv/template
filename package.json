@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node -r @swc-node/register scripts/prebuild.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "echo 1",
+    "lint": "next lint",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "e2e": "cypress open",
