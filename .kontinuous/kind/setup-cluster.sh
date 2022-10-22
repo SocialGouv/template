@@ -18,11 +18,18 @@ if [ "$(docker inspect -f='{{json .NetworkSettings.Networks.kind}}' "${reg_name}
   docker network connect "kind" "${reg_name}"
 fi
 
+# create the kind cluster
 kind delete clusters "${cluster_name}" || true
-kind create cluster --wait 5m --name "${cluster_name}" --config=./config.yaml
+kind create cluster --wait 5m --name "${cluster_name}" --config=./config.yaml --kubeconfig=./kubeconfig.yaml
 
 # add ingress-nginx
-kubectl --context "kind-${cluster_name}" apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+kubectl --kubeconfig=./kubeconfig.yaml apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 
 # add local registry
-kubectl --context "kind-${cluster_name}" apply -f ./local-registry.yaml
+kubectl --kubeconfig=./kubeconfig.yaml apply -f ./local-registry.yaml
+
+# create CI namespace
+kubectl --kubeconfig=./kubeconfig.yaml create ns ci
+
+# create kubeconfig in env/local/templates/kubeconfig.yaml
+kubectl create secret kubeconfig --namespace=ci --dry-run --from-file=KUBECONFIG=./kubeconfig.yaml > ../env/local/kubeconfig.yaml

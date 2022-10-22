@@ -5,6 +5,6 @@ metadata:
   namespace: ci
 type: Opaque
 stringData:
-  CI_REGISTRY: 10.103.1.205
+  CI_REGISTRY: kind-registry:5000
   CI_REGISTRY_PASSWORD: ""
   CI_REGISTRY_USER: ""

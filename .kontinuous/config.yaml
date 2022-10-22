@@ -1,12 +1,13 @@
 projectName: fabrique
 isLocal: true
-gitBranch: main
+gitBranch: local
+deployTimeout: 30m
 
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
-
-    # contrib:
-    #   validators:
-    #     noPlainSecrets: # should be enable for lebal environment
-    #       enabled: false
+    dependencies:
+      contrib:
+        validators:
+          noPlainSecrets: # should be enable for lebal environment
+            enabled: false

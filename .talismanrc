@@ -6,13 +6,15 @@ fileignoreconfig:
 - filename: .env.staging
   checksum: f7e70bc08ec6658b8c622acba19325314d6b8d03aa428dd7615ff4ce5a9eae98
 - filename: .kontinuous/config.yaml
-  checksum: 3186199bb12918a1abadd8892e1033b243a8e6c941eeac3129681da315a8bdc1
+  checksum: cc98e1166ca4a0b4ff2eb12e978eed35dc1a3ec2876debdc71bb37b7482017c5
 - filename: .kontinuous/env/dev/templates/app.sealed.secret.yaml
   checksum: fcbdb3df446d45096551093aefa6989d48546580171201984d1207b593704597
 - filename: .kontinuous/env/dev/templates/hasura.sealed.secret.yaml
   checksum: 7a775d6a31628685ac20af5e17ab13725fd69927a0a20eb7c54985b8aa0723a5
 - filename: .kontinuous/env/dev/values.yaml
   checksum: 641ce0c76153a7e6454ca38d427735ba589035a0d6ae18173bd986cea6e913db
+- filename: .kontinuous/env/local/templates/kubeconfig.yaml
+  checksum: 8ebaa0c743f3cb132a5d7d51c87cc914abf3589e4f19f35d9db3d52c85a2acbf
 - filename: .kontinuous/env/preprod/templates/app.sealed.secret.yaml
   checksum: 6d0bdcef816f00308d8bfdbdb9aeca94dfaee5b54f29f2b868a9085fd6428829
 - filename: .kontinuous/env/preprod/templates/hasura.sealed.secret.yaml
@@ -27,6 +29,8 @@ fileignoreconfig:
   checksum: 7f2dcf9c19bfb1f6ae6ce4002ce2c86c8f46ef230b6eec066f3051b10acbd6a6
 - filename: .kontinuous/files/realm-export.json
   checksum: 5d1c6ce3754d1f5f04559ff311e86d3d4b9eb35d234af9c99f2f8815dc1a13ff
+- filename: .kontinuous/kind/setup-cluster.sh
+  checksum: bb8db43fb6c5340db2415cdfe2c2c2468b2f2b7f4247b8abddec4508a56fe9a7
 - filename: .kontinuous/values.yaml
   checksum: 4684a75ec08f2e5fe8bb77b4011cbb6a990fa71ad97bef71c63f4777689caf6b
 - filename: docker-compose.yaml

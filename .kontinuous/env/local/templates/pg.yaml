@@ -7,7 +7,7 @@ type: Opaque
 stringData:
   PGUSER: user
   PGPASSWORD: password
-  PGHOST: postgres
+  PGHOST: app-postgres.template-local.svc.cluster.local # todo: resolve dynamically
   PGPORT: "5432"
   PGSSLMODE: disable
   PGDATABASE: postgres
