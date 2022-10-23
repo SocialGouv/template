@@ -15,9 +15,11 @@ dependencies:
         postDeploy:
           waitRollout:
             enabled: true
-        deploySidecar:
-          rolloutStatusChecker:
+        deploySidecars:
+          failfast:
             enabled: false
+          stern:
+            enabled: true
         patches:
           needsUsingInitcontainers:
             enabled: true
