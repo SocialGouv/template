@@ -26,7 +26,7 @@ const Index: NextPage = () => {
           className="fr-mb-8w fr-mt-8w"
         >
           <Head
-            title="Template"
+            title="Template deployed without rancher"
             textLead={<p>Template de la fabrique des ministères sociaux.</p>}
             description="Pariatur veniam ipsum pariatur elit ullamco sit quis ipsum ad veniam proident sunt. Qui ut irure in quis reprehenderit. Laborum anim ad laboris ipsum magna ullamco consequat ex consectetur. Duis sit adipisicing ipsum occaecat commodo consequat officia ea. Cupidatat fugiat reprehenderit aliqua eiusmod mollit Lorem consectetur. Minim elit proident eu qui exercitation mollit id esse velit et dolore velit laboris. Ipsum occaecat Lorem occaecat magna excepteur veniam ullamco cupidatat irure incididunt velit nulla."
             image={{
