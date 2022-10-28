@@ -1,10 +1,10 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
+  imageProject: fabrique
+  imageRepository: template
 
 app:
   needs: [build-app]
-  imageProject: fabrique
-  imageRepository: template
   imagePackage: app
   containerPort: 8080
 
@@ -13,9 +13,8 @@ jobs:
     build-app:
       use: build
       with:
-        imageProject: fabrique
-        imageRepository: template
         imagePackage: app
         registrySecretRefName: harbor
+        buildOptions: --insecure --single-snapshot --ignore-path=/product_uuid --compressed-caching=false # optim for local builds
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
