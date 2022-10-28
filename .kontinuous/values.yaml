@@ -11,7 +11,7 @@ app:
 jobs:
   runs:
     build-app:
-      use: build
+      use: SocialGouv/kontinuous/plugins/contrib/build@skipExisting
       with:
         imagePackage: app
         registrySecretRefName: harbor
