@@ -1,2 +1,6 @@
+fileignoreconfig:
+- filename: .env.development
+  checksum: 44d017f8bd7ac1f3f4fb8b8175b3dddb6f160cf05b2738ec16b5b848aeb62d3f
 scopeconfig:
-  - scope: node
+- scope: node
+version: "1.0"
