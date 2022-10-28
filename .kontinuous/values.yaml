@@ -15,6 +15,7 @@ jobs:
       with:
         imagePackage: app
         registrySecretRefName: harbor
+        skipExisting: true
         buildOptions: --insecure --single-snapshot --ignore-path=/product_uuid --compressed-caching=false # optim for local builds
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
