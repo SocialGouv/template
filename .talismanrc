@@ -1,6 +1,10 @@
 fileignoreconfig:
 - filename: .env.development
   checksum: 44d017f8bd7ac1f3f4fb8b8175b3dddb6f160cf05b2738ec16b5b848aeb62d3f
+- filename: .github/workflows/kontinuous-webhook-delete.yml
+  checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
+- filename: .github/workflows/kontinuous-webhook-deploy.yml
+  checksum: 1fa040cef27d48607572966b9f06bf23656c95d03dd4cf5aba2508f0218f3a48
 scopeconfig:
 - scope: node
 version: "1.0"

@@ -1,0 +1,14 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - "**"
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.ref }}
+
+jobs:
+  kontinuous:
+    uses: SocialGouv/kontinuous/.github/workflows/workflow-webhook.yaml@v1
+    secrets: inherit
