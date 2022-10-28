@@ -32,4 +32,5 @@ kubectl --kubeconfig=./kubeconfig.yaml apply -f ./local-registry.yaml
 kubectl --kubeconfig=./kubeconfig.yaml create ns ci
 
 # create kubeconfig in env/local/templates/kubeconfig.yaml
-kubectl create secret kubeconfig --namespace=ci --dry-run --from-file=KUBECONFIG=./kubeconfig.yaml > ../env/local/kubeconfig.yaml
+# todo: fix server url
+kubectl create secret generic kubeconfig --namespace=ci --from-file=KUBECONFIG=./kubeconfig.yaml --dry-run=client -o yaml > ../env/local/kubeconfig.yaml 

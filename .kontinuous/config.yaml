@@ -1,6 +1,6 @@
 projectName: fabrique
-isLocal: true
-gitBranch: local
+#isLocal: true
+#gitBranch: local
 deployTimeout: 30m
 
 dependencies:
