@@ -2,5 +2,5 @@ projectName: fabrique
 
 dependencies:
   fabrique:
-    import: SocialGouv/kontinuous/plugins/fabrique
+    import: SocialGouv/kontinuous/plugins/fabrique@skipExisting
     #@feat/needs-init-container
