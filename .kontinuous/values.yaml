@@ -11,7 +11,7 @@ app:
 jobs:
   runs:
     build-app:
-      use: SocialGouv/kontinuous/plugins/fabrique/jobs/build@v1
+      use: build
       with:
         imageProject: fabrique
         imageRepository: template
