@@ -30,7 +30,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         topSection: footerTopSection,
       }}
     >
-      <DefaultSeo {...(SEO as any)} />
+      <DefaultSeo
+        {...(SEO as any)}
+        additionalLinkTags={[
+          {
+            rel: "stylesheet",
+            href: "/remixicon/fonts/remixicon.css",
+          },
+        ]}
+      />
       <Component {...pageProps} />
     </Layout>
   );
