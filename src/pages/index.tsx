@@ -4,10 +4,6 @@ import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
 const Index: NextPage = () => {
-  const onClick1 = () => {
-    throw new Error("Hello, sentry");
-  };
-
   return (
     <>
       <NextSeo
