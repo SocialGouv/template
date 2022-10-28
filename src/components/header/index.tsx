@@ -36,14 +36,16 @@ const Index = (props: HeaderProps): JSX.Element => (
         title={props.serviceTitle}
         description={props.serviceDescription}
       />
-      <Tool {...props.closeButtonLabel}>
+      <Tool>
         <ToolItemGroup>
           {props.bodyItems?.map((item, index) => (
             <ToolItem key={`${index}-${item.title}`} link={item.href}>
               {item.title}
             </ToolItem>
           ))}
-          {props.switchProps && <SwitchThemeMode {...props.switchProps} />}
+          <ToolItem>
+            <SwitchThemeMode />
+          </ToolItem>
         </ToolItemGroup>
       </Tool>
     </HeaderBody>
