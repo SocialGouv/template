@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@dataesr/react-dsfr": "3.1.12",
+    "@gouvfr/dsfr": "1.7.0",
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.2.2",
     "next": "12.1.6",

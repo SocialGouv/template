@@ -1,3 +1,4 @@
+import "@gouvfr/dsfr/dist/dsfr/dsfr.min.css";
 import type { AppProps } from "next/app";
 import SEO from "../../next-seo.config";
 import { Layout } from "@components";
