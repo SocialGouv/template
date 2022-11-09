@@ -27,8 +27,8 @@
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {
-    "@dataesr/react-dsfr": "^1.0.5",
-    "@gouvfr/dsfr": "^1.3.1",
+    "@dataesr/react-dsfr": "3.1.12",
+    "@gouvfr/dsfr": "1.7.0",
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.2.2",
     "next": "12.1.6",

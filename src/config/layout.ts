@@ -30,7 +30,7 @@ export const headerProps: HeaderProps = {
   serviceDescription:
     "L'incubateur des services numériques du pôle ministériel",
   bodyItems: [
-    { href: "/", title: "Lien A" },
+    { href: "/pageA", title: "Lien A" },
     { href: "/", title: "Lien B" },
   ],
   switchProps: {
@@ -45,8 +45,8 @@ export const headerProps: HeaderProps = {
       items: [
         {
           title: "Lien A",
-          href: "/",
-          current: true,
+          href: "/pageA",
+          current: false,
         },
         {
           title: "Lien B",

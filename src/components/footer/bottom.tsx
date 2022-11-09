@@ -19,11 +19,7 @@ export const Bottom = (props: FooterBottomSectionProps): JSX.Element => {
       ))}
       {props.hasSwitchMode && (
         <FooterLink onClick={() => setIsOpen(true)} href="/">
-          <span
-            className="fr-fi-theme-fill fr-link--icon-left"
-            aria-controls="fr-theme-modal"
-            data-fr-opened={isOpen}
-          >
+          <span aria-controls="fr-theme-modal" data-fr-opened={isOpen}>
             Paramètres d’affichage
           </span>
         </FooterLink>

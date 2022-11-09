@@ -1,2 +1,22 @@
+fileignoreconfig:
+- filename: .env.development
+  checksum: 44d017f8bd7ac1f3f4fb8b8175b3dddb6f160cf05b2738ec16b5b848aeb62d3f
+- filename: .github/workflows/kontinuous-webhook-delete.yml
+  checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
+- filename: .github/workflows/kontinuous-webhook-deploy.yml
+  checksum: 1fa040cef27d48607572966b9f06bf23656c95d03dd4cf5aba2508f0218f3a48
+- filename: public/remixicon/README.md
+  checksum: 38f2c93fb045ab7de7b333c6820caae37e5597c712aefdf0148768628c27b8a0
+- filename: public/remixicon/fonts/remixicon.css
+  checksum: 0e818e3d2c801dc1679f3f79234fe973944af7dc5d56536bd3b8b22715b2d961
+- filename: public/remixicon/fonts/remixicon.less
+  checksum: 36e3be69ed1b70f1874f0b3c5afb17e8954893c53beb2163c38defde2119993d
+- filename: public/remixicon/fonts/remixicon.svg
+  checksum: 815049f0abc5b858034dd012aea235e5eb64eedbb5770ff0450464bc3664b025
+- filename: public/remixicon/icons/System/lock-password-fill.svg
+  checksum: 99c762b76c5fb38e84e65f03b16c3871c50c3c17aead34b2bb8930a516c118f0
+- filename: public/remixicon/icons/System/lock-password-line.svg
+  checksum: 9cc58df01f93d6171dc7a4cea1cd08ff56599fa8b78a10a9e53a6144c68eae37
 scopeconfig:
-  - scope: node
+- scope: node
+version: "1.0"
