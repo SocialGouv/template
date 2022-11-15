@@ -6,7 +6,7 @@ fileignoreconfig:
 - filename: .env.staging
   checksum: f7e70bc08ec6658b8c622acba19325314d6b8d03aa428dd7615ff4ce5a9eae98
 - filename: .kontinuous/config.yaml
-  checksum: cc98e1166ca4a0b4ff2eb12e978eed35dc1a3ec2876debdc71bb37b7482017c5
+  checksum: 71fd78044172f982366b95b1772898f00ab49efc057f8039cbd89d0889e29b74
 - filename: .kontinuous/env/dev/templates/app.sealed.secret.yaml
   checksum: fcbdb3df446d45096551093aefa6989d48546580171201984d1207b593704597
 - filename: .kontinuous/env/dev/templates/hasura.sealed.secret.yaml

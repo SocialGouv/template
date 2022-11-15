@@ -1,0 +1,2 @@
+env/local/templates/kubeconfig.yaml
+kind/kubeconfig.yaml

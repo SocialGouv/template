@@ -1,6 +1,4 @@
 projectName: fabrique
-#isLocal: true
-#gitBranch: local
 deployTimeout: 30m
 
 dependencies:
@@ -9,5 +7,7 @@ dependencies:
     dependencies:
       contrib:
         validators:
-          noPlainSecrets: # should be enable for lebal environment
+          noPlainSecrets: # disable plain secrets restriction for local environment
+            enabled: false
+          sealedSecrets:
             enabled: false
