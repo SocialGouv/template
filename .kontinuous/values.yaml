@@ -58,33 +58,6 @@ hasura:
     - secretRef:
         name: hasura
 
-app-postgres:
-  image: mdillon/postgis:11
-  containerPort: 5432
-  servicePort: 5432
-  readinessProbe:
-    exec:
-      command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
-    initialDelaySeconds: 5
-    timeoutSeconds: 2
-  livenessProbe:
-    exec:
-      command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
-    initialDelaySeconds: 5
-    timeoutSeconds: 2
-  startupProbe:
-    exec:
-      command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
-    initialDelaySeconds: 5
-    timeoutSeconds: 2
-  ingress:
-    enabled: false
-  env:
-    - name: POSTGRES_USER
-      value: user
-    - name: POSTGRES_PASSWORD
-      value: password
-
 keycloakx:
   fullnameOverride: keycloakx
 
