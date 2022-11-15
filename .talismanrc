@@ -34,7 +34,7 @@ fileignoreconfig:
 - filename: .kontinuous/kind/setup-cluster.sh
   checksum: f192e74dd355700939e1b8df82b8d577a88e4879d0edc492c629c253bcc105c7
 - filename: .kontinuous/values.yaml
-  checksum: 4684a75ec08f2e5fe8bb77b4011cbb6a990fa71ad97bef71c63f4777689caf6b
+  checksum: b11e92deff150735fa31f0d468943e227c121e33d68846a38fd7c8b18a5ab988
 - filename: docker-compose.yaml
   checksum: 5b51abf740e6c71fe90b62e6612000dec8bf6855fdb79f3a75b1e982b58c3276
 - filename: hasura/migrations/default/1659018828697_init/up.sql
