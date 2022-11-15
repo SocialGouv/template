@@ -1,3 +1,70 @@
+## [1.14.6](https://github.com/SocialGouv/template/compare/v1.14.5...v1.14.6) (2022-10-27)
+
+
+### Bug Fixes
+
+* dummy ([12db468](https://github.com/SocialGouv/template/commit/12db468b06e32d5ce319892558d053ffe7ffb1d4))
+* **release:** remove unused releaserc and --no-ci flag ([#118](https://github.com/SocialGouv/template/issues/118)) ([b3156d7](https://github.com/SocialGouv/template/commit/b3156d795eb2cd7d078f13ee5e419e93bccc45e7))
+
+## [1.14.5](https://github.com/SocialGouv/template/compare/v1.14.4...v1.14.5) (2022-10-11)
+
+
+### Bug Fixes
+
+* **ci:** optimize dockerfile and lint tsc only on staged files ([#114](https://github.com/SocialGouv/template/issues/114)) ([6219c1f](https://github.com/SocialGouv/template/commit/6219c1f607723965ecd7592afa50d2c9b5082cfe))
+
+## [1.14.4](https://github.com/SocialGouv/template/compare/v1.14.3...v1.14.4) (2022-10-06)
+
+
+### Bug Fixes
+
+* **ci:** allow prod deploys ([4da9c67](https://github.com/SocialGouv/template/commit/4da9c675345a7be5531a7c4bf3aefaa10964e71d))
+
+## [1.14.3](https://github.com/SocialGouv/template/compare/v1.14.2...v1.14.3) (2022-10-06)
+
+
+### Bug Fixes
+
+* disable release wkflw condition ([d5fc203](https://github.com/SocialGouv/template/commit/d5fc2038ff926ef799ddc2e892684a85cff85c2b))
+* **release:** `main` qui trigger la release ([#113](https://github.com/SocialGouv/template/issues/113)) ([a6d4847](https://github.com/SocialGouv/template/commit/a6d4847b62fcb86dbc8bc580d006d86f57526bb6))
+* **release:** remove type close and pull_request ([#111](https://github.com/SocialGouv/template/issues/111)) ([3ae8bc2](https://github.com/SocialGouv/template/commit/3ae8bc22119e16cbd8ed82cc4f7f971acec5b562))
+
+## [1.14.2](https://github.com/SocialGouv/template/compare/v1.14.1...v1.14.2) (2022-10-04)
+
+
+### Bug Fixes
+
+* dummy2 ([#110](https://github.com/SocialGouv/template/issues/110)) ([68d5401](https://github.com/SocialGouv/template/commit/68d54010cc317822f1b9910812c6141bc8959864))
+
+## [1.14.1](https://github.com/SocialGouv/template/compare/v1.14.0...v1.14.1) (2022-10-04)
+
+
+### Bug Fixes
+
+* dummy ([24b89bd](https://github.com/SocialGouv/template/commit/24b89bd565b3854f62d99624a95434bf77fb4587))
+* dummy ([05abc20](https://github.com/SocialGouv/template/commit/05abc20344fe4b5497c5a5cff95811f4ed8eb50e))
+* dummy ([#109](https://github.com/SocialGouv/template/issues/109)) ([b72f6d9](https://github.com/SocialGouv/template/commit/b72f6d94ba5249b02f00972f1128b2d0ea9da1a5))
+* test ([#108](https://github.com/SocialGouv/template/issues/108)) ([41e0350](https://github.com/SocialGouv/template/commit/41e0350a79b4011e3246c5c74fda2241c9020488))
+* test local releaserc ([#107](https://github.com/SocialGouv/template/issues/107)) ([86fa77a](https://github.com/SocialGouv/template/commit/86fa77abe05b92a8175757fcc2929e8740d5b02c))
+
+## [1.14.1](https://github.com/SocialGouv/template/compare/v1.14.0...v1.14.1) (2022-10-04)
+
+
+### Bug Fixes
+
+* dummy ([24b89bd](https://github.com/SocialGouv/template/commit/24b89bd565b3854f62d99624a95434bf77fb4587))
+* dummy ([05abc20](https://github.com/SocialGouv/template/commit/05abc20344fe4b5497c5a5cff95811f4ed8eb50e))
+* test ([#108](https://github.com/SocialGouv/template/issues/108)) ([41e0350](https://github.com/SocialGouv/template/commit/41e0350a79b4011e3246c5c74fda2241c9020488))
+* test local releaserc ([#107](https://github.com/SocialGouv/template/issues/107)) ([86fa77a](https://github.com/SocialGouv/template/commit/86fa77abe05b92a8175757fcc2929e8740d5b02c))
+
+## [1.14.1](https://github.com/SocialGouv/template/compare/v1.14.0...v1.14.1) (2022-10-04)
+
+
+### Bug Fixes
+
+* dummy ([05abc20](https://github.com/SocialGouv/template/commit/05abc20344fe4b5497c5a5cff95811f4ed8eb50e))
+* test local releaserc ([#107](https://github.com/SocialGouv/template/issues/107)) ([86fa77a](https://github.com/SocialGouv/template/commit/86fa77abe05b92a8175757fcc2929e8740d5b02c))
+
 # [1.14.0](https://github.com/SocialGouv/template/compare/v1.13.9...v1.14.0) (2022-09-29)
 
 

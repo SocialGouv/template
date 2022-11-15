@@ -6,6 +6,9 @@ const buildEslintCommand = filenames =>
     .join(" --file ")}`;
 
 module.exports = {
-  "**/*.ts?(x)": () => "tsc -p tsconfig.json --noEmit",
+  "**/*.ts?(x)": filenames =>
+    `tsc-files -p tsconfig.json --noEmit ${filenames
+      .map(fN => `"${fN}"`)
+      .join(" ")}`,
   "*.{js,ts,tsx,jsx}": ["jest --bail --findRelatedTests", buildEslintCommand],
 };

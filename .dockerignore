@@ -6,3 +6,5 @@ README.md
 .next
 .kube-workflow
 .github
+.git
+.DS_Store
