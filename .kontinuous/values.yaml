@@ -1,5 +1,5 @@
 global:
-  registry: harbor.fabrique.social.gouv.fr
+  registry: harbor.dev.fabrique.social.gouv.fr
   registrySecretRefName: harbor
   imageProject: fabrique
   imageRepository: template
