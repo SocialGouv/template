@@ -22,7 +22,7 @@ jobs:
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
 
 hasura:
-  ~needs: [build-hasura, db-hasura, keycloakx]
+  ~needs: [db-hasura, keycloakx]
   envFrom:
     - secretRef:
         name: "hasura-db-{{ .Values.global.branchSlug32 }}"

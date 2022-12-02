@@ -1,10 +1,9 @@
 global:
-  registry: harbor.fabrique.social.gouv.fr
+  imageProject: socialgouv
 
 app:
-  ~needs: [build-app, keycloakx, hasura]
+  ~needs: [keycloakx, hasura]
   host: "{{.Values.global.host}}"
-  imageProject: fabrique
   imageRepository: template
   imagePackage: app
   containerPort: 3000
@@ -18,33 +17,8 @@ app:
     annotations:
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
 
-jobs:
-  runs:
-    build-app:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
-      memoryLimit: 10Gi
-      memoryRequest: 4Gi
-      with:
-        imageProject: fabrique
-        imageRepository: template
-        imagePackage: app
-        registrySecretRefName: harbor
-        buildArgs:
-          NEXT_PUBLIC_APP_VERSION_COMMIT: "{{ $.Values.global.sha }}"
-          NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "https://hasura-{{.Values.global.host}}/v1/graphql"
-
-    build-hasura:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/build@v1
-      with:
-        imageProject: fabrique
-        imageRepository: template
-        imagePackage: hasura
-        registrySecretRefName: harbor
-        context: ./hasura
-
 hasura:
-  ~needs: [build-hasura, keycloakx]
-  imageProject: fabrique
+  ~needs: [keycloakx]
   imageRepository: template
   imagePackage: hasura
   env:
@@ -86,7 +60,6 @@ keycloakx:
     - "--http-port=8080"
     - "--hostname-strict=true"
     - "--hostname-strict-https=true"
-    - "--log-level=debug"
     - "--import-realm"
     #- "--features=admin2"
     #- "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
