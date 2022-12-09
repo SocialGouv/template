@@ -27,6 +27,8 @@ fileignoreconfig:
   checksum: 5d1c6ce3754d1f5f04559ff311e86d3d4b9eb35d234af9c99f2f8815dc1a13ff
 - filename: .kontinuous/values.yaml
   checksum: d39bf6a706158f729c6af6904f127a7dca12622c2d89391ee5798c1eb51b214a
+- filename: README.md
+  checksum: af78129cb3188ed4dd882bb100f5fb19b2642924a4d239386888d3af24c09428
 - filename: docker-compose.yaml
   checksum: 5b51abf740e6c71fe90b62e6612000dec8bf6855fdb79f3a75b1e982b58c3276
 - filename: hasura/migrations/default/1659018828697_init/up.sql

@@ -51,7 +51,7 @@ Après avoir cloné le projet :
 :warning: Avant de lancer le projet, vous devez installer `gomplate`
 
 ```bash
-docker-compose up -d # to run keycloak and postgres in background
+docker-compose up -d # to run keycloak, postgres and hasura in background
 yarn # to install dependencies
 yarn dev # to run in dev mode
 ```
@@ -90,7 +90,7 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 ### KeyCloak
 
-Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
+Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assurent tous les workflows d'authentification.
 
 Le `realm` par défaut est dans [.kontinuous/files/realm-export.json](.kontinuous/files/realm-export.json). Pour générer realm utilisable par `docker-compose` à partir de celui-ci, utilisez `yarn keycloak`.
 

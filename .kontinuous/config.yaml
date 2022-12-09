@@ -3,3 +3,13 @@ projectName: fabrique
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
+    dependencies: 
+      contrib:
+        patches:
+          needsUsingInitcontainers:
+            enabled: false
+        
+        deployWith:
+          kubectl:
+            options:
+              dependsOnEnabled: true
