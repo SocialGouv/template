@@ -4,9 +4,20 @@ const { version } = require("./package.json");
 
 const ContentSecurityPolicy = require("./csp.config");
 
+const withTM = require("next-transpile-modules")(["@codegouvfr/react-dsfr"]);
+
 /** @type {import('next').NextConfig} */
 const moduleExports = {
   reactStrictMode: true,
+  swcMinify: true,
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(woff2|webmanifest)$/,
+      type: "asset/resource",
+    });
+
+    return config;
+  },
   sentry: {
     disableClientWebpackPlugin: true,
     disableServerWebpackPlugin: true,
@@ -38,5 +49,5 @@ module.exports = {
       },
     ];
   },
-  ...withSentryConfig(moduleExports, { silent: true }),
+  ...withTM(withSentryConfig(moduleExports, { silent: true })),
 };
