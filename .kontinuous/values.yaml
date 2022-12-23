@@ -4,7 +4,7 @@ global:
   imageRepository: template
 
 app:
-  needs: [build-app]
+  ~needs: [build-app]
   imagePackage: app
   containerPort: 8080
 
