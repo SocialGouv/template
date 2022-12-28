@@ -4,8 +4,8 @@ import type { AppProps } from "next/app";
 import Link from "next/link";
 
 import { fr } from "@codegouvfr/react-dsfr";
-import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next";
-import { createMuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
+import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
+import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
 import { createEmotionSsrAdvancedApproach } from "tss-react/next";
 import { useStyles } from "tss-react/dsfr";
 import {
@@ -15,6 +15,7 @@ import {
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { init } from "@socialgouv/matomo-next";
+import Head from "next/head";
 
 // Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
@@ -25,7 +26,7 @@ declare module "@codegouvfr/react-dsfr" {
 
 const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   defaultColorScheme: "system",
-  Link,
+  doPersistDarkModePreferenceWithCookie: true,
   preloadFonts: [
     //"Marianne-Light",
     //"Marianne-Light_Italic",
@@ -46,8 +47,6 @@ const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
   });
 
 export { dsfrDocumentApi, augmentDocumentWithEmotionCache };
-
-const { MuiDsfrThemeProvider } = createMuiDsfrThemeProvider();
 
 const brandTop = (
   <>
@@ -93,6 +92,14 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <MuiDsfrThemeProvider>
+        <Head>
+          <title>Template SocialGouv</title>
+          <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="Template de la fabrique des ministères sociaux."
+          />
+        </Head>
         <Header
           brandTop={brandTop}
           serviceTitle="La fabrique numérique des ministères sociaux"
