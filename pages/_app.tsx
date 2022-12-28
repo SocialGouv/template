@@ -4,8 +4,8 @@ import type { AppProps } from "next/app";
 import Link from "next/link";
 
 import { fr } from "@codegouvfr/react-dsfr";
-import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
-import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
+import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next";
+import { createMuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
 import { createEmotionSsrAdvancedApproach } from "tss-react/next";
 import { useStyles } from "tss-react/dsfr";
 import {
@@ -24,9 +24,12 @@ declare module "@codegouvfr/react-dsfr" {
   }
 }
 
+const { MuiDsfrThemeProvider } = createMuiDsfrThemeProvider();
+
 const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   defaultColorScheme: "system",
   doPersistDarkModePreferenceWithCookie: true,
+  Link,
   preloadFonts: [
     //"Marianne-Light",
     //"Marianne-Light_Italic",
