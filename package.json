@@ -29,7 +29,7 @@
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "0.12.1",
+    "@codegouvfr/react-dsfr": "^0.17.0",
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
@@ -43,7 +43,7 @@
     "next-seo": "^5.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tss-react": "^4.5.0"
+    "tss-react": "^4.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
