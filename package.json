@@ -29,7 +29,7 @@
     "postinstall": "is-ci || husky install"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^0.17.0",
+    "@codegouvfr/react-dsfr": "^0.17.7",
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
