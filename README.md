@@ -33,14 +33,18 @@ Ce template est composé de page :
 
 ### D'un point de vue technique
 
-- [react-dsfr](https://github.com/codegouvfr/react-dsfr/) pour l'utilisation du [design système de l'état](https://www.systeme-de-design.gouv.fr/)
 - [storybook](https://storybook.js.org/) permettant de réaliser des stories pour les composants
 - [@testing-library](https://testing-library.com/) pour tester de manière unitaire les composants
 - [jest](https://jestjs.io/) pour tester de manière unitaire le code
 - [cypress](https://www.cypress.io/) pour tester en e2e le frontend
-- [matomo](https://matomo.org/) pour sauvegarder de manière anonyme les statistiques d'utilisation
-- [sentry](https://sentry.io/) pour gérer les erreurs
 - [talisman](https://github.com/thoughtworks/talisman/) qui permet de prévenir la publication de secrets dans votre code
+- un [Dockerfile](./Dockerfile) rootless de production basé sur nginx
+- des [Content Security Policy et headers de sécurité de base](https://developer.mozilla.org/fr/docs/Web/HTTP/CSP)
+
+- Côté Next.js:
+  - intégration de [@codegouvfr/react-dsfr](https://github.com/codegouvfr/react-dsfr/) pour le [design système de l'état](https://www.systeme-de-design.gouv.fr/)
+  - intégration de [sentry](https://sentry.io/) pour gérer les erreurs
+  - intégration de [matomo](https://matomo.org/) pour les statistiques d'utilisation
 
 #### En plus dans la branche keycloak :
 
@@ -57,12 +61,23 @@ Après avoir cloné le projet :
 :warning: Avant de lancer le projet, vous devez installer `gomplate`
 
 ```bash
-docker-compose up -d # to run keycloak and postgres in background
 yarn # to install dependencies
 yarn dev # to run in dev mode
 ```
 
-#### Hasura
+### Gestion des environnements
+
+Les variables issues des docker build-args, sont à utiliser dans `next.config.js`, pour les autres, il faut les définir dans les différents [`.env.*`](https://nextjs.org/docs/basic-features/environment-variables#environment-variable-load-order).
+
+Le fichier `.env.staging` est utilisé pour les environnements de review et de pré-production.
+
+Le fichier `.env.development` est utilisé pour l'environnement de développement.
+
+:warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
+
+#### branche KeyCloak
+
+##### Hasura
 
 Lancer les seeds :
 
@@ -76,25 +91,7 @@ Lancer la console avec `yarn hasura console --project ./hasura --endpoint http:/
 
 Cf [migrations documentation](https://hasura.io/docs/latest/migrations-metadata-seeds/manage-migrations/)
 
-### Production
-
-```bash
-yarn # to install dependencies
-yarn build # to build code
-yarn start # to start
-```
-
-### Gestion des environnements
-
-Les variables issues des docker build-args, sont à utiliser dans `next.config.js`, pour les autres, il faut les définir dans les différents [`.env.*`](https://nextjs.org/docs/basic-features/environment-variables#environment-variable-load-order).
-
-Le fichier `.env.staging` est utilisé pour les environnements de review et de pré-production.
-
-Le fichier `.env.development` est utilisé pour l'environnement de développement.
-
-:warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
-
-### KeyCloak
+##### KeyCloak
 
 Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
 
@@ -102,7 +99,7 @@ Le `realm` par défaut est dans [.kontinuous/files/realm-export.json](.kontinuou
 
 Le thème keycloak est basé sur le design-système de l'état, cf [keycloak-dsfr](https://github.com/SocialGouv/keycloak-dsfr).
 
-#### FranceConnect
+##### FranceConnect
 
 Cf https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service
 

@@ -26,28 +26,10 @@ const moduleExports = {
     NEXT_PUBLIC_APP_VERSION: version,
     NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA,
     NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: process.env.PRODUCTION,
+    CONTENT_SECURITY_POLICY: ContentSecurityPolicy,
   },
 };
 
 module.exports = {
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "Content-Security-Policy",
-            value: ContentSecurityPolicy.replace(/\n/g, " ").trim(),
-          },
-          {
-            key: "X-Robots-Tag",
-            value: process.env.NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT
-              ? "all"
-              : "noindex, nofollow, nosnippet",
-          },
-        ],
-      },
-    ];
-  },
   ...withTM(withSentryConfig(moduleExports, { silent: true })),
 };

@@ -85,6 +85,8 @@ function App({ Component, pageProps }: AppProps) {
 
   const router = useRouter();
 
+  const contentSecurityPolicy = process.env.CONTENT_SECURITY_POLICY;
+
   useEffect(() => {
     init({
       url: process.env.NEXT_PUBLIC_MATOMO_URL ?? "",
@@ -97,11 +99,18 @@ function App({ Component, pageProps }: AppProps) {
       <MuiDsfrThemeProvider>
         <Head>
           <title>Template SocialGouv</title>
+          {contentSecurityPolicy && (
+            <meta
+              httpEquiv="Content-Security-Policy"
+              content={contentSecurityPolicy}
+            ></meta>
+          )}
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
             content="Template de la fabrique des ministères sociaux."
           />
+          ContentSecurityPolicy
         </Head>
         <Header
           brandTop={brandTop}
