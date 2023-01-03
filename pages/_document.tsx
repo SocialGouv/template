@@ -1,6 +1,5 @@
 import { Html, Head, Main, NextScript, DocumentProps } from "next/document";
-import { dsfrDocumentApi } from "./_app";
-import { augmentDocumentWithEmotionCache } from "./_app";
+import { dsfrDocumentApi, augmentDocumentWithEmotionCache } from "./_app";
 
 const { getColorSchemeHtmlAttributes, augmentDocumentForDsfr } =
   dsfrDocumentApi;

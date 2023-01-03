@@ -1,6 +1,6 @@
 import * as React from "react";
 import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -45,7 +45,6 @@ import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
 import Link from "@mui/material/Link";
 
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -71,8 +70,6 @@ const muiDefaultLightTheme = createTheme({
     mode: "light",
   },
 });
-
-//const { MuiDsfrThemeProvider } = createMuiDsfrThemeProvider();
 
 export default function Mui() {
   const { isDark, setIsDark } = useIsDark();
@@ -131,7 +128,7 @@ export default function Mui() {
 }
 
 const { ComboBox } = (() => {
-  function ComboBox() {
+  function MyComboBox() {
     return (
       <Autocomplete
         disablePortal
@@ -272,7 +269,7 @@ const { ComboBox } = (() => {
     { label: "Monty Python and the Holy Grail", year: 1975 },
   ];
 
-  return { ComboBox };
+  return { ComboBox: MyComboBox };
 })();
 
 function BasicButtons() {
@@ -493,7 +490,7 @@ const { HorizontalLinearStepper } = (() => {
     "Create an ad",
   ];
 
-  function HorizontalLinearStepper() {
+  function MyHorizontalLinearStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set<number>());
 
@@ -600,7 +597,7 @@ const { HorizontalLinearStepper } = (() => {
     );
   }
 
-  return { HorizontalLinearStepper };
+  return { HorizontalLinearStepper: MyHorizontalLinearStepper };
 })();
 
 const { DataGridDemo } = (() => {
@@ -648,7 +645,7 @@ const { DataGridDemo } = (() => {
     { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
   ];
 
-  function DataGridDemo() {
+  function MyDataGridDemo() {
     return (
       <Box sx={{ height: 400, width: "100%", mt: 7 }}>
         <DataGrid
@@ -664,14 +661,14 @@ const { DataGridDemo } = (() => {
     );
   }
 
-  return { DataGridDemo };
+  return { DataGridDemo: MyDataGridDemo };
 })();
 
 const { Links } = (() => {
   const preventDefault = (event: React.SyntheticEvent) =>
     event.preventDefault();
 
-  function Links() {
+  function MyLinks() {
     return (
       <Box
         sx={{
@@ -697,7 +694,7 @@ const { Links } = (() => {
     );
   }
 
-  return { Links };
+  return { Links: MyLinks };
 })();
 
 const { RecipeReviewCard } = (() => {
@@ -716,7 +713,7 @@ const { RecipeReviewCard } = (() => {
     }),
   }));
 
-  function RecipeReviewCard() {
+  function MyRecipeReviewCard() {
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -804,5 +801,5 @@ const { RecipeReviewCard } = (() => {
     );
   }
 
-  return { RecipeReviewCard };
+  return { RecipeReviewCard: MyRecipeReviewCard };
 })();

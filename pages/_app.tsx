@@ -24,8 +24,6 @@ declare module "@codegouvfr/react-dsfr" {
   }
 }
 
-//const { MuiDsfrThemeProvider } = createMuiDsfrThemeProvider();
-
 const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   defaultColorScheme: "system",
   doPersistDarkModePreferenceWithCookie: true,
