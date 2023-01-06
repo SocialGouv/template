@@ -1,12 +1,9 @@
-name: 👀 Review
+name: 👓 Review Auto
 on:
   push:
     branches:
-      - "**"
-      - "!master"
-      - "!main"
-      - "!feat/**"
-      - "!fix/**"
+      - "feat/**"
+      - "fix/**"
 
 concurrency:
   cancel-in-progress: true
@@ -14,5 +11,5 @@ concurrency:
 
 jobs:
   kontinuous:
-    uses: socialgouv/workflows/.github/workflows/use-ks-gh-review.yaml@v1
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@v1
     secrets: inherit
