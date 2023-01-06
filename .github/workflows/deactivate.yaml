@@ -1,6 +1,7 @@
-name: Deactivate
+name: ♻️ Deactivate
 on:
-  delete:
+  pull_request:
+    types: [closed]
 
 concurrency:
   cancel-in-progress: true
@@ -8,5 +9,5 @@ concurrency:
 
 jobs:
   kontinuous:
-    uses: SocialGouv/kontinuous/.github/workflows/workflow-webhook.yaml@v1
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-deactivate.yaml@v1
     secrets: inherit

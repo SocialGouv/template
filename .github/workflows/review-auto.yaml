@@ -1,8 +1,9 @@
-name: Deploy
+name: 👓 Review Auto
 on:
   push:
     branches:
-      - "**"
+      - "feat/**"
+      - "fix/**"
 
 concurrency:
   cancel-in-progress: true
@@ -10,5 +11,5 @@ concurrency:
 
 jobs:
   kontinuous:
-    uses: SocialGouv/kontinuous/.github/workflows/workflow-webhook.yaml@v1
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-review-auto.yaml@v1
     secrets: inherit
