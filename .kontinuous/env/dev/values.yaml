@@ -1,14 +1,14 @@
 jobs:
   runs:
     db-keycloak:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/create-db@v1
+      use: create-db
       with:
         pgAdminSecretRefName: pg-scaleway
         pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
         database: "keycloak_{{ .Values.global.branchSlug32 }}"
         pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
     db-hasura:
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/create-db@v1
+      use: create-db
       with:
         pgAdminSecretRefName: pg-scaleway
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
@@ -16,7 +16,7 @@ jobs:
         pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
     seed-hasura:
       ~needs: [hasura]
-      use: SocialGouv/kontinuous/plugins/contrib/jobs/seed-db@v1
+      use: seed-db
       with:
         seedPath: hasura/seeds/default/books.sql
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
