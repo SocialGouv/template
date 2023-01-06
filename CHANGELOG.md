@@ -1,3 +1,10 @@
+## [1.14.7](https://github.com/SocialGouv/template/compare/v1.14.6...v1.14.7) (2023-01-06)
+
+
+### Bug Fixes
+
+* up to workflows ([79996de](https://github.com/SocialGouv/template/commit/79996de1caa154549683886615d8a56ba28d500c))
+
 ## [1.14.6](https://github.com/SocialGouv/template/compare/v1.14.5...v1.14.6) (2022-10-27)
 
 
