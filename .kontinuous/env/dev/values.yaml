@@ -3,15 +3,13 @@ jobs:
     db-keycloak:
       use: create-db
       with:
-        pgAdminSecretRefName: pg-scaleway
-        pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+        pgSecretName: "keycloak-db"
         database: "keycloak_{{ .Values.global.branchSlug32 }}"
         pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
     db-hasura:
       use: create-db
       with:
-        pgAdminSecretRefName: pg-scaleway
-        pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
+        pgSecretName: "hasura-db"
         database: "hasura_{{ .Values.global.branchSlug32 }}"
         pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
     seed-hasura:
@@ -19,13 +17,13 @@ jobs:
       use: seed-db
       with:
         seedPath: hasura/seeds/default/books.sql
-        pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
+        pgSecretName: "hasura-db"
 
 hasura:
   ~needs: [build-hasura, db-hasura, keycloakx]
   envFrom:
     - secretRef:
-        name: "hasura-db-{{ .Values.global.branchSlug32 }}"
+        name: "hasura-db"
     - secretRef:
         name: hasura
 
@@ -33,7 +31,7 @@ keycloakx:
   ~needs: [db-keycloak]
   extraEnvFrom: |
     - secretRef:
-        name: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+        name: "keycloak-db"
     - secretRef:
         name: keycloak-secrets
 
@@ -43,9 +41,8 @@ deactivate:
     runs:
       deactivate:
         with:
-          pgAdminSecretRefName: pg-scaleway
+          db: true
       drop-db2:
         use: drop-db
         with:
-          pgAdminSecretRefName: pg-scaleway
           database: "hasura_{{ .Values.global.branchSlug32 }}"
