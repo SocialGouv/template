@@ -29,7 +29,7 @@
     "@gouvfr/dsfr": "^1.7.0",
     "@sentry/nextjs": "^7.8.1",
     "@socialgouv/matomo-next": "^1.2.2",
-    "next": "^12.2.3",
+    "next": "^12.2.4",
     "next-auth": "4.10.3",
     "next-seo": "^5.1.0",
     "react": "^18.1.0",
