@@ -6,6 +6,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "storybook-dark-mode",
   ],
   framework: "@storybook/react",
   webpackFinal: async (config, { configType }) => {
@@ -14,15 +15,7 @@ module.exports = {
       include: /node_modules/,
       type: "javascript/auto",
     });
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@components": path.resolve(__dirname, "../src/components"),
-      "@config": path.resolve(__dirname, "../src/config"),
-      "@utils": path.resolve(__dirname, "../src/utils"),
-      "@hooks": path.resolve(__dirname, "../src/hooks"),
-      "@modules": path.resolve(__dirname, "../src/modules"),
-      "@lib": path.resolve(__dirname, "../src/lib"),
-    };
     return config;
   },
+  staticDirs: ["./static"],
 };

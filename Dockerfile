@@ -1,8 +1,8 @@
-ARG NODE_VERSION=16-alpine
+ARG NODE_VERSION=16-alpine3.16
 
 # Install dependencies only when needed
 FROM node:$NODE_VERSION AS prepare
-RUN apk add --no-cache libc6-compat=1.2.3-r1
+RUN apk add --no-cache libc6-compat=1.2.3-r2
 WORKDIR /app
 COPY package.json yarn.lock ./
 
@@ -33,7 +33,7 @@ RUN if [ -z "$PRODUCTION" ]; then \
   yarn build:export 
 
 # Production image, copy all the files and run next
-FROM ghcr.io/socialgouv/docker/nginx:7.0.1 AS runner
+FROM ghcr.io/socialgouv/docker/nginx:7.3.0 AS runner
 
 COPY --from=builder /app/out /usr/share/nginx/html
 
