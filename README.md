@@ -5,7 +5,7 @@ Template est une application [Next](https://nextjs.org/) développée par la [Fa
 L'application dispose de deux branches principales :
 
 - [`main`](https://github.com/SocialGouv/template) qui est un template de site statique sans la partie authentification
-- [`keycloak`](https://github.com/SocialGouv/template/tree/static) qui ajoute un serveur Next.js, hasura et KyeCloak
+- [`hasura`](https://github.com/SocialGouv/template/tree/hasura) qui ajoute un serveur Next.js, hasura et une authentification KeyCloak
 
 Ce template intègre les recommendations de la [documentation technique SocialGouv](https://socialgouv.github.io/support)
 
