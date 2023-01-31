@@ -3873,6 +3873,24 @@
 
 ### Bug Fixes
 
+* docs ([494de94](https://github.com/SocialGouv/template/commit/494de94ab69efa0c75f986c41193bc3996882ab8))
+* **static:** fix docker dep ([#126](https://github.com/SocialGouv/template/issues/126)) ([ace2804](https://github.com/SocialGouv/template/commit/ace280422dd9f216cad24cd40247ca9fcb90a80b))
+* upgrade static ([#120](https://github.com/SocialGouv/template/issues/120)) ([2096939](https://github.com/SocialGouv/template/commit/209693909a95915c9dd6e24672e69c5d0c192547))
+* **ci:** fix static CI ([#74](https://github.com/SocialGouv/template/issues/74)) ([07317bd](https://github.com/SocialGouv/template/commit/07317bd9000ff2d5a41533f47fade6188a321ca8))
+* rename prod/values.yaml ([37cc360](https://github.com/SocialGouv/template/commit/37cc360744f7fa72f8d1abdad71b5d41228e3164))
+* **static:** use kontinuous CI ([#71](https://github.com/SocialGouv/template/issues/71)) ([8f6d507](https://github.com/SocialGouv/template/commit/8f6d50793ca4ca922dff46e857b560f56549fd88))
+
+
+### Features
+
+* **static:** add talisman pre-commit hook ([#85](https://github.com/SocialGouv/template/issues/85)) ([5fff91b](https://github.com/SocialGouv/template/commit/5fff91bd3987e43545ed3db42c6e6438cc50aaf5))
+* **static:** use @codegouvfr/react-dsfr ([#134](https://github.com/SocialGouv/template/issues/134)) ([2597e7d](https://github.com/SocialGouv/template/commit/2597e7d02a2d1ef12f4582b6f00b32cc3b377b62))
+
+# [1.11.0](https://github.com/SocialGouv/template/compare/v1.10.4...v1.11.0) (2023-01-31)
+
+
+### Bug Fixes
+
 * **static:** fix docker dep ([#126](https://github.com/SocialGouv/template/issues/126)) ([ace2804](https://github.com/SocialGouv/template/commit/ace280422dd9f216cad24cd40247ca9fcb90a80b))
 * upgrade static ([#120](https://github.com/SocialGouv/template/issues/120)) ([2096939](https://github.com/SocialGouv/template/commit/209693909a95915c9dd6e24672e69c5d0c192547))
 * **ci:** fix static CI ([#74](https://github.com/SocialGouv/template/issues/74)) ([07317bd](https://github.com/SocialGouv/template/commit/07317bd9000ff2d5a41533f47fade6188a321ca8))
