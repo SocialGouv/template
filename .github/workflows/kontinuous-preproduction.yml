@@ -1,0 +1,17 @@
+name: 😎 PreProd
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "master"
+      - "main"
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.ref }}
+
+jobs:
+  kontinuous:
+    name: "Deploy on Kubernetes 🐳"
+    uses: socialgouv/workflows/.github/workflows/use-ks-gh-preproduction.yaml@v1
+    secrets: inherit
