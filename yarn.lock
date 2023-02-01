@@ -1164,10 +1164,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codegouvfr/react-dsfr@^0.21.2":
-  version "0.21.2"
-  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-0.21.2.tgz#501460fa0e03addd855d21caa19eb21ab4f45d8c"
-  integrity sha512-mvCJbrgyqxBw5Ciz3Z9gOxfRPLKTCq4mdqfMsSiv5hgz1pMGJ2hHw32KtlmlHTEG1DapfLr+ooSP8I2cZ6KKzw==
+"@codegouvfr/react-dsfr@^0.28.0":
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/@codegouvfr/react-dsfr/-/react-dsfr-0.28.0.tgz#41233b1d21d8eadcf604deaebc6e1e6c066e8108"
+  integrity sha512-TCsCL1qhqHXhYfKz+D2TV92AR1ZxA5Z50YwyHdbzWkZNffIt3uBtcN1FzlgidGcKpcFuSEugL87tjM9mckIspQ==
   dependencies:
     tsafe "^1.4.0"
 
@@ -12914,10 +12914,10 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
   integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
 
-tss-react@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/tss-react/-/tss-react-4.5.2.tgz#8fb5248d5715fe1b5fcb1eb70e86c86151d7285e"
-  integrity sha512-Q5JycexkHWgMm7SdJrazsAL9JEfaFfiumZSjXl2QHJH7F8Adg4L/0m993/UzcjGfZO7z9l4g+EDkVGDP8nfJFQ==
+tss-react@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/tss-react/-/tss-react-4.6.0.tgz#9bf6133d7dd4f7723cf887fb50e37a5670a536af"
+  integrity sha512-GWIduTQpV2B5iEvVSDkYTjvtLi+irTckO5tR28vCYwIOzvgUcK/Gr9xZ/NuJY1Qdb0pasNda5lCecjSnzj1Y0A==
   dependencies:
     "@emotion/cache" "*"
     "@emotion/serialize" "*"

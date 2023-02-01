@@ -55,14 +55,12 @@ const Home: NextPage = () => {
       />
       <br />
       <div className={fr.cx("fr-accordions-group")}>
-        <Accordion
-          label="Name of the Accordion 1"
-          content="Content of the Accordion 1"
-        />
-        <Accordion
-          label="Name of the Accordion 2"
-          content="Content of the Accordion 2"
-        />
+        <Accordion label="Name of the Accordion 1">
+          Content of the Accordion 1
+        </Accordion>
+        <Accordion label="Name of the Accordion 2">
+          Content of the Accordion 2
+        </Accordion>
       </div>
       <br />
       <Stack spacing={2} sx={{ mt: 5 }} direction="row">
