@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/SocialGouv/template/compare/v1.15.0...v1.15.1) (2023-02-01)
+
+
+### Bug Fixes
+
+* typo ([faa18d4](https://github.com/SocialGouv/template/commit/faa18d451f6059ce33e55f763b27ccb84b4b85e7))
+
 ## [1.10.4](https://github.com/SocialGouv/template/compare/v1.10.3...v1.10.4) (2022-03-30)
 
 
