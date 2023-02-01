@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: harbor
+  namespace: ci
+type: Opaque
+stringData:
+  CI_REGISTRY: kind-registry:5000
+  CI_REGISTRY_PASSWORD: ""
+  CI_REGISTRY_USER: ""

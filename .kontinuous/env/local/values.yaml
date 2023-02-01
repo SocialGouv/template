@@ -1,0 +1,85 @@
+global:
+  registry: kind-registry:5000
+  ciNamespace: ci
+  host: "template-demo.test"
+
+jobs:
+  runs:
+    db-keycloak:
+      use: create-db
+      ~needs: [app-postgres]
+      with:
+        pgAdminSecretRefName: pg
+        pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+        database: "keycloak_{{ .Values.global.branchSlug32 }}"
+        pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
+    db-hasura:
+      use: create-db
+      ~needs: [app-postgres]
+      with:
+        pgAdminSecretRefName: pg
+        pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
+        database: "hasura_{{ .Values.global.branchSlug32 }}"
+        pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
+    seed-hasura:
+      ~needs: [hasura, app-postgres]
+      use: seed-db
+      with:
+        seedPath: hasura/seeds/default/books.sql
+        pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
+
+hasura:
+  ~needs: [build-hasura, db-hasura, keycloakx]
+  envFrom:
+    - secretRef:
+        name: "hasura-db-{{ .Values.global.branchSlug32 }}"
+    - secretRef:
+        name: hasura
+
+keycloakx:
+  ~needs: [db-keycloak]
+  extraEnvFrom: |
+    - secretRef:
+        name: "keycloak-db-{{ .Values.global.branchSlug32 }}"
+    - secretRef:
+        name: keycloak-secrets
+
+app-postgres:
+  image: mdillon/postgis:11
+  containerPort: 5432
+  servicePort: 5432
+  readinessProbe:
+    exec:
+      command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
+    initialDelaySeconds: 5
+    timeoutSeconds: 2
+  livenessProbe:
+    exec:
+      command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
+    initialDelaySeconds: 5
+    timeoutSeconds: 2
+  startupProbe:
+    exec:
+      command: ["psql", "-w", "-U", "user", "-d", "postgres", "-c", "SELECT 1"]
+    initialDelaySeconds: 5
+    timeoutSeconds: 2
+  ingress:
+    enabled: false
+  env:
+    - name: POSTGRES_USER
+      value: user
+    - name: POSTGRES_PASSWORD
+      value: password
+
+deactivate:
+  enabled: false
+  jobs-deactivate:
+    runs:
+      deactivate:
+        with:
+          pgAdminSecretRefName: pg
+      drop-db2:
+        use: drop-db
+        with:
+          pgAdminSecretRefName: pg
+          database: "hasura_{{ .Values.global.branchSlug32 }}"

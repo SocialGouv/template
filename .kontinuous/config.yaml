@@ -1,5 +1,13 @@
 projectName: fabrique
+deployTimeout: 30m
 
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
+    dependencies:
+      contrib:
+        validators:
+          noPlainSecrets: # disable plain secrets restriction for local environment
+            enabled: false
+          sealedSecrets:
+            enabled: false
