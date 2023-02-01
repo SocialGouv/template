@@ -1,15 +1,24 @@
 # define docker registry options
 global:
   registry: harbor.fabrique.social.gouv.fr
-  imageProject: fabrique
-  imageRepository: template
 
 # main app container
 app:
-  # wait for build-app before deployment
-  ~needs: [build-app]
+  ~needs: [build-app, keycloakx, hasura]
+  host: "{{.Values.global.host}}"
+  imageProject: fabrique
+  imageRepository: template
   imagePackage: app
-  containerPort: 8080
+  containerPort: 3000
+  probesPath: "/healthz"
+  envFrom:
+    - configMapRef:
+        name: app
+    - secretRef:
+        name: app
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
 
 jobs:
   runs:
@@ -17,10 +26,167 @@ jobs:
     build-app:
       use: build
       with:
+        imageProject: fabrique
+        imageRepository: template
         imagePackage: app
         registrySecretRefName: harbor
-        buildOptions: --single-snapshot --ignore-path=/product_uuid --compressed-caching=false # optim for local builds
         # pass a custom docker build arg
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
           NEXT_PUBLIC_SITE_URL: "https://{{ $.Values.global.host }}"
+          NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "https://hasura-{{.Values.global.host}}/v1/graphql"
+
+    build-hasura:
+      use: build
+      needs: [build-app]
+      with:
+        imageProject: fabrique
+        imageRepository: template
+        imagePackage: hasura
+        registrySecretRefName: harbor
+        context: ./hasura
+
+hasura:
+  enabled: true
+  ~needs: [keycloakx]
+  imageProject: fabrique
+  imageRepository: template
+  imagePackage: hasura
+  env:
+    - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+      value: "false"
+    - name: HASURA_GRAPHQL_DEV_MODE
+      value: "true"
+    - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+      value: anonymous
+    - name: HASURA_GRAPHQL_JWT_SECRET
+      value: '{"jwk_url": "http://keycloakx-http:8080/realms/app-realm/protocol/openid-connect/certs"}'
+  envFrom:
+    - secretRef:
+        name: pg-user-hasura
+    - secretRef:
+        name: hasura
+
+keycloakx:
+  fullnameOverride: keycloakx
+  enabled: true
+
+  serviceAccount:
+    create: false
+  image:
+    tag: "20.0.3"
+  database:
+    vendor: postgres
+  cache:
+    stack: custom
+  http:
+    relativePath: /
+  service:
+    httpPort: 8080
+
+  command:
+    - "/opt/keycloak/bin/kc.sh"
+    - "start"
+    - "--http-enabled=true" # SSL is provided at ingress level
+    - "--http-port=8080"
+    - "--hostname-strict=true"
+    - "--hostname-strict-https=true"
+    #- "--log-level=debug"
+    - "--import-realm"
+    #- "--features=admin2"
+    #- "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" # allow redirect_uri on logout see https://www.keycloak.org/2022/04/keycloak-1800-released.html
+  # - "--spi-events-listener-jboss-logging-success-level=info"
+  # - "--spi-events-listener-jboss-logging-error-level=warn"
+
+  statefulsetAnnotations:
+    kapp.k14s.io/nonce: ""
+    kapp.k14s.io/update-strategy: fallback-on-replace
+    kapp.k14s.io/change-group.keycloakx: "kontinuous/keycloakx.{{ .Values.global.namespace }}"
+    kapp.k14s.io/disable-original: ""
+    kapp.k14s.io/create-strategy: fallback-on-update
+
+  extraEnvFrom: |
+    - secretRef:
+        name: pg-user-keycloak
+    - secretRef:
+        name: keycloak-secrets
+  extraEnv: |
+    - name: KC_DB_URL_HOST
+      value: "$(PGHOST)"
+    - name: KC_DB_URL_PORT
+      value: "$(PGPORT)"
+    - name: KC_DB_URL_DATABASE
+      value: "$(PGDATABASE)"
+    - name: KC_DB_USERNAME
+      value: "$(PGUSER)"
+    - name: KC_DB_PASSWORD
+      value: "$(PGPASSWORD)"
+    - name: KC_HOSTNAME
+      value: "keycloak-{{ .Values.global.host }}"
+    - name: KC_LOG_LEVEL
+      value: "INFO"
+
+  extraVolumes: |
+    - name: keycloak-realm-tpl
+      configMap:
+        name: keycloak-realm
+    - name: keycloak-realm
+      emptyDir: {}
+    - name: providers
+      emptyDir: {}
+  extraVolumeMounts: |
+    - name: keycloak-realm
+      mountPath: "/opt/keycloak/data/import"
+      readOnly: true
+    - name: providers
+      mountPath: "/opt/keycloak/providers"
+  extraInitContainers: |
+    - name: compile-realm
+      image: hairyhenderson/gomplate:v3.10.0-alpine
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+      - name: keycloak-realm-tpl
+        mountPath: "/realm-tpl/"
+        readOnly: true
+      - name: keycloak-realm
+        mountPath: "/realm/"
+      envFrom:
+      - configMapRef:
+          name: app
+      - secretRef:
+          name: app
+      - secretRef:
+          name: franceconnect
+      - secretRef:
+          name: smtp
+      command:
+        - sh
+      args:
+        - -c
+        - "cat /realm-tpl/realm.json.envtpl | gomplate > /realm/realm.json"
+    - name: fetch-keycloak-providers
+      image: curlimages/curl
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+      args:
+        - -c
+        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
+      volumeMounts:
+        - name: providers
+          mountPath: /providers
+
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+      kubernetes.io/ingress.class: nginx
+    tls:
+      - hosts:
+          - "keycloak-{{ .Values.global.host }}"
+        secretName: wildcard-crt
+    rules:
+      - host: "keycloak-{{ .Values.global.host }}"
+        paths:
+          - path: /
+            pathType: Prefix

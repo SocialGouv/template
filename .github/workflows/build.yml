@@ -28,4 +28,4 @@ jobs:
           yarn install --prefer-offline --frozen-lockfile
       - name: Build and export
         run: |
-          yarn build:export
+          yarn build

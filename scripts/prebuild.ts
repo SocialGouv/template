@@ -22,7 +22,7 @@ const run = () => {
     process.env.PRODUCTION ? true : false,
     process.env.NEXT_PUBLIC_SITE_URL ?? "localhost"
   );
-  console.log("Robots.txt generated.");
+  console.log("Robots.txt generated");
 };
 
 run();

@@ -1,0 +1,66 @@
+version: "3"
+
+# this image is used only in development
+# in production, use the kubernetes definitions in .kontinuous
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/pg:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: pgadmin
+      POSTGRES_PASSWORD: pgpassword
+      POSTGRES_MULTIPLE_DATABASES: keycloak,hasura
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.0
+    environment:
+      KC_DB_URL: "jdbc:postgresql://postgres:5432/keycloak"
+      KC_METRICS_ENABLED: "true"
+      KC_DB_USERNAME: pgadmin
+      KC_DB_PASSWORD: pgpassword
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_LOG_LEVEL: INFO
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    healthcheck:
+      # wait for the JWK url to be available
+      test: curl --fail http://localhost:8080/realms/app-realm/protocol/openid-connect/certs|| exit 1
+      interval: 10s
+      retries: 50
+      start_period: 0s
+      timeout: 1s
+    volumes:
+      - ./keycloak/config:/opt/keycloak/data/import
+      - ./keycloak/providers:/opt/keycloak/providers
+    command: "start --import-realm --db=postgres --http-enabled=true --http-port=8080 --hostname-strict=false --hostname-strict-https=false --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true "
+  graphql-engine:
+    image: hasura/graphql-engine:v2.9.0.cli-migrations-v3
+    ports:
+    - "8082:8080"
+    depends_on:
+      keycloak:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+    restart: always
+    volumes:
+      - ./hasura/migrations:/hasura-migrations
+      - ./hasura/metadata:/hasura-metadata
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://pgadmin:pgpassword@postgres:5432/hasura
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
+      HASURA_GRAPHQL_JWT_SECRET: "{\"jwk_url\": \"http://keycloak:8080/realms/app-realm/protocol/openid-connect/certs\"}"
+      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous

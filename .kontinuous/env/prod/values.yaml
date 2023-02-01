@@ -1,6 +1,17 @@
+keycloakx:
+  ingress:
+    annotations:
+      cert-manager.io: cluster-issuer
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      kubernetes.io/tls-acme: "true"
+    tls:
+      - hosts:
+          - "keycloak-{{ .Values.global.host }}"
+        secretName: keycloak-crt
+
 jobs:
   runs:
     build-app:
       with:
         buildArgs:
-          PRODUCTION: "true"
+          NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: "true"
