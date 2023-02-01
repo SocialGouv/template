@@ -108,7 +108,6 @@ function App({ Component, pageProps }: AppProps) {
             name="description"
             content="Template de la fabrique des ministères sociaux."
           />
-          ContentSecurityPolicy
         </Head>
         <Header
           brandTop={brandTop}
