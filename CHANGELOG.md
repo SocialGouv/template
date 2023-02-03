@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/SocialGouv/template/compare/v1.15.1...v1.15.2) (2023-02-03)
+
+
+### Bug Fixes
+
+* github footer ([#146](https://github.com/SocialGouv/template/issues/146)) ([439b78e](https://github.com/SocialGouv/template/commit/439b78efed3aff53f6889603d328e740a83d2b03))
+
 ## [1.15.1](https://github.com/SocialGouv/template/compare/v1.15.0...v1.15.1) (2023-02-01)
 
 
