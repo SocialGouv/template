@@ -1,6 +1,6 @@
 fileignoreconfig:
 - filename: .env.development
-  checksum: 01c8bd12e80600594a21713d543700ea033eeeee3ed3cad9f5d6e3ea31de094e
+  checksum: 6b4ffd2159670a9a52374a966de7c1a357838b9246101d974b3dbd6e6e1e834d
 - filename: .env.production
   checksum: 1f7c9755c1b8a65fb48f6343ea05d6afb9c4d0e085b6b964441f68ae524fda04
 - filename: .env.staging
@@ -51,6 +51,8 @@ fileignoreconfig:
   checksum: e2b00a73de2b1ef4e4601f46e0c783233b06cbefe598f37dff0924e522bebcc9
 - filename: .kontinuous/values.yaml
   checksum: 544ca0a91cc75377c202ed96ba83b256385acf9d329f46ab0301f311002c7879
+- filename: README.md
+  checksum: 12a9880a31cfafb6cc7bd02fbf9a8d948d487aff64ca34b27d5c4b327a83ad5e
 - filename: docker-compose.yaml
   checksum: 3cf3c276244229caad941c84d35109d07d372324a5626aa632724836e39a54ff
 - filename: hasura/migrations/default/1659018828697_init/up.sql
