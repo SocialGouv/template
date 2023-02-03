@@ -19,10 +19,15 @@ RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:$NODE_VERSION AS builder
+
 ARG PRODUCTION
-ENV NODE_ENV production
+ENV PRODUCTION $PRODUCTION
 ARG GITHUB_SHA
 ENV GITHUB_SHA $GITHUB_SHA
+ARG NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_SITE_URL $NEXT_PUBLIC_SITE_URL
+
+ENV NODE_ENV production
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .

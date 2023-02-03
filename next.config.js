@@ -25,7 +25,6 @@ const moduleExports = {
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
     NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA,
-    NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: process.env.PRODUCTION,
     CONTENT_SECURITY_POLICY: ContentSecurityPolicy,
   },
 };

@@ -76,6 +76,18 @@ const bottomLinks = [
       href: "/stats",
     },
   },
+  {
+    text: "Contribuer sur GitHub",
+    linkProps: {
+      href: `${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}${
+        process.env.NEXT_PUBLIC_APP_VERSION
+          ? `/releases/tag/v${process.env.NEXT_PUBLIC_APP_VERSION}`
+          : process.env.NEXT_PUBLIC_APP_VERSION_COMMIT
+          ? `/commit/${process.env.NEXT_PUBLIC_APP_VERSION}`
+          : ""
+      }`,
+    },
+  },
 ];
 
 function App({ Component, pageProps }: AppProps) {
