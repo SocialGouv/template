@@ -20,7 +20,7 @@ COPY package.json yarn.lock /app/
 
 COPY . .
 
-RUN yarn install --frozen-lockfile && yarn build && yarn install --production && if [ -z "$NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
+RUN yarn install --frozen-lockfile && yarn build && yarn install --production && if [ -z "$PRODUCTION" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
 
 # Runner
 FROM node:$NODE_VERSION AS runner
