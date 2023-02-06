@@ -24,7 +24,7 @@ Ce template est composé de page :
 - Healthz
 - Page 404
 
-#### En plus dans la branche keycloak :
+#### En plus dans la branche hasura :
 
 - Page d'authentification
 - Page d'inscription
@@ -75,7 +75,15 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 :warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
 
-#### branche KeyCloak
+#### Variables d'env
+
+cf .env.development
+
+en production, les secrets sont chiffrés dans GIT avec sealed-secrets.
+
+#### branche Hasura
+
+Lancer les serveurs Postgres, hasura et keycloak avec `docker-compose up`.
 
 ##### Hasura
 
@@ -93,7 +101,7 @@ Cf [migrations documentation](https://hasura.io/docs/latest/migrations-metadata-
 
 ##### KeyCloak
 
-Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
+Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 20](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
 
 Le `realm` par défaut est dans [.kontinuous/files/realm-export.json](.kontinuous/files/realm-export.json). Pour générer realm utilisable par `docker-compose` à partir de celui-ci, utilisez `yarn keycloak`.
 
