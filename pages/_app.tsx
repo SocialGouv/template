@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import Link from "next/link";
+import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 
-import { fr } from "@codegouvfr/react-dsfr";
+import { fr, FrIconClassName } from "@codegouvfr/react-dsfr";
 import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
 import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
 import { createEmotionSsrAdvancedApproach } from "tss-react/next";
@@ -15,7 +18,6 @@ import {
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { init } from "@socialgouv/matomo-next";
-import Head from "next/head";
 
 // Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
@@ -76,15 +78,139 @@ const bottomLinks = [
       href: "/stats",
     },
   },
+  {
+    text: "Contribuer sur GitHub",
+    linkProps: {
+      href: `${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}${
+        process.env.NEXT_PUBLIC_APP_VERSION
+          ? `/releases/tag/v${process.env.NEXT_PUBLIC_APP_VERSION}`
+          : process.env.NEXT_PUBLIC_APP_VERSION_COMMIT
+          ? `/commit/${process.env.NEXT_PUBLIC_APP_VERSION}`
+          : ""
+      }`,
+    },
+  },
 ];
 
-function App({ Component, pageProps }: AppProps) {
+function Layout({ children }: { children: ReactNode }) {
   const { css } = useStyles();
+  const { data: session, status } = useSession();
 
   const router = useRouter();
-
   const contentSecurityPolicy = process.env.CONTENT_SECURITY_POLICY;
 
+  const isAuth = session && status === "authenticated";
+  const authItem = isAuth
+    ? {
+        text: session.user?.name,
+        iconId: "fr-icon-account-circle-fill" as FrIconClassName,
+        linkProps: {
+          href: "/profil",
+        },
+      }
+    : {
+        text: "Se connecter",
+        iconId: "fr-icon-account-circle-fill" as FrIconClassName,
+        linkProps: {
+          href: "#",
+          onClick: () => signIn("keycloak"),
+        },
+      };
+  /*
+    <Tag>
+      <Link href="/profil">{session.user?.email}</Link>
+    </Tag>
+  ) : (
+    <ToolItem onClick={() => signIn("keycloak")}>Se connecter</ToolItem>
+  );
+*/
+
+  const navItems = [
+    {
+      text: "Accueil",
+      linkProps: {
+        href: "/",
+      },
+      isActive: router.asPath === "/",
+    },
+    {
+      text: "DSFR playground",
+      linkProps: {
+        href: "/dsfr",
+      },
+      isActive: router.asPath === "/dsfr",
+    },
+    {
+      text: "Mui playground",
+      linkProps: {
+        href: "/mui",
+      },
+      isActive: router.asPath === "/mui",
+    },
+    {
+      text: "Books",
+      linkProps: {
+        href: "/books",
+      },
+      isActive: router.asPath === "/books",
+    },
+  ];
+  return (
+    <MuiDsfrThemeProvider>
+      <Head>
+        <title>Template SocialGouv</title>
+        {contentSecurityPolicy && (
+          <meta
+            httpEquiv="Content-Security-Policy"
+            content={contentSecurityPolicy}
+          ></meta>
+        )}
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Template de la fabrique des ministères sociaux."
+        />
+      </Head>
+      <Header
+        brandTop={brandTop}
+        serviceTitle="La fabrique numérique des ministères sociaux"
+        serviceTagline="L'incubateur des services numériques du pôle ministériel"
+        homeLinkProps={homeLinkPops}
+        navigation={navItems}
+        quickAccessItems={[headerFooterDisplayItem, authItem]}
+      />
+      <div
+        className={css({
+          margin: "auto",
+          maxWidth: 1000,
+          ...fr.spacing("padding", {
+            topBottom: "10v",
+          }),
+        })}
+      >
+        {children}
+      </div>
+      <Footer
+        brandTop={brandTop}
+        accessibility="non compliant"
+        contentDescription={`
+    Ce message est à remplacer par les informations de votre site.
+
+    Comme exemple de contenu, vous pouvez indiquer les informations 
+    suivantes : Le site officiel d’information administrative pour les entreprises.
+                `}
+        homeLinkProps={homeLinkPops}
+        accessibilityLinkProps={{ href: "/accessibilite" }}
+        termsLinkProps={{ href: "/mentions-legales" }}
+        personalDataLinkProps={{ href: "/politique-confidentialite" }}
+        bottomItems={[...bottomLinks, headerFooterDisplayItem]}
+      />
+      <Display />
+    </MuiDsfrThemeProvider>
+  );
+}
+
+function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     init({
       url: process.env.NEXT_PUBLIC_MATOMO_URL ?? "",
@@ -93,81 +219,11 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
-      <MuiDsfrThemeProvider>
-        <Head>
-          <title>Template SocialGouv</title>
-          {contentSecurityPolicy && (
-            <meta
-              httpEquiv="Content-Security-Policy"
-              content={contentSecurityPolicy}
-            ></meta>
-          )}
-          <link rel="icon" href="/favicon.ico" />
-          <meta
-            name="description"
-            content="Template de la fabrique des ministères sociaux."
-          />
-        </Head>
-        <Header
-          brandTop={brandTop}
-          serviceTitle="La fabrique numérique des ministères sociaux"
-          serviceTagline="L'incubateur des services numériques du pôle ministériel"
-          homeLinkProps={homeLinkPops}
-          navigation={[
-            {
-              text: "Accueil",
-              linkProps: {
-                href: "/",
-              },
-              isActive: router.asPath === "/",
-            },
-            {
-              text: "DSFR playground",
-              linkProps: {
-                href: "/dsfr",
-              },
-              isActive: router.asPath === "/dsfr",
-            },
-            {
-              text: "Mui playground",
-              linkProps: {
-                href: "/mui",
-              },
-              isActive: router.asPath === "/mui",
-            },
-          ]}
-          quickAccessItems={[headerFooterDisplayItem]}
-        />
-        <div
-          className={css({
-            margin: "auto",
-            maxWidth: 1000,
-            ...fr.spacing("padding", {
-              topBottom: "10v",
-            }),
-          })}
-        >
-          <Component {...pageProps} />
-        </div>
-        <Footer
-          brandTop={brandTop}
-          accessibility="non compliant"
-          contentDescription={`
-    Ce message est à remplacer par les informations de votre site.
-
-    Comme exemple de contenu, vous pouvez indiquer les informations 
-    suivantes : Le site officiel d’information administrative pour les entreprises.
-                `}
-          homeLinkProps={homeLinkPops}
-          accessibilityLinkProps={{ href: "/accessibilite" }}
-          termsLinkProps={{ href: "/mentions-legales" }}
-          personalDataLinkProps={{ href: "/politique-confidentialite" }}
-          bottomItems={[...bottomLinks, headerFooterDisplayItem]}
-        />
-        <Display />
-      </MuiDsfrThemeProvider>
-    </>
+    <SessionProvider session={pageProps.session}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
   );
 }
 

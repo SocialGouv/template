@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "predev": "only-include-used-icons",
-    "prebuild": "node -r @swc-node/register scripts/prebuild.ts && yarn only-include-used-icons",
+    "prebuild": "tsx scripts/prebuild.ts && yarn only-include-used-icons",
     "only-include-used-icons": "node node_modules/@codegouvfr/react-dsfr/bin/only-include-used-icons.js",
     "dev": "next dev",
     "build": "next build",
@@ -12,8 +12,6 @@
     "lint": "next lint",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "export": "next export",
-    "build:export": "npm run build && npm run export",
     "e2e": "cypress open",
     "e2e:headless": "cypress run",
     "test": "jest",
@@ -26,7 +24,7 @@
     "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "postinstall": "is-ci || husky install"
+    "keycloak": "chmod +x keycloak/scripts/keycloak.sh && keycloak/scripts/keycloak.sh"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^0.28.0",
@@ -39,8 +37,11 @@
     "@mui/x-date-pickers": "^5.0.11",
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.4.0",
+    "dayjs": "^1.11.7",
     "next": "13.1.0",
+    "next-auth": "^4.19.1",
     "next-seo": "^5.1.0",
+    "next-transpile-modules": "^10.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tss-react": "^4.6.0"
@@ -54,8 +55,6 @@
     "@storybook/addon-links": "^6.4.19",
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "^0.0.11",
-    "@swc-node/register": "^1.4.2",
-    "@swc/core": "^1.3.24",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@types/node": "18.11.17",
@@ -71,10 +70,10 @@
     "is-ci": "^3.0.1",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.7",
-    "next-transpile-modules": "^10.0.0",
     "node-talisman": "^1.28.0",
     "start-server-and-test": "^1.14.0",
     "storybook-dark-mode": "^2.0.5",
+    "tsx": "^3.12.2",
     "typescript": "4.9.4"
   }
 }
