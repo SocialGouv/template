@@ -4,7 +4,7 @@ import Head from "next/head";
 
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 
-import { MentionPart } from "../src/components/MentionPart";
+import { MentionPart } from "../components/MentionPart";
 
 const MentionsLegales: NextPage = () => {
   return (

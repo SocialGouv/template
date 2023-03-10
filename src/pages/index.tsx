@@ -1,7 +1,7 @@
 import * as React from "react";
 import Head from "next/head";
 import { NextPage } from "next";
-
+import { push as matomoPush } from "@socialgouv/matomo-next";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import Stack from "@mui/material/Stack";
@@ -52,8 +52,17 @@ const Home: NextPage = () => {
         </div>
       </div>
       <Stack spacing={2} sx={{ mt: 5 }} direction="row">
-        <Button title="nbla" onClick={onClick1}>
+        <Button title="Trigger sentry event" onClick={onClick1}>
           Trigger sentry error
+        </Button>
+
+        <Button
+          title="Trigger matomo event"
+          onClick={() => {
+            matomoPush(["click", "button", "homepage"]);
+          }}
+        >
+          Trigger matomo event
         </Button>
       </Stack>
     </>
