@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/SocialGouv/template/compare/v1.15.2...v1.15.3) (2023-03-13)
+
+
+### Bug Fixes
+
+* fix StatTile and move pages to src ([#150](https://github.com/SocialGouv/template/issues/150)) ([3a2a06f](https://github.com/SocialGouv/template/commit/3a2a06f0be7e43eea68abc0b230a31600170dde0))
+
 ## [1.15.2](https://github.com/SocialGouv/template/compare/v1.15.1...v1.15.2) (2023-02-03)
 
 
