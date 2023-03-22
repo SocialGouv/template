@@ -1,3 +1,10 @@
+## [1.15.4](https://github.com/SocialGouv/template/compare/v1.15.3...v1.15.4) (2023-03-22)
+
+
+### Bug Fixes
+
+* dummy ([92dd046](https://github.com/SocialGouv/template/commit/92dd046eb42134a0c14eda9df69aedf3fa550b6a))
+
 ## [1.15.3](https://github.com/SocialGouv/template/compare/v1.15.2...v1.15.3) (2023-03-13)
 
 
