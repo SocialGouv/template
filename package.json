@@ -1,6 +1,6 @@
 {
   "name": "@socialgouv/template",
-  "version": "1.15.5",
+  "version": "1.15.6",
   "private": true,
   "scripts": {
     "predev": "only-include-used-icons",
