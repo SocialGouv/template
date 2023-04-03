@@ -113,6 +113,12 @@ Cf https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service
 
 Dans les URLs de callback définies [sur le compte FranceConnect](), utiliser `https://[votre-hostname]/realms/app-realm/broker/franceconnect-particulier/endpoint` et `https://[votre-hostname]/realms/app-realm/broker/franceconnect-particulier/endpoint/logout_response`.
 
+## Déploiement sur kubernetes
+
+Template utilise [kontinuous](https://github.com/socialgouv/kontinuous) pour définir et déployer ses ressources kubernetes.
+
+Lancer `npx kontinuous build --env dev -o` pour obtenir les manifests de votre environment (`dev`, `preprod` ou `prod`).
+
 ## Liens
 
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
