@@ -4,7 +4,6 @@ global:
 app:
   ~needs: [build-app, keycloakx, hasura]
   host: "{{.Values.global.host}}"
-  imageProject: fabrique
   imageRepository: template
   imagePackage: app
   containerPort: 3000
@@ -23,7 +22,6 @@ jobs:
     build-app:
       use: build
       with:
-        imageProject: fabrique
         imageRepository: template
         imagePackage: app
         registrySecretRefName: harbor
@@ -35,7 +33,6 @@ jobs:
       use: build
       ~needs: [build-app]
       with:
-        imageProject: fabrique
         imageRepository: template
         imagePackage: hasura
         registrySecretRefName: harbor
@@ -44,7 +41,6 @@ jobs:
 hasura:
   enabled: true
   ~needs: [keycloakx]
-  imageProject: fabrique
   imageRepository: template
   imagePackage: hasura
   env:
