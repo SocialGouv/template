@@ -6,7 +6,7 @@ dependencies:
     import: SocialGouv/kontinuous/plugins/fabrique
 
     options:
-      surviveOnBrokenCluster: true
+      surviveOnBrokenCluster: false # !!!
       clusters:
         dev:
           kubesealEndpoint: "https://kubeseal.ovh2.fabrique.social.gouv.fr"
