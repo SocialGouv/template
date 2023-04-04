@@ -1,5 +1,27 @@
-projectName: fabrique
+projectName: sandbox
+ciNamespace: ci-sandbox
 
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
+
+    options:
+      surviveOnBrokenCluster: true
+      clusters:
+        dev:
+          kubesealEndpoint: "https://kubeseal.ovh2.fabrique.social.gouv.fr"
+          environments:
+            - dev
+            - preprod
+        prod:
+          kubesealEndpoint: "https://kubeseal.ovh2.fabrique.social.gouv.fr"
+          environments:
+            - prod
+
+      domain: "fabrique.social.gouv.fr"
+    
+    dependencies:
+      contrib:
+        validators:
+          sealedSecrets:
+            enabled: false
