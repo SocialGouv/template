@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { SessionProvider, signIn, useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
 
 import { createEmotionSsrAdvancedApproach } from "tss-react/next/pagesDir";
 import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
@@ -15,12 +16,28 @@ import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
 import { init } from "@socialgouv/matomo-next";
 import { useStyles } from "tss-react/dsfr";
 
+import { Client } from "@socialgouv/e2esdk-client";
+import { E2ESDKClientProvider } from "@socialgouv/e2esdk-react";
+
 declare module "@codegouvfr/react-dsfr/next-pagesdir" {
   interface RegisterLink {
     Link: typeof Link;
   }
 }
 
+const e2esdkClient = new Client({
+  serverURL: "https://e2esdk.dev.fabrique.social.gouv.fr",
+  serverSignaturePublicKey: "_XDQj6-paJAnpCp_pfBhGUUe6cA0MjLXsgAOgYDhCRI",
+});
+
+const Devtools = dynamic(
+  () => import("../components/devtools").then((m) => m.Devtools),
+  {
+    ssr: false,
+  }
+);
+
+// Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
   interface RegisterLink {
     Link: typeof Link;
@@ -53,7 +70,7 @@ const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
     key: "css",
   });
 
-export { dsfrDocumentApi, augmentDocumentWithEmotionCache };
+export { augmentDocumentWithEmotionCache, dsfrDocumentApi };
 
 const brandTop = (
   <>
@@ -156,6 +173,24 @@ const Layout = ({ children }: { children: ReactNode }) => {
       },
       isActive: router.asPath === "/books",
     },
+    {
+      menuLinks: [
+        {
+          text: "Form",
+          linkProps: {
+            href: "/form",
+          },
+        },
+        {
+          text: "Answers",
+          linkProps: {
+            href: "/answers",
+          },
+        },
+      ],
+      isActive: ["/form", "/answers"].includes(router.asPath),
+      text: "E2ESDK forms",
+    },
   ];
   return (
     <MuiDsfrThemeProvider>
@@ -184,7 +219,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <div
         className={css({
           margin: "auto",
-          maxWidth: 1000,
+          maxWidth: 1200,
           ...fr.spacing("padding", {
             topBottom: "10v",
           }),
@@ -218,19 +253,14 @@ function App({ Component, pageProps }: AppProps) {
     });
   }, []);
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <SessionProvider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
+      <E2ESDKClientProvider client={e2esdkClient}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </SessionProvider>
-    </div>
+        <Devtools />
+      </E2ESDKClientProvider>
+    </SessionProvider>
   );
 }
 

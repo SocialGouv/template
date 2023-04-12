@@ -1,0 +1,23 @@
+table:
+  name: answers_files
+  schema: public
+object_relationships:
+  - name: answer
+    using:
+      foreign_key_constraint_on: answer_uuid
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - answer_uuid
+        - file_hash
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - answer_uuid
+        - file_hash
+        - id
+      filter: {}
+      allow_aggregations: true

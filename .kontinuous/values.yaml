@@ -18,6 +18,15 @@ app:
   imagePackage: app
   containerPort: 3000
   probesPath: "/healthz"
+  volumes:
+    - name: uploads
+      emptyDir: {}
+  volumeMounts:
+    - name: uploads
+      mountPath: /uploads
+  env:
+    - name: STORAGE_DIR
+      value: /uploads
   envFrom:
     - configMapRef:
         name: app

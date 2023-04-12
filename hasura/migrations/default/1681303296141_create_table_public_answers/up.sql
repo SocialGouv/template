@@ -1,0 +1,1 @@
+CREATE TABLE "public"."answers" ("id" serial NOT NULL, "created_at" timestamptz NOT NULL DEFAULT now(), "submission_bucket_id" text NOT NULL, "sealed_secret" text NOT NULL, "public_key" text NOT NULL, "data" text NOT NULL, PRIMARY KEY ("id") , UNIQUE ("id"), UNIQUE ("sealed_secret"), UNIQUE ("public_key"));
