@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import Link from "next/link";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
-import { useSession, signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import { fr, FrIconClassName } from "@codegouvfr/react-dsfr";
 import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
@@ -18,6 +18,22 @@ import {
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { init } from "@socialgouv/matomo-next";
+
+import { Client } from "@socialgouv/e2esdk-client";
+import { E2ESDKClientProvider } from "@socialgouv/e2esdk-react";
+import dynamic from 'next/dynamic'
+
+const e2esdkClient = new Client({
+  serverURL: "https://e2esdk.dev.fabrique.social.gouv.fr",
+  serverPublicKey: "_XDQj6-paJAnpCp_pfBhGUUe6cA0MjLXsgAOgYDhCRI",
+});
+
+const Devtools = dynamic(
+  () => import("../src/components/devtools").then((m) => m.Devtools),
+  {
+    ssr: false,
+  },
+);
 
 // Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
@@ -49,7 +65,7 @@ const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
     key: "css",
   });
 
-export { dsfrDocumentApi, augmentDocumentWithEmotionCache };
+export { augmentDocumentWithEmotionCache, dsfrDocumentApi };
 
 const brandTop = (
   <>
@@ -102,20 +118,20 @@ function Layout({ children }: { children: ReactNode }) {
   const isAuth = session && status === "authenticated";
   const authItem = isAuth
     ? {
-        text: session.user?.name,
-        iconId: "fr-icon-account-circle-fill" as FrIconClassName,
-        linkProps: {
-          href: "/profil",
-        },
-      }
+      text: session.user?.name,
+      iconId: "fr-icon-account-circle-fill" as FrIconClassName,
+      linkProps: {
+        href: "/profil",
+      },
+    }
     : {
-        text: "Se connecter",
-        iconId: "fr-icon-account-circle-fill" as FrIconClassName,
-        linkProps: {
-          href: "#",
-          onClick: () => signIn("keycloak"),
-        },
-      };
+      text: "Se connecter",
+      iconId: "fr-icon-account-circle-fill" as FrIconClassName,
+      linkProps: {
+        href: "#",
+        onClick: () => signIn("keycloak"),
+      },
+    };
   /*
     <Tag>
       <Link href="/profil">{session.user?.email}</Link>
@@ -123,7 +139,7 @@ function Layout({ children }: { children: ReactNode }) {
   ) : (
     <ToolItem onClick={() => signIn("keycloak")}>Se connecter</ToolItem>
   );
-*/
+  */
 
   const navItems = [
     {
@@ -163,7 +179,8 @@ function Layout({ children }: { children: ReactNode }) {
           <meta
             httpEquiv="Content-Security-Policy"
             content={contentSecurityPolicy}
-          ></meta>
+          >
+          </meta>
         )}
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -220,9 +237,12 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <E2ESDKClientProvider client={e2esdkClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <Devtools />
+      </E2ESDKClientProvider>
     </SessionProvider>
   );
 }

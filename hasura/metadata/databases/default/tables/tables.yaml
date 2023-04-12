@@ -1,3 +1,2 @@
-- "!include public_authors.yaml"
+- "!include public_answers.yaml"
 - "!include public_books.yaml"
-- "!include public_likes.yaml"

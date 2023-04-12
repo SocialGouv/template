@@ -23,7 +23,7 @@ export type Token = {
 
 export const fetchHasura = (
   params: HasuraParams,
-  token: Token,
+  token?: Token,
   retry: number = 5
 ): Promise<HasuraJsonResponse> => {
   const checkExpiredToken = async (res: HasuraJsonResponse) => {
@@ -58,7 +58,7 @@ export const fetchHasura = (
     body: JSON.stringify(params),
     headers: {
       "Content-Type": "application/json",
-      ...(token.accessToken
+      ...(token?.accessToken
         ? { Authorization: `Bearer ${token.accessToken}` }
         : {}), // allow anonymous users with no Authorization header
     },

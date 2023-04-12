@@ -4,7 +4,7 @@ const ContentSecurityPolicy = `
   script-src 'self' *.fabrique.social.gouv.fr ${
     process.env.NODE_ENV !== "production" && "'unsafe-eval' 'unsafe-inline'"
   };
-  connect-src 'self' *.fabrique.social.gouv.fr ${
+  connect-src 'self' data: wss: *.fabrique.social.gouv.fr ${
     process.env.NODE_ENV !== "production" && "http://localhost:8082"
   };
   frame-src 'self' *.fabrique.social.gouv.fr;
