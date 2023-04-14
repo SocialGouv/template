@@ -1,3 +1,10 @@
+## [1.15.7](https://github.com/SocialGouv/template/compare/v1.15.6...v1.15.7) (2023-04-14)
+
+
+### Bug Fixes
+
+* **docker:** updt nginx@7.3.1 ([#153](https://github.com/SocialGouv/template/issues/153)) ([55e055d](https://github.com/SocialGouv/template/commit/55e055d783899aa15cda8928055dfbed698584eb))
+
 ## [1.15.6](https://github.com/SocialGouv/template/compare/v1.15.5...v1.15.6) (2023-03-27)
 
 
