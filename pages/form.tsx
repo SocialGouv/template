@@ -22,6 +22,14 @@ type PostVariables = {
   data: string;
 };
 
+type PostVariables = {
+  submissionBucketId: string;
+  signature: string;
+  sealedSecret: string;
+  publicKey: string;
+  data: string;
+};
+
 const Form: NextPage = () => {
   const client = useE2ESDKClient();
   const {
