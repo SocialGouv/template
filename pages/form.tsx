@@ -9,6 +9,14 @@ import {
 } from "@socialgouv/e2esdk-crypto";
 import { insert_one } from "../src/queries/form";
 
+type PostVariables = {
+  submissionBucketId: string;
+  signature: string;
+  sealedSecret: string;
+  publicKey: string;
+  data: string;
+};
+
 const Form: NextPage = () => {
   const client = useE2ESDKClient();
   const {
@@ -26,7 +34,7 @@ const Form: NextPage = () => {
       state
     );
 
-    const variables = {
+    const variables: PostVariables = {
       submissionBucketId,
       sealedSecret: metadata.sealedSecret,
       signature: metadata.signature,
