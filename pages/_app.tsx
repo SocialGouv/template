@@ -21,7 +21,7 @@ import { init } from "@socialgouv/matomo-next";
 
 import { Client } from "@socialgouv/e2esdk-client";
 import { E2ESDKClientProvider } from "@socialgouv/e2esdk-react";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
 const e2esdkClient = new Client({
   serverURL: "https://e2esdk.dev.fabrique.social.gouv.fr",
@@ -32,7 +32,7 @@ const Devtools = dynamic(
   () => import("../src/components/devtools").then((m) => m.Devtools),
   {
     ssr: false,
-  },
+  }
 );
 
 // Only in TypeScript projects
@@ -118,20 +118,20 @@ function Layout({ children }: { children: ReactNode }) {
   const isAuth = session && status === "authenticated";
   const authItem = isAuth
     ? {
-      text: session.user?.name,
-      iconId: "fr-icon-account-circle-fill" as FrIconClassName,
-      linkProps: {
-        href: "/profil",
-      },
-    }
+        text: session.user?.name,
+        iconId: "fr-icon-account-circle-fill" as FrIconClassName,
+        linkProps: {
+          href: "/profil",
+        },
+      }
     : {
-      text: "Se connecter",
-      iconId: "fr-icon-account-circle-fill" as FrIconClassName,
-      linkProps: {
-        href: "#",
-        onClick: () => signIn("keycloak"),
-      },
-    };
+        text: "Se connecter",
+        iconId: "fr-icon-account-circle-fill" as FrIconClassName,
+        linkProps: {
+          href: "#",
+          onClick: () => signIn("keycloak"),
+        },
+      };
   /*
     <Tag>
       <Link href="/profil">{session.user?.email}</Link>
@@ -170,6 +170,13 @@ function Layout({ children }: { children: ReactNode }) {
       },
       isActive: router.asPath === "/books",
     },
+    {
+      text: "e2e form",
+      linkProps: {
+        href: "/form",
+      },
+      isActive: router.asPath === "/form",
+    },
   ];
   return (
     <MuiDsfrThemeProvider>
@@ -179,8 +186,7 @@ function Layout({ children }: { children: ReactNode }) {
           <meta
             httpEquiv="Content-Security-Policy"
             content={contentSecurityPolicy}
-          >
-          </meta>
+          ></meta>
         )}
         <link rel="icon" href="/favicon.ico" />
         <meta
