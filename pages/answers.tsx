@@ -4,13 +4,15 @@ import { fetchHasura } from "../src/lib/hasura";
 import { query } from "../src/queries/form";
 import { useSession } from "next-auth/react";
 import { useE2ESDKClient, useE2ESDKClientKeys } from "@socialgouv/e2esdk-react";
-import Alert from "@codegouvfr/react-dsfr/Alert";
+import { Alert } from "@codegouvfr/react-dsfr/Alert";
+import { Table } from "@codegouvfr/react-dsfr/Table";
 
 import { z } from "zod";
 
 const formMetadata = z.object({
   id: z.number(),
-  created_at: z.string().transform((value) => new Date(value)),
+  created_at: z.string(),
+  //.transform((value) => new Date(value)),
   public_key: z.string(),
   sealed_secret: z.string(),
   signature: z.string(),
@@ -51,7 +53,7 @@ const Answers: NextPage = () => {
     }),
     [session]
   );
-  const [answers, setAnswers] = useState<DecryptedAnswer[]>([]);
+  const [answers, setAnswers] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const nameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
@@ -77,7 +79,6 @@ const Answers: NextPage = () => {
       const answers = res.data.answers
         .map((answer) => {
           try {
-            console.log("answer", answer);
             const values = client.unsealFormData(
               {
                 metadata: {
@@ -90,20 +91,31 @@ const Answers: NextPage = () => {
               currentKey.nameFingerprint
             ) as Record<"data", string>;
             const decryptedValues: DecryptedData = JSON.parse(values.data);
-            const res = jsonValidationSchema.safeParse(decryptedValues);
+            const res = jsonDataSchema.safeParse(decryptedValues);
             if (!res.success) {
-              setError(`Impossible de parser la réponse ${answer.id}`);
+              setError(`Zod: Impossible de parser la réponse ${answer.id}`);
+              console.error(res);
               return null;
             }
-            return res;
+            const decryptedAnswer = {
+              ...answer,
+              ...res.data,
+              data: undefined,
+            };
+            return [
+              decryptedAnswer.id,
+              decryptedAnswer.created_at.substring(0, 16),
+              decryptedAnswer.firstName,
+              decryptedAnswer.lastName,
+              decryptedAnswer.message,
+            ];
           } catch (e) {
             console.error(e);
-            setError(`Impossible de parser la réponse ${answer.id}`);
+            setError(`e2esdk: Impossible de parser la réponse ${answer.id}`);
             return null;
           }
         })
         .filter((answer) => !!answer);
-      // @ts-ignore TODO
       setAnswers(answers);
       console.log("answers", answers);
     });
@@ -111,10 +123,20 @@ const Answers: NextPage = () => {
 
   return (
     <>
-      {error && <Alert severity="error" small description={error} />}
-      {answers.map((answer) => (
-        <div key={answer.id}>{answer.firstName}</div>
-      ))}
+      {error && (
+        <Alert
+          style={{ marginBottom: 20 }}
+          severity="error"
+          small
+          description={error}
+        />
+      )}
+      <Table
+        fixed
+        caption="Résultats du formulaire"
+        data={answers}
+        headers={["id", "Date", "Nom", "Prénom", "Message"]}
+      />
     </>
   );
 };
