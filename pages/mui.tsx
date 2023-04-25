@@ -648,15 +648,7 @@ const { DataGridDemo } = (() => {
   function MyDataGridDemo() {
     return (
       <Box sx={{ height: 400, width: "100%", mt: 7 }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          experimentalFeatures={{ newEditingApi: true }}
-        />
+        <DataGrid rows={rows} columns={columns} />
       </Box>
     );
   }
