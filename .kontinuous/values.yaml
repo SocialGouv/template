@@ -4,6 +4,7 @@ global:
 
 # main app container
 app:
+  ~chart: app
   ~needs: [build-app, keycloakx, hasura]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
@@ -38,7 +39,7 @@ jobs:
 
     build-hasura:
       use: build
-      needs: [build-app]
+      ~needs: [build-app]
       with:
         imageProject: fabrique
         imageRepository: template

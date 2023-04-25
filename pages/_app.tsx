@@ -173,7 +173,7 @@ function Layout({ children }: { children: ReactNode }) {
     {
       text: "e2e form",
       linkProps: {
-        href: "/form",
+        href: "/form#AatyS2mCJd__zewF-mT_IEd4925CQgf-CC9U3U3ZRnk",
       },
       isActive: router.asPath === "/form",
     },
@@ -205,7 +205,7 @@ function Layout({ children }: { children: ReactNode }) {
       <div
         className={css({
           margin: "auto",
-          maxWidth: 1000,
+          maxWidth: 1200,
           ...fr.spacing("padding", {
             topBottom: "10v",
           }),
