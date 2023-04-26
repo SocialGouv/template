@@ -1,9 +1,8 @@
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import {
   useE2ESDKClient,
   useE2ESDKClientIdentity,
-  useE2ESDKClientKeys,
 } from "@socialgouv/e2esdk-react";
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
@@ -157,10 +156,7 @@ const Answers: NextPage = () => {
   const [answers, setAnswers] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const allKeys = useE2ESDKClientKeys();
   const identity = useE2ESDKClientIdentity();
-
-  const currentKey = allKeys?.[nameFingerprint]?.[0] ?? null;
 
   const fetchAnswers = useCallback(
     () =>
