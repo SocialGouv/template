@@ -70,7 +70,7 @@
     "husky": "^8.0.1",
     "is-ci": "^3.0.1",
     "jest": "^27.5.1",
-    "lint-staged": "^12.3.7",
+    "lint-staged": "^13.0.0",
     "next-transpile-modules": "^10.0.0",
     "node-talisman": "^1.28.0",
     "start-server-and-test": "^1.14.0",
