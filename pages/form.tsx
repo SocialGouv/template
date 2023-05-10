@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useForm } from "react-hook-form";
@@ -17,6 +20,8 @@ import { insert_one } from "../src/queries/form";
 import Button from "@codegouvfr/react-dsfr/Button";
 import Alert from "@codegouvfr/react-dsfr/Alert";
 import { z } from "zod";
+import { fr } from "@codegouvfr/react-dsfr";
+import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 
 const submissionBucketId = "1yvV24lIWdDXaoaQUezHmLo46WPE8BlzEoPR-jdvD2k"; // payloadFingerprint from form creation
 
@@ -71,6 +76,14 @@ const encryptAndSubmitForm = async (data: Record<string, any>) => {
   });
 };
 
+const removeFromArray = (arr: any[], value: any) => {
+  const index = arr.indexOf(value);
+  if (index > -1) {
+    return [...arr.slice(0, index), ...arr.slice(index + 1)];
+  }
+  return arr;
+};
+
 const Form: NextPage = () => {
   const {
     register,
@@ -78,9 +91,56 @@ const Form: NextPage = () => {
     reset,
     formState: { isDirty, isValid },
   } = useForm<FormData>({ mode: "onChange" });
-
+  const { isDark } = useIsDark();
   const [formSuccess, setFormSuccess] = useState<boolean | null>(null);
   const [formError, setFormError] = useState<boolean | null>(null);
+  const [uploads, setUploads] = useState<string[]>([]);
+
+  const readFile = (file: Blob, cb: Function) => {
+    const reader = new FileReader();
+
+    reader.onabort = () => console.log("file reading was aborted");
+    reader.onerror = () => console.log("file reading has failed");
+    reader.onload = () => {
+      const binaryStr = reader.result;
+      // process file
+      cb();
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
+  const onDrop = (acceptedFiles: Blob[]) => {
+    const successes = [...uploads];
+    acceptedFiles.forEach((file) => {
+      readFile(file, () => {
+        successes.push(file.name);
+        setUploads(successes);
+      });
+    });
+  };
+
+  const onRemoveUploadClick = (upload: string) => {
+    const handler: React.MouseEventHandler<HTMLSpanElement> = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const newUploads = removeFromArray(uploads, upload);
+      setUploads(newUploads);
+    };
+    return handler;
+  };
+
+  const {
+    getRootProps: getDropZoneRootProps,
+    getInputProps: getDropZoneInputProps,
+    isDragActive,
+  } = useDropzone({
+    onDrop,
+    accept: {
+      "image/png": [".png"],
+      "image/jpg": [".jpg", ".jpeg"],
+      "image/gif": [".gif"],
+    },
+  });
 
   const onSubmit = handleSubmit(async (data) => {
     console.log("handleSubmit", data);
@@ -203,6 +263,44 @@ const Form: NextPage = () => {
             rows: 6,
           }}
         />
+        <div {...getDropZoneRootProps()}>
+          <Input
+            label="Vos fichiers"
+            nativeInputProps={{ ...getDropZoneInputProps() }}
+          />
+          <div
+            style={{
+              border: "3px dashed auto",
+              padding: 10,
+              marginTop: 10,
+              minHeight: 100,
+              borderColor:
+                fr.getColors(isDark)?.decisions.background.alt.grey.active,
+              backgroundColor: isDragActive
+                ? fr.getColors(isDark)?.decisions.background.alt.grey.active
+                : fr.getColors(isDark)?.decisions.background.contrast.grey
+                    .default,
+            }}
+          >
+            Déposez vos fichiers ici...
+            {(uploads.length && (
+              <div style={{ marginTop: 10 }}>
+                {uploads.map((upload, i) => (
+                  <li key={upload + i}>
+                    {upload}{" "}
+                    <span
+                      style={{ cursor: "pointer" }}
+                      onClick={onRemoveUploadClick(upload)}
+                    >
+                      X
+                    </span>
+                  </li>
+                ))}
+              </div>
+            )) ||
+              null}
+          </div>
+        </div>
         <br />
         <Button onClick={onSubmit} disabled={!isDirty || !isValid}>
           Envoyer

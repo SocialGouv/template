@@ -3108,13 +3108,6 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@socialgouv/e2esdk-api@^1.0.0-beta.11":
-  version "1.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-api/-/e2esdk-api-1.0.0-beta.11.tgz#86dd2fa95fd4d6023e1b269c761f47d7b136d9ce"
-  integrity sha512-LzbHWPwGG9juzORrhCps3wfXdBGVdfzQhsGP/7ZJ3Z8CsFdaX+WkOnrzStgQteTRYUe47CdVgcP7ePvayP/gHA==
-  dependencies:
-    zod "^3.21.4"
-
 "@socialgouv/e2esdk-api@^1.0.0-beta.12":
   version "1.0.0-beta.12"
   resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-api/-/e2esdk-api-1.0.0-beta.12.tgz#cf7cbd396a0d8d88bc39ee64fce3dc25d4303df1"
@@ -3122,23 +3115,23 @@
   dependencies:
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-client@1.0.0-beta.23":
-  version "1.0.0-beta.23"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-client/-/e2esdk-client-1.0.0-beta.23.tgz#c88eb6cb48c72de8aa9ce0b3a2f330496abc6f8d"
-  integrity sha512-OP+OxCNEcRf45d9xR2X4saRd6PjkTRFr5u9e8uR+eY+3LQFb4xDZN0Y+4sproptcd3xCXyvqyJwOIoHZdZ/HrA==
+"@socialgouv/e2esdk-client@1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-client/-/e2esdk-client-1.0.0-beta.25.tgz#4fe64dac2cb334b9da68c7f84a4e6e987d30c59c"
+  integrity sha512-XqQbyHl77BblgyPF4yN15qVh7KmRY97lTZpQ1IYmvH113YRft0YlC51zrU4W+a/LRE+EfYWRqx9efySwC3t/8A==
   dependencies:
     "@47ng/opaque-client" "^2.1.5"
     "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
-    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.16"
+    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.17"
     local-state-sync "1.0.0-beta.6"
     mitt "^3.0.0"
     secure-json-parse "^2.7.0"
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-crypto@1.0.0-beta.16", "@socialgouv/e2esdk-crypto@^1.0.0-beta.16":
-  version "1.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.16.tgz#b7c5ecee2947ea1ba93e13a4936910fd0670fe9c"
-  integrity sha512-qDEMra4tnw6hB6tnBldwcyq/cMrMb9+a08cpXadQ6SHd0ReqbWh6lEjp+0s8SXDyCm/c8ezzTfl25JLiVIdjHw==
+"@socialgouv/e2esdk-crypto@1.0.0-beta.17", "@socialgouv/e2esdk-crypto@^1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.17.tgz#276aec4def56c680ddf9a451572a383850bb55f8"
+  integrity sha512-+LWwvD0BkVWhnK+37M/ySrldeK4h/9cir4G4qvgio1HcIhQKcfYH41+9ex2Lo7w0bGfDH0ANYFQf2mHr8GMqsA==
   dependencies:
     "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
     "@stablelib/hex" "^1.0.1"
@@ -3146,29 +3139,18 @@
     secure-json-parse "^2.7.0"
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-crypto@^1.0.0-beta.15":
-  version "1.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.15.tgz#b110e2212550e864b7a41805528f230fa1358dd7"
-  integrity sha512-fqukxjfahfknvn7Q4xPULJOBaYWuqcXDSspJPx651rHuZvlYCjaLQvJLdQkHhb2Mp+W9v0wwmASJBedfgL6cWg==
-  dependencies:
-    "@socialgouv/e2esdk-api" "^1.0.0-beta.11"
-    "@stablelib/hex" "^1.0.1"
-    libsodium-wrappers "^0.7.11"
-    secure-json-parse "^2.7.0"
-    zod "^3.21.4"
-
-"@socialgouv/e2esdk-devtools@1.0.0-beta.32":
-  version "1.0.0-beta.32"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-devtools/-/e2esdk-devtools-1.0.0-beta.32.tgz#319ea5053bba3d479c6564f251f6fe2f04118bf5"
-  integrity sha512-Dugh53eGUjW7JZldFCyH/uqsRIFwvbFGtGNILXleRlPgsXWLtk57fxSjgl8Qs/bEdV4ttc1FY98PZbPPRA5YnA==
+"@socialgouv/e2esdk-devtools@1.0.0-beta.35":
+  version "1.0.0-beta.35"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-devtools/-/e2esdk-devtools-1.0.0-beta.35.tgz#8d72c2dc4ba0aac9c6b7c48e9a3d899131eb9d2e"
+  integrity sha512-lBeoOWoSoU2xetRyZwKz4WwDQ7u2BlXVd/BuitLfb7E6CkB+Mzcv17n0tCJLBYMANP8OSlxwmhADwCMA9uwL2g==
   dependencies:
     "@chakra-ui/react" "^2.5.2"
     "@emotion/cache" "^11.10.5"
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
-    "@socialgouv/e2esdk-api" "^1.0.0-beta.11"
-    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.15"
-    "@socialgouv/e2esdk-react" "^1.0.0-beta.22"
+    "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
+    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.17"
+    "@socialgouv/e2esdk-react" "^1.0.0-beta.25"
     "@tanstack/react-query" "^4.28.0"
     "@tanstack/react-query-devtools" "^4.28.0"
     framer-motion "^10.8.4"
@@ -3178,10 +3160,10 @@
     vite-plugin-top-level-await "^1.3.0"
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-react@1.0.0-beta.22", "@socialgouv/e2esdk-react@^1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-react/-/e2esdk-react-1.0.0-beta.22.tgz#686b0fe99ae376fc8cfabcedff8d565dd98bf440"
-  integrity sha512-7+XPnkzvZToIJsZ/Clw/4r+MMuVhFwl4aY4gretv7fdoLLMXrDbSJF78og+JFWS85a7Uu8LD8ikB2EqkVQO0Xg==
+"@socialgouv/e2esdk-react@1.0.0-beta.25", "@socialgouv/e2esdk-react@^1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-react/-/e2esdk-react-1.0.0-beta.25.tgz#d5c27ff5bde90d1da8d681adfe9de57e98157f7e"
+  integrity sha512-NvMhdbYtHGUVKv8tJykXBeVefGnYq3n8WquxMNCYS6KZAb3nOMFU3+orGuVJXV0Hwv2GGlX3Z9psAyh6SV47DA==
 
 "@socialgouv/matomo-next@^1.4.0":
   version "1.6.1"
@@ -5436,6 +5418,11 @@ atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+
+attr-accept@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/attr-accept/-/attr-accept-2.2.2.tgz#646613809660110749e92f2c10833b70968d929b"
+  integrity sha512-7prDjvt9HmqiZ0cl5CRjtS84sEyhsHP2coDkaZKRKVfCDo9s7iw7ChVmar78Gu9pC4SoR/28wFu/G5JJhTnqEg==
 
 autoprefixer@^9.8.6:
   version "9.8.8"
@@ -8172,6 +8159,13 @@ file-loader@^6.2.0:
   dependencies:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
+
+file-selector@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.6.0.tgz#fa0a8d9007b829504db4d07dd4de0310b65287dc"
+  integrity sha512-QlZ5yJC0VxHxQQsQhXvBaC7VRJ2uaxTf+Tfpu4Z/OcVQJVpZO+DGU0rkoVW5ce2SccxugvpBJoMvUs59iILYdw==
+  dependencies:
+    tslib "^2.4.0"
 
 file-system-cache@^1.0.5:
   version "1.1.0"
@@ -12589,6 +12583,15 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-dropzone@^14.2.3:
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-14.2.3.tgz#0acab68308fda2d54d1273a1e626264e13d4e84b"
+  integrity sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==
+  dependencies:
+    attr-accept "^2.2.2"
+    file-selector "^0.6.0"
+    prop-types "^15.8.1"
 
 react-element-to-jsx-string@^14.3.4:
   version "14.3.4"

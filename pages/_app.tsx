@@ -25,7 +25,7 @@ import dynamic from "next/dynamic";
 
 const e2esdkClient = new Client({
   serverURL: "https://e2esdk.dev.fabrique.social.gouv.fr",
-  serverPublicKey: "_XDQj6-paJAnpCp_pfBhGUUe6cA0MjLXsgAOgYDhCRI",
+  serverSignaturePublicKey: "_XDQj6-paJAnpCp_pfBhGUUe6cA0MjLXsgAOgYDhCRI",
 });
 
 const Devtools = dynamic(
