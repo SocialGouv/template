@@ -13,6 +13,8 @@ import { Checkbox } from "@codegouvfr/react-dsfr/Checkbox";
 import { generateFormData } from "../src/services/fake-form-data";
 
 import {
+  EncryptedFormLocalState,
+  encryptFile,
   encryptFormData,
   initializeEncryptedFormLocalState,
 } from "@socialgouv/e2esdk-crypto";
@@ -41,12 +43,13 @@ export const jsonDataSchema = z.object({
   color: z.string().optional(),
   newsletter: z.boolean().optional().default(false),
   alerts: z.boolean().optional().default(false),
+  files: z.array(z.any()),
 });
 
 type FormData = z.infer<typeof jsonDataSchema>;
 
 function generateSubmissions() {
-  // generate and submit bunch of submissions
+  // generate and submit bunch of fake submissions
   const rows = Array.from({ length: 100 }, () => generateFormData());
   console.time("encryptAndSubmitForm");
   return Promise.all(rows.map(encryptAndSubmitForm)).then(() => {
@@ -61,6 +64,12 @@ const encryptAndSubmitForm = async (data: Record<string, any>) => {
     { data: JSON.stringify(data) },
     state
   );
+
+  const encryptedFiles = await Promise.all(
+    data.files.map((file: File) => readAndEncryptFile(file, state))
+  );
+
+  console.log("encryptedFiles", encryptedFiles); // TODO
 
   const variables: PostVariables = {
     submissionBucketId,
@@ -84,6 +93,29 @@ const removeFromArray = (arr: any[], value: any) => {
   return arr;
 };
 
+const readAndEncryptFile = (
+  file: File,
+  encryptionState: EncryptedFormLocalState
+): Promise<{ encryptedFile: File; metadata: Record<string, any> }> =>
+  new Promise((resolve, reject) => {
+    console.time("readAndEncryptFile " + file.name);
+    const reader = new FileReader();
+    reader.onabort = () => reject("file reading was aborted");
+    reader.onerror = () => reject("file reading has failed");
+    reader.onload = async () => {
+      const binaryStr = reader.result;
+      if (binaryStr) {
+        const { encryptedFile, metadata } = await encryptFile(
+          encryptionState.sodium,
+          file
+        );
+        console.timeEnd("readAndEncryptFile " + file.name);
+        resolve({ encryptedFile, metadata });
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  });
+
 const Form: NextPage = () => {
   const {
     register,
@@ -94,32 +126,17 @@ const Form: NextPage = () => {
   const { isDark } = useIsDark();
   const [formSuccess, setFormSuccess] = useState<boolean | null>(null);
   const [formError, setFormError] = useState<boolean | null>(null);
-  const [uploads, setUploads] = useState<string[]>([]);
+  const [uploads, setUploads] = useState<File[]>([]);
 
-  const readFile = (file: Blob, cb: Function) => {
-    const reader = new FileReader();
-
-    reader.onabort = () => console.log("file reading was aborted");
-    reader.onerror = () => console.log("file reading has failed");
-    reader.onload = () => {
-      const binaryStr = reader.result;
-      // process file
-      cb();
-    };
-    reader.readAsArrayBuffer(file);
-  };
-
-  const onDrop = (acceptedFiles: Blob[]) => {
+  const onDrop = (acceptedFiles: File[]) => {
     const successes = [...uploads];
     acceptedFiles.forEach((file) => {
-      readFile(file, () => {
-        successes.push(file.name);
-        setUploads(successes);
-      });
+      successes.push(file);
+      setUploads(successes);
     });
   };
 
-  const onRemoveUploadClick = (upload: string) => {
+  const onRemoveUploadClick = (upload: File) => {
     const handler: React.MouseEventHandler<HTMLSpanElement> = (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -147,9 +164,10 @@ const Form: NextPage = () => {
     setFormError(null);
     setFormSuccess(null);
 
+    data.files = uploads; // update to local state
+
     encryptAndSubmitForm(data)
       .then((res) => {
-        console.log(res);
         if (res?.data?.insert_answers_one?.id) {
           setFormError(false);
           setFormSuccess(true);
@@ -193,15 +211,12 @@ const Form: NextPage = () => {
           label="Nom"
           nativeInputProps={{ ...register("firstName", { required: true }) }}
         />
-        <Input
-          label="Prénom(s)"
-          nativeInputProps={register("lastName", { required: true })}
-        />
+        <Input label="Prénom(s)" nativeInputProps={register("lastName")} />
         <Input
           label="Email"
           nativeInputProps={{
             type: "email",
-            ...register("email", { required: true }),
+            ...register("email"),
           }}
         />
         <RadioButtons
@@ -211,28 +226,28 @@ const Form: NextPage = () => {
               label: "Quiet Light",
               nativeInputProps: {
                 value: "Quiet Light",
-                ...register("color", { required: true }),
+                ...register("color"),
               },
             },
             {
               label: "Monokai",
               nativeInputProps: {
                 value: "Monokai",
-                ...register("color", { required: true }),
+                ...register("color"),
               },
             },
             {
               label: "Solarized",
               nativeInputProps: {
                 value: "Solarized",
-                ...register("color", { required: true }),
+                ...register("color"),
               },
             },
             {
               label: "DSFR",
               nativeInputProps: {
                 value: "DSFR",
-                ...register("color", { required: true }),
+                ...register("color"),
               },
             },
           ]}
@@ -259,7 +274,7 @@ const Form: NextPage = () => {
           label="Message"
           textArea={true}
           nativeTextAreaProps={{
-            ...register("message", { required: true }),
+            ...register("message"),
             rows: 6,
           }}
         />
@@ -267,6 +282,7 @@ const Form: NextPage = () => {
           <Input
             label="Vos fichiers"
             nativeInputProps={{ ...getDropZoneInputProps() }}
+            {...register("files")}
           />
           <div
             style={{
@@ -286,8 +302,8 @@ const Form: NextPage = () => {
             {(uploads.length && (
               <div style={{ marginTop: 10 }}>
                 {uploads.map((upload, i) => (
-                  <li key={upload + i}>
-                    {upload}{" "}
+                  <li key={upload.name + i}>
+                    {upload.name}{" "}
                     <span
                       style={{ cursor: "pointer" }}
                       onClick={onRemoveUploadClick(upload)}
