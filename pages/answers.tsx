@@ -43,14 +43,15 @@ const columns: GridColDef[] = [
     sortable: false,
     align: "center",
     width: 40,
-    renderCell: (cell) => (
-      <Avatar
-        size={30}
-        name={cell.row.color}
-        variant="pixel"
-        colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-      />
-    ),
+    renderCell: (cell) =>
+      cell.row.color && (
+        <Avatar
+          size={30}
+          name={cell.row.color}
+          variant="pixel"
+          colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+        />
+      ),
   },
   {
     field: "created_at",
@@ -61,11 +62,13 @@ const columns: GridColDef[] = [
   },
   {
     field: "firstName",
+    type: "string",
     headerName: "First name",
     width: 120,
   },
   {
     field: "lastName",
+    type: "string",
     headerName: "Last name",
     width: 120,
   },
@@ -209,7 +212,11 @@ const Answers: NextPage = () => {
         <DataGrid
           rows={answers}
           columns={columns}
-          sortModel={[{ field: "created_at", sort: "desc" }]}
+          initialState={{
+            sorting: {
+              sortModel: [{ field: "created_at", sort: "desc" }],
+            },
+          }}
           autoPageSize={true}
           checkboxSelection
         />

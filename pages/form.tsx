@@ -14,6 +14,7 @@ import { generateFormData } from "../src/services/fake-form-data";
 
 import {
   EncryptedFormLocalState,
+  base64UrlDecode,
   encryptFile,
   encryptFormData,
   initializeEncryptedFormLocalState,
@@ -25,7 +26,8 @@ import { z } from "zod";
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 
-const submissionBucketId = "1yvV24lIWdDXaoaQUezHmLo46WPE8BlzEoPR-jdvD2k"; // payloadFingerprint from form creation
+const submissionBucketId = "1yvV24lIWdDXaoaQUezHmLo46WPE8BlzEoPR-jdvD2k"; // form key fingerprint
+const formPublicKeyString = "AatyS2mCJd__zewF-mT_IEd4925CQgf-CC9U3U3ZRnk"; // form public key
 
 type PostVariables = {
   submissionBucketId: string;
@@ -58,8 +60,11 @@ function generateSubmissions() {
 }
 
 const encryptAndSubmitForm = async (data: Record<string, any>) => {
-  const state = await initializeEncryptedFormLocalState(submissionBucketId);
-
+  const formPublicKey = base64UrlDecode(formPublicKeyString);
+  const state = await initializeEncryptedFormLocalState(
+    submissionBucketId,
+    formPublicKey
+  );
   const { metadata, encrypted } = encryptFormData(
     { data: JSON.stringify(data) },
     state
