@@ -3115,20 +3115,31 @@
   dependencies:
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-client@1.0.0-beta.25":
-  version "1.0.0-beta.25"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-client/-/e2esdk-client-1.0.0-beta.25.tgz#4fe64dac2cb334b9da68c7f84a4e6e987d30c59c"
-  integrity sha512-XqQbyHl77BblgyPF4yN15qVh7KmRY97lTZpQ1IYmvH113YRft0YlC51zrU4W+a/LRE+EfYWRqx9efySwC3t/8A==
+"@socialgouv/e2esdk-client@1.0.0-beta.26":
+  version "1.0.0-beta.26"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-client/-/e2esdk-client-1.0.0-beta.26.tgz#3e7cdd89c71525349aa234c39a8ea3ee8e4b6743"
+  integrity sha512-E7gnxe3tT0ezbmNRF7Q7ok/Jw2lqTdkbVY8e2hhdfs3fp63qSz63DXGllgmGKxchyvLWFSPzpN74bK6zJyz9Mw==
   dependencies:
     "@47ng/opaque-client" "^2.1.5"
     "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
-    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.17"
+    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.18"
     local-state-sync "1.0.0-beta.6"
     mitt "^3.0.0"
     secure-json-parse "^2.7.0"
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-crypto@1.0.0-beta.17", "@socialgouv/e2esdk-crypto@^1.0.0-beta.17":
+"@socialgouv/e2esdk-crypto@1.0.0-beta.18", "@socialgouv/e2esdk-crypto@^1.0.0-beta.18":
+  version "1.0.0-beta.18"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.18.tgz#0f1e05035859e70c1afa9f6e9bad34aa5d48ac9d"
+  integrity sha512-WnEhDKNuUU0ezHj6HGBb+k8OIyNN0c7LxcxTX8nDMMAFa/3wXtNIjcN/BNy4+nlZEA8KmROLwEdZwH5E3FSfdQ==
+  dependencies:
+    "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
+    "@stablelib/hex" "^1.0.1"
+    libsodium-wrappers "^0.7.11"
+    secure-json-parse "^2.7.0"
+    zod "^3.21.4"
+
+"@socialgouv/e2esdk-crypto@^1.0.0-beta.17":
   version "1.0.0-beta.17"
   resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.17.tgz#276aec4def56c680ddf9a451572a383850bb55f8"
   integrity sha512-+LWwvD0BkVWhnK+37M/ySrldeK4h/9cir4G4qvgio1HcIhQKcfYH41+9ex2Lo7w0bGfDH0ANYFQf2mHr8GMqsA==

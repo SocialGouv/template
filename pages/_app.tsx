@@ -173,7 +173,7 @@ function Layout({ children }: { children: ReactNode }) {
     {
       text: "e2e form",
       linkProps: {
-        href: "/form#AatyS2mCJd__zewF-mT_IEd4925CQgf-CC9U3U3ZRnk",
+        href: "/form",
       },
       isActive: router.asPath === "/form",
     },

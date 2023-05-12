@@ -26,8 +26,8 @@ import { z } from "zod";
 import { fr } from "@codegouvfr/react-dsfr";
 import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 
-const submissionBucketId = "1yvV24lIWdDXaoaQUezHmLo46WPE8BlzEoPR-jdvD2k"; // form key fingerprint
 const formPublicKeyString = "AatyS2mCJd__zewF-mT_IEd4925CQgf-CC9U3U3ZRnk"; // form public key
+const nameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ"; // workspace nameFingerprint
 
 type PostVariables = {
   submissionBucketId: string;
@@ -62,7 +62,7 @@ function generateSubmissions() {
 const encryptAndSubmitForm = async (data: Record<string, any>) => {
   const formPublicKey = base64UrlDecode(formPublicKeyString);
   const state = await initializeEncryptedFormLocalState(
-    submissionBucketId,
+    nameFingerprint, //submissionBucketId,
     formPublicKey
   );
   const { metadata, encrypted } = encryptFormData(
@@ -77,7 +77,7 @@ const encryptAndSubmitForm = async (data: Record<string, any>) => {
   console.log("encryptedFiles", encryptedFiles); // TODO
 
   const variables: PostVariables = {
-    submissionBucketId,
+    submissionBucketId: nameFingerprint,
     sealedSecret: metadata.sealedSecret,
     signature: metadata.signature,
     publicKey: metadata.publicKey,
