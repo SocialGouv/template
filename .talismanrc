@@ -141,6 +141,10 @@ fileignoreconfig:
   checksum: c91f7639218ed6829b9874a71b9522cd440c5f1f47ccec384295bae61fac62c3
 - filename: hasura/migrations/default/1684317239523_alter_table_public_answers_files_alter_column_key/up.sql
   checksum: d63aa44d7e252e93b1c25502214fb2e27b5c827e6a0eb94220a38361a1fff495
+- filename: hasura/migrations/default/1684329733228_alter_table_public_answers_files_drop_column_file_key/down.sql
+  checksum: 6f197d3f8c57135029f04b414ab2e9a8d11d7718e2b641495fdfe98ae76cf697
+- filename: hasura/migrations/default/1684329733228_alter_table_public_answers_files_drop_column_file_key/up.sql
+  checksum: 001dd978bf9cc3c63638b10445f72f157ed625ea0625fb3a05636c23bd2dc4a9
 - filename: hasura/seeds/default/books.sql
   checksum: 40e5ea9f6cf231cd04fa3c40aa27b4f311f240dac730a26ac55afc3204d1bc14
 - filename: keycloak/config/realm-export-local.json
@@ -158,7 +162,7 @@ fileignoreconfig:
 - filename: pages/books.tsx
   checksum: 8e3b60571bf9cfca7740ef1b22661109699ebe88c5bef0b39cde25a08f4aa664
 - filename: pages/form.tsx
-  checksum: d6c6bd558802788093d46de9208c643c7cab9bad876439b7e94bacd672d8c0e0
+  checksum: d7569c7356afcf325d1fc265fc32cb9db4687bf22c1c3825c010443a7f2cbc2e
 - filename: scripts/pg/create-multiple-postgresql-databases.sh
   checksum: 2989dcdba68c9586ff81c53ccbddb452225127b9fb8db9bbcea22be26076e922
 - filename: src/components/header/index.tsx

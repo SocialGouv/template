@@ -12,14 +12,12 @@ insert_permissions:
       columns:
         - answer_uuid
         - file_hash
-        - file_key
 select_permissions:
   - role: user
     permission:
       columns:
         - answer_uuid
         - file_hash
-        - file_key
         - id
       filter: {}
       allow_aggregations: true
