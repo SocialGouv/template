@@ -171,11 +171,22 @@ function Layout({ children }: { children: ReactNode }) {
       isActive: router.asPath === "/books",
     },
     {
-      text: "e2e form",
-      linkProps: {
-        href: "/form",
-      },
-      isActive: router.asPath === "/form",
+      menuLinks: [
+        {
+          text: "Form",
+          linkProps: {
+            href: "/form",
+          },
+        },
+        {
+          text: "Answers",
+          linkProps: {
+            href: "/answers",
+          },
+        },
+      ],
+      isActive: ["/form", "/answers"].includes(router.asPath),
+      text: "E2ESDK forms",
     },
   ];
   return (
