@@ -1,0 +1,22 @@
+table:
+  name: files
+  schema: public
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - hash
+        - key
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - hash
+        - key
+      filter: {}
+delete_permissions:
+  - role: user
+    permission:
+      backend_only: false
+      filter: {}

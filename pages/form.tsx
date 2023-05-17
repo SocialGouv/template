@@ -34,6 +34,7 @@ type PostVariables = {
   signature: string;
   sealedSecret: string;
   publicKey: string;
+  answersFiles: any[];
   data: string;
 };
 
@@ -65,22 +66,44 @@ const encryptAndSubmitForm = async (data: Record<string, any>) => {
     nameFingerprint, //submissionBucketId,
     formPublicKey
   );
+
+  const answersFiles = [];
+  if (data.files) {
+    const { files } = data;
+    delete data.files;
+    const encryptedFiles = await Promise.all(
+      files.map((file: File) => readAndEncryptFile(file, state))
+    );
+    // console.log("encryptedFiles", encryptedFiles);
+    const formData = new FormData();
+    for (let i = 0; i < encryptedFiles.length; i++) {
+      const { encryptedFile, metadata } = encryptedFiles[i];
+      console.dir({ encryptedFile, metadata }, { depth: Infinity });
+      formData.set(`file_${i}`, encryptedFile);
+    }
+    if (Array.from(formData.values()).flat().length > 0) {
+      await fetch("/api/upload-answers-files", {
+        method: "POST",
+        body: formData,
+      });
+      for (const { metadata } of encryptedFiles) {
+        const { hash, key } = metadata;
+        answersFiles.push({ file_hash: hash, file_key: key });
+      }
+    }
+  }
+
   const { metadata, encrypted } = encryptFormData(
     { data: JSON.stringify(data) },
     state
   );
-
-  const encryptedFiles = await Promise.all(
-    data.files.map((file: File) => readAndEncryptFile(file, state))
-  );
-
-  console.log("encryptedFiles", encryptedFiles); // TODO
 
   const variables: PostVariables = {
     submissionBucketId: nameFingerprint,
     sealedSecret: metadata.sealedSecret,
     signature: metadata.signature,
     publicKey: metadata.publicKey,
+    answersFiles,
     ...encrypted,
   };
 

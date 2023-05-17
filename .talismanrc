@@ -57,6 +57,8 @@ fileignoreconfig:
   checksum: 3cf3c276244229caad941c84d35109d07d372324a5626aa632724836e39a54ff
 - filename: hasura/Dockerfile
   checksum: 38b1a878c110c8c56baaf1162584cc3338a935e1de1fa225afe02eb8050013bd
+- filename: hasura/metadata/databases/default/tables/public_answers_files.yaml
+  checksum: cf8cffbd194b6e3039528c2486f674c4131eab50ab678337ae1a04a2a96bc609
 - filename: hasura/migrations/default/1659018828697_init/up.sql
   checksum: 35d9f9dd5380b853fe9ead2e36b97158de39be0a1b9aaee0071b1f43fbdfb211
 - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/down.sql
@@ -71,6 +73,74 @@ fileignoreconfig:
   checksum: 8477739170155724e1c5629129ec22444dd2af53fe04f26f6028783abb125135
 - filename: hasura/migrations/default/1681305238139_alter_table_public_answers_add_column_signature/up.sql
   checksum: 0304fe5ecdc9eb6bde037de85a82c2a70f4bfb6b4566d956ad5eadecf9d8169c
+- filename: hasura/migrations/default/1684314835951_create_table_public_files/down.sql
+  checksum: 6c2703260490eccd10858046af53b33cdbf86ba62ea48cbf7aa7b969c91618a2
+- filename: hasura/migrations/default/1684314835951_create_table_public_files/up.sql
+  checksum: 71222c539960f1dfc10f01a99ac6520b976ccf9d831e44bca80a1a0633ec6917
+- filename: hasura/migrations/default/1684314945514_create_table_public_answers_files/down.sql
+  checksum: 9989fc6a804bb48257720db6c3c1f718109402b11c2e064f52bb1e6710433511
+- filename: hasura/migrations/default/1684314945514_create_table_public_answers_files/up.sql
+  checksum: fec002e5b511be371fad0a8a685c5ba727ddac5915e4ca2ac852c9f45e205928
+- filename: hasura/migrations/default/1684314983990_alter_table_public_files_add_unique_hash/down.sql
+  checksum: 3f8e8f4bd481eefd99fdea2af388f57a7621d29dd6c17d1d60be74f15a430150
+- filename: hasura/migrations/default/1684314983990_alter_table_public_files_add_unique_hash/up.sql
+  checksum: a8c8ca41f5fcbf4a23d5fb814484fdce8a04f006bdb3ead80c8aab38f2ee0630
+- filename: hasura/migrations/default/1684315453170_alter_table_public_answers_add_column_uuid/down.sql
+  checksum: 581331332aa2121b4b5160704c09305169e2f0e276515993929e554939b5b560
+- filename: hasura/migrations/default/1684315453170_alter_table_public_answers_add_column_uuid/up.sql
+  checksum: e5d164a31be5cd0238bdacf3c7fede4ba03a42f01dc290680b16df646726d9c6
+- filename: hasura/migrations/default/1684315461992_alter_table_public_answers_alter_column_uuid/down.sql
+  checksum: 534b60b957a23effee67d7d08e15e7ff35a987989253ffbc786e306889c38466
+- filename: hasura/migrations/default/1684315461992_alter_table_public_answers_alter_column_uuid/up.sql
+  checksum: 1b59ea369b35494d3df85398b59d1266b359f3d0962108b944d8e82cb19ca44f
+- filename: hasura/migrations/default/1684315533357_alter_table_public_answers_files_drop_column_answer_id/down.sql
+  checksum: 73ef953b790755b5968b2fb2f03a21c7993fa146c05c7f085ec1d7ce35b4d8e2
+- filename: hasura/migrations/default/1684315533357_alter_table_public_answers_files_drop_column_answer_id/up.sql
+  checksum: 4dff0097ad4d4fb48da7ed7f32e01787558dd3a710339aa0ceb30cb05a036a96
+- filename: hasura/migrations/default/1684315553901_alter_table_public_answers_files_add_column_answer_uuid/down.sql
+  checksum: 3cc63739d321146efc7fb954f42222ee0389cdcb28c59a94260d33f26c700f1a
+- filename: hasura/migrations/default/1684315553901_alter_table_public_answers_files_add_column_answer_uuid/up.sql
+  checksum: be2ef7400e22782fb1c6e9df883a3dabcb53fa1e179cfef133ebfa839cb8600e
+- filename: hasura/migrations/default/1684315633710_modify_primarykey_public_answers/down.sql
+  checksum: bc6573c3203727f4f7300a90c90feaa003fc7d567f9717a86b1bd52f4aeac7bc
+- filename: hasura/migrations/default/1684315633710_modify_primarykey_public_answers/up.sql
+  checksum: 0a7d95a2c2a16a805abb82e6c4a1541b0384c5272b671fa19e73ab0f557ecbd0
+- filename: hasura/migrations/default/1684315652503_set_fk_public_answers_files_answer_uuid/down.sql
+  checksum: b3c14cd15ef84c004a55dd254b226aa1322f5a1290c7b518e92b6fad2e461140
+- filename: hasura/migrations/default/1684315652503_set_fk_public_answers_files_answer_uuid/up.sql
+  checksum: d745547365d22f0fbe15ee770444d40f2715d9c20d023841bd209097f8a75c2d
+- filename: hasura/migrations/default/1684315662174_alter_table_public_answers_files_add_unique_file_hash_answer_uuid/down.sql
+  checksum: 126a3416c110dfb62e57abd30435ecf15f249d9baf6945a3f02a10f75f0cb373
+- filename: hasura/migrations/default/1684315662174_alter_table_public_answers_files_add_unique_file_hash_answer_uuid/up.sql
+  checksum: 1aa4b7b0858c2976f3a090e87c073ff1a8f2178486547dead4ea19728a5949ad
+- filename: hasura/migrations/default/1684315959954_alter_table_public_files_add_column_answers_files_id/down.sql
+  checksum: b3b74011c27052ae66c511a28d4d6510a122b91175f52d744a9e88c92559bd10
+- filename: hasura/migrations/default/1684315959954_alter_table_public_files_add_column_answers_files_id/up.sql
+  checksum: 50d7aeeeb9b7a0034a9e5aee03d4b1b7d06bfeec927dff9d68e614626d00144f
+- filename: hasura/migrations/default/1684315970431_set_fk_public_files_answers_files_id/down.sql
+  checksum: b10dcb13e1ba144c0981a07c5bb2c4ab76af0c202ee864370f7b9e14ad641a60
+- filename: hasura/migrations/default/1684315970431_set_fk_public_files_answers_files_id/up.sql
+  checksum: 7ff83a3d01c3913693299ddd79fca77a9cfacad8883201817e4460c0abb11ffe
+- filename: hasura/migrations/default/1684316715774_alter_table_public_answers_files_add_column_key/down.sql
+  checksum: 067147e86a6c7434a52d638312ef69581bd4e2498f9be3cf3e60652b9be40b8c
+- filename: hasura/migrations/default/1684316715774_alter_table_public_answers_files_add_column_key/up.sql
+  checksum: 875e9efd7e051491b3627bd1cf8cbf852491a777682740f155f104638fc70c20
+- filename: hasura/migrations/default/1684316822970_delete_fk_public_files_files_answers_files_id_fkey/down.sql
+  checksum: cd90ee4d8342c72a17ea1ab12666629d5fa4c68180cd89503cb53d0c5abe39e2
+- filename: hasura/migrations/default/1684316822970_delete_fk_public_files_files_answers_files_id_fkey/up.sql
+  checksum: 37a0cc594434c0185ad5c70779d0e913b028c0d2a70465b138959314f1b977cd
+- filename: hasura/migrations/default/1684316834258_alter_table_public_files_drop_constraint_files_hash_key/down.sql
+  checksum: f0b96ad0ab124e3168738a1cecbcd7e2b3118494dbf251db760530b80262099f
+- filename: hasura/migrations/default/1684316834258_alter_table_public_files_drop_constraint_files_hash_key/up.sql
+  checksum: 9db5c78de2300bdc7770b6d1d6b3d6ec346b86f0043067c8f77bea8c3f00f34d
+- filename: hasura/migrations/default/1684316904382_run_sql_migration/down.sql
+  checksum: ee8f124f122f04ff4642efa52493d92f6213cfe62d1e1ac4c7e4ee5fcdf97b56
+- filename: hasura/migrations/default/1684316904382_run_sql_migration/up.sql
+  checksum: 63577acf368a5adbadb714ebaf7a08cc9c6e07e5f936206ace21748cc445a135
+- filename: hasura/migrations/default/1684317239523_alter_table_public_answers_files_alter_column_key/down.sql
+  checksum: c91f7639218ed6829b9874a71b9522cd440c5f1f47ccec384295bae61fac62c3
+- filename: hasura/migrations/default/1684317239523_alter_table_public_answers_files_alter_column_key/up.sql
+  checksum: d63aa44d7e252e93b1c25502214fb2e27b5c827e6a0eb94220a38361a1fff495
 - filename: hasura/seeds/default/books.sql
   checksum: 40e5ea9f6cf231cd04fa3c40aa27b4f311f240dac730a26ac55afc3204d1bc14
 - filename: keycloak/config/realm-export-local.json
@@ -88,7 +158,7 @@ fileignoreconfig:
 - filename: pages/books.tsx
   checksum: 8e3b60571bf9cfca7740ef1b22661109699ebe88c5bef0b39cde25a08f4aa664
 - filename: pages/form.tsx
-  checksum: bde940789b575d4e26cb4a848b630272df236b06abdf5cf56a05910e7fa3f9e1
+  checksum: d6c6bd558802788093d46de9208c643c7cab9bad876439b7e94bacd672d8c0e0
 - filename: scripts/pg/create-multiple-postgresql-databases.sh
   checksum: 2989dcdba68c9586ff81c53ccbddb452225127b9fb8db9bbcea22be26076e922
 - filename: src/components/header/index.tsx
@@ -100,7 +170,7 @@ fileignoreconfig:
 - filename: src/pages/books.tsx
   checksum: f648286c7ecb383f245f35456ffdaab4086b3b4cababe012dc6435cba57bfbe1
 - filename: src/queries/form.ts
-  checksum: eda447370a128b12f36ea82ec796d41d5d79a6dfa1cfa37711e6b87041cb18a5
+  checksum: 416d3702bda5149d13e2e3822956d39a82260f87b35497b1fd652787aa4622f6
 scopeconfig:
 - scope: node
 version: "1.0"

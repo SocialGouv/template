@@ -1,6 +1,14 @@
 table:
   name: answers
   schema: public
+array_relationships:
+  - name: answers_files
+    using:
+      foreign_key_constraint_on:
+        column: answer_uuid
+        table:
+          name: answers_files
+          schema: public
 insert_permissions:
   - role: anonymous
     permission:
