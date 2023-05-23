@@ -1,3 +1,6 @@
+import randomWords from "random-words";
+import imgGen from "js-image-generator";
+
 const frenchFirstNames = [
   "Emma",
   "Lucas",
@@ -96,9 +99,32 @@ const slufigy = (str: string) => str.toLowerCase().replace(/[^\w]/g, "-");
 
 const pick = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
 
-export const generateFormData = () => {
+const generateImage = async (): Promise<Buffer> => {
+  return new Promise((resolve, reject) => {
+    imgGen.generateImage(800, 600, 80, function (err, image) {
+      if (err) {
+        return reject(err);
+      }
+      resolve(image.data);
+    });
+  });
+};
+
+export const generateFormData = async () => {
   const firstName = pick(frenchFirstNames);
   const lastName = pick(frenchLastNames);
+
+  const files = [];
+  for (let i = 0; i < Math.floor(Math.random() * 5); i++) {
+    const [word] = randomWords(1);
+    const image = await generateImage();
+    const file = new File([image], `${word}.jpg`, {
+      type: "image/jpeg",
+      lastModified: Date.now(),
+    });
+    files.push(file);
+  }
+
   return {
     firstName,
     lastName,
@@ -107,5 +133,6 @@ export const generateFormData = () => {
     color: pick(funThemeColors),
     newsletter: pick([0, 1]),
     alerts: pick([0, 1]),
+    files,
   };
 };

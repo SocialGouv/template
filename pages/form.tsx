@@ -59,15 +59,6 @@ export const jsonDataSchema = z.object({
 
 type FormData = z.infer<typeof jsonDataSchema>;
 
-function generateSubmissions() {
-  // generate and submit bunch of fake submissions
-  const rows = Array.from({ length: 100 }, () => generateFormData());
-  console.time("encryptAndSubmitForm");
-  return Promise.all(rows.map(encryptAndSubmitForm)).then(() => {
-    console.timeEnd("encryptAndSubmitForm");
-  });
-}
-
 const encryptAndSubmitForm = async (data: Record<string, any>) => {
   const formPublicKey = base64UrlDecode(formPublicKeyString);
   const state = await initializeEncryptedFormLocalState(
@@ -166,12 +157,21 @@ const Form: NextPage = () => {
   const [formError, setFormError] = useState<boolean | null>(null);
   const [uploads, setUploads] = useState<File[]>([]);
 
-  const onDrop = (acceptedFiles: File[]) => {
-    const successes = [...uploads];
-    acceptedFiles.forEach((file) => {
-      successes.push(file);
-      setUploads(successes);
+  const generateSubmissions = useCallback(async () => {
+    // generate and submit bunch of fake submissions
+    const rows = await Promise.all(
+      // Array.from({ length: 100 }, () => generateFormData())
+      Array.from({ length: 1 }, () => generateFormData())
+    );
+    console.time("encryptAndSubmitForm");
+    return Promise.all(rows.map(encryptAndSubmitForm)).then(() => {
+      console.timeEnd("encryptAndSubmitForm");
     });
+  }, []);
+
+  const onDrop = (acceptedFiles: File[]) => {
+    console.log({ acceptedFiles });
+    setUploads([...uploads, ...acceptedFiles]);
   };
 
   const onRemoveUploadClick = (upload: File) => {

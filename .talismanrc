@@ -156,7 +156,7 @@ fileignoreconfig:
 - filename: pages/_app.tsx
   checksum: 86b00324ee8b65d9c72701f8f7ef07a57fd8e7c775c50fdb6e365f604420a756
 - filename: pages/answers.tsx
-  checksum: c3799b291429eb764c39ecdc6a528b97c57ba33fd48d55f19fd37b9619184b27
+  checksum: c02dd3f2dc82567bffb296c4824ff21df5619ce587ea8e5d7c458fa9375e89d4
 - filename: pages/api/auth/[...nextauth].ts
   checksum: 5763374ce8f74c303b6d1073462c572ee6df8f8528e3aae8df664bbab77460cc
 - filename: pages/books.tsx

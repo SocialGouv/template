@@ -1,4 +1,6 @@
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
+import { Button } from "@codegouvfr/react-dsfr/Button";
+import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import {
   useE2ESDKClient,
@@ -185,25 +187,45 @@ const Answers: NextPage = () => {
       },
       {
         field: "filesData",
-        headerName: "Fichier",
+        headerName: "Fichiers",
         type: "text",
         flex: 1,
+        width: 70,
         renderCell: (cell) => {
+          const fileList = Object.values(cell.row.filesMetadata || {});
+          const { FilesModal, filesModalButtonProps } = createModal({
+            name: "files", // The name of Modal component and modalButtonProps is compute from this string
+            isOpenedByDefault: false,
+          });
+
           return (
-            <div>
-              {Object.values(cell.row.filesMetadata || {}).map(
-                (metadata: any) => (
-                  <div key={metadata.hash}>
-                    {/* eslint-disable jsx-a11y/anchor-is-valid */
-                    /* eslint-disable jsx-a11y/click-events-have-key-events */
-                    /* eslint-disable jsx-a11y/no-static-element-interactions */}
-                    <a href="#" onClick={() => onFileClick(metadata)}>
-                      {metadata.name}
-                    </a>
-                  </div>
-                )
-              )}
-            </div>
+            <>
+              <Button {...filesModalButtonProps} priority="tertiary no outline">
+                {fileList.length} Fichier{fileList.length > 1 ? "s" : ""}
+              </Button>
+              <FilesModal
+                title="Liste des fichiers"
+                buttons={[
+                  {
+                    children: "OK",
+                  },
+                ]}
+                topAnchor
+              >
+                <div style={{ overflow: "auto", height: "17vh" }}>
+                  {fileList?.map((metadata: any) => (
+                    <div key={metadata.hash}>
+                      <Button
+                        priority="tertiary no outline"
+                        onClick={() => onFileClick(metadata)}
+                      >
+                        {metadata.name}
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </FilesModal>
+            </>
           );
         },
       },
