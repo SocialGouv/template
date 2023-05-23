@@ -2,6 +2,24 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
 
+pg-hasura:
+  ~chart: pg
+  cnpg-cluster:
+    fullnameOverride: cnpg-hasura
+    nameOverride: cnpg-hasura
+    dbSecretName: cnpg-hasura-app
+    ~tpl~dbOwner: "hasura"
+    ~tpl~dbName: "hasura"
+
+pg-keycloak:
+  ~chart: pg
+  cnpg-cluster:
+    fullnameOverride: cnpg-keycloak
+    nameOverride: cnpg-keycloak
+    dbSecretName: cnpg-keycloak-app
+    ~tpl~dbOwner: "keycloak"
+    ~tpl~dbName: "keycloak"
+
 # main app container
 app:
   ~chart: app
@@ -49,7 +67,7 @@ jobs:
 
 hasura:
   enabled: true
-  ~needs: [keycloakx]
+  ~needs: ["pg-hasura", keycloakx]
   imageProject: fabrique
   imageRepository: template
   imagePackage: hasura
@@ -64,22 +82,23 @@ hasura:
       value: '{"jwk_url": "http://keycloakx-http:8080/realms/app-realm/protocol/openid-connect/certs"}'
   envFrom:
     - secretRef:
-        name: pg-user-hasura
+        name: cnpg-hasura-app
     - secretRef:
         name: hasura
 
+# https://github.com/codecentric/helm-charts/blob/master/charts/keycloakx/values.yaml
 keycloakx:
   fullnameOverride: keycloakx
+  ~needs: ["pg-keycloak"]
   enabled: true
-
   serviceAccount:
     create: false
   image:
     tag: "20.0.3"
   database:
     vendor: postgres
-  cache:
-    stack: custom
+  #cache:
+  # stack: custom
   http:
     relativePath: /
   service:
@@ -106,13 +125,13 @@ keycloakx:
     kapp.k14s.io/disable-original: ""
     kapp.k14s.io/create-strategy: fallback-on-update
 
-  extraEnvFrom: |
+  extraEnvFrom: | # <----- TODO
     - secretRef:
-        name: pg-user-keycloak
+        name: cnpg-keycloak-app
     - secretRef:
         name: keycloak-secrets
-  extraEnv: |
-    - name: KC_DB_URL_HOST
+  extraEnv: | # <----- TODO
+    - name: KC_DB_URL_HOST 
       value: "$(PGHOST)"
     - name: KC_DB_URL_PORT
       value: "$(PGPORT)"
@@ -172,7 +191,7 @@ keycloakx:
         - sh
       args:
         - -c
-        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
+        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/codegouvfr/sill-web/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
       volumeMounts:
         - name: providers
           mountPath: /providers

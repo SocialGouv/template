@@ -20,7 +20,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/templates/smtp.sealed.secret.yaml
   checksum: fdc275bd738bd5fb3faae620f83f58cc58802299b23666da7dc9610c0071b35a
 - filename: .kontinuous/env/dev/values.yaml
-  checksum: 981f03e8feceae97731e47ea004810e7b146cf711743f3dcb4240785212dc444
+  checksum: aa44b64907f0ba6c2864d46e44b6d451bc9057e4bd3b47aced4dd3c0c5beb16d
 - filename: .kontinuous/env/preprod/templates/app.configmap.yaml
   checksum: d388d2ea2935ab0e9a231434f8e8270a2f008479907249160d9327896d1d1b07
 - filename: .kontinuous/env/preprod/templates/app.sealed.secret.yaml
@@ -50,7 +50,7 @@ fileignoreconfig:
 - filename: .kontinuous/files/realm-export.json
   checksum: e2b00a73de2b1ef4e4601f46e0c783233b06cbefe598f37dff0924e522bebcc9
 - filename: .kontinuous/values.yaml
-  checksum: 544ca0a91cc75377c202ed96ba83b256385acf9d329f46ab0301f311002c7879
+  checksum: 49081785ac707a4f6b61e330ccad8ce801bffaeec5e04859b06ec887c7b37e7e
 - filename: README.md
   checksum: 12a9880a31cfafb6cc7bd02fbf9a8d948d487aff64ca34b27d5c4b327a83ad5e
 - filename: docker-compose.yaml
