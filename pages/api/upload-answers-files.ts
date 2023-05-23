@@ -7,15 +7,13 @@ import { createReadStream } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import { storageDir } from "../../src/config";
+
 export const config = {
   api: {
     bodyParser: false,
   },
 };
-
-const storageDir =
-  process.env.STORAGE_DIR ||
-  path.resolve(process.cwd(), "./.storage/answers_files");
 
 // SHA-512 hex output
 const validFileName = fileMetadataSchema.shape.hash;

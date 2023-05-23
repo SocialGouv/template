@@ -47,7 +47,14 @@ export const jsonDataSchema = z.object({
   newsletter: z.boolean().optional().default(false),
   alerts: z.boolean().optional().default(false),
   files: z.array(z.any()),
-  fileKeys: z.object({}),
+  filesMetadata: z.record(
+    z.string(),
+    z.object({
+      key: z.string(),
+      name: z.string(),
+      type: z.string(),
+    })
+  ),
 });
 
 type FormData = z.infer<typeof jsonDataSchema>;
@@ -82,16 +89,16 @@ const encryptAndSubmitForm = async (data: Record<string, any>) => {
       console.dir({ encryptedFile, metadata }, { depth: Infinity });
       formData.set(`file_${i}`, encryptedFile);
     }
-    data.fileKeys = {};
+    data.filesMetadata = {};
     if (Array.from(formData.values()).flat().length > 0) {
       await fetch("/api/upload-answers-files", {
         method: "POST",
         body: formData,
       });
       for (const { metadata } of encryptedFiles) {
-        const { hash, key } = metadata;
+        const { hash } = metadata;
         answersFiles.push({ file_hash: hash });
-        data.fileKeys[hash] = key;
+        data.filesMetadata[hash] = metadata;
       }
     }
   }

@@ -4,6 +4,12 @@ import {
   useE2ESDKClient,
   useE2ESDKClientIdentity,
 } from "@socialgouv/e2esdk-react";
+import {
+  decryptFileContents,
+  FileMetadata,
+  Sodium,
+} from "@socialgouv/e2esdk-crypto";
+
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -34,79 +40,22 @@ type AnswersResponse = {
   };
 };
 
-const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 70 },
-  {
-    field: "mood",
-    headerName: "Mood",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    align: "center",
-    width: 40,
-    renderCell: (cell) =>
-      cell.row.color && (
-        <Avatar
-          size={30}
-          name={cell.row.color}
-          variant="pixel"
-          colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-        />
-      ),
-  },
-  {
-    field: "created_at",
-    headerName: "Created at",
-    width: 130,
-    type: "date",
-    valueGetter: (val) => new Date(val.row.created_at),
-  },
-  {
-    field: "firstName",
-    type: "string",
-    headerName: "First name",
-    width: 120,
-  },
-  {
-    field: "lastName",
-    type: "string",
-    headerName: "Last name",
-    width: 120,
-  },
-  {
-    field: "email",
-    headerName: "Email",
-    type: "email",
-    width: 150,
-    renderCell: (cell) => (
-      <a href={`mailto:${cell.row.email}`}>{cell.row.email}</a>
-    ),
-  },
-  {
-    field: "color",
-    headerName: "Color",
-    width: 150,
-  },
-  {
-    field: "newsletter",
-    headerName: "Emails",
-    width: 70,
-    align: "center",
-    valueGetter: (val) => (val.row.newsletter && "✅") || "❌",
-  },
-  {
-    field: "alerts",
-    headerName: "Alertes",
-    width: 70,
-    align: "center",
-    valueGetter: (val) => (val.row.alerts && "✅") || "❌",
-  },
-  {
-    field: "message",
-    headerName: "Message",
-    type: "text",
-    flex: 1,
-  },
-];
+async function downloadAndDecryptFile(sodium: Sodium, metadata: FileMetadata) {
+  const res = await fetch(`/api/storage?hash=${metadata.hash}`);
+  const blob = await res.blob();
+  const cleartext = decryptFileContents(
+    sodium,
+    new Uint8Array(await blob.arrayBuffer()),
+    {
+      algorithm: "secretBox",
+      key: sodium.from_base64(metadata.key),
+    }
+  );
+  return new File([cleartext], metadata.name, {
+    type: metadata.type,
+    lastModified: metadata.lastModified,
+  });
+}
 
 const decryptAnswer = (client: Client, answer: EncryptedAnswer) => {
   try {
@@ -142,8 +91,126 @@ const decryptAnswer = (client: Client, answer: EncryptedAnswer) => {
   }
 };
 
+function saveFile(file: File) {
+  const link = document.createElement("a");
+  link.setAttribute("href", URL.createObjectURL(file));
+  link.setAttribute("download", file.name);
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
 const Answers: NextPage = () => {
   const client = useE2ESDKClient();
+
+  const onFileClick = useCallback(
+    async (metadata: FileMetadata) => {
+      const file = await downloadAndDecryptFile(client.sodium, metadata);
+      await saveFile(file);
+    },
+    [client]
+  );
+
+  const columns: GridColDef[] = useMemo(
+    () => [
+      { field: "id", headerName: "ID", width: 70 },
+      {
+        field: "mood",
+        headerName: "Mood",
+        description: "This column has a value getter and is not sortable.",
+        sortable: false,
+        align: "center",
+        width: 40,
+        renderCell: (cell) =>
+          cell.row.color && (
+            <Avatar
+              size={30}
+              name={cell.row.color}
+              variant="pixel"
+              colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+            />
+          ),
+      },
+      {
+        field: "created_at",
+        headerName: "Created at",
+        width: 130,
+        type: "date",
+        valueGetter: (val) => new Date(val.row.created_at),
+      },
+      {
+        field: "firstName",
+        type: "string",
+        headerName: "First name",
+        width: 120,
+      },
+      {
+        field: "lastName",
+        type: "string",
+        headerName: "Last name",
+        width: 120,
+      },
+      {
+        field: "email",
+        headerName: "Email",
+        type: "email",
+        width: 150,
+        renderCell: (cell) => (
+          <a href={`mailto:${cell.row.email}`}>{cell.row.email}</a>
+        ),
+      },
+      {
+        field: "color",
+        headerName: "Color",
+        width: 150,
+      },
+      {
+        field: "newsletter",
+        headerName: "Emails",
+        width: 70,
+        align: "center",
+        valueGetter: (val) => (val.row.newsletter && "✅") || "❌",
+      },
+      {
+        field: "alerts",
+        headerName: "Alertes",
+        width: 70,
+        align: "center",
+        valueGetter: (val) => (val.row.alerts && "✅") || "❌",
+      },
+      {
+        field: "message",
+        headerName: "Message",
+        type: "text",
+        flex: 1,
+      },
+      {
+        field: "filesData",
+        headerName: "Fichier",
+        type: "text",
+        flex: 1,
+        renderCell: (cell) => {
+          return (
+            <div>
+              {Object.values(cell.row.filesMetadata || {}).map(
+                (metadata: any) => (
+                  <div key={metadata.hash}>
+                    {/* eslint-disable jsx-a11y/anchor-is-valid */
+                    /* eslint-disable jsx-a11y/click-events-have-key-events */
+                    /* eslint-disable jsx-a11y/no-static-element-interactions */}
+                    <a href="#" onClick={() => onFileClick(metadata)}>
+                      {metadata.name}
+                    </a>
+                  </div>
+                )
+              )}
+            </div>
+          );
+        },
+      },
+    ],
+    [onFileClick]
+  );
+
   const { data: session } = useSession();
   const token = useMemo(
     () => ({
