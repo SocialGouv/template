@@ -160,8 +160,7 @@ const Form: NextPage = () => {
   const generateSubmissions = useCallback(async () => {
     // generate and submit bunch of fake submissions
     const rows = await Promise.all(
-      // Array.from({ length: 100 }, () => generateFormData())
-      Array.from({ length: 1 }, () => generateFormData())
+      Array.from({ length: 10 }, generateFormData)
     );
     console.time("encryptAndSubmitForm");
     return Promise.all(rows.map(encryptAndSubmitForm)).then(() => {
@@ -362,7 +361,7 @@ const Form: NextPage = () => {
         <br />
         <br />
         <Button onClick={generateSubmissions}>
-          Send 100 random submissinos
+          Send 10 random submissions
         </Button>
       </form>
     </>

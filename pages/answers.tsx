@@ -1,5 +1,4 @@
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
-import { Button } from "@codegouvfr/react-dsfr/Button";
 import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import {
@@ -18,10 +17,10 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchHasura } from "../src/lib/hasura";
 import { query } from "../src/queries/form";
 import { jsonDataSchema } from "./form";
-import Avatar from "boring-avatars";
 
 import { z } from "zod";
 import { Client } from "@socialgouv/e2esdk-client";
+import { fr } from "@codegouvfr/react-dsfr";
 
 const nameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
 
@@ -115,23 +114,7 @@ const Answers: NextPage = () => {
   const columns: GridColDef[] = useMemo(
     () => [
       { field: "id", headerName: "ID", width: 70 },
-      {
-        field: "mood",
-        headerName: "Mood",
-        description: "This column has a value getter and is not sortable.",
-        sortable: false,
-        align: "center",
-        width: 40,
-        renderCell: (cell) =>
-          cell.row.color && (
-            <Avatar
-              size={30}
-              name={cell.row.color}
-              variant="pixel"
-              colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-            />
-          ),
-      },
+
       {
         field: "created_at",
         headerName: "Created at",
@@ -160,11 +143,7 @@ const Answers: NextPage = () => {
           <a href={`mailto:${cell.row.email}`}>{cell.row.email}</a>
         ),
       },
-      {
-        field: "color",
-        headerName: "Color",
-        width: 150,
-      },
+
       {
         field: "newsletter",
         headerName: "Emails",
@@ -192,41 +171,28 @@ const Answers: NextPage = () => {
         flex: 1,
         width: 70,
         renderCell: (cell) => {
-          const fileList = Object.values(cell.row.filesMetadata || {});
+          const fileList: FileMetadata[] = Object.values(
+            cell.row.filesMetadata || {}
+          );
           const { FilesModal, filesModalButtonProps } = createModal({
             name: "files", // The name of Modal component and modalButtonProps is compute from this string
             isOpenedByDefault: false,
           });
 
-          return (
-            <>
-              <Button {...filesModalButtonProps} priority="tertiary no outline">
-                {fileList.length} Fichier{fileList.length > 1 ? "s" : ""}
-              </Button>
-              <FilesModal
-                title="Liste des fichiers"
-                buttons={[
-                  {
-                    children: "OK",
-                  },
-                ]}
-                topAnchor
-              >
-                <div style={{ overflow: "auto", height: "17vh" }}>
-                  {fileList?.map((metadata: any) => (
-                    <div key={metadata.hash}>
-                      <Button
-                        priority="tertiary no outline"
-                        onClick={() => onFileClick(metadata)}
-                      >
-                        {metadata.name}
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              </FilesModal>
-            </>
-          );
+          return fileList.map((metadata) => (
+            <span
+              key={metadata.hash}
+              title={metadata.name}
+              className={fr.cx("fr-icon-file-download-fill")}
+              style={{ cursor: "pointer" }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onFileClick(metadata);
+              }}
+              aria-hidden={true}
+            ></span>
+          ));
         },
       },
     ],
@@ -262,15 +228,15 @@ const Answers: NextPage = () => {
 
   useEffect(() => {
     setError(null);
-    if (session?.user?.email) {
-      const e2esdkUserId = session.user.email;
+    if (session?.user?.id) {
+      const e2esdkUserId = session.user.id;
       // if alreay logged in e2esdk in with application account id
       if (identity && identity.userId === e2esdkUserId) {
         console.log("fetchAnswers");
         fetchAnswers().then(setAnswers);
       } else {
         // log the user to e2esdk
-        console.log("client.login(e2esdkUserId)");
+        console.log("client.login(e2esdkUserId)", e2esdkUserId);
         client.login(e2esdkUserId).catch(async (e) => {
           console.log(e);
           // if not logged in, force new application register in e2esdk
