@@ -99,8 +99,8 @@ const slufigy = (str: string) => str.toLowerCase().replace(/[^\w]/g, "-");
 
 const pick = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
 
-const generateImage = async (): Promise<Buffer> => {
-  return new Promise((resolve, reject) => {
+const generateImage = async (): Promise<Buffer> =>
+  new Promise((resolve, reject) => {
     imgGen.generateImage(800, 600, 80, function (err, image) {
       if (err) {
         return reject(err);
@@ -108,7 +108,6 @@ const generateImage = async (): Promise<Buffer> => {
       resolve(image.data);
     });
   });
-};
 
 export const generateFormData = async () => {
   const firstName = pick(frenchFirstNames);

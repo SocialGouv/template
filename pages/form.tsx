@@ -11,6 +11,7 @@ import { RadioButtons } from "@codegouvfr/react-dsfr/RadioButtons";
 import { Checkbox } from "@codegouvfr/react-dsfr/Checkbox";
 
 import { generateFormData } from "../src/services/fake-form-data";
+import { serialExec } from "../lib/serialExec";
 
 import {
   EncryptedFormLocalState,
@@ -162,10 +163,13 @@ const Form: NextPage = () => {
     const rows = await Promise.all(
       Array.from({ length: 10 }, generateFormData)
     );
+    console.log("rows", rows);
     console.time("encryptAndSubmitForm");
-    return Promise.all(rows.map(encryptAndSubmitForm)).then(() => {
-      console.timeEnd("encryptAndSubmitForm");
-    });
+    return serialExec(rows.map((row) => () => encryptAndSubmitForm(row))).then(
+      () => {
+        console.timeEnd("encryptAndSubmitForm");
+      }
+    );
   }, []);
 
   const onDrop = (acceptedFiles: File[]) => {
