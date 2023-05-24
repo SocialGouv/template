@@ -3,7 +3,6 @@
 import { fileMetadataSchema } from "@socialgouv/e2esdk-crypto";
 import formidable from "formidable";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createReadStream } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -60,8 +59,10 @@ export default async function storageEndpoint(
       .status(415)
       .send("Invalid content-type, only multipart/form-data is accepted");
   }
+  console.log("start upload");
   await new Promise<void>((resolve, reject) =>
     form.parse(req, (err, _, files) => {
+      console.log("parsed", err, files);
       if (err) {
         res.status(400).json({
           error: "Invalid request",
