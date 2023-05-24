@@ -20,7 +20,7 @@ const validFileName = fileMetadataSchema.shape.hash;
 
 const form = formidable({
   multiples: true,
-  maxFileSize: 10 * 1024 * 1024, // 10Mb
+  //  maxFileSize: 10 * 1024 * 1024, // 10Mb
   uploadDir: storageDir,
   hashAlgorithm: "sha512",
   filename(name, ext, part, form) {
