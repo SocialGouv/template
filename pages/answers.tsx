@@ -75,7 +75,7 @@ const decryptAnswer = (client: Client, answer: EncryptedAnswer) => {
     const res = jsonDataSchema.safeParse(decryptedValues);
     if (!res.success) {
       console.error(`Zod: Impossible de parser la réponse ${answer.id}`);
-      // return null here if you dont want to accept invalid zod schemas
+      // warning : returning null here is recommended to avoid security issues where malicious content is sent that could break the rendering process, and lead to a blank page.
       return {
         ...answer,
         ...decryptedValues,
