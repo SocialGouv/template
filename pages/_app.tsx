@@ -25,7 +25,7 @@ import dynamic from "next/dynamic";
 
 const e2esdkClient = new Client({
   serverURL: "https://e2esdk.dev.fabrique.social.gouv.fr",
-  serverPublicKey: "_XDQj6-paJAnpCp_pfBhGUUe6cA0MjLXsgAOgYDhCRI",
+  serverSignaturePublicKey: "_XDQj6-paJAnpCp_pfBhGUUe6cA0MjLXsgAOgYDhCRI",
 });
 
 const Devtools = dynamic(
@@ -171,11 +171,22 @@ function Layout({ children }: { children: ReactNode }) {
       isActive: router.asPath === "/books",
     },
     {
-      text: "e2e form",
-      linkProps: {
-        href: "/form",
-      },
-      isActive: router.asPath === "/form",
+      menuLinks: [
+        {
+          text: "Form",
+          linkProps: {
+            href: "/form",
+          },
+        },
+        {
+          text: "Answers",
+          linkProps: {
+            href: "/answers",
+          },
+        },
+      ],
+      isActive: ["/form", "/answers"].includes(router.asPath),
+      text: "E2ESDK forms",
     },
   ];
   return (
@@ -205,7 +216,7 @@ function Layout({ children }: { children: ReactNode }) {
       <div
         className={css({
           margin: "auto",
-          maxWidth: 1000,
+          maxWidth: 1200,
           ...fr.spacing("padding", {
             topBottom: "10v",
           }),

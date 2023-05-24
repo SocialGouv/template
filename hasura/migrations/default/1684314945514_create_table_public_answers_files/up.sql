@@ -1,0 +1,1 @@
+CREATE TABLE "public"."answers_files" ("id" serial NOT NULL, "answer_id" integer NOT NULL, "file_hash" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("answer_id") REFERENCES "public"."answers"("id") ON UPDATE cascade ON DELETE cascade, FOREIGN KEY ("file_hash") REFERENCES "public"."files"("hash") ON UPDATE cascade ON DELETE cascade, UNIQUE ("answer_id", "file_hash"));
