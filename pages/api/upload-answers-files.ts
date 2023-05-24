@@ -33,9 +33,11 @@ const form = formidable({
 
 form.on("file", (_formName, file) => {
   if (!file.hash) {
+    console.error(`Skip file ${file.filepath}, no hash`);
     return;
   }
   if (file.newFilename === file.hash) {
+    console.info(`Saved file ${file.filepath}`);
     return;
   }
   console.error(`Invalid file name (does not match SHA-512 hash)
@@ -68,13 +70,6 @@ export default async function storageEndpoint(
         });
         reject(err);
       }
-      Object.entries(files).forEach(([formField, files]) => {
-        [files]
-          .flat()
-          .forEach((file) =>
-            console.info(`Saved file ${file.filepath} (${formField})`)
-          );
-      });
       resolve();
     })
   );
