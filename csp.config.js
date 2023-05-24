@@ -1,7 +1,7 @@
 const ContentSecurityPolicy = `
   default-src 'self' *.fabrique.social.gouv.fr;
   img-src 'self' data: *.fabrique.social.gouv.fr https://dummyimage.com/;
-  script-src 'self' *.fabrique.social.gouv.fr 'unsafe-eval' ${
+  script-src 'self' *.fabrique.social.gouv.fr 'wasm-unsafe-eval' ${
     process.env.NODE_ENV !== "production" && "'unsafe-inline'"
   };
   connect-src 'self' data: wss: *.fabrique.social.gouv.fr ${

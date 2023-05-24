@@ -20,7 +20,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/templates/smtp.sealed.secret.yaml
   checksum: fdc275bd738bd5fb3faae620f83f58cc58802299b23666da7dc9610c0071b35a
 - filename: .kontinuous/env/dev/values.yaml
-  checksum: 981f03e8feceae97731e47ea004810e7b146cf711743f3dcb4240785212dc444
+  checksum: d4b3979e1ec03c98837f0a7cc476a5e7fb3438625a460e556937ef5b29d664b2
 - filename: .kontinuous/env/preprod/templates/app.configmap.yaml
   checksum: d388d2ea2935ab0e9a231434f8e8270a2f008479907249160d9327896d1d1b07
 - filename: .kontinuous/env/preprod/templates/app.sealed.secret.yaml
