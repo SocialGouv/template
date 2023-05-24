@@ -1,5 +1,4 @@
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
-import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import {
   useE2ESDKClient,
@@ -143,7 +142,6 @@ const Answers: NextPage = () => {
           <a href={`mailto:${cell.row.email}`}>{cell.row.email}</a>
         ),
       },
-
       {
         field: "newsletter",
         headerName: "Emails",
@@ -170,20 +168,16 @@ const Answers: NextPage = () => {
         type: "text",
         flex: 1,
         width: 70,
+        cellClassName: "no-outline",
         renderCell: (cell) => {
           const fileList: FileMetadata[] = Object.values(
             cell.row.filesMetadata || {}
           );
-          const { FilesModal, filesModalButtonProps } = createModal({
-            name: "files", // The name of Modal component and modalButtonProps is compute from this string
-            isOpenedByDefault: false,
-          });
-
           return fileList.map((metadata) => (
             <span
               key={metadata.hash}
               title={metadata.name}
-              className={fr.cx("fr-icon-file-download-fill")}
+              className={fr.cx("fr-icon-file-download-line")}
               style={{ cursor: "pointer" }}
               onClick={(e) => {
                 e.preventDefault();
@@ -267,6 +261,11 @@ const Answers: NextPage = () => {
         <DataGrid
           rows={answers}
           columns={columns}
+          sx={{
+            "& *": {
+              outline: "none !important",
+            },
+          }}
           initialState={{
             sorting: {
               sortModel: [{ field: "created_at", sort: "desc" }],
