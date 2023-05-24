@@ -168,6 +168,9 @@ const Form: NextPage = () => {
     return serialExec(rows.map((row) => () => encryptAndSubmitForm(row))).then(
       () => {
         console.timeEnd("encryptAndSubmitForm");
+        setFormError(false);
+        setFormSuccess(true);
+        reset();
       }
     );
   }, []);
