@@ -1,119 +1,49 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useDropzone } from "react-dropzone";
 import { useForm } from "react-hook-form";
-import { fetchHasura } from "../src/lib/hasura";
+import { z } from "zod";
+
+import { fr } from "@codegouvfr/react-dsfr";
+import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import { Input } from "@codegouvfr/react-dsfr/Input";
 import { RadioButtons } from "@codegouvfr/react-dsfr/RadioButtons";
 import { Checkbox } from "@codegouvfr/react-dsfr/Checkbox";
+import { Button } from "@codegouvfr/react-dsfr/Button";
+import { Alert } from "@codegouvfr/react-dsfr/Alert";
 
+import { encryptAndSubmitForm } from "../src/lib/e2esdk";
 import { generateFormData } from "../src/services/fake-form-data";
-import { serialExec } from "../lib/serialExec";
+import { serialExec } from "../src/lib/serialExec";
 
-import {
-  EncryptedFormLocalState,
-  base64UrlDecode,
-  encryptFile,
-  encryptFormData,
-  initializeEncryptedFormLocalState,
-} from "@socialgouv/e2esdk-crypto";
-import { insert_one } from "../src/queries/form";
-import Button from "@codegouvfr/react-dsfr/Button";
-import Alert from "@codegouvfr/react-dsfr/Alert";
-import { z } from "zod";
-import { fr } from "@codegouvfr/react-dsfr";
-import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
+// This form sealedBox public key
+const formPublicKeyString = "AatyS2mCJd__zewF-mT_IEd4925CQgf-CC9U3U3ZRnk";
 
-const formPublicKeyString = "AatyS2mCJd__zewF-mT_IEd4925CQgf-CC9U3U3ZRnk"; // form public key
-const nameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ"; // workspace nameFingerprint
+// Some unique id for this form submission. used for client localstorage
+export const formName = "myapp-contact-form";
 
-type PostVariables = {
-  submissionBucketId: string;
-  signature: string;
-  sealedSecret: string;
-  publicKey: string;
-  answersFiles: any[];
-  data: string;
-};
-
-export const jsonDataSchema = z.object({
+export const decryptedDataSchema = z.object({
   firstName: z.string(),
-  lastName: z.string(),
-  message: z.string(),
-  email: z.string().email().optional(),
-  color: z.string().optional(),
+  lastName: z.string().optional().nullable(),
+  message: z.string().optional().nullable(),
+  email: z.string().optional().nullable(),
+  color: z.string().optional().nullable(),
   newsletter: z.boolean().optional().default(false),
   alerts: z.boolean().optional().default(false),
-  files: z.array(z.any()),
+  files: z.array(z.any()).optional(),
   filesMetadata: z.record(
     z.string(),
     z.object({
       key: z.string(),
+      hash: z.string(),
       name: z.string(),
       type: z.string(),
     })
   ),
 });
 
-type FormData = z.infer<typeof jsonDataSchema>;
-
-const encryptAndSubmitForm = async (data: Record<string, any>) => {
-  const formPublicKey = base64UrlDecode(formPublicKeyString);
-  const state = await initializeEncryptedFormLocalState(
-    nameFingerprint, //submissionBucketId,
-    formPublicKey
-  );
-
-  const answersFiles = [];
-  if (data.files) {
-    const { files } = data;
-    delete data.files;
-    const encryptedFiles = await Promise.all(
-      files.map((file: File) => readAndEncryptFile(file, state))
-    );
-    // console.log("encryptedFiles", encryptedFiles);
-    const formData = new FormData();
-    for (let i = 0; i < encryptedFiles.length; i++) {
-      const { encryptedFile, metadata } = encryptedFiles[i];
-      console.dir({ encryptedFile, metadata }, { depth: Infinity });
-      formData.set(`file_${i}`, encryptedFile);
-    }
-    data.filesMetadata = {};
-    if (Array.from(formData.values()).flat().length > 0) {
-      await fetch("/api/upload-answers-files", {
-        method: "POST",
-        body: formData,
-      });
-      for (const { metadata } of encryptedFiles) {
-        const { hash } = metadata;
-        answersFiles.push({ file_hash: hash });
-        data.filesMetadata[hash] = metadata;
-      }
-    }
-  }
-
-  const { metadata, encrypted } = encryptFormData(
-    { data: JSON.stringify(data) },
-    state
-  );
-
-  const variables: PostVariables = {
-    submissionBucketId: nameFingerprint,
-    sealedSecret: metadata.sealedSecret,
-    signature: metadata.signature,
-    publicKey: metadata.publicKey,
-    answersFiles,
-    ...encrypted,
-  };
-
-  return fetchHasura({
-    query: insert_one,
-    variables,
-  });
-};
+type FormData = z.infer<typeof decryptedDataSchema>;
 
 const removeFromArray = (arr: any[], value: any) => {
   const index = arr.indexOf(value);
@@ -122,29 +52,6 @@ const removeFromArray = (arr: any[], value: any) => {
   }
   return arr;
 };
-
-const readAndEncryptFile = (
-  file: File,
-  encryptionState: EncryptedFormLocalState
-): Promise<{ encryptedFile: File; metadata: Record<string, any> }> =>
-  new Promise((resolve, reject) => {
-    console.time("readAndEncryptFile " + file.name);
-    const reader = new FileReader();
-    reader.onabort = () => reject("file reading was aborted");
-    reader.onerror = () => reject("file reading has failed");
-    reader.onload = async () => {
-      const binaryStr = reader.result;
-      if (binaryStr) {
-        const { encryptedFile, metadata } = await encryptFile(
-          encryptionState.sodium,
-          file
-        );
-        console.timeEnd("readAndEncryptFile " + file.name);
-        resolve({ encryptedFile, metadata });
-      }
-    };
-    reader.readAsArrayBuffer(file);
-  });
 
 const Form: NextPage = () => {
   const {
@@ -163,20 +70,21 @@ const Form: NextPage = () => {
     const rows = await Promise.all(
       Array.from({ length: 10 }, generateFormData)
     );
-    console.log("rows", rows);
     console.time("encryptAndSubmitForm");
-    return serialExec(rows.map((row) => () => encryptAndSubmitForm(row))).then(
-      () => {
-        console.timeEnd("encryptAndSubmitForm");
-        setFormError(false);
-        setFormSuccess(true);
-        reset();
-      }
-    );
-  }, []);
+    return serialExec(
+      rows.map(
+        (row) => () => encryptAndSubmitForm(formPublicKeyString, formName, row)
+      )
+    ).then(() => {
+      console.timeEnd("encryptAndSubmitForm");
+      setFormError(false);
+      setFormSuccess(true);
+      setUploads([]);
+      reset();
+    });
+  }, [reset]);
 
   const onDrop = (acceptedFiles: File[]) => {
-    console.log({ acceptedFiles });
     setUploads([...uploads, ...acceptedFiles]);
   };
 
@@ -208,13 +116,14 @@ const Form: NextPage = () => {
     setFormError(null);
     setFormSuccess(null);
 
-    data.files = uploads; // update to local state
+    data.files = uploads; // use local state for uploads
 
-    encryptAndSubmitForm(data)
+    encryptAndSubmitForm(formPublicKeyString, formName, data)
       .then((res) => {
         if (res?.data?.insert_answers_one?.id) {
           setFormError(false);
           setFormSuccess(true);
+          setUploads([]);
           reset();
         }
       })
@@ -332,8 +241,9 @@ const Form: NextPage = () => {
             style={{
               border: "3px dashed auto",
               padding: 10,
+              listStyleType: "none",
               marginTop: 10,
-              minHeight: 100,
+              minHeight: 140,
               borderColor:
                 fr.getColors(isDark)?.decisions.background.alt.grey.active,
               backgroundColor: isDragActive
@@ -348,6 +258,7 @@ const Form: NextPage = () => {
                 {uploads.map((upload, i) => (
                   <li key={upload.name + i}>
                     {upload.name}{" "}
+                    {/* eslint-disable-next-line react/jsx-no-comment-textnodes, jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
                     <span
                       style={{ cursor: "pointer" }}
                       onClick={onRemoveUploadClick(upload)}

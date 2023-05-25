@@ -130,8 +130,8 @@ export const generateFormData = async () => {
     message: pick(universeQuotes),
     email: `${slufigy(firstName)}.${slufigy(lastName)}@mel.com`,
     color: pick(funThemeColors),
-    newsletter: pick([0, 1]),
-    alerts: pick([0, 1]),
+    newsletter: pick([true, false]),
+    alerts: pick([true, false]),
     files,
   };
 };

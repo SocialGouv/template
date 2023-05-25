@@ -1,37 +1,25 @@
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { NextPage } from "next";
+import { useSession } from "next-auth/react";
+
+import { fr } from "@codegouvfr/react-dsfr";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+
 import {
   useE2ESDKClient,
   useE2ESDKClientIdentity,
 } from "@socialgouv/e2esdk-react";
-import {
-  decryptFileContents,
-  FileMetadata,
-  Sodium,
-} from "@socialgouv/e2esdk-crypto";
+import { FileMetadata } from "@socialgouv/e2esdk-crypto";
 
-import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchHasura } from "../src/lib/hasura";
+import { formName } from "./form";
 import { query } from "../src/queries/form";
-import { jsonDataSchema } from "./form";
-
-import { z } from "zod";
-import { Client } from "@socialgouv/e2esdk-client";
-import { fr } from "@codegouvfr/react-dsfr";
-
-const nameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
-
-const formMetadata = z.object({
-  id: z.number(),
-  created_at: z.string(),
-  public_key: z.string(),
-  sealed_secret: z.string(),
-  signature: z.string(),
-});
-
-type EncryptedAnswer = z.infer<typeof formMetadata> & { data: string };
+import {
+  decryptAnswer,
+  downloadAndDecryptFile,
+  EncryptedAnswer,
+} from "../src/lib/e2esdk";
 
 type AnswersResponse = {
   errors?: { message: string }[];
@@ -40,56 +28,8 @@ type AnswersResponse = {
   };
 };
 
-async function downloadAndDecryptFile(sodium: Sodium, metadata: FileMetadata) {
-  const res = await fetch(`/api/storage?hash=${metadata.hash}`);
-  const blob = await res.blob();
-  const cleartext = decryptFileContents(
-    sodium,
-    new Uint8Array(await blob.arrayBuffer()),
-    {
-      algorithm: "secretBox",
-      key: sodium.from_base64(metadata.key),
-    }
-  );
-  return new File([cleartext], metadata.name, {
-    type: metadata.type,
-    lastModified: metadata.lastModified,
-  });
-}
-
-const decryptAnswer = (client: Client, answer: EncryptedAnswer) => {
-  try {
-    const values = client.unsealFormData(
-      {
-        metadata: {
-          publicKey: answer.public_key,
-          sealedSecret: answer.sealed_secret,
-          signature: answer.signature,
-        },
-        encrypted: { data: answer.data },
-      },
-      nameFingerprint
-    ) as Record<"data", string>;
-    const decryptedValues: FormData = JSON.parse(values.data);
-    const res = jsonDataSchema.safeParse(decryptedValues);
-    if (!res.success) {
-      console.error(`Zod: Impossible de parser la réponse ${answer.id}`);
-      // warning : returning null here is recommended to avoid security issues where malicious content is sent that could break the rendering process, and lead to a blank page.
-      return {
-        ...answer,
-        ...decryptedValues,
-      };
-    }
-    return {
-      ...answer,
-      ...res.data,
-      data: undefined,
-    };
-  } catch (e) {
-    console.error(`e2esdk: Impossible de parser la réponse ${answer.id}`);
-    return null;
-  }
-};
+// nameFingerprint os the form sealedBox
+const formNameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
 
 function saveFile(file: File) {
   const link = document.createElement("a");
@@ -103,10 +43,8 @@ const Answers: NextPage = () => {
   const client = useE2ESDKClient();
 
   const onFileClick = useCallback(
-    async (metadata: FileMetadata) => {
-      const file = await downloadAndDecryptFile(client.sodium, metadata);
-      await saveFile(file);
-    },
+    (metadata: FileMetadata) =>
+      downloadAndDecryptFile(client.sodium, metadata).then(saveFile),
     [client]
   );
 
@@ -173,9 +111,9 @@ const Answers: NextPage = () => {
           const fileList: FileMetadata[] = Object.values(
             cell.row.filesMetadata || {}
           );
-          return fileList.map((metadata) => (
+          return fileList.map((metadata, i) => (
             <span
-              key={metadata.hash}
+              key={metadata.hash + i}
               title={metadata.name}
               className={fr.cx("fr-icon-file-download-line")}
               style={{ cursor: "pointer" }}
@@ -214,7 +152,7 @@ const Answers: NextPage = () => {
     () =>
       fetchHasura({ query }, token).then((res: AnswersResponse) =>
         res.data.answers
-          .map((answer) => decryptAnswer(client, answer))
+          .map((answer) => decryptAnswer(client, formNameFingerprint, answer))
           .filter(Boolean)
       ),
     [client, token]
@@ -223,6 +161,7 @@ const Answers: NextPage = () => {
   useEffect(() => {
     setError(null);
     if (session?.user?.id) {
+      // autologin / signup to e2esdk using user UUID
       const e2esdkUserId = session.user.id;
       // if alreay logged in e2esdk in with application account id
       if (identity && identity.userId === e2esdkUserId) {
