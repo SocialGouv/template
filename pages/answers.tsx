@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 
 import { fr } from "@codegouvfr/react-dsfr";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
+import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 import {
@@ -13,7 +15,6 @@ import {
 import { FileMetadata } from "@socialgouv/e2esdk-crypto";
 
 import { fetchHasura } from "../src/lib/hasura";
-import { formName } from "./form";
 import { query } from "../src/queries/form";
 import {
   decryptAnswer,
@@ -31,20 +32,44 @@ type AnswersResponse = {
 // nameFingerprint os the form sealedBox
 const formNameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
 
-function saveFile(file: File) {
-  const link = document.createElement("a");
-  link.setAttribute("href", URL.createObjectURL(file));
-  link.setAttribute("download", file.name);
-  link.click();
-  URL.revokeObjectURL(link.href);
-}
+const { PreviewModal, openPreviewModal } = createModal({
+  name: "preview",
+  isOpenedByDefault: false,
+});
+
+const EncryptedImagePreview = ({ file }: { file: File }) => {
+  return (
+    <img
+      style={{ maxWidth: "100%" }}
+      src={URL.createObjectURL(file)}
+      title={file.name}
+      alt={file.name}
+    />
+  );
+};
+
+// to download the file
+// function saveFile(file: File) {
+//   const link = document.createElement("a");
+//   link.setAttribute("href", URL.createObjectURL(file));
+//   link.setAttribute("download", file.name);
+//   link.click();
+//   URL.revokeObjectURL(link.href);
+// }
 
 const Answers: NextPage = () => {
   const client = useE2ESDKClient();
 
   const onFileClick = useCallback(
-    (metadata: FileMetadata) =>
-      downloadAndDecryptFile(client.sodium, metadata).then(saveFile),
+    (metadata: FileMetadata) => {
+      downloadAndDecryptFile(client.sodium, metadata).then((rawImage) => {
+        setPreviewImage(rawImage); // or saveFile(rawImage)
+        // ensure state is updated before showing the modal
+        setTimeout(() => {
+          openPreviewModal();
+        });
+      });
+    },
     [client]
   );
 
@@ -54,7 +79,7 @@ const Answers: NextPage = () => {
 
       {
         field: "created_at",
-        headerName: "Created at",
+        headerName: "Date",
         width: 130,
         type: "date",
         valueGetter: (val) => new Date(val.row.created_at),
@@ -62,13 +87,13 @@ const Answers: NextPage = () => {
       {
         field: "firstName",
         type: "string",
-        headerName: "First name",
+        headerName: "Prénom",
         width: 120,
       },
       {
         field: "lastName",
         type: "string",
-        headerName: "Last name",
+        headerName: "Nom",
         width: 120,
       },
       {
@@ -145,6 +170,7 @@ const Answers: NextPage = () => {
   );
   const [answers, setAnswers] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [previewImage, setPreviewImage] = useState<File | null>(null);
 
   const identity = useE2ESDKClientIdentity();
 
@@ -197,6 +223,9 @@ const Answers: NextPage = () => {
         />
       )}
       <div style={{ height: 800 }}>
+        <PreviewModal title="Preview">
+          {previewImage && <EncryptedImagePreview file={previewImage} />}
+        </PreviewModal>
         <DataGrid
           rows={answers}
           columns={columns}

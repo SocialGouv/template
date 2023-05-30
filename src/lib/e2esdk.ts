@@ -92,7 +92,12 @@ export const decryptAnswer = (
       console.error(`Zod: Impossible de parser la réponse ${answer.id}`);
       console.error(res.error);
       // warning : returning null here is recommended to avoid security issues where malicious content is sent that could break the rendering process, and lead to a blank page.
-      return null;
+      // return null;
+
+      return {
+        ...answer,
+        ...decryptedValues,
+      };
     }
     return {
       ...answer,
