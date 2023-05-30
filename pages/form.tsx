@@ -13,6 +13,8 @@ import { Checkbox } from "@codegouvfr/react-dsfr/Checkbox";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 
+import { fileMetadataSchema } from "@socialgouv/e2esdk-crypto";
+
 import { encryptAndSubmitForm } from "../src/lib/e2esdk";
 import { generateFormData } from "../src/services/fake-form-data";
 import { serialExec } from "../src/lib/serialExec";
@@ -32,15 +34,7 @@ export const decryptedDataSchema = z.object({
   newsletter: z.boolean().optional().default(false),
   alerts: z.boolean().optional().default(false),
   files: z.array(z.any()).optional(),
-  filesMetadata: z.record(
-    z.string(),
-    z.object({
-      key: z.string(),
-      hash: z.string(),
-      name: z.string(),
-      type: z.string(),
-    })
-  ),
+  filesMetadata: fileMetadataSchema,
 });
 
 type FormData = z.infer<typeof decryptedDataSchema>;
