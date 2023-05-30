@@ -113,7 +113,7 @@ export const decryptAnswer = (
 export const readAndEncryptFile = async (
   file: File,
   encryptionState: EncryptedFormLocalState
-): ReturnType<typeof encryptFile> =>
+): Promise<ReturnType<typeof encryptFile>> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onabort = () => reject("file reading was aborted");
