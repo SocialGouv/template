@@ -7,23 +7,49 @@ pg-hasura:
   cnpg-cluster:
     fullnameOverride: cnpg-hasura
     nameOverride: cnpg-hasura
-    dbSecretName: cnpg-hasura-app
+    dbSecretName: cnpg-hasura-db
     ~tpl~dbOwner: "hasura"
     ~tpl~dbName: "hasura"
+    persistence:
+      storageClass: "managed-csi"
+      size: 8Gi
+  jobs-pg:
+    runs:
+      create-secrets:
+        use: cnpg-create-secrets
+        with:
+          pgSecretName: cnpg-hasura-app
+          cnpgDbSecretName: cnpg-hasura-db
+          database: hasura
+          pgHost: cnpg-hasura-any
+          pgUser: hasura
 
 pg-keycloak:
   ~chart: pg
   cnpg-cluster:
     fullnameOverride: cnpg-keycloak
     nameOverride: cnpg-keycloak
-    dbSecretName: cnpg-keycloak-app
+    dbSecretName: cnpg-keycloak-db
     ~tpl~dbOwner: "keycloak"
     ~tpl~dbName: "keycloak"
+    persistence:
+      storageClass: "managed-csi"
+      size: 8Gi
+  jobs-pg:
+    runs:
+      create-secrets:
+        use: cnpg-create-secrets
+        with:
+          pgSecretName: cnpg-keycloak-app
+          cnpgDbSecretName: cnpg-keycloak-db
+          database: keycloak
+          pgHost: cnpg-keycloak-any
+          pgUser: keycloak
 
 # main app container
 app:
   ~chart: app
-  ~needs: [build-app, keycloakx, hasura]
+  ~needs: [build-app, hasura, keycloakx]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
   imageRepository: template
@@ -88,9 +114,9 @@ hasura:
 
 # https://github.com/codecentric/helm-charts/blob/master/charts/keycloakx/values.yaml
 keycloakx:
+  enabled: true
   fullnameOverride: keycloakx
   ~needs: ["pg-keycloak"]
-  enabled: true
   serviceAccount:
     create: false
   image:
