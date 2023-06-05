@@ -1,38 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { NextPage } from "next";
+import { useSession } from "next-auth/react";
+
+import { fr } from "@codegouvfr/react-dsfr";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+
 import {
   useE2ESDKClient,
   useE2ESDKClientIdentity,
 } from "@socialgouv/e2esdk-react";
-import {
-  decryptFileContents,
-  FileMetadata,
-  Sodium,
-} from "@socialgouv/e2esdk-crypto";
+import { FileMetadata } from "@socialgouv/e2esdk-crypto";
 
-import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchHasura } from "../src/lib/hasura";
 import { query } from "../src/queries/form";
-import { jsonDataSchema } from "./form";
-
-import { z } from "zod";
-import { Client } from "@socialgouv/e2esdk-client";
-import { fr } from "@codegouvfr/react-dsfr";
-
-const nameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
-
-const formMetadata = z.object({
-  id: z.number(),
-  created_at: z.string(),
-  public_key: z.string(),
-  sealed_secret: z.string(),
-  signature: z.string(),
-});
-
-type EncryptedAnswer = z.infer<typeof formMetadata> & { data: string };
+import {
+  decryptAnswer,
+  downloadAndDecryptFile,
+  EncryptedAnswer,
+} from "../src/lib/e2esdk";
 
 type AnswersResponse = {
   errors?: { message: string }[];
@@ -41,72 +29,46 @@ type AnswersResponse = {
   };
 };
 
-async function downloadAndDecryptFile(sodium: Sodium, metadata: FileMetadata) {
-  const res = await fetch(`/api/storage?hash=${metadata.hash}`);
-  const blob = await res.blob();
-  const cleartext = decryptFileContents(
-    sodium,
-    new Uint8Array(await blob.arrayBuffer()),
-    {
-      algorithm: "secretBox",
-      key: sodium.from_base64(metadata.key),
-    }
-  );
-  return new File([cleartext], metadata.name, {
-    type: metadata.type,
-    lastModified: metadata.lastModified,
-  });
-}
+// nameFingerprint os the form sealedBox
+const formNameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
 
-const decryptAnswer = (client: Client, answer: EncryptedAnswer) => {
-  try {
-    const values = client.unsealFormData(
-      {
-        metadata: {
-          publicKey: answer.public_key,
-          sealedSecret: answer.sealed_secret,
-          signature: answer.signature,
-        },
-        encrypted: { data: answer.data },
-      },
-      nameFingerprint
-    ) as Record<"data", string>;
-    const decryptedValues: FormData = JSON.parse(values.data);
-    const res = jsonDataSchema.safeParse(decryptedValues);
-    if (!res.success) {
-      console.error(`Zod: Impossible de parser la réponse ${answer.id}`);
-      // warning : returning null here is recommended to avoid security issues where malicious content is sent that could break the rendering process, and lead to a blank page.
-      return {
-        ...answer,
-        ...decryptedValues,
-      };
-    }
-    return {
-      ...answer,
-      ...res.data,
-      data: undefined,
-    };
-  } catch (e) {
-    console.error(`e2esdk: Impossible de parser la réponse ${answer.id}`);
-    return null;
-  }
+const { PreviewModal, openPreviewModal } = createModal({
+  name: "preview",
+  isOpenedByDefault: false,
+});
+
+const EncryptedImagePreview = ({ file }: { file: File }) => {
+  return (
+    <img
+      style={{ maxWidth: "100%" }}
+      src={URL.createObjectURL(file)}
+      title={file.name}
+      alt={file.name}
+    />
+  );
 };
 
-function saveFile(file: File) {
-  const link = document.createElement("a");
-  link.setAttribute("href", URL.createObjectURL(file));
-  link.setAttribute("download", file.name);
-  link.click();
-  URL.revokeObjectURL(link.href);
-}
+// to download the file
+// function saveFile(file: File) {
+//   const link = document.createElement("a");
+//   link.setAttribute("href", URL.createObjectURL(file));
+//   link.setAttribute("download", file.name);
+//   link.click();
+//   URL.revokeObjectURL(link.href);
+// }
 
 const Answers: NextPage = () => {
   const client = useE2ESDKClient();
 
   const onFileClick = useCallback(
-    async (metadata: FileMetadata) => {
-      const file = await downloadAndDecryptFile(client.sodium, metadata);
-      await saveFile(file);
+    (metadata: FileMetadata) => {
+      downloadAndDecryptFile(client.sodium, metadata).then((rawImage) => {
+        setPreviewImage(rawImage); // or saveFile(rawImage)
+        // ensure state is updated before showing the modal
+        setTimeout(() => {
+          openPreviewModal();
+        });
+      });
     },
     [client]
   );
@@ -117,7 +79,7 @@ const Answers: NextPage = () => {
 
       {
         field: "created_at",
-        headerName: "Created at",
+        headerName: "Date",
         width: 130,
         type: "date",
         valueGetter: (val) => new Date(val.row.created_at),
@@ -125,13 +87,13 @@ const Answers: NextPage = () => {
       {
         field: "firstName",
         type: "string",
-        headerName: "First name",
+        headerName: "Prénom",
         width: 120,
       },
       {
         field: "lastName",
         type: "string",
-        headerName: "Last name",
+        headerName: "Nom",
         width: 120,
       },
       {
@@ -143,7 +105,6 @@ const Answers: NextPage = () => {
           <a href={`mailto:${cell.row.email}`}>{cell.row.email}</a>
         ),
       },
-
       {
         field: "newsletter",
         headerName: "Emails",
@@ -170,20 +131,16 @@ const Answers: NextPage = () => {
         type: "text",
         flex: 1,
         width: 70,
+        cellClassName: "no-outline",
         renderCell: (cell) => {
           const fileList: FileMetadata[] = Object.values(
             cell.row.filesMetadata || {}
           );
-          const { FilesModal, filesModalButtonProps } = createModal({
-            name: "files", // The name of Modal component and modalButtonProps is compute from this string
-            isOpenedByDefault: false,
-          });
-
-          return fileList.map((metadata) => (
+          return fileList.map((metadata, i) => (
             <span
-              key={metadata.hash}
+              key={metadata.hash + i}
               title={metadata.name}
-              className={fr.cx("fr-icon-file-download-fill")}
+              className={fr.cx("fr-icon-file-download-line")}
               style={{ cursor: "pointer" }}
               onClick={(e) => {
                 e.preventDefault();
@@ -213,6 +170,7 @@ const Answers: NextPage = () => {
   );
   const [answers, setAnswers] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [previewImage, setPreviewImage] = useState<File | null>(null);
 
   const identity = useE2ESDKClientIdentity();
 
@@ -220,7 +178,7 @@ const Answers: NextPage = () => {
     () =>
       fetchHasura({ query }, token).then((res: AnswersResponse) =>
         res.data.answers
-          .map((answer) => decryptAnswer(client, answer))
+          .map((answer) => decryptAnswer(client, formNameFingerprint, answer))
           .filter(Boolean)
       ),
     [client, token]
@@ -229,6 +187,7 @@ const Answers: NextPage = () => {
   useEffect(() => {
     setError(null);
     if (session?.user?.id) {
+      // autologin / signup to e2esdk using user UUID
       const e2esdkUserId = session.user.id;
       // if alreay logged in e2esdk in with application account id
       if (identity && identity.userId === e2esdkUserId) {
@@ -264,9 +223,17 @@ const Answers: NextPage = () => {
         />
       )}
       <div style={{ height: 800 }}>
+        <PreviewModal title="Preview">
+          {previewImage && <EncryptedImagePreview file={previewImage} />}
+        </PreviewModal>
         <DataGrid
           rows={answers}
           columns={columns}
+          sx={{
+            "& *": {
+              outline: "none !important",
+            },
+          }}
           initialState={{
             sorting: {
               sortModel: [{ field: "created_at", sort: "desc" }],
