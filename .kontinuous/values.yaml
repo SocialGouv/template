@@ -75,7 +75,7 @@ hasura:
       value: '{"jwk_url": "http://keycloakx-http:8080/realms/app-realm/protocol/openid-connect/certs"}'
   envFrom:
     - secretRef:
-        name: cnpg-hasura-app
+        name: pg-hasura-app
     - secretRef:
         name: hasura
 
@@ -120,7 +120,7 @@ keycloakx:
 
   extraEnvFrom: | # <----- TODO
     - secretRef:
-        name: cnpg-keycloak-app
+        name: pg-keycloak-app
     - secretRef:
         name: keycloak-secrets
   extraEnv: | # <----- TODO
@@ -138,6 +138,8 @@ keycloakx:
       value: "keycloak-{{ .Values.global.host }}"
     - name: KC_LOG_LEVEL
       value: "INFO"
+    - name: JAVA_OPTS_APPEND
+      value: "-Djgroups.dns.query=keycloak-headless"
 
   extraVolumes: |
     - name: keycloak-realm-tpl

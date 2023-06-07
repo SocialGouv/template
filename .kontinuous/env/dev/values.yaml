@@ -19,7 +19,7 @@ jobs:
       use: seed-db
       with:
         seedPath: hasura/seeds/default/books.sql
-        pgSecretName: "cnpg-hasura-app"
+        pgSecretName: "pg-hasura-app"
 # hasura:
 #   ~needs: [build-hasura, db-hasura, keycloakx]
 #   envFrom:
