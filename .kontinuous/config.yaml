@@ -3,6 +3,10 @@ projectName: fabrique
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
+    valuesCompilers:
+      globalDefaults:
+        options:
+          devDomain: ovh.fabrique.social.gouv.fr
     dependencies:
       contrib:
         validators:
@@ -11,3 +15,7 @@ dependencies:
               clusters:
                 dev:
                   kubesealEndpoint: "https://kubeseal.ovh.fabrique.social.gouv.fr"
+        patches:
+          certs:
+            options:
+              wildcardHost: ".ovh.fabrique.social.gouv.fr"
