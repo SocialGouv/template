@@ -4,15 +4,9 @@ global:
 
 pg-hasura:
   ~chart: pg
-  cnpg-cluster:
-    persistence:
-      storageClass: "csi-cinder-high-speed"
 
 pg-keycloak:
   ~chart: pg
-  cnpg-cluster:
-    persistence:
-      storageClass: "csi-cinder-high-speed"
 
 # main app container
 app:
