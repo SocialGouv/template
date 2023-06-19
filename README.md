@@ -46,7 +46,7 @@ Ce template est composé de page :
   - intégration de [sentry](https://sentry.io/) pour gérer les erreurs
   - intégration de [matomo](https://matomo.org/) pour les statistiques d'utilisation
 
-#### En plus dans la branche keycloak :
+#### En plus dans la branche hasura :
 
 - [keycloak](https://www.keycloak.org/) qui est un serveur d'authentification (exclusive à `main`)
 - [next-auth](https://next-auth.js.org/) qui est un wrapper pour gérer l'authentification au sein de l'application (exclusive à `main`)
