@@ -3408,60 +3408,49 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@socialgouv/e2esdk-api@^1.0.0-beta.12":
-  version "1.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-api/-/e2esdk-api-1.0.0-beta.12.tgz#cf7cbd396a0d8d88bc39ee64fce3dc25d4303df1"
-  integrity sha512-M04B/WLg20emJptO+KSFd6o7uqUTxggciC0VChzeS9PhPNcKd+HXW1I40t3+bnaNlAVhbW0WrN9Vc7+VU+xdig==
+"@socialgouv/e2esdk-api@^1.0.0-beta.13":
+  version "1.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-api/-/e2esdk-api-1.0.0-beta.13.tgz#3353958ee05c42cdafadad5866332101a6169736"
+  integrity sha512-Uj3mZOwdvdmuVau8BRAG2FX5hUH6hF4FMwJwTIddwl+gDVnBSoz228OfXzOaCxZSRvr3dBjhryRu/pjqXjtJIg==
   dependencies:
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-client@1.0.0-beta.26":
-  version "1.0.0-beta.26"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-client/-/e2esdk-client-1.0.0-beta.26.tgz#3e7cdd89c71525349aa234c39a8ea3ee8e4b6743"
-  integrity sha512-E7gnxe3tT0ezbmNRF7Q7ok/Jw2lqTdkbVY8e2hhdfs3fp63qSz63DXGllgmGKxchyvLWFSPzpN74bK6zJyz9Mw==
+"@socialgouv/e2esdk-client@1.0.0-beta.27":
+  version "1.0.0-beta.27"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-client/-/e2esdk-client-1.0.0-beta.27.tgz#fa12379dc6d5a2b58f412ca2293ff2971d51dc6a"
+  integrity sha512-+g3jvh9n84UcxUeCPpPYTVKhixirlgG1EC2wXAg28MzDVOjvZppvSjRlLMtnMyfKFvHa5FTOReWbkUFK40lRYA==
   dependencies:
     "@47ng/opaque-client" "^2.1.5"
-    "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
-    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.18"
+    "@socialgouv/e2esdk-api" "^1.0.0-beta.13"
+    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.19"
     local-state-sync "1.0.0-beta.6"
     mitt "^3.0.0"
     secure-json-parse "^2.7.0"
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-crypto@1.0.0-beta.18", "@socialgouv/e2esdk-crypto@^1.0.0-beta.18":
-  version "1.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.18.tgz#0f1e05035859e70c1afa9f6e9bad34aa5d48ac9d"
-  integrity sha512-WnEhDKNuUU0ezHj6HGBb+k8OIyNN0c7LxcxTX8nDMMAFa/3wXtNIjcN/BNy4+nlZEA8KmROLwEdZwH5E3FSfdQ==
+"@socialgouv/e2esdk-crypto@1.0.0-beta.19", "@socialgouv/e2esdk-crypto@^1.0.0-beta.19":
+  version "1.0.0-beta.19"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.19.tgz#3dff03e181a451b2a25ecaa1990c67983faeff0c"
+  integrity sha512-YBLAJ1aWKK/9qm88Ata/6umukQmIGNKHER64lANEI6a4NrIb6ZKF5Vgx/3FFbAuM6oGsAyW5gh41gdqpR0Qs6A==
   dependencies:
-    "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
+    "@socialgouv/e2esdk-api" "^1.0.0-beta.13"
     "@stablelib/hex" "^1.0.1"
     libsodium-wrappers "^0.7.11"
     secure-json-parse "^2.7.0"
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-crypto@^1.0.0-beta.17":
-  version "1.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-crypto/-/e2esdk-crypto-1.0.0-beta.17.tgz#276aec4def56c680ddf9a451572a383850bb55f8"
-  integrity sha512-+LWwvD0BkVWhnK+37M/ySrldeK4h/9cir4G4qvgio1HcIhQKcfYH41+9ex2Lo7w0bGfDH0ANYFQf2mHr8GMqsA==
-  dependencies:
-    "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
-    "@stablelib/hex" "^1.0.1"
-    libsodium-wrappers "^0.7.11"
-    secure-json-parse "^2.7.0"
-    zod "^3.21.4"
-
-"@socialgouv/e2esdk-devtools@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-devtools/-/e2esdk-devtools-1.0.0-beta.35.tgz#8d72c2dc4ba0aac9c6b7c48e9a3d899131eb9d2e"
-  integrity sha512-lBeoOWoSoU2xetRyZwKz4WwDQ7u2BlXVd/BuitLfb7E6CkB+Mzcv17n0tCJLBYMANP8OSlxwmhADwCMA9uwL2g==
+"@socialgouv/e2esdk-devtools@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-devtools/-/e2esdk-devtools-1.0.0-beta.37.tgz#ebdfb708efcbd87766f005bcf93bfa51faecde3d"
+  integrity sha512-xiaw+anWwm67LX6xTgJVw4LhLPUtE40/v4MXW9sZYbKT6MVyKSuAnDJyJWCLKs0EyszkHPb9bN4+JGNPXRwfaQ==
   dependencies:
     "@chakra-ui/react" "^2.5.2"
     "@emotion/cache" "^11.10.5"
     "@emotion/react" "^11.10.6"
     "@emotion/styled" "^11.10.6"
-    "@socialgouv/e2esdk-api" "^1.0.0-beta.12"
-    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.17"
-    "@socialgouv/e2esdk-react" "^1.0.0-beta.25"
+    "@socialgouv/e2esdk-api" "^1.0.0-beta.13"
+    "@socialgouv/e2esdk-crypto" "^1.0.0-beta.19"
+    "@socialgouv/e2esdk-react" "^1.0.0-beta.27"
     "@tanstack/react-query" "^4.28.0"
     "@tanstack/react-query-devtools" "^4.28.0"
     framer-motion "^10.8.4"
@@ -3471,10 +3460,10 @@
     vite-plugin-top-level-await "^1.3.0"
     zod "^3.21.4"
 
-"@socialgouv/e2esdk-react@1.0.0-beta.25", "@socialgouv/e2esdk-react@^1.0.0-beta.25":
-  version "1.0.0-beta.25"
-  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-react/-/e2esdk-react-1.0.0-beta.25.tgz#d5c27ff5bde90d1da8d681adfe9de57e98157f7e"
-  integrity sha512-NvMhdbYtHGUVKv8tJykXBeVefGnYq3n8WquxMNCYS6KZAb3nOMFU3+orGuVJXV0Hwv2GGlX3Z9psAyh6SV47DA==
+"@socialgouv/e2esdk-react@1.0.0-beta.27", "@socialgouv/e2esdk-react@^1.0.0-beta.27":
+  version "1.0.0-beta.27"
+  resolved "https://registry.yarnpkg.com/@socialgouv/e2esdk-react/-/e2esdk-react-1.0.0-beta.27.tgz#7c43f6cca481f9a8ca94c7a231fb67d077fb11dc"
+  integrity sha512-7PqxUu/9OSpwA6ueZYdHp31zIGQQyWtPGQBZIyM7ZIYf0SFofJQe4llXe7D/KHcY5bB2uQm98gQ8VIljnRtGTA==
 
 "@socialgouv/matomo-next@^1.6.1":
   version "1.6.1"
