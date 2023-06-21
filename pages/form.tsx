@@ -20,7 +20,7 @@ import { generateFormData } from "../src/services/fake-form-data";
 import { serialExec } from "../src/lib/serialExec";
 
 // This form sealedBox public key
-const formPublicKeyString = "AatyS2mCJd__zewF-mT_IEd4925CQgf-CC9U3U3ZRnk";
+const formPublicKeyString = "CyLwBWHufxjHfzzI8BNgJXEBOEtIXV_NewC6VFrMkgk";
 
 // Some unique id for this form submission. used for client localstorage
 export const formName = "myapp-contact-form";
