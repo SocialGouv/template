@@ -3,14 +3,14 @@ jobs:
     db-keycloak:
       use: create-db
       with:
-        pgAdminSecretRefName: pg-scaleway
+        pgAdminUserSecretRefName: pg-scaleway
         pgSecretName: "keycloak-db-{{ .Values.global.branchSlug32 }}"
         database: "keycloak_{{ .Values.global.branchSlug32 }}"
         pgUser: "keycloak_{{ .Values.global.branchSlug32 }}"
     db-hasura:
       use: create-db
       with:
-        pgAdminSecretRefName: pg-scaleway
+        pgAdminUserSecretRefName: pg-scaleway
         pgSecretName: "hasura-db-{{ .Values.global.branchSlug32 }}"
         database: "hasura_{{ .Values.global.branchSlug32 }}"
         pgUser: "hasura_{{ .Values.global.branchSlug32 }}"
