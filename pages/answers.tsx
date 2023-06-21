@@ -29,8 +29,8 @@ type AnswersResponse = {
   };
 };
 
-// nameFingerprint os the form sealedBox
-const formNameFingerprint = "73ZLcYHHAhx6rgMbgpPgc0F1qE89oWOAq6UGdrHkkJQ";
+// nameFingerprint of the form sealedBox
+const formNameFingerprint = "QyUHkrtl2FmtRyXHbsmf_EIwKGv5wRUZpU9X7Gm4tZw";
 
 const { PreviewModal, openPreviewModal } = createModal({
   name: "preview",
