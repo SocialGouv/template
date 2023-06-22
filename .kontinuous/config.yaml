@@ -1,5 +1,9 @@
 projectName: fabrique
+ciNamespace: ci-fabrique
 
 dependencies:
   fabrique:
-    extends: ovh
+    import: socialgouv/kontinuous/plugins/fabrique
+    extends:
+      - name: ovh
+        ifEnv: [dev]

@@ -4,9 +4,15 @@ global:
 
 pg-hasura:
   ~chart: pg
+  cnpg-cluster:
+    monitoring:
+      ~tpl~enablePodMonitor: "true"
 
 pg-keycloak:
   ~chart: pg
+  cnpg-cluster:
+    monitoring:
+      ~tpl~enablePodMonitor: "true"
 
 # main app container
 app:
