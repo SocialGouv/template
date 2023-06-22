@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { withAuth } from "../src/lib/auth";
 import { useSession, signOut } from "next-auth/react";
-import { Button } from "@codegouvfr/react-dsfr/Button";
+import { ButtonsGroup } from "@codegouvfr/react-dsfr/ButtonsGroup";
+import { useE2ESDKClient } from "@socialgouv/e2esdk-react";
+import { fr } from "@codegouvfr/react-dsfr";
 
 const ProfilPage = () => {
+  const client = useE2ESDKClient();
   const { data: session } = useSession();
-  console.log("session", session);
+
+  const backupKey = useCallback(async () => {
+    const deviceQR = await client.enrollNewDevice();
+    const textFile = new File([deviceQR], "key-backup.txt", {
+      type: "text",
+    });
+    const link = document.createElement("a");
+    link.setAttribute("href", URL.createObjectURL(textFile));
+    link.setAttribute("download", textFile.name);
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }, [client]);
+
+  const logout = useCallback(async () => {
+    signOut({
+      // @ts-ignore // todo
+      callbackUrl: `/api/logout?id_token_hint=${session?.idToken}`,
+    });
+  }, [session]);
+
   return (
     <div className="fr-container fr-my-6w">
       <h1>Mes informations</h1>
@@ -24,16 +46,22 @@ const ProfilPage = () => {
             <span>{session?.user?.name}</span>
           </li>
         </ul>
-        <Button
-          onClick={() =>
-            signOut({
-              // @ts-ignore
-              callbackUrl: `/api/logout?id_token_hint=${session?.idToken}`,
-            })
-          }
-        >
-          Se déconnecter
-        </Button>
+        <ButtonsGroup
+          className={fr.cx("fr-mt-12w")}
+          buttons={[
+            {
+              iconId: "ri-key-2-fill",
+              onClick: backupKey,
+              children: "Créer une sauvegarde de ma clé",
+            },
+            {
+              priority: "secondary",
+              iconId: "ri-door-closed-fill",
+              onClick: logout,
+              children: "Se déconnecter",
+            },
+          ]}
+        />
       </div>
     </div>
   );
