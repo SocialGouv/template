@@ -133,149 +133,151 @@ const Form: NextPage = () => {
       <Head>
         <title>e2esdk demo - SocialGouv</title>/
       </Head>
-      <Alert
-        description="Ce formulaire utilise du chiffrement côté client avant d'envoyer les données."
-        severity="info"
-        small
-      />
-      {formSuccess && (
+      <div className={fr.cx("fr-container")}>
         <Alert
-          description="Données chiffrées et envoyées"
-          severity="success"
+          description="Ce formulaire utilise du chiffrement côté client avant d'envoyer les données."
+          severity="info"
           small
         />
-      )}
-      {formError && (
-        <Alert
-          description="Impossible d'envoyer les données"
-          severity="error"
-          small
-        />
-      )}
-      <br />
-      <form onSubmit={onSubmit}>
-        <Input
-          label="Nom"
-          nativeInputProps={{ ...register("firstName", { required: true }) }}
-        />
-        <Input label="Prénom(s)" nativeInputProps={register("lastName")} />
-        <Input
-          label="Email"
-          nativeInputProps={{
-            type: "email",
-            ...register("email"),
-          }}
-        />
-        <RadioButtons
-          legend="Thème de couleur préféré"
-          options={[
-            {
-              label: "Quiet Light",
-              nativeInputProps: {
-                value: "Quiet Light",
-                ...register("color"),
-              },
-            },
-            {
-              label: "Monokai",
-              nativeInputProps: {
-                value: "Monokai",
-                ...register("color"),
-              },
-            },
-            {
-              label: "Solarized",
-              nativeInputProps: {
-                value: "Solarized",
-                ...register("color"),
-              },
-            },
-            {
-              label: "DSFR",
-              nativeInputProps: {
-                value: "DSFR",
-                ...register("color"),
-              },
-            },
-          ]}
-          orientation="horizontal"
-        />
-        <Checkbox
-          legend="Communications"
-          options={[
-            {
-              label: "Recevoir la newsletter",
-              nativeInputProps: {
-                ...register("newsletter"),
-              },
-            },
-            {
-              label: "Recevoir les alertes",
-              nativeInputProps: {
-                ...register("alerts"),
-              },
-            },
-          ]}
-        />
-        <Input
-          label="Message"
-          textArea={true}
-          nativeTextAreaProps={{
-            ...register("message"),
-            rows: 6,
-          }}
-        />
-        <div {...getDropZoneRootProps()}>
-          <Input
-            label="Vos fichiers"
-            nativeInputProps={{ ...getDropZoneInputProps() }}
-            {...register("files")}
+        {formSuccess && (
+          <Alert
+            description="Données chiffrées et envoyées"
+            severity="success"
+            small
           />
-          <div
-            style={{
-              border: "3px dashed auto",
-              padding: 10,
-              listStyleType: "none",
-              marginTop: 10,
-              minHeight: 140,
-              borderColor:
-                fr.getColors(isDark)?.decisions.background.alt.grey.active,
-              backgroundColor: isDragActive
-                ? fr.getColors(isDark)?.decisions.background.alt.grey.active
-                : fr.getColors(isDark)?.decisions.background.contrast.grey
-                    .default,
+        )}
+        {formError && (
+          <Alert
+            description="Impossible d'envoyer les données"
+            severity="error"
+            small
+          />
+        )}
+        <br />
+        <form onSubmit={onSubmit}>
+          <Input
+            label="Nom"
+            nativeInputProps={{ ...register("firstName", { required: true }) }}
+          />
+          <Input label="Prénom(s)" nativeInputProps={register("lastName")} />
+          <Input
+            label="Email"
+            nativeInputProps={{
+              type: "email",
+              ...register("email"),
             }}
-          >
-            Déposez vos fichiers ici...
-            {(uploads.length && (
-              <div style={{ marginTop: 10 }}>
-                {uploads.map((upload, i) => (
-                  <li key={upload.name + i}>
-                    {upload.name}{" "}
-                    {/* eslint-disable-next-line react/jsx-no-comment-textnodes, jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
-                    <span
-                      style={{ cursor: "pointer" }}
-                      onClick={onRemoveUploadClick(upload)}
-                    >
-                      X
-                    </span>
-                  </li>
-                ))}
-              </div>
-            )) ||
-              null}
+          />
+          <RadioButtons
+            legend="Thème de couleur préféré"
+            options={[
+              {
+                label: "Quiet Light",
+                nativeInputProps: {
+                  value: "Quiet Light",
+                  ...register("color"),
+                },
+              },
+              {
+                label: "Monokai",
+                nativeInputProps: {
+                  value: "Monokai",
+                  ...register("color"),
+                },
+              },
+              {
+                label: "Solarized",
+                nativeInputProps: {
+                  value: "Solarized",
+                  ...register("color"),
+                },
+              },
+              {
+                label: "DSFR",
+                nativeInputProps: {
+                  value: "DSFR",
+                  ...register("color"),
+                },
+              },
+            ]}
+            orientation="horizontal"
+          />
+          <Checkbox
+            legend="Communications"
+            options={[
+              {
+                label: "Recevoir la newsletter",
+                nativeInputProps: {
+                  ...register("newsletter"),
+                },
+              },
+              {
+                label: "Recevoir les alertes",
+                nativeInputProps: {
+                  ...register("alerts"),
+                },
+              },
+            ]}
+          />
+          <Input
+            label="Message"
+            textArea={true}
+            nativeTextAreaProps={{
+              ...register("message"),
+              rows: 6,
+            }}
+          />
+          <div {...getDropZoneRootProps()}>
+            <Input
+              label="Vos fichiers"
+              nativeInputProps={{ ...getDropZoneInputProps() }}
+              {...register("files")}
+            />
+            <div
+              style={{
+                border: "3px dashed auto",
+                padding: 10,
+                listStyleType: "none",
+                marginTop: 10,
+                minHeight: 140,
+                borderColor:
+                  fr.getColors(isDark)?.decisions.background.alt.grey.active,
+                backgroundColor: isDragActive
+                  ? fr.getColors(isDark)?.decisions.background.alt.grey.active
+                  : fr.getColors(isDark)?.decisions.background.contrast.grey
+                      .default,
+              }}
+            >
+              Déposez vos fichiers ici...
+              {(uploads.length && (
+                <div style={{ marginTop: 10 }}>
+                  {uploads.map((upload, i) => (
+                    <li key={upload.name + i}>
+                      {upload.name}{" "}
+                      {/* eslint-disable-next-line react/jsx-no-comment-textnodes, jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={onRemoveUploadClick(upload)}
+                      >
+                        X
+                      </span>
+                    </li>
+                  ))}
+                </div>
+              )) ||
+                null}
+            </div>
           </div>
-        </div>
-        <br />
-        <Button onClick={onSubmit} disabled={!isDirty || !isValid}>
-          Envoyer
-        </Button>
-        <br />
-        <br />
-        <Button onClick={generateSubmissions}>
-          Send 10 random submissions
-        </Button>
-      </form>
+          <br />
+          <Button onClick={onSubmit} disabled={!isDirty || !isValid}>
+            Envoyer
+          </Button>
+          <br />
+          <br />
+          <Button onClick={generateSubmissions}>
+            Send 10 random submissions
+          </Button>
+        </form>
+      </div>
     </>
   );
 };

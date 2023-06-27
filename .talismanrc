@@ -162,7 +162,9 @@ fileignoreconfig:
 - filename: pages/books.tsx
   checksum: 8e3b60571bf9cfca7740ef1b22661109699ebe88c5bef0b39cde25a08f4aa664
 - filename: pages/form.tsx
-  checksum: d0cc33e9e49b013fe424d12685fad33901ea5198872db7796bd15693fe78acc7
+  checksum: b954b4a530b279d5713477c73e70faba1c579b3972344f6db2d326197367dec8
+- filename: pages/profil.tsx
+  checksum: 5f85579232df5641aa38d24c486e14216cc9aa0af87c3466184cae126e86980a
 - filename: scripts/pg/create-multiple-postgresql-databases.sh
   checksum: 2989dcdba68c9586ff81c53ccbddb452225127b9fb8db9bbcea22be26076e922
 - filename: src/components/header/index.tsx
