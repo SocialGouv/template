@@ -52,7 +52,7 @@ const ProfilPage = () => {
             {
               iconId: "ri-key-2-fill",
               onClick: backupKey,
-              children: "Créer une sauvegarde de ma clé",
+              children: "Créer une clé de sauvegarde",
             },
             {
               priority: "secondary",
