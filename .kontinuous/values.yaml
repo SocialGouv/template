@@ -2,10 +2,22 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
 
+pg-hasura:
+  ~chart: pg
+  cnpg-cluster:
+    monitoring:
+      ~tpl~enablePodMonitor: "true"
+
+pg-keycloak:
+  ~chart: pg
+  cnpg-cluster:
+    monitoring:
+      ~tpl~enablePodMonitor: "true"
+
 # main app container
 app:
   ~chart: app
-  ~needs: [build-app, keycloakx, hasura]
+  ~needs: [hasura, keycloakx]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
   imageRepository: template
@@ -23,7 +35,6 @@ app:
 
 jobs:
   runs:
-    # define a kubernetes job to build the docker image
     build-app:
       use: build
       with:
@@ -49,7 +60,7 @@ jobs:
 
 hasura:
   enabled: true
-  ~needs: [keycloakx]
+  ~needs: ["pg-hasura", "build-hasura", keycloakx]
   imageProject: fabrique
   imageRepository: template
   imagePackage: hasura
@@ -64,22 +75,23 @@ hasura:
       value: '{"jwk_url": "http://keycloakx-http:8080/realms/app-realm/protocol/openid-connect/certs"}'
   envFrom:
     - secretRef:
-        name: pg-user-hasura
+        name: pg-hasura-app
     - secretRef:
         name: hasura
 
+# https://github.com/codecentric/helm-charts/blob/master/charts/keycloakx/values.yaml
 keycloakx:
-  fullnameOverride: keycloakx
   enabled: true
-
+  fullnameOverride: keycloakx
+  ~needs: ["pg-keycloak"]
   serviceAccount:
     create: false
   image:
     tag: "20.0.3"
   database:
     vendor: postgres
-  cache:
-    stack: custom
+  #cache:
+  # stack: custom
   http:
     relativePath: /
   service:
@@ -106,12 +118,12 @@ keycloakx:
     kapp.k14s.io/disable-original: ""
     kapp.k14s.io/create-strategy: fallback-on-update
 
-  extraEnvFrom: |
+  extraEnvFrom: | # <----- TODO
     - secretRef:
-        name: pg-user-keycloak
+        name: pg-keycloak-app
     - secretRef:
         name: keycloak-secrets
-  extraEnv: |
+  extraEnv: | # <----- TODO
     - name: KC_DB_URL_HOST
       value: "$(PGHOST)"
     - name: KC_DB_URL_PORT
@@ -126,6 +138,8 @@ keycloakx:
       value: "keycloak-{{ .Values.global.host }}"
     - name: KC_LOG_LEVEL
       value: "INFO"
+    - name: JAVA_OPTS_APPEND
+      value: "-Djgroups.dns.query=keycloak-headless"
 
   extraVolumes: |
     - name: keycloak-realm-tpl
@@ -172,7 +186,7 @@ keycloakx:
         - sh
       args:
         - -c
-        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/SocialGouv/keycloak-dsfr/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
+        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/codegouvfr/sill-web/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
       volumeMounts:
         - name: providers
           mountPath: /providers
