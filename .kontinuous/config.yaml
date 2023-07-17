@@ -3,7 +3,6 @@ ciNamespace: ci-fabrique
 
 dependencies:
   fabrique:
-    import: socialgouv/kontinuous/plugins/fabrique
     extends:
-      - name: ovh
-        ifEnv: [dev]
+    - name: ovh
+      ifEnv: [dev,preprod]
