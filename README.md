@@ -119,6 +119,8 @@ Template utilise [kontinuous](https://github.com/socialgouv/kontinuous) pour dé
 
 Lancer `npx kontinuous build --env dev -o` pour obtenir les manifests de votre environment (`dev`, `preprod` ou `prod`).
 
+La version dev est déployée sur OVH.
+
 ## Liens
 
 - <https://template.fabrique.social.gouv.fr/> : Version en production du projet
