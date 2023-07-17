@@ -5,51 +5,19 @@ global:
 pg-hasura:
   ~chart: pg
   cnpg-cluster:
-    fullnameOverride: cnpg-hasura
-    nameOverride: cnpg-hasura
-    dbSecretName: cnpg-hasura-db
-    ~tpl~dbOwner: "hasura"
-    ~tpl~dbName: "hasura"
-    persistence:
-      storageClass: "managed-csi"
-      size: 8Gi
-  jobs-pg:
-    runs:
-      create-secrets:
-        use: cnpg-create-secrets
-        with:
-          pgSecretName: cnpg-hasura-app
-          cnpgDbSecretName: cnpg-hasura-db
-          database: hasura
-          pgHost: cnpg-hasura-any
-          pgUser: hasura
+    monitoring:
+      ~tpl~enablePodMonitor: "true"
 
 pg-keycloak:
   ~chart: pg
   cnpg-cluster:
-    fullnameOverride: cnpg-keycloak
-    nameOverride: cnpg-keycloak
-    dbSecretName: cnpg-keycloak-db
-    ~tpl~dbOwner: "keycloak"
-    ~tpl~dbName: "keycloak"
-    persistence:
-      storageClass: "managed-csi"
-      size: 8Gi
-  jobs-pg:
-    runs:
-      create-secrets:
-        use: cnpg-create-secrets
-        with:
-          pgSecretName: cnpg-keycloak-app
-          cnpgDbSecretName: cnpg-keycloak-db
-          database: keycloak
-          pgHost: cnpg-keycloak-any
-          pgUser: keycloak
+    monitoring:
+      ~tpl~enablePodMonitor: "true"
 
 # main app container
 app:
   ~chart: app
-  ~needs: [build-app, hasura, keycloakx]
+  ~needs: [hasura, keycloakx]
   host: "{{.Values.global.host}}"
   imageProject: fabrique
   imageRepository: template
@@ -67,7 +35,6 @@ app:
 
 jobs:
   runs:
-    # define a kubernetes job to build the docker image
     build-app:
       use: build
       with:
@@ -93,7 +60,7 @@ jobs:
 
 hasura:
   enabled: true
-  ~needs: ["pg-hasura", keycloakx]
+  ~needs: ["pg-hasura", "build-hasura", keycloakx]
   imageProject: fabrique
   imageRepository: template
   imagePackage: hasura
@@ -108,7 +75,7 @@ hasura:
       value: '{"jwk_url": "http://keycloakx-http:8080/realms/app-realm/protocol/openid-connect/certs"}'
   envFrom:
     - secretRef:
-        name: cnpg-hasura-app
+        name: pg-hasura-app
     - secretRef:
         name: hasura
 
@@ -153,11 +120,11 @@ keycloakx:
 
   extraEnvFrom: | # <----- TODO
     - secretRef:
-        name: cnpg-keycloak-app
+        name: pg-keycloak-app
     - secretRef:
         name: keycloak-secrets
   extraEnv: | # <----- TODO
-    - name: KC_DB_URL_HOST 
+    - name: KC_DB_URL_HOST
       value: "$(PGHOST)"
     - name: KC_DB_URL_PORT
       value: "$(PGPORT)"
@@ -171,6 +138,8 @@ keycloakx:
       value: "keycloak-{{ .Values.global.host }}"
     - name: KC_LOG_LEVEL
       value: "INFO"
+    - name: JAVA_OPTS_APPEND
+      value: "-Djgroups.dns.query=keycloak-headless"
 
   extraVolumes: |
     - name: keycloak-realm-tpl
