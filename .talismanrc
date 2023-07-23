@@ -8,7 +8,7 @@ fileignoreconfig:
 - filename: Dockerfile
   checksum: 3e3c777aa156eb69b7212d18b431e3b605652e42e22d36f89be97c3c2a87c47f
 - filename: README.md
-  checksum: 12a9880a31cfafb6cc7bd02fbf9a8d948d487aff64ca34b27d5c4b327a83ad5e
+  checksum: 157189a250dee26188891a1e0fa584b9317fadebd05d014ab41deb190311a84c
 - filename: pages/mui.tsx
   checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
 scopeconfig:

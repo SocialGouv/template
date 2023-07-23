@@ -13,7 +13,8 @@ Template minimal de la [Fabrique des ministères sociaux](https://www.fabrique.s
 - 🇫🇷 Basé sur [codegouv/react-dsfr](https://github.com/codegouvfr/react-dsfr)
 - ⚖️ Pages de "conformité" (CGU, RGPD, stats..)
 - 📦 Testing, lint, CI & release automatisés
-- 🔒 Image docker `rootless` et [header CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+- 🔒 Image docker `rootless`, [header CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+- 🔑 prévention de fuite de secrets avec [talisman](https://github.com/thoughtworks/talisman/)
 - 📊 Intégration de sentry & matomo
 - ⚡️ Basé sur [Next](https://nextjs.org/) et TypeScript
 
