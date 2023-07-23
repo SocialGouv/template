@@ -17,6 +17,12 @@ import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { init } from "@socialgouv/matomo-next";
 import Head from "next/head";
 
+declare module "@codegouvfr/react-dsfr/next-pagesdir" {
+  interface RegisterLink {
+    Link: typeof Link;
+  }
+}
+
 // Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
   interface RegisterLink {
@@ -26,7 +32,13 @@ declare module "@codegouvfr/react-dsfr" {
 
 const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   defaultColorScheme: "system",
-  doPersistDarkModePreferenceWithCookie: true,
+  Link,
+  useLang: () => {
+    const { locale = "fr" } = useRouter();
+    return locale;
+  },
+
+  //doPersistDarkModePreferenceWithCookie: true,
   //Link,
   preloadFonts: [
     //"Marianne-Light",
@@ -74,6 +86,12 @@ const bottomLinks = [
     text: "Statistiques",
     linkProps: {
       href: "/stats",
+    },
+  },
+  {
+    text: "Politique de confidentialité",
+    linkProps: {
+      href: "/politique-confidentialite",
     },
   },
   {
@@ -174,7 +192,6 @@ function App({ Component, pageProps }: AppProps) {
           homeLinkProps={homeLinkPops}
           accessibilityLinkProps={{ href: "/accessibilite" }}
           termsLinkProps={{ href: "/mentions-legales" }}
-          personalDataLinkProps={{ href: "/politique-confidentialite" }}
           bottomItems={[...bottomLinks, headerFooterDisplayItem]}
         />
         <Display />
@@ -183,4 +200,4 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-export default withAppEmotionCache(withDsfr(App));
+export default withDsfr(withAppEmotionCache(App));

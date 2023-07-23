@@ -1,19 +1,25 @@
 # template
 
-Template est une application [Next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) et qui utilise le [Système de Design de l'État](https://gouvfr.atlassian.net/wiki/spaces/DB/overview).
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/socialgouv/template/main)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/socialgouv/template/preproduction.yaml)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/socialgouv/template)
 
-L'application dispose de deux branches principales :
+Template minimal de la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) qui intègre nos [recommandations tech](https://socialgouv.github.io/support/docs/standards/developpement).
 
-- [`main`](https://github.com/SocialGouv/template) qui est un template de site statique sans la partie authentification
-- [`hasura`](https://github.com/SocialGouv/template/tree/hasura) qui ajoute un serveur Next.js, hasura et une authentification KeyCloak
-
-Ce template intègre les recommendations de la [documentation technique SocialGouv](https://socialgouv.github.io/support)
+> ⚠️ Le [Système de Design de l'État](https://www.systeme-de-design.gouv.fr/) s'adresse **uniquement** aux développeurs et aux concepteurs, qu'ils soient agents publics ou prestataires pour des sites Internet de l'État (Ministères, Administrations centrales, Préfectures, Ambassades, etc.)
 
 ## Description
 
-### D'un point de vue fonctionnel
+- 🇫🇷 Basé sur [codegouv/react-dsfr](https://github.com/codegouvfr/react-dsfr)
+- ⚖️ Pages de "conformité" (CGU, RGPD, stats..)
+- 📦 Testing, lint, CI & release automatisés
+- 🔒 Image docker `rootless` et [header CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+- 📊 Intégration de sentry & matomo
+- ⚡️ Basé sur [Next](https://nextjs.org/) et TypeScript
 
-Ce template est composé de page :
+## Dans le détail
+
+### D'un point de vue fonctionnel
 
 - Page principale
 - Politique de confidentialité
@@ -24,7 +30,7 @@ Ce template est composé de page :
 - Healthz
 - Page 404
 
-#### En plus dans la branche hasura :
+#### En plus dans la branche `hasura` :
 
 - Page d'authentification
 - Page d'inscription
@@ -46,7 +52,7 @@ Ce template est composé de page :
   - intégration de [sentry](https://sentry.io/) pour gérer les erreurs
   - intégration de [matomo](https://matomo.org/) pour les statistiques d'utilisation
 
-#### En plus dans la branche hasura :
+#### En plus dans la branche `hasura` :
 
 - [keycloak](https://www.keycloak.org/) qui est un serveur d'authentification (exclusive à `main`)
 - [next-auth](https://next-auth.js.org/) qui est un wrapper pour gérer l'authentification au sein de l'application (exclusive à `main`)
@@ -81,7 +87,7 @@ cf .env.development
 
 en production, les secrets sont chiffrés dans GIT avec sealed-secrets.
 
-#### branche Hasura
+### Branche `Hasura`
 
 Lancer les serveurs Postgres, hasura et keycloak avec `docker-compose up`.
 
