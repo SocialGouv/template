@@ -4,9 +4,6 @@ const { version } = require("./package.json");
 
 const ContentSecurityPolicy = require("./csp.config");
 
-const withTM = require("next-transpile-modules")(["@codegouvfr/react-dsfr"]);
-
-/** @type {import('next').NextConfig} */
 const moduleExports = {
   reactStrictMode: true,
   swcMinify: true,
@@ -27,8 +24,9 @@ const moduleExports = {
     NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA,
     CONTENT_SECURITY_POLICY: ContentSecurityPolicy,
   },
+  transpilePackages: ["@codegouvfr/react-dsfr", "tss-react"],
 };
 
 module.exports = {
-  ...withTM(withSentryConfig(moduleExports, { silent: true })),
+  ...withSentryConfig(moduleExports, { silent: true }),
 };
