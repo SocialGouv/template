@@ -1,8 +1,8 @@
 # define docker registry options
-global:
+#global:
  # registry: harbor.fabrique.social.gouv.fr
-  imageProject: fabrique
-  imageRepository: template
+ # imageProject: fabrique
+  #imageRepository: template
 
 # main app container
 app:
