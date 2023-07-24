@@ -1,9 +1,3 @@
-# define docker registry options
-#global:
- # registry: harbor.fabrique.social.gouv.fr
- # imageProject: fabrique
-  #imageRepository: template
-
 # main app container
 app:
   # wait for build-app before deployment
@@ -18,8 +12,6 @@ jobs:
       use: build
       with:
         imagePackage: app
-     #   registrySecretRefName: harbor
-      #  buildOptions: --single-snapshot --ignore-path=/product_uuid --compressed-caching=false # optim for local builds
         # pass a custom docker build arg
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
