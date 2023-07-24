@@ -1,3 +1,10 @@
+## [1.15.8](https://github.com/SocialGouv/template/compare/v1.15.7...v1.15.8) (2023-07-24)
+
+
+### Bug Fixes
+
+* upgrade ([#165](https://github.com/SocialGouv/template/issues/165)) ([2423dc3](https://github.com/SocialGouv/template/commit/2423dc3e47feb9d7f00806123a4f39aad0186d16))
+
 ## [1.15.7](https://github.com/SocialGouv/template/compare/v1.15.6...v1.15.7) (2023-04-14)
 
 

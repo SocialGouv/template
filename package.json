@@ -1,6 +1,6 @@
 {
   "name": "@socialgouv/template",
-  "version": "1.15.7",
+  "version": "1.15.8",
   "private": true,
   "engines": {
     "node": ">=16.14 || >18"
