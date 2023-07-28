@@ -12,4 +12,5 @@ maildev:
   
 pgweb:
   enabled: true
+  pgSecretName: pg-hasura-app
   
