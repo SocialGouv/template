@@ -33,7 +33,7 @@ services:
       - postgres
     healthcheck:
       # wait for the JWK url to be available
-      test: curl --fail http://localhost:8080/realms/app-realm/protocol/openid-connect/certs|| exit 1
+      test: curl --fail http://localhost:8080/realms/app-realm/protocol/openid-connect/certs || exit 1
       interval: 10s
       retries: 50
       start_period: 0s
@@ -45,7 +45,7 @@ services:
   graphql-engine:
     image: hasura/graphql-engine:v2.9.0.cli-migrations-v3
     ports:
-    - "8082:8080"
+      - "8082:8080"
     depends_on:
       keycloak:
         condition: service_healthy
@@ -61,6 +61,6 @@ services:
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
-      HASURA_GRAPHQL_JWT_SECRET: "{\"jwk_url\": \"http://keycloak:8080/realms/app-realm/protocol/openid-connect/certs\"}"
+      HASURA_GRAPHQL_JWT_SECRET: '{"jwk_url": "http://keycloak:8080/realms/app-realm/protocol/openid-connect/certs"}'
       HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous

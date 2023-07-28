@@ -56,7 +56,7 @@ fileignoreconfig:
 - filename: README.md
   checksum: 12a9880a31cfafb6cc7bd02fbf9a8d948d487aff64ca34b27d5c4b327a83ad5e
 - filename: docker-compose.yaml
-  checksum: 3cf3c276244229caad941c84d35109d07d372324a5626aa632724836e39a54ff
+  checksum: 697e6c3117fd0c210816d179335f09a8dcc75a9a03d6c08a6aa9ff009e4a519a
 - filename: hasura/migrations/default/1659018828697_init/up.sql
   checksum: 35d9f9dd5380b853fe9ead2e36b97158de39be0a1b9aaee0071b1f43fbdfb211
 - filename: hasura/migrations/default/1659130257063_alter_table_public_books_add_column_user_id/down.sql
