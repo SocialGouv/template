@@ -35,7 +35,7 @@
     "@mui/material": "^5.14.2",
     "@mui/x-data-grid": "^5.17.16",
     "@mui/x-date-pickers": "^5.0.11",
-    "@sentry/nextjs": "^6.17.9",
+    "@sentry/nextjs": "^7.60.1",
     "@socialgouv/matomo-next": "^1.6.1",
     "dayjs": "^1.11.9",
     "next": "13.4.12",
@@ -69,7 +69,7 @@
     "jest": "^27.5.1",
     "lint-staged": "^13.2.3",
     "node-talisman": "^1.29.10",
-    "start-server-and-test": "^1.14.0",
+    "start-server-and-test": "^2.0.0",
     "storybook-dark-mode": "^2.0.5",
     "tsx": "^3.12.7",
     "typescript": "5.1.6"
