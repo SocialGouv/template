@@ -651,7 +651,7 @@
         "saml.assertion.signature": "false",
         "client.secret.creation.time": "1652084534",
         "saml.encrypt": "false",
-        "login_theme": "keycloak-dsfr",
+        "login_theme": "dsfr",
         "saml$server$signature": "false",
         "saml.server.signature": "false",
         "exclude.session.state.from.auth.response": "false",
@@ -1448,7 +1448,7 @@
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
   "smtpServer": {},
-  "loginTheme": "keycloak-dsfr",
+  "loginTheme": "dsfr",
   "eventsEnabled": true,
   "eventsExpiration": 86400,
   "eventsListeners": ["jboss-logging"],
