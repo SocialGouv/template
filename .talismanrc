@@ -52,7 +52,7 @@ fileignoreconfig:
 - filename: .kontinuous/values.yaml
   checksum: 96ca1a03316b4e1f2c0f715098a4e882fda146346569facd46c8a52e4e7dbd6f
 - filename: Dockerfile
-  checksum: 08e656df5c523c9e4973da6f12912f74d1e2fc5796883de3a7d7a5b7f1accc4f
+  checksum: d44d4622a3b55fe2f61d8fc97a527293a0dc36facb58504fabb543219eba2cb2
 - filename: README.md
   checksum: 12a9880a31cfafb6cc7bd02fbf9a8d948d487aff64ca34b27d5c4b327a83ad5e
 - filename: docker-compose.yaml
