@@ -1,26 +1,20 @@
-import { ReactNode, useEffect } from "react";
-import { useRouter } from "next/router";
+import { ReactNode } from "react";
 import type { AppProps } from "next/app";
-import Link from "next/link";
 import Head from "next/head";
-import { SessionProvider } from "next-auth/react";
-import { useSession, signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { SessionProvider, signIn, useSession } from "next-auth/react";
 
-import { fr, FrIconClassName } from "@codegouvfr/react-dsfr";
 import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
-import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
-import { createEmotionSsrAdvancedApproach } from "tss-react/next";
-import { useStyles } from "tss-react/dsfr";
-import {
-  Display,
-  headerFooterDisplayItem,
-} from "@codegouvfr/react-dsfr/Display";
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
-import { init } from "@socialgouv/matomo-next";
+import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
+import { createEmotionSsrAdvancedApproach } from "tss-react/next/pagesDir";
+import { fr, FrIconClassName } from "@codegouvfr/react-dsfr";
+import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
+import { useStyles } from "tss-react/dsfr";
 
-// Only in TypeScript projects
-declare module "@codegouvfr/react-dsfr" {
+declare module "@codegouvfr/react-dsfr/next-pagesdir" {
   interface RegisterLink {
     Link: typeof Link;
   }
@@ -28,8 +22,11 @@ declare module "@codegouvfr/react-dsfr" {
 
 const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   defaultColorScheme: "system",
-  doPersistDarkModePreferenceWithCookie: true,
-  //Link,
+  Link,
+  useLang: () => {
+    const { locale = "fr" } = useRouter();
+    return locale;
+  },
   preloadFonts: [
     //"Marianne-Light",
     //"Marianne-Light_Italic",
@@ -44,12 +41,14 @@ const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   ],
 });
 
-const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
+export { dsfrDocumentApi };
+
+const { withAppEmotionCache, augmentDocumentWithEmotionCache } =
   createEmotionSsrAdvancedApproach({
     key: "css",
   });
 
-export { dsfrDocumentApi, augmentDocumentWithEmotionCache };
+export { augmentDocumentWithEmotionCache };
 
 const brandTop = (
   <>
@@ -79,6 +78,12 @@ const bottomLinks = [
     },
   },
   {
+    text: "Politique de confidentialité",
+    linkProps: {
+      href: "/politique-confidentialite",
+    },
+  },
+  {
     text: "Contribuer sur GitHub",
     linkProps: {
       href: `${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}${
@@ -92,7 +97,7 @@ const bottomLinks = [
   },
 ];
 
-function Layout({ children }: { children: ReactNode }) {
+const Layout = ({ children }: { children: ReactNode }) => {
   const { css } = useStyles();
   const { data: session, status } = useSession();
 
@@ -116,14 +121,6 @@ function Layout({ children }: { children: ReactNode }) {
           onClick: () => signIn("keycloak"),
         },
       };
-  /*
-    <Tag>
-      <Link href="/profil">{session.user?.email}</Link>
-    </Tag>
-  ) : (
-    <ToolItem onClick={() => signIn("keycloak")}>Se connecter</ToolItem>
-  );
-*/
 
   const navItems = [
     {
@@ -202,29 +199,30 @@ function Layout({ children }: { children: ReactNode }) {
         homeLinkProps={homeLinkPops}
         accessibilityLinkProps={{ href: "/accessibilite" }}
         termsLinkProps={{ href: "/mentions-legales" }}
-        personalDataLinkProps={{ href: "/politique-confidentialite" }}
         bottomItems={[...bottomLinks, headerFooterDisplayItem]}
       />
-      <Display />
     </MuiDsfrThemeProvider>
   );
-}
+};
 
 function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    init({
-      url: process.env.NEXT_PUBLIC_MATOMO_URL ?? "",
-      siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID ?? "",
-    });
-  }, []);
+  const router = useRouter();
 
   return (
-    <SessionProvider session={pageProps.session}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </SessionProvider>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <SessionProvider session={pageProps.session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
+    </div>
   );
 }
 
-export default withAppEmotionCache(withDsfr(App));
+export default withDsfr(withAppEmotionCache(App));
