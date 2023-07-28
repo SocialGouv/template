@@ -1,6 +1,8 @@
 {
   "id": "app-realm",
   "realm": "app-realm",
+  "displayName": "Nom de l'application",
+  "displayNameHtml": "",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
