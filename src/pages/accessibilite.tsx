@@ -4,7 +4,7 @@ import Head from "next/head";
 
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 
-import { DeclarationAccessibilite } from "../src/components/DeclarationAccessibilite";
+import { DeclarationAccessibilite } from "../components/DeclarationAccessibilite";
 
 const Accessibilite: NextPage = () => {
   return (

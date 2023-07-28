@@ -11,13 +11,13 @@ import React, {
 } from "react";
 import { useSession } from "next-auth/react";
 import { Button } from "@codegouvfr/react-dsfr/Button";
-import { HasuraJsonResponse } from "../src/lib/hasura";
+import { HasuraJsonResponse } from "../lib/hasura";
 
 import {
   fetch as fetchBooks,
   insert as insertBook,
   delete_py_pk as deleteBookByPk,
-} from "../src/services/books";
+} from "../services/books";
 
 type Book = { id: string; name: string; user_id: string };
 

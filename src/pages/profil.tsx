@@ -1,5 +1,5 @@
 import React from "react";
-import { withAuth } from "../src/lib/auth";
+import { withAuth } from "../lib/auth";
 import { useSession, signOut } from "next-auth/react";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 

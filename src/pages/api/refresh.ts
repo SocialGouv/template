@@ -2,7 +2,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
 
-import { refreshAccessToken } from "../../src/lib/auth";
+import { refreshAccessToken } from "../../lib/auth";
 
 const refresh = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = await getToken({ req });

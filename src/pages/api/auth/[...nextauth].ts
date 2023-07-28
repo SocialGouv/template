@@ -4,7 +4,7 @@ import { User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
-import { refreshAccessToken } from "../../../src/lib/auth";
+import { refreshAccessToken } from "../../../lib/auth";
 
 interface ExtendedToken extends JWT {
   accessToken: string;
