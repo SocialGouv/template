@@ -6,3 +6,10 @@ jobs:
       with:
         seedPath: hasura/seeds/default/books.sql
         pgSecretName: "pg-hasura-app"
+
+maildev:
+  enabled: true
+  
+pgweb:
+  enabled: true
+  
