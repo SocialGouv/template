@@ -64,3 +64,8 @@ services:
       HASURA_GRAPHQL_JWT_SECRET: '{"jwk_url": "http://keycloak:8080/realms/app-realm/protocol/openid-connect/certs"}'
       HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
+
+  maildev: # for dev only
+    image: maildev/maildev:2.1.0
+    ports:
+      - 1080:1080

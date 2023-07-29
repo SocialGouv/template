@@ -20,7 +20,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/templates/smtp.sealed.secret.yaml
   checksum: 2e29f444a0abbfdda3b426544082495f0b7943975486b0bc87befdd2a5f0e986
 - filename: .kontinuous/env/dev/values.yaml
-  checksum: 5e95d77401decf71334084c6ef94d5e13dbd9027b9cf9cb11101cba817cb975a
+  checksum: 5a6f30deeb1184ac9d3723edd73462af8bee83e5223c697513ecfe7628af2fa6
 - filename: .kontinuous/env/preprod/templates/app.configmap.yaml
   checksum: d388d2ea2935ab0e9a231434f8e8270a2f008479907249160d9327896d1d1b07
 - filename: .kontinuous/env/preprod/templates/app.sealed.secret.yaml
@@ -33,6 +33,8 @@ fileignoreconfig:
   checksum: e1eb6dee86f882ca6dce6aeaeca82a0711d1a15b3464fe617702184507e03a7b
 - filename: .kontinuous/env/preprod/templates/smtp.sealed.secret.yaml
   checksum: 96329d5fa5a5a34d2ceb99fb4cef9c107e2dfdf8b9b392e725a8e89753a26205
+- filename: .kontinuous/env/preprod/values.yaml
+  checksum: d73837d6c38a5f27b53435a576287d4a069e23736580d6a19c9eb3fc68e792b4
 - filename: .kontinuous/env/prod/templates/app.configmap.yaml
   checksum: 0e1d907bb3d3e63bf5fd83c0e3bbd87af4814cffa31f71ff0ecf8e69305ca4a9
 - filename: .kontinuous/env/prod/templates/app.sealed.secret.yaml

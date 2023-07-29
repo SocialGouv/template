@@ -10,19 +10,6 @@ pg-keycloak:
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
-maildev:
-  enabled: true
-
-pgweb-hasura:
-  ~chart: pgweb
-  enabled: true
-  pgSecretName: pg-hasura-app
-
-pgweb-keycloak:
-  ~chart: pgweb
-  enabled: true
-  pgSecretName: pg-keycloak-app
-
 # main app container
 app:
   ~chart: app

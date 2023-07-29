@@ -1438,7 +1438,16 @@
     "xXSSProtection": "1; mode=block",
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
-  "smtpServer": {},
+  "smtpServer": {
+    "starttls": "true",
+    "auth": "true",
+    "host": "maildev",
+    "from": "",
+    "port": "1025",
+    "ssl": "false",
+    "user": "some",
+    "password": "some"
+  },
   "loginTheme": "dsfr",
   "eventsEnabled": true,
   "eventsExpiration": 86400,
