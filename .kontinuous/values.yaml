@@ -10,6 +10,19 @@ pg-keycloak:
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
+maildev:
+  enabled: true
+
+pgweb-hasura:
+  ~chart: pgweb
+  enabled: true
+  pgSecretName: pg-hasura-app
+
+pgweb-keycloak:
+  ~chart: pgweb
+  enabled: true
+  pgSecretName: pg-keycloak-app
+
 # main app container
 app:
   ~chart: app
@@ -174,7 +187,7 @@ keycloakx:
         - sh
       args:
         - -c
-        - curl -L -f -S -o /providers/keycloak-dsfr-v1.31.6.jar https://github.com/codegouvfr/sill-web/releases/download/v1.31.6/keycloak-theme.jar -o /providers/keycloak-franceconnect-5.0.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/5.0.0/keycloak-franceconnect-5.0.0.jar
+        - curl -L -f -S -o /providers/keycloak-dsfr-v1.31.6.jar https://github.com/codegouvfr/sill-web/releases/download/v1.31.6/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.2.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.2.0/keycloak-franceconnect-4.2.0.jar
       volumeMounts:
         - name: providers
           mountPath: /providers

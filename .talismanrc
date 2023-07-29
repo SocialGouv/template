@@ -50,7 +50,7 @@ fileignoreconfig:
 - filename: .kontinuous/files/realm-export.json
   checksum: e2b00a73de2b1ef4e4601f46e0c783233b06cbefe598f37dff0924e522bebcc9
 - filename: .kontinuous/values.yaml
-  checksum: b9918feec8870c5e918d7e8bcfa37a185c58137a85ce33bd825c8a925501f1f0
+  checksum: 46ccbe18c508ce4fc60bbc0a629653cee3cf94a725bad2b7375b888e7f0d873d
 - filename: Dockerfile
   checksum: d44d4622a3b55fe2f61d8fc97a527293a0dc36facb58504fabb543219eba2cb2
 - filename: README.md
