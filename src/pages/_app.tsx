@@ -70,7 +70,7 @@ const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
     key: "css",
   });
 
-export { augmentDocumentWithEmotionCache, dsfrDocumentApi };
+export { dsfrDocumentApi, augmentDocumentWithEmotionCache };
 
 const brandTop = (
   <>

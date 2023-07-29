@@ -36,7 +36,6 @@ export default NextAuth({
       account: Account;
     }) {
       // Initial sign in
-
       //console.log("jwt", { token, user, account });
       if (account && user) {
         return {
