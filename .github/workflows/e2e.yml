@@ -14,10 +14,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         with:
           build: yarn build
           start: yarn start
+          component: false
         env:
           NEXTAUTH_URL: "http://keycloak:3000"
           NEXTAUTH_SECRET: "A+EQqudlGhqTLDnBbCvohHBfbhUjTXAbZYy1NKsSsys="
