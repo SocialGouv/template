@@ -102,7 +102,7 @@ Frontend-->|JWT|Hasura
 KeyCloak-->PG1[PostgreSQL]
 KeyCloak-->|JWT|Browser
 Hasura-->|RBAC|PG2[PostgreSQL]
-KeyCloak-->GitHub
+KeyCloak-->FranceConnect
 ```
 
 ---
