@@ -49,7 +49,7 @@ jobs:
         context: ./hasura
 
 hasura:
-  enabled: true
+  ~chart: app
   ~needs: ["pg-hasura", "build-hasura", keycloakx]
   imagePackage: hasura
   env:

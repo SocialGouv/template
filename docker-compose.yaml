@@ -43,7 +43,7 @@ services:
       - ./keycloak/providers:/opt/keycloak/providers
     command: "start --import-realm --db=postgres --http-enabled=true --http-port=8080 --hostname-strict=false --hostname-strict-https=false --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true "
   graphql-engine:
-    image: hasura/graphql-engine:v2.9.0.cli-migrations-v3
+    image: hasura/graphql-engine:v2.30.1-ce.cli-migrations-v3
     ports:
       - "8082:8080"
     depends_on:
