@@ -8,8 +8,7 @@ export FRANCE_CONNECT_CLIENT_ID=123
 export FRANCE_CONNECT_CLIENT_SECRET=123
 export SMTP_HOST=maildev
 export SMTP_PORT=1025
-export SMTP_USER=some
-export SMTP_PASSWORD=some
+export SMTP_AUTH=false
 export SMTP_SSL=false
 
 gomplate < .kontinuous/files/realm-export.json > keycloak/config/realm-export-local.json

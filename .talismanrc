@@ -18,7 +18,7 @@ fileignoreconfig:
 - filename: .kontinuous/env/dev/templates/keycloak.sealed.secret.yaml
   checksum: 074d8dab3a9d9890a3b1b4e398e1066848002eb852a49379e6906f400599b1aa
 - filename: .kontinuous/env/dev/templates/smtp.sealed.secret.yaml
-  checksum: 2e29f444a0abbfdda3b426544082495f0b7943975486b0bc87befdd2a5f0e986
+  checksum: 3d07a05a96266af28a79117b6447c9f61f01d3f017a0c3947a66ce8866dbe6d2
 - filename: .kontinuous/env/dev/values.yaml
   checksum: 5a6f30deeb1184ac9d3723edd73462af8bee83e5223c697513ecfe7628af2fa6
 - filename: .kontinuous/env/preprod/templates/app.configmap.yaml

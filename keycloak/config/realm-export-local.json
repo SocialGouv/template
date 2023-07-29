@@ -1440,13 +1440,13 @@
   },
   "smtpServer": {
     "starttls": "true",
-    "auth": "true",
+    "auth": "false",
     "host": "maildev",
     "from": "",
     "port": "1025",
     "ssl": "false",
-    "user": "some",
-    "password": "some"
+    "user": "",
+    "password": ""
   },
   "loginTheme": "dsfr",
   "eventsEnabled": true,
