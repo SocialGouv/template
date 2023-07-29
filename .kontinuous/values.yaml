@@ -1,7 +1,3 @@
-# define docker registry options
-global:
-  registry: harbor.fabrique.social.gouv.fr
-
 pg-hasura:
   ~chart: pg
   cnpg-cluster:
@@ -19,8 +15,6 @@ app:
   ~chart: app
   ~needs: [hasura, keycloakx]
   host: "{{.Values.global.host}}"
-  imageProject: fabrique
-  imageRepository: template
   imagePackage: app
   containerPort: 3000
   probesPath: "/healthz"
@@ -38,8 +32,6 @@ jobs:
     build-app:
       use: build
       with:
-        imageProject: fabrique
-        imageRepository: template
         imagePackage: app
         registrySecretRefName: harbor
         # pass a custom docker build arg
@@ -52,17 +44,13 @@ jobs:
       use: build
       ~needs: [build-app]
       with:
-        imageProject: fabrique
-        imageRepository: template
         imagePackage: hasura
         registrySecretRefName: harbor
         context: ./hasura
 
 hasura:
-  enabled: true
+  ~chart: app
   ~needs: ["pg-hasura", "build-hasura", keycloakx]
-  imageProject: fabrique
-  imageRepository: template
   imagePackage: hasura
   env:
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
@@ -140,7 +128,8 @@ keycloakx:
       value: "INFO"
     - name: JAVA_OPTS_APPEND
       value: "-Djgroups.dns.query=keycloak-headless"
-
+    - name: DSFR_THEME_HOME_URL
+      value: "{{ .Values.global.host }}"
   extraVolumes: |
     - name: keycloak-realm-tpl
       configMap:
@@ -186,7 +175,7 @@ keycloakx:
         - sh
       args:
         - -c
-        - curl -L -f -S -o /providers/keycloak-dsfr-latest.jar https://github.com/codegouvfr/sill-web/releases/latest/download/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.1.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.1.0/keycloak-franceconnect-4.1.0.jar
+        - curl -L -f -S -o /providers/keycloak-dsfr-v1.31.7.jar https://github.com/codegouvfr/sill-web/releases/download/v1.31.7/keycloak-theme.jar -o /providers/keycloak-franceconnect-4.2.0.jar https://github.com/InseeFr/Keycloak-FranceConnect/releases/download/4.2.0/keycloak-franceconnect-4.2.0.jar
       volumeMounts:
         - name: providers
           mountPath: /providers

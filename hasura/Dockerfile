@@ -1,4 +1,4 @@
-FROM hasura/graphql-engine:v2.1.1.cli-migrations-v3
+FROM hasura/graphql-engine:v2.30.1-ce.cli-migrations-v3
 
 ENV HASURA_GRAPHQL_ENABLE_TELEMETRY=false
 ENV HASURA_GRAPHQL_MIGRATIONS_SERVER_TIMEOUT=360

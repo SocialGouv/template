@@ -1,6 +1,8 @@
 {
   "id": "app-realm",
   "realm": "app-realm",
+  "displayName": "Nom de l'application",
+  "displayNameHtml": "",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -492,9 +494,7 @@
       "publicClient": true,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {
-        "post.logout.redirect.uris": "+"
-      },
+      "attributes": {},
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -535,7 +535,6 @@
       "frontchannelLogout": false,
       "protocol": "openid-connect",
       "attributes": {
-        "post.logout.redirect.uris": "+",
         "pkce.code.challenge.method": "S256"
       },
       "authenticationFlowBindingOverrides": {},
@@ -585,9 +584,7 @@
       "publicClient": true,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {
-        "post.logout.redirect.uris": "+"
-      },
+      "attributes": {},
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -634,7 +631,7 @@
         "saml.force.post.binding": "false",
         "saml.multivalued.roles": "false",
         "frontchannel.logout.session.required": "false",
-        "post.logout.redirect.uris": "+",
+
         "oauth2.device.authorization.grant.enabled": "true",
         "use.jwks.url": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
@@ -651,7 +648,7 @@
         "saml.assertion.signature": "false",
         "client.secret.creation.time": "1652084534",
         "saml.encrypt": "false",
-        "login_theme": "keycloak-dsfr",
+        "login_theme": "dsfr",
         "saml$server$signature": "false",
         "saml.server.signature": "false",
         "exclude.session.state.from.auth.response": "false",
@@ -793,9 +790,7 @@
       "publicClient": false,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {
-        "post.logout.redirect.uris": "+"
-      },
+      "attributes": {},
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -833,9 +828,7 @@
       "publicClient": false,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {
-        "post.logout.redirect.uris": "+"
-      },
+      "attributes": {},
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -854,7 +847,6 @@
       ]
     },
     {
-      "id": "aadfca8d-04df-42e8-91be-4f2fe3b2a08e",
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
@@ -876,7 +868,6 @@
       "frontchannelLogout": false,
       "protocol": "openid-connect",
       "attributes": {
-        "post.logout.redirect.uris": "+",
         "pkce.code.challenge.method": "S256"
       },
       "authenticationFlowBindingOverrides": {},
@@ -1447,8 +1438,17 @@
     "xXSSProtection": "1; mode=block",
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
-  "smtpServer": {},
-  "loginTheme": "keycloak-dsfr",
+  "smtpServer": {
+    "starttls": "true",
+    "auth": "false",
+    "host": "maildev",
+    "from": "",
+    "port": "1025",
+    "ssl": "false",
+    "user": "",
+    "password": ""
+  },
+  "loginTheme": "dsfr",
   "eventsEnabled": true,
   "eventsExpiration": 86400,
   "eventsListeners": ["jboss-logging"],

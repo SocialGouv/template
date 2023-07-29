@@ -1,4 +1,4 @@
-ARG NODE_VERSION=16-alpine
+ARG NODE_VERSION=18-alpine3.18@sha256:ef5e088232f803cadb83326edb4731015f42961d23a11510b109c2c98cfbb945
 
 # Builder
 FROM node:$NODE_VERSION AS builder
@@ -19,7 +19,7 @@ COPY . .
 RUN yarn install --frozen-lockfile && yarn build && yarn install --production && if [ -z "$PRODUCTION" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
 
 # Runner
-FROM node:$NODE_VERSION AS runner
+FROM node:$NODE_VERSION
 
 WORKDIR /app
 

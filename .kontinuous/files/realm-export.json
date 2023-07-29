@@ -1,6 +1,8 @@
 {
   "id": "app-realm",
   "realm": "app-realm",
+  "displayName": "Nom de l'application",
+  "displayNameHtml": "",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -646,7 +648,7 @@
         "saml.assertion.signature": "false",
         "client.secret.creation.time": "1652084534",
         "saml.encrypt": "false",
-        "login_theme": "keycloak-dsfr",
+        "login_theme": "dsfr",
         "saml$server$signature": "false",
         "saml.server.signature": "false",
         "exclude.session.state.from.auth.response": "false",
@@ -1446,7 +1448,7 @@
     "user": "{{ getenv `SMTP_USER` }}",
     "password": "{{ getenv `SMTP_PASSWORD` }}"
   },
-  "loginTheme": "keycloak-dsfr",
+  "loginTheme": "dsfr",
   "eventsEnabled": true,
   "eventsExpiration": 86400,
   "eventsListeners": ["jboss-logging"],

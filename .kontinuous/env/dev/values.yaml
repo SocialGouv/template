@@ -6,3 +6,18 @@ jobs:
       with:
         seedPath: hasura/seeds/default/books.sql
         pgSecretName: "pg-hasura-app"
+
+maildev:
+  enabled: true
+
+pgweb-hasura:
+  ~chart: pgweb
+  ~needs: [pg-hasura]
+  enabled: true
+  pgSecretName: pg-hasura-app
+
+pgweb-keycloak:
+  ~chart: pgweb
+  ~needs: [pg-keycloak]
+  enabled: true
+  pgSecretName: pg-keycloak-app
