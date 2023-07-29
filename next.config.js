@@ -4,6 +4,7 @@ const { version } = require("./package.json");
 
 const ContentSecurityPolicy = require("./csp.config");
 
+/** @type {import('next').NextConfig} */
 const moduleExports = {
   reactStrictMode: true,
   swcMinify: true,
