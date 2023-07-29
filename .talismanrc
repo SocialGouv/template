@@ -52,11 +52,11 @@ fileignoreconfig:
 - filename: .kontinuous/files/realm-export.json
   checksum: e2b00a73de2b1ef4e4601f46e0c783233b06cbefe598f37dff0924e522bebcc9
 - filename: .kontinuous/values.yaml
-  checksum: 46ccbe18c508ce4fc60bbc0a629653cee3cf94a725bad2b7375b888e7f0d873d
+  checksum: e5111b2d119bda782cb25e7bb8f218512c9a8a4d135ff2c2ad50b1ea85660b8b
 - filename: Dockerfile
   checksum: d44d4622a3b55fe2f61d8fc97a527293a0dc36facb58504fabb543219eba2cb2
 - filename: README.md
-  checksum: 12a9880a31cfafb6cc7bd02fbf9a8d948d487aff64ca34b27d5c4b327a83ad5e
+  checksum: a62249f88a13a00301e44aa2967bd373c24b204e2c500d670d29e7d1ee1c678f
 - filename: docker-compose.yaml
   checksum: 697e6c3117fd0c210816d179335f09a8dcc75a9a03d6c08a6aa9ff009e4a519a
 - filename: hasura/migrations/default/1659018828697_init/up.sql

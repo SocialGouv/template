@@ -27,6 +27,7 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_LOG_LEVEL: INFO
+      DSFR_THEME_HOME_URL: http://localhost:3000
     ports:
       - 8080:8080
     depends_on:

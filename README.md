@@ -90,6 +90,23 @@ en production, les secrets sont chiffrés dans GIT avec sealed-secrets.
 
 ### Branche `Hasura`
 
+Cette branche propose des composants backends de référence.
+
+---
+
+```mermaid
+graph LR
+Browser{Browser}-->|JWT|Frontend[Frontend/API Next.js]
+Browser-->KeyCloak
+Frontend-->|JWT|Hasura
+KeyCloak-->PG1[PostgreSQL]
+KeyCloak-->|JWT|Browser
+Hasura-->|RBAC|PG2[PostgreSQL]
+KeyCloak-->GitHub
+```
+
+---
+
 Lancer les serveurs Postgres, hasura et keycloak avec `docker-compose up`.
 
 ##### Hasura
@@ -112,7 +129,7 @@ Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 20](htt
 
 Le `realm` par défaut est dans [.kontinuous/files/realm-export.json](.kontinuous/files/realm-export.json). Pour générer realm utilisable par `docker-compose` à partir de celui-ci, utilisez `yarn keycloak`.
 
-Le thème keycloak est basé sur le design-système de l'état, cf [keycloak-dsfr](https://github.com/SocialGouv/keycloak-dsfr).
+Le thème keycloak est basé sur le design-système de l'état, cf [keycloak de sill-web](https://github.com/codegouvfr/sill-web/tree/main/src/keycloak-theme).
 
 ##### FranceConnect
 
