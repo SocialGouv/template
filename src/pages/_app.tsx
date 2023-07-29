@@ -1,20 +1,27 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { SessionProvider, signIn, useSession } from "next-auth/react";
 
-import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
-import { Header } from "@codegouvfr/react-dsfr/Header";
-import { Footer } from "@codegouvfr/react-dsfr/Footer";
-import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import { createEmotionSsrAdvancedApproach } from "tss-react/next/pagesDir";
+import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
+import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { fr, FrIconClassName } from "@codegouvfr/react-dsfr";
+import { Header } from "@codegouvfr/react-dsfr/Header";
+import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
+import { init } from "@socialgouv/matomo-next";
 import { useStyles } from "tss-react/dsfr";
 
 declare module "@codegouvfr/react-dsfr/next-pagesdir" {
+  interface RegisterLink {
+    Link: typeof Link;
+  }
+}
+
+declare module "@codegouvfr/react-dsfr" {
   interface RegisterLink {
     Link: typeof Link;
   }
@@ -41,14 +48,12 @@ const { withDsfr, dsfrDocumentApi } = createNextDsfrIntegrationApi({
   ],
 });
 
-export { dsfrDocumentApi };
-
-const { withAppEmotionCache, augmentDocumentWithEmotionCache } =
+const { augmentDocumentWithEmotionCache, withAppEmotionCache } =
   createEmotionSsrAdvancedApproach({
     key: "css",
   });
 
-export { augmentDocumentWithEmotionCache };
+export { dsfrDocumentApi, augmentDocumentWithEmotionCache };
 
 const brandTop = (
   <>
@@ -206,8 +211,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
 };
 
 function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-
+  useEffect(() => {
+    init({
+      url: process.env.NEXT_PUBLIC_MATOMO_URL ?? "",
+      siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID ?? "",
+    });
+  }, []);
   return (
     <div
       style={{
