@@ -34,10 +34,10 @@ pg-hasura:
         s3Credentials:
           accessKeyId:
             name: fabrique-dev-backups-access-key
-            key: accessKeyId
+            key: ovh_bucket_access_key
           secretAccessKey:
             name: fabrique-dev-backups-access-key
-            key: secretAccessKey
+            key: ovh_bucket_secret_key
           region:
             name: fabrique-dev-backups-access-key
-            key: region
+            key: ovh_bucket_region
