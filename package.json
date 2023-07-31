@@ -75,7 +75,7 @@
     "jest-environment-jsdom": "^29.6.1",
     "lint-staged": "^13.2.3",
     "node-talisman": "^1.29.10",
-    "start-server-and-test": "^1.14.0",
+    "start-server-and-test": "^2.0.0",
     "storybook-dark-mode": "^2.0.5",
     "typescript": "4.9.4"
   }
