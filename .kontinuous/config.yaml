@@ -4,8 +4,17 @@ ciNamespace: ci-fabrique
 dependencies:
   fabrique:
     extends:
-    - name: ovh
-      ifEnv: [dev,preprod]
-    - name: buildkit-service
-      ifEnv: [dev,preprod]
-      
+      - name: ovh
+        ifEnv: [dev, preprod]
+      - name: buildkit-service
+        ifEnv: [dev, preprod]
+    dependencies:
+      contrib:
+        preDeploy:
+          importSecrets:
+            options:
+              secrets:
+                kubeconfig:
+                harbor:
+                buildkit-client-certs:
+                fabrique-dev-backups-access-key:
