@@ -21,3 +21,23 @@ pgweb-keycloak:
   ~needs: [pg-keycloak]
   enabled: true
   pgSecretName: pg-keycloak-app
+
+pg-hasura:
+  cnpg-cluster:
+    backup:
+    enabled: true
+    schedule: "0 0 0 * * *" # daily
+    retentionPolicy: 60d
+    barmanObjectStore:
+      endpointURL: https://s3.gra.io.cloud.ovh.net
+      destinationPath: s3://fabrique-dev-backups/backups-template-hasura1
+      s3Credentials:
+        accessKeyId:
+          name: fabrique-dev-backups-access-key
+          key: accessKeyId
+        secretAccessKey:
+          name: fabrique-dev-backups-access-key
+          key: secretAccessKey
+        region:
+          name: fabrique-dev-backups-access-key
+          key: region
