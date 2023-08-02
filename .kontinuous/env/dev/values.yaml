@@ -16,7 +16,9 @@ pgweb-hasura:
   enabled: true
   pgSecretName: pg-hasura-app
   pgweb:
-    serviceAccountName: pg-hasura-sa
+    component: pg-hasura-pgweb
+    serviceAccount:
+      name: pg-hasura-sa
 
 pgweb-keycloak:
   ~chart: pgweb
@@ -24,4 +26,5 @@ pgweb-keycloak:
   enabled: true
   pgSecretName: pg-keycloak-app
   pgweb:
-    serviceAccountName: pg-keycloak-sa
+    serviceAccount:
+      name: pg-keycloak-sa
