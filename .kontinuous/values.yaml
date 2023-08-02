@@ -2,9 +2,10 @@ pg-hasura:
   ~chart: pg
   backup:
     enabled: true
-    barmanObjectStore:
-      destinationPath: s3://fabrique-prod-backups/test-pg-hasura
   cnpg-cluster:
+    backup:
+      barmanObjectStore:
+        destinationPath: s3://fabrique-prod-backups/test-pg-hasura
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
@@ -12,9 +13,10 @@ pg-keycloak:
   ~chart: pg
   backup:
     enabled: true
-    barmanObjectStore:
-      destinationPath: s3://fabrique-prod-backups/test-pg-keycloak
   cnpg-cluster:
+    backup:
+      barmanObjectStore:
+        destinationPath: s3://fabrique-prod-backups/test-pg-keycloak
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
