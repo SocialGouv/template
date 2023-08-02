@@ -9,21 +9,20 @@ jobs:
 
 maildev:
   enabled: true
+# pgweb-hasura:
+#   ~chart: pgweb
+#   ~needs: [pg-hasura]
+#   enabled: true
+#   pgweb:
+#     envFrom:
+#       - secretRef:
+#           name: pg-hasura-app
 
-pgweb-hasura:
-  ~chart: pgweb
-  ~needs: [pg-hasura]
-  enabled: true
-  pgweb:
-    envFrom:
-      - secretRef:
-          name: pg-hasura-app
-
-pgweb-keycloak:
-  ~chart: pgweb
-  ~needs: [pg-keycloak]
-  enabled: true
-  pgweb:
-    envFrom:
-      - secretRef:
-          name: pg-keycloak-app
+# pgweb-keycloak:
+#   ~chart: pgweb
+#   ~needs: [pg-keycloak]
+#   enabled: true
+#   pgweb:
+#     envFrom:
+#       - secretRef:
+#           name: pg-keycloak-app
