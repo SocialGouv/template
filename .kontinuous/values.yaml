@@ -5,7 +5,7 @@ pg-hasura:
   cnpg-cluster:
     backup:
       barmanObjectStore:
-        destinationPath: s3://fabrique-prod-backups/test-pg-hasura
+        ~tpl~destinationPath: s3://fabrique-prod-backups/test-pg-hasura
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
@@ -16,7 +16,7 @@ pg-keycloak:
   cnpg-cluster:
     backup:
       barmanObjectStore:
-        destinationPath: s3://fabrique-prod-backups/test-pg-keycloak
+        ~tpl~destinationPath: s3://fabrique-prod-backups/test-pg-keycloak
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
