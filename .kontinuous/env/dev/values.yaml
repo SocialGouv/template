@@ -14,17 +14,16 @@ pgweb-hasura:
   ~chart: pgweb
   ~needs: [pg-hasura]
   enabled: true
-  pgSecretName: pg-hasura-app
   pgweb:
-    component: pg-hasura-pgweb
-    serviceAccount:
-      name: pg-hasura-sa
+    envFrom:
+      - secretRef:
+          name: pg-hasura-app
 
 pgweb-keycloak:
   ~chart: pgweb
   ~needs: [pg-keycloak]
   enabled: true
-  pgSecretName: pg-keycloak-app
   pgweb:
-    serviceAccount:
-      name: pg-keycloak-sa
+    envFrom:
+      - secretRef:
+          name: pg-keycloak-app

@@ -18,3 +18,5 @@ dependencies:
                 harbor:
                 buildkit-client-certs:
                 fabrique-dev-backups-access-key:
+# links:
+#   socialgouv/helm-charts/charts/pgweb@v1: /Users/julienb/projects/mas/helm-charts/charts/pgweb
