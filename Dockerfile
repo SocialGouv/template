@@ -14,9 +14,15 @@ ENV NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL $NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT
 
 WORKDIR /app
 
+COPY package.json .
+COPY yarn.lock .
+
+RUN yarn install --frozen-lockfile
+
 COPY . .
 
-RUN yarn install --frozen-lockfile && yarn build && yarn install --production && if [ -z "$PRODUCTION" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi
+RUN yarn build && yarn install --production && if [ -z "$PRODUCTION" ]; then echo "Copy staging values"; cp .env.staging .env.production; fi; yarn cache clean
+
 
 # Runner
 FROM node:$NODE_VERSION
