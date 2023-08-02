@@ -15,9 +15,13 @@ pgweb-hasura:
   ~needs: [pg-hasura]
   enabled: true
   pgSecretName: pg-hasura-app
+  pgweb:
+    serviceAccountName: pg-hasura-sa
 
 pgweb-keycloak:
   ~chart: pgweb
   ~needs: [pg-keycloak]
   enabled: true
   pgSecretName: pg-keycloak-app
+  pgweb:
+    serviceAccountName: pg-keycloak-sa
