@@ -1,7 +1,7 @@
 pg-hasura:
   ~chart: pg
   backup:
-    enabled: false
+    enabled: true
   cnpg-cluster:
     monitoring:
       ~tpl~enablePodMonitor: "true"
@@ -9,7 +9,7 @@ pg-hasura:
 pg-keycloak:
   ~chart: pg
   backup:
-    enabled: false
+    enabled: true
   cnpg-cluster:
     monitoring:
       ~tpl~enablePodMonitor: "true"
