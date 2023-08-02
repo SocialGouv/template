@@ -2,6 +2,7 @@ pg-hasura:
   ~chart: pg
   backup:
     enabled: true
+    name: alt1
   cnpg-cluster:
     backup:
       barmanObjectStore:
@@ -13,6 +14,7 @@ pg-keycloak:
   ~chart: pg
   backup:
     enabled: true
+    name: alt1
   cnpg-cluster:
     backup:
       barmanObjectStore:
