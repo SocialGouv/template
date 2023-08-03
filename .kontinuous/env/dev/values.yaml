@@ -8,12 +8,11 @@ jobs:
         pgSecretName: "pg-hasura-app"
 
 maildev:
-  enabled: true
+  ~chart: maildev
 
 pgweb-hasura:
   ~chart: pgweb
   ~needs: [app]
-  enabled: true
   pgweb:
     envFrom:
       - secretRef:
@@ -22,7 +21,6 @@ pgweb-hasura:
 pgweb-keycloak:
   ~chart: pgweb
   ~needs: [app]
-  enabled: true
   pgweb:
     envFrom:
       - secretRef:
