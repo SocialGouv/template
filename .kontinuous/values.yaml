@@ -1,6 +1,7 @@
 # main app container
 app:
   ~chart: app
+  ~needs: [build-app]
   host: "{{.Values.global.host}}"
   imagePackage: app
   containerPort: 3000
