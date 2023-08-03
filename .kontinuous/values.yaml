@@ -11,7 +11,7 @@ pg-keycloak:
 # main app container
 app:
   ~chart: app
-  ~needs: [hasura, keycloakx]
+  ~needs: [build-app, hasura, keycloakx]
   host: "{{.Values.global.host}}"
   imagePackage: app
   containerPort: 3000
