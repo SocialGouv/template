@@ -12,7 +12,7 @@ maildev:
 
 pgweb-hasura:
   ~chart: pgweb
-  ~needs: [pg-hasura]
+  ~needs: [app]
   enabled: true
   pgweb:
     envFrom:
@@ -21,7 +21,7 @@ pgweb-hasura:
 
 pgweb-keycloak:
   ~chart: pgweb
-  ~needs: [pg-keycloak]
+  ~needs: [app]
   enabled: true
   pgweb:
     envFrom:
