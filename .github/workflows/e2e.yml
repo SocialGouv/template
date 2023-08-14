@@ -13,13 +13,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "yarn"
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           build: yarn build
           start: yarn start
           component: false
-          cache-key: node-v${{ matrix.node }}-on-${{ runner.os }}-yarn3-${{ hashFiles('yarn.lock') }}
         env:
           NEXTAUTH_URL: "http://keycloak:3000"
           NEXTAUTH_SECRET: "A+EQqudlGhqTLDnBbCvohHBfbhUjTXAbZYy1NKsSsys="
