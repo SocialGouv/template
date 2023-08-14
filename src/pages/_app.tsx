@@ -112,7 +112,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <MuiDsfrThemeProvider>
       <Head>
-        <title>Template SocialGouv</title>
+        <title>Template | Fabrique numérique des ministères sociaux</title>
         {contentSecurityPolicy && (
           <meta
             httpEquiv="Content-Security-Policy"
