@@ -2,5 +2,11 @@ Dockerfile
 .dockerignore
 node_modules
 npm-debug.log
+yarn-debug.log
 README.md
+CHANGELOG.md
 .next
+.vscode
+.github
+.kontinuous
+.git

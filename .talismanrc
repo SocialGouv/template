@@ -1,20 +1,23 @@
 fileignoreconfig:
-- filename: .env.development
-  checksum: 44d017f8bd7ac1f3f4fb8b8175b3dddb6f160cf05b2738ec16b5b848aeb62d3f
-- filename: .github/workflows/build.yml
-  checksum: 76b8b3bba21c8029b1fd0dd2759cf96448ee257439ea4118fddfb4254199a59b
-- filename: .github/workflows/e2e.yml
-  checksum: eaf3ce6b34b2ceee77a0c89066d8c05b5938c60c71458e4341b636eb6b9d51da
-- filename: .github/workflows/kontinuous-webhook-delete.yml
-  checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
-- filename: .github/workflows/kontinuous-webhook-deploy.yml
-  checksum: 1fa040cef27d48607572966b9f06bf23656c95d03dd4cf5aba2508f0218f3a48
-- filename: Dockerfile
-  checksum: 3e3c777aa156eb69b7212d18b431e3b605652e42e22d36f89be97c3c2a87c47f
-- filename: README.md
-  checksum: 7c55475ff28dbfa46c9c5715918add6a0202eafddca3cf9d35ebcdd443d76ffd
-- filename: pages/mui.tsx
-  checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
+  - filename: .env.development
+    checksum: 44d017f8bd7ac1f3f4fb8b8175b3dddb6f160cf05b2738ec16b5b848aeb62d3f
+  - filename: .github/workflows/build.yml
+    checksum: 76b8b3bba21c8029b1fd0dd2759cf96448ee257439ea4118fddfb4254199a59b
+  - filename: .github/workflows/e2e.yml
+    checksum: eaf3ce6b34b2ceee77a0c89066d8c05b5938c60c71458e4341b636eb6b9d51da
+  - filename: .github/workflows/kontinuous-webhook-delete.yml
+    checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
+  - filename: .github/workflows/kontinuous-webhook-deploy.yml
+    checksum: 1fa040cef27d48607572966b9f06bf23656c95d03dd4cf5aba2508f0218f3a48
+  - filename: Dockerfile
+    checksum: 3e3c777aa156eb69b7212d18b431e3b605652e42e22d36f89be97c3c2a87c47f
+  - filename: README.md
+    checksum: 7c55475ff28dbfa46c9c5715918add6a0202eafddca3cf9d35ebcdd443d76ffd
+  - filename: pages/mui.tsx
+    checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
+  - filename: .yarn/**
+    checksum: any
+    reason: "Ignoring Yarn Berry cache and settings"
 scopeconfig:
-- scope: node
+  - scope: node
 version: "1.0"
