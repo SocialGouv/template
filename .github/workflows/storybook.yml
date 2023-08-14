@@ -15,17 +15,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '16.16.0'
-          cache: 'yarn'
+          node-version: "16.16.0"
+          cache: "yarn"
 
       - name: Install dependencies
         run: |
-          yarn install --prefer-offline --frozen-lockfile
-          
+          yarn --immutable
+
       - name: Deploy
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
