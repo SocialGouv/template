@@ -1,8 +1,6 @@
 # template
 
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/socialgouv/template/hasura)
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/socialgouv/template/preproduction.yaml)
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/socialgouv/template)
+Template est une application [Next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) et qui utilise le [Système de Design de l'État](https://gouvfr.atlassian.net/wiki/spaces/DB/overview).
 
 Template minimal de la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) qui intègre nos [recommandations tech](https://socialgouv.github.io/support/docs/standards/developpement).
 

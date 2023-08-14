@@ -23,3 +23,9 @@ jobs:
           NEXTAUTH_URL: "http://keycloak:3000"
           NEXTAUTH_SECRET: "A+EQqudlGhqTLDnBbCvohHBfbhUjTXAbZYy1NKsSsys="
           NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "http://hasura:8082/v1/graphql"
+          component: false
+          install-command: yarn --immutable
+        env:
+          NEXTAUTH_URL: "http://keycloak:3000"
+          NEXTAUTH_SECRET: "A+EQqudlGhqTLDnBbCvohHBfbhUjTXAbZYy1NKsSsys="
+          NEXT_PUBLIC_HASURA_GRAPHQL_ENDPOINT_URL: "http://hasura:8082/v1/graphql"
