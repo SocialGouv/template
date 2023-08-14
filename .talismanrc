@@ -10,7 +10,7 @@ fileignoreconfig:
 - filename: .github/workflows/kontinuous-webhook-deploy.yml
   checksum: 1fa040cef27d48607572966b9f06bf23656c95d03dd4cf5aba2508f0218f3a48
 - filename: .github/workflows/testing.yml
-  checksum: e9e6a9cd10658298d44cb23fbcb998cabc8e17c26bed200a27463311d37e105c
+  checksum: 9b12b3bce799c6827575ed47b5aff7a5261395a8830cae15a53fa50ffae04549
 - filename: .yarn/**
   checksum: any
 - filename: Dockerfile
