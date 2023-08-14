@@ -4,7 +4,7 @@ fileignoreconfig:
 - filename: .github/workflows/build.yml
   checksum: c2eaa7d33f20ce615a65740718a652474e5fe4ad0437374ca671bd73317cdd95
 - filename: .github/workflows/e2e.yml
-  checksum: eaf3ce6b34b2ceee77a0c89066d8c05b5938c60c71458e4341b636eb6b9d51da
+  checksum: e6b469e5f566a1a44a481fb8fd65d8a76e5cceb71d2d54225ae20a7760197b2e
 - filename: .github/workflows/kontinuous-webhook-delete.yml
   checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
 - filename: .github/workflows/kontinuous-webhook-deploy.yml
