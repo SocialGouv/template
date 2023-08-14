@@ -2,15 +2,17 @@ fileignoreconfig:
 - filename: .env.development
   checksum: 44d017f8bd7ac1f3f4fb8b8175b3dddb6f160cf05b2738ec16b5b848aeb62d3f
 - filename: .github/workflows/build.yml
-  checksum: 76b8b3bba21c8029b1fd0dd2759cf96448ee257439ea4118fddfb4254199a59b
+  checksum: c2eaa7d33f20ce615a65740718a652474e5fe4ad0437374ca671bd73317cdd95
 - filename: .github/workflows/e2e.yml
   checksum: eaf3ce6b34b2ceee77a0c89066d8c05b5938c60c71458e4341b636eb6b9d51da
 - filename: .github/workflows/kontinuous-webhook-delete.yml
   checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
 - filename: .github/workflows/kontinuous-webhook-deploy.yml
   checksum: 1fa040cef27d48607572966b9f06bf23656c95d03dd4cf5aba2508f0218f3a48
+- filename: .github/workflows/lint.yml
+  checksum: 8998c84b27a0d3e7953ffc78b4414190fef9e16f8cce5f485160234db1d7f9af
 - filename: .github/workflows/testing.yml
-  checksum: 9b12b3bce799c6827575ed47b5aff7a5261395a8830cae15a53fa50ffae04549
+  checksum: 852b1c21aaa42328e42d87b31a2305498d0cec6360fb9d7bb7eb51f7b73c9a4b
 - filename: .yarn/**
   checksum: any
 - filename: Dockerfile
