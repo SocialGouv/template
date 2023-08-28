@@ -4,6 +4,19 @@ app:
   ~needs: [build-app]
   imagePackage: app
   containerPort: 8080
+  image: ghcr.io/socialgouv/docker/nginx:feat-nginx-kube-zero-downtime
+  livenessProbe:
+    httpGet:
+      path: /live
+      port: 8080
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: 8080
+  lifecycle:
+    preStop:
+      exec:
+        command: ["/pre-stop.sh"]
 
 jobs:
   runs:
