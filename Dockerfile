@@ -30,7 +30,8 @@ RUN if [ -z "$PRODUCTION" ]; then \
 RUN yarn fetch-tools production && yarn cache clean
 
 # Production image, copy all the files and run next
-FROM ghcr.io/socialgouv/docker/nginx:sha-1d70757 AS runner
+# FROM ghcr.io/socialgouv/docker/nginx:sha-1d70757 AS runner
+FROM ghcr.io/socialgouv/docker/nginx:feat-nginx-kube-zero-downtime AS runner
 
 COPY --from=builder /app/out /usr/share/nginx/html
 

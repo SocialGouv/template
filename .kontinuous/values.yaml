@@ -4,7 +4,6 @@ app:
   ~needs: [build-app]
   imagePackage: app
   containerPort: 8080
-  image: ghcr.io/socialgouv/docker/nginx:feat-nginx-kube-zero-downtime
   livenessProbe:
     httpGet:
       path: /live
