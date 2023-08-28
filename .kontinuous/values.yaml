@@ -16,7 +16,7 @@ app:
   lifecycle:
     preStop:
       exec:
-        command: ["/pre-stop.sh"]
+        command: ["/pre-stop.sh", "10"]
 
 jobs:
   runs:
