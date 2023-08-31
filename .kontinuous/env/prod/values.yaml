@@ -3,6 +3,5 @@ jobs:
     build-app:
       use: build
       with:
-        buildkitServiceEnabled: "false"
         buildArgs:
           PRODUCTION: "true"

@@ -1,6 +1,7 @@
 # main app container
 app:
   # wait for build-app before deployment
+  ~chart: app
   ~needs: [build-app]
   imagePackage: app
   containerPort: 8080
