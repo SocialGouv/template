@@ -11,6 +11,7 @@ jobs:
     build-app:
       use: build
       with:
+        imagePackage: app
         # pass a custom docker build arg
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
