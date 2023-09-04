@@ -8,7 +8,7 @@
     "only-include-used-icons": "node node_modules/@codegouvfr/react-dsfr/bin/only-include-used-icons.js",
     "dev": "next dev",
     "build": "next build",
-    "start": "NEXT_MANUAL_SIG_HANDLE=true next start",
+    "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
