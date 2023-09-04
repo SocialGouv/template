@@ -47,4 +47,6 @@ COPY --from=builder --chown=node:node /app/.next ./.next
 
 USER 1001
 
-CMD ["yarn", "start"]
+ENV NEXT_MANUAL_SIG_HANDLE=true
+
+CMD ["node_modules/next/dist/bin/next"]

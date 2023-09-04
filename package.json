@@ -38,6 +38,7 @@
     "@sentry/nextjs": "^7.60.1",
     "@socialgouv/matomo-next": "^1.6.1",
     "dayjs": "^1.11.9",
+    "lightship": "^9.0.2",
     "next": "13.4.12",
     "next-auth": "^4.22.3",
     "react": "18.2.0",

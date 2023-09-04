@@ -17,7 +17,18 @@ app:
   host: "{{.Values.global.host}}"
   imagePackage: app
   containerPort: 3000
-  probesPath: "/healthz"
+  livenessProbe:
+    httpGet:
+      path: /live
+      port: 9000
+  startupProbe:
+    httpGet:
+      path: /live
+      port: 9000
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: 9000
   envFrom:
     - configMapRef:
         name: app
