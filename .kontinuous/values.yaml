@@ -4,6 +4,10 @@ app:
   ~chart: app
   ~needs: [build-app]
   containerPort: 8080
+  securityContext:
+    fsGroup: 101
+    runAsUser: 101
+    runAsGroup: 101
 
 jobs:
   runs:
