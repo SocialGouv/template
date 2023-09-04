@@ -49,4 +49,4 @@ USER 1001
 
 ENV NEXT_MANUAL_SIG_HANDLE=true
 
-CMD ["node_modules/dist/bin/next"]
+CMD ["node_modules/next/dist/bin/next"]
