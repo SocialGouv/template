@@ -4,6 +4,18 @@ app:
   ~chart: app
   ~needs: [build-app]
   containerPort: 8080
+  livenessProbe:
+    httpGet:
+      path: /live
+      port: 8080
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: 8080
+  lifecycle:
+    preStop:
+      exec:
+        command: ["/pre-stop.sh", "10"]
 
 jobs:
   runs:
