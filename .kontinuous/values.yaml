@@ -18,6 +18,10 @@ app:
   imagePackage: app
   containerPort: 3000
   probesPath: "/healthz"
+  securityContext:
+    fsGroup: 1001
+    runAsGroup: 1000
+    runAsUser: 1001
   envFrom:
     - configMapRef:
         name: app
@@ -52,6 +56,10 @@ hasura:
   ~chart: app
   ~needs: ["pg-hasura", "build-hasura", keycloakx]
   imagePackage: hasura
+  securityContext:
+    fsGroup: 1001
+    runAsGroup: 1001
+    runAsUser: 1001
   env:
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
       value: "false"
@@ -70,6 +78,13 @@ hasura:
 # https://github.com/codecentric/helm-charts/blob/master/charts/keycloakx/values.yaml
 keycloakx:
   enabled: true
+  # SecurityContext for the entire Pod. Every container running in the Pod will inherit this SecurityContext.
+  podSecurityContext:
+    fsGroup: 1000
+  # SecurityContext for the Keycloak container
+  securityContext:
+    runAsUser: 1000
+    runAsNonRoot: true
   fullnameOverride: keycloakx
   ~needs: ["pg-keycloak"]
   serviceAccount:
