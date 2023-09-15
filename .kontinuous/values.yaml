@@ -3,7 +3,7 @@ pg-hasura:
   backup:
     enabled: true
   cnpg-cluster:
-    ~tpl~instances: "3"
+    instances: 3
     monitoring:
       ~tpl~enablePodMonitor: "true"
     persistence:
@@ -14,7 +14,7 @@ pg-keycloak:
   backup:
     enabled: true
   cnpg-cluster:
-    ~tpl~instances: "3"
+    instances: 3
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
