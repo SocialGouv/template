@@ -1,4 +1,4 @@
-ARG NODE_VERSION=16-alpine3.18@sha256:82bcf77a5de631c6b19f4449ccec82bfbb7d8f6c94d6ae3bdf760ed67e080cb1
+ARG NODE_VERSION=16-alpine3.18@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a97ed84aa490be9dee20e787
 
 # Install dependencies only when needed
 FROM node:$NODE_VERSION AS builder
