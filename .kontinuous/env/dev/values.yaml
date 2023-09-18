@@ -21,11 +21,12 @@ pgweb-keycloak:
   ~needs: [pg-keycloak]
   enabled: true
   pgSecretName: pg-keycloak-app
-# pg-hasura:
-#   ~chart: pg
-#   backup:
-#     name: new-backups
-#   cnpg-cluster:
-#     recovery:
-#       enabled: true
-#       targetTime: "2020-11-26 15:22:00.00000+00"
+
+pg-hasura:
+  ~chart: pg
+  backup:
+    name: new-backups
+  cnpg-cluster:
+    recovery:
+      enabled: true
+      targetTime: "2023-09-18 13:47:33.00000+00"
