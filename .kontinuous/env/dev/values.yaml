@@ -25,7 +25,7 @@ pgweb-keycloak:
 pg-hasura:
   ~chart: pg
   backup:
-    name: new-backups
+    name: new-backups2
   cnpg-cluster:
     recovery:
       enabled: true
