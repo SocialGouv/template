@@ -25,7 +25,8 @@ pgweb-keycloak:
 pg-hasura:
   ~chart: pg
   backup:
-    name: new-backups4
+    enabled: true
+    #name: new-backups4
   # recovery:
   #   enabled: true
   #   targetTime: "2023-09-18T15:45:33"
@@ -38,8 +39,7 @@ pg-hasura:
   #     name: new-backups2
   #     serverName: pg-hasura
 
-  cnpg-cluster:
-    recovery:
-      enabled: true
-
-    #  targetTime: "2023-09-18T15:45:33"
+  # cnpg-cluster:
+  #   recovery:
+  #     enabled: true
+  #     targetTime: "2023-09-18T15:45:33"
