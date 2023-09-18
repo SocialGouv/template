@@ -14,4 +14,4 @@ dependencies:
           importSecrets:
             options:
               secrets:
-                tumeplay-dev-backups-access-key:
+                fabrique-dev-backups-access-key:
