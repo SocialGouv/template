@@ -33,7 +33,7 @@ pg-hasura:
   ~chart: pg
   backup:
     enabled: true
-    name: restore-from-20h03-4
+    name: restore-from-20h03-5
   cnpg-cluster:
     recovery:
       enabled: true
