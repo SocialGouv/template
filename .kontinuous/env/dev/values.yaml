@@ -33,11 +33,11 @@ pg-hasura:
   ~chart: pg
   backup:
     enabled: true
-    name: restore-from-20h03-3
+    name: restore-from-20h03-4
   cnpg-cluster:
     recovery:
       enabled: true
-      targetTime: "2023-09-18T20:03:00"
+      targetTime: "2023-09-18T20:00:00"
 # 3eme version
 # pg-hasura:
 #   ~chart: pg
