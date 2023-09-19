@@ -23,21 +23,20 @@ pgweb-keycloak:
   pgSecretName: pg-keycloak-app
 
 # 1ere version
-# pg-hasura:
-#   ~chart: pg
-#   backup:
-#enabled: true
-
-# 2eme version
 pg-hasura:
   ~chart: pg
   backup:
     enabled: true
-    name: restore-from-20h03-5
-  cnpg-cluster:
-    recovery:
-      enabled: true
-      #targetTime: "2023-09-18T20:00:00"
+# 2eme version
+# pg-hasura:
+#   ~chart: pg
+#   backup:
+#     enabled: true
+#     name: restore-from-20h03-5
+#   cnpg-cluster:
+#     recovery:
+#       enabled: true
+#targetTime: "2023-09-18T20:00:00"
 # 3eme version
 # pg-hasura:
 #   ~chart: pg
