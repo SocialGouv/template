@@ -2,9 +2,9 @@
   "branches": [
     "+([0-9])?(.{+([0-9]),x}).x",
     "main",
-    "hasura",
     "next",
     "next-major",
+    { "name": "hasura", "prerelease": true },
     { "name": "beta", "prerelease": true },
     { "name": "alpha", "prerelease": true }
   ]
