@@ -1,3 +1,4 @@
+# setup a postgres instance (CNPG)
 pg-hasura:
   ~chart: pg
   backup:
@@ -6,6 +7,22 @@ pg-hasura:
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
+# # Restore a PG instance from a backup
+# # This should be defined in appropriate environment (ex: env/prod/values.yaml)
+# pg-hasura:
+#   ~chart: pg
+#   backup:
+#     enabled: true
+#     name: new-instance-name
+#   cnpg-cluster:
+#     recovery:
+#       enabled: true
+#       targetTime: "2023-09-18T20:00:00"
+# # Optional: recover from some other instance
+#   recovery:
+#     name: some-instance-name
+
+# setup another postgres instance (CNPG
 pg-keycloak:
   ~chart: pg
   cnpg-cluster:
