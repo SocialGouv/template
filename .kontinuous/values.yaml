@@ -87,6 +87,7 @@ keycloakx:
   securityContext:
     runAsUser: 1000
     runAsNonRoot: true
+    allowPrivilegeEscalation: false
   fullnameOverride: keycloakx
   ~needs: ["pg-keycloak"]
   serviceAccount:
