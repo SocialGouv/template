@@ -164,7 +164,7 @@ keycloakx:
     - name: JAVA_OPTS_APPEND
       value: "-Djgroups.dns.query=keycloak-headless"
     - name: DSFR_THEME_HOME_URL
-      value: "{{ .Values.global.host }}"
+      value: "https://{{ .Values.global.host }}"
   extraVolumes: |
     - name: keycloak-realm-tpl
       configMap:
