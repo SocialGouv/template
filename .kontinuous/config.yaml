@@ -5,9 +5,7 @@ dependencies:
   fabrique:
     extends:
       - name: ovh
-        ifEnv: [dev, preprod]
       - name: buildkit-service
-        ifEnv: [dev, preprod]
     dependencies:
       contrib:
         preDeploy:
@@ -15,3 +13,4 @@ dependencies:
             options:
               secrets:
                 fabrique-dev-backups-access-key:
+                fabrique-prod-backups-access-key:
