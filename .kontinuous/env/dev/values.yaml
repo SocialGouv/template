@@ -14,7 +14,20 @@ pgweb-hasura:
   ~chart: pgweb
   ~needs: [pg-hasura]
   enabled: true
-  pgSecretName: pg-hasura-app
+  pgweb:
+    env:
+      - name: PGWEB_DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            name: pg-hasura-app
+            key: DATABASE_URL
+      - name: PGWEB_AUTH_USER
+        value: admin
+      - name: PGWEB_AUTH_PASS
+        valueFrom:
+          secretKeyRef:
+            name: pgweb
+            key: PGWEB_PASSWORD
 
 pgweb-keycloak:
   ~chart: pgweb
