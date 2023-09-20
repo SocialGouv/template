@@ -27,26 +27,27 @@ pgweb-keycloak:
 #   ~chart: pg
 #   backup:
 #     enabled: true
+
 # 2eme version
-pg-hasura:
-  ~chart: pg
-  backup:
-    enabled: true
-    name: restore-from-20h03-6
-  cnpg-cluster:
-    recovery:
-      enabled: true
-      #targetTime: "2023-09-18T20:00:00"
-      name: template-check-restore-3
-# 3eme version
 # pg-hasura:
 #   ~chart: pg
 #   backup:
 #     enabled: true
-#     name: restore-from-YYYYMMDDHHMMSS-2
-#   recovery:
-#     name: restore-from-YYYYMMDDHHMMSS
+#     name: restore-from-20h03-6
 #   cnpg-cluster:
 #     recovery:
 #       enabled: true
-#       targetTime: "2023-09-18T15:45:33"
+#       #targetTime: "2023-09-18T20:00:00"
+
+# 3eme version
+pg-hasura:
+  ~chart: pg
+  backup:
+    enabled: true
+    name: restore-from-20h03-7
+  recovery:
+    name: restore-from-20h03-6
+  cnpg-cluster:
+    recovery:
+      enabled: true
+      targetTime: "2023-09-20T08:00:00"
