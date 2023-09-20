@@ -1,9 +1,28 @@
+# setup a postgres instance (CNPG)
 pg-hasura:
   ~chart: pg
+  backup:
+    enabled: true
   cnpg-cluster:
     monitoring:
       ~tpl~enablePodMonitor: "true"
 
+# # Restore a PG instance from a backup
+# # This should be defined in appropriate environment (ex: env/prod/values.yaml)
+# pg-hasura:
+#   ~chart: pg
+#   backup:
+#     enabled: true
+#     name: new-instance-name
+#   cnpg-cluster:
+#     recovery:
+#       enabled: true
+#       targetTime: "2023-09-18T20:00:00"
+# # Optional: recover from some other instance
+#   recovery:
+#     name: some-instance-name
+
+# setup another postgres instance (CNPG
 pg-keycloak:
   ~chart: pg
   cnpg-cluster:
@@ -81,10 +100,11 @@ keycloakx:
   # SecurityContext for the entire Pod. Every container running in the Pod will inherit this SecurityContext.
   podSecurityContext:
     fsGroup: 1000
-  # SecurityContext for the Keycloak container
-  securityContext:
     runAsUser: 1000
     runAsNonRoot: true
+  # SecurityContext for the Keycloak container
+  securityContext:
+    allowPrivilegeEscalation: false
   fullnameOverride: keycloakx
   ~needs: ["pg-keycloak"]
   serviceAccount:
