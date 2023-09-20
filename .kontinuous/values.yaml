@@ -83,10 +83,10 @@ keycloakx:
   # SecurityContext for the entire Pod. Every container running in the Pod will inherit this SecurityContext.
   podSecurityContext:
     fsGroup: 1000
-  # SecurityContext for the Keycloak container
-  securityContext:
     runAsUser: 1000
     runAsNonRoot: true
+  # SecurityContext for the Keycloak container
+  securityContext:
     allowPrivilegeEscalation: false
   fullnameOverride: keycloakx
   ~needs: ["pg-keycloak"]
