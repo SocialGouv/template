@@ -151,4 +151,3 @@ La version dev est déployée sur OVH.
 - <https://socialgouv.github.io/template/> : Storybook liés à la branche principale du projet
 - <https://github.com/socialgouv/keycloak-dsfr> : Thème keycloak-DSFR
 - <https://socialgouv.github.io/support> : Documentation technique SocialGouv
-
