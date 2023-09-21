@@ -16,3 +16,17 @@ jobs:
         buildArgs:
           PRODUCTION: "true"
           NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: "true"
+
+# # Restore a PG instance from a backup
+pg-hasura:
+  ~chart: pg
+  backup:
+    enabled: true
+    name: new-instance-210923
+  cnpg-cluster:
+    recovery:
+      enabled: true
+      targetTime: "2023-09-21T08:00:00"
+# Optional: recover from some other instance
+# recovery:
+#   name: some-instance-name
