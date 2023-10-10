@@ -2,7 +2,7 @@ ARG NODE_VERSION=16-alpine3.18@sha256:a1f9d027912b58a7c75be7716c97cfbc6d3099f3a9
 
 # Install dependencies only when needed
 FROM node:$NODE_VERSION AS builder
-RUN apk add --no-cache libc6-compat=1.2.4-r1
+RUN apk add --no-cache libc6-compat=1.2.4-r2
 WORKDIR /app
 
 COPY yarn.lock .yarnrc.yml ./
@@ -22,10 +22,10 @@ WORKDIR /app
 
 RUN yarn postinstall # if you have postinstall script in your package.json
 RUN if [ -z "$PRODUCTION" ]; then \
-  echo "Overriding .env for staging"; \
-  cp .env.staging .env.production; \
-  fi && \
-  yarn build:export 
+    echo "Overriding .env for staging"; \
+    cp .env.staging .env.production; \
+    fi && \
+    yarn build:export 
 
 RUN yarn fetch-tools production && yarn cache clean
 
