@@ -4,7 +4,7 @@
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/socialgouv/template/preproduction.yaml)
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/socialgouv/template)
 
-Template minimal de la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) qui intègre nos [recommandations tech](https://socialgouv.github.io/support/docs/standards/developpement).
+Template minimal de la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) qui intègre nos [recommandations tech](https://socialgouv.github.io/support/docs/standards/developpement). Une présentation complète [est visible ici](https://docs.google.com/presentation/d/1DQMVxy87BEQ-VDF1tJ03jpPBbQnZtTfcDucfoMwVSM0/edit#slide=id.p).
 
 > ⚠️ Le [Système de Design de l'État](https://www.systeme-de-design.gouv.fr/) s'adresse **uniquement** aux développeurs et aux concepteurs, qu'ils soient agents publics ou prestataires pour des sites Internet de l'État (Ministères, Administrations centrales, Préfectures, Ambassades, etc.). cf [conditions d'utilisation](https://www.systeme-de-design.gouv.fr/utilisation-et-organisation/perimetre-d-application).
 
