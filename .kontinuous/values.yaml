@@ -183,6 +183,10 @@ keycloakx:
     - name: compile-realm
       image: hairyhenderson/gomplate:v3.10.0-alpine
       imagePullPolicy: IfNotPresent
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        runAsUser: 100
       volumeMounts:
       - name: keycloak-realm-tpl
         mountPath: "/realm-tpl/"
@@ -206,6 +210,10 @@ keycloakx:
     - name: fetch-keycloak-providers
       image: curlimages/curl
       imagePullPolicy: IfNotPresent
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        runAsUser: 405
       command:
         - sh
       args:
