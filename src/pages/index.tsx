@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       <div className="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mb-8w fr-mt-8w">
         <div className="fr-col-12 fr-col-md-6">
           <h1>
-            Template
+            POC VAULT
             <span className="fr-text--lead d-block fr-mt-3w">
               <p>Template de la fabrique des ministères sociaux.</p>
             </span>
