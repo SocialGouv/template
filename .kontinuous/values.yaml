@@ -37,6 +37,7 @@ app:
   imagePackage: app
   containerPort: 3000
   probesPath: "/healthz"
+  serviceAccountName: vault
   securityContext:
     fsGroup: 1001
     runAsGroup: 1000
