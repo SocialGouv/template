@@ -49,6 +49,8 @@ app:
   ingress:
     annotations:
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+#  args:
+#    ['sh', '-c', 'source /vault/secrets/dev && node start']
 
 jobs:
   runs:
