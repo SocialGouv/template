@@ -13,10 +13,10 @@ module.exports = (manifests) => {
                 "vault.hashicorp.com/agent-inject-secret-nextauth": 'kv/data/dev/nextauth_secret',
                 "vault.hashicorp.com/agent-inject-secret-keycloak_client_id": 'kv/data/dev/keycloak_client_id',
                 "vault.hashicorp.com/agent-inject-secret-keycloak_client_secret": 'kv/data/dev/keycloak_client_secret',
-                "vault.hashicorp.com/agent-inject-template-dev": '| \
+                "vault.hashicorp.com/agent-inject-template-dev": '\
                   {{- with secret "kv/dev/nextauth_secret" -}} \
                     {{- range $key, $value := .Data.data }} \
-                      export {{ $key }}={{ $value }} \
+export {{ $key }}={{ $value }} \
                     {{- end }} \
                   {{- end }}'
             };
