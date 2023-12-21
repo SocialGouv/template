@@ -16,7 +16,7 @@ module.exports = (manifests) => {
                 "vault.hashicorp.com/agent-inject-template-dev": '\
                   {{- with secret "kv/dev/nextauth_secret" -}} \
                     {{- range $key, $value := .Data.data }} \
-export {{ $key }}={{ $value }} \
+export {{ $key | upper }}={{ $value }} \
                     {{- end }} \
                   {{- end }}'
             };
@@ -24,6 +24,11 @@ export {{ $key }}={{ $value }} \
                 ...manifest.spec.template.spec,
                 serviceAccountName: "vault"
             };
+            manifest.spec.template.spec.containers[0] = {
+                ...manifest.spec.template.spec.containers[0],
+                command: ['sh', '-c'],
+                args: ['source /vault/secrets/dev && yarn start']
+            }
         }
     }
     return manifests;
