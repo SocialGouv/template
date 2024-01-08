@@ -1,0 +1,19 @@
+{
+  "name": "vault-integrated",
+  "version": "1.0.0",
+  "description": "Vault integrated for template application",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node index.ts"
+  },
+  "dependencies": {
+    "node-vault": "^0.10.2"
+  },
+  "devDependencies": {
+    "typescript": "5.1.6"
+  },
+  "engines": {
+    "node": "18.11.17"
+  }
+}
