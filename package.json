@@ -42,7 +42,8 @@
     "next-auth": "^4.22.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tss-react": "^4.8.8"
+    "tss-react": "^4.8.8",
+    "node-vault": "^0.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
