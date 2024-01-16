@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { DocsContainer as BaseContainer } from "@storybook/addon-docs";
+import { DocsContainer } from "@storybook/blocks";
 import { useDarkMode } from "storybook-dark-mode";
 import { darkTheme, lightTheme } from "./customTheme";
 import "@codegouvfr/react-dsfr/dsfr/dsfr.css";
@@ -14,14 +14,13 @@ startReactDsfr({
   langIfNoProvider: "fr",
 });
 
-export const DocsContainer = ({ children, context }) => {
+export const CustomDocsContainer = (props) => {
   const isStorybookUiDark = useDarkMode();
   const { setIsDark } = useIsDark();
 
   useEffect(() => {
     setIsDark(isStorybookUiDark);
   }, [isStorybookUiDark]);
-
   const backgroundColor = useColors().decisions.background.default.grey.default;
 
   return (
@@ -44,26 +43,11 @@ export const DocsContainer = ({ children, context }) => {
                 }
 
             `}</style>
-      <BaseContainer
-        context={{
-          ...context,
-          storyById: (id) => {
-            const storyContext = context.storyById(id);
-            return {
-              ...storyContext,
-              parameters: {
-                ...storyContext?.parameters,
-                docs: {
-                  ...storyContext?.parameters?.docs,
-                  theme: isStorybookUiDark ? darkTheme : lightTheme,
-                },
-              },
-            };
-          },
-        }}
-      >
-        {children}
-      </BaseContainer>
+
+      <DocsContainer
+        {...props}
+        theme={isStorybookUiDark ? darkTheme : lightTheme}
+      />
     </>
   );
 };
