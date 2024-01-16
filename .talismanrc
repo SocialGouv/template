@@ -15,6 +15,8 @@ fileignoreconfig:
   checksum: 852b1c21aaa42328e42d87b31a2305498d0cec6360fb9d7bb7eb51f7b73c9a4b
 - filename: .yarn/**
   checksum: any
+- filename: .yarnrc.yml
+  checksum: b81ba37c99073ee98f27157d91083cc19b7db097e440c107a811ab134bf68041
 - filename: Dockerfile
   checksum: 3e3c777aa156eb69b7212d18b431e3b605652e42e22d36f89be97c3c2a87c47f
 - filename: README.md
