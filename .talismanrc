@@ -16,7 +16,7 @@ fileignoreconfig:
 - filename: .yarn/**
   checksum: any
 - filename: Dockerfile
-  checksum: 3e3c777aa156eb69b7212d18b431e3b605652e42e22d36f89be97c3c2a87c47f
+  checksum: 9605a14ae835a4263de3badf041bfbde2823f2d9f2342e09c369ec9c7ae8615f
 - filename: README.md
   checksum: 7c55475ff28dbfa46c9c5715918add6a0202eafddca3cf9d35ebcdd443d76ffd
 - filename: pages/mui.tsx
