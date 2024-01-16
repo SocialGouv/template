@@ -27,7 +27,7 @@
     "keycloak": "chmod +x keycloak/scripts/keycloak.sh && keycloak/scripts/keycloak.sh"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^0.73.2",
+    "@codegouvfr/react-dsfr": "^0.78.0",
     "@emotion/react": "^11.11.1",
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -38,7 +38,7 @@
     "@sentry/nextjs": "^7.60.1",
     "@socialgouv/matomo-next": "^1.6.1",
     "dayjs": "^1.11.9",
-    "next": "13.4.12",
+    "next": "13.5.6",
     "next-auth": "^4.22.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
