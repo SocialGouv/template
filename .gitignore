@@ -54,3 +54,6 @@ robots.txt
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# storybook
+/.out

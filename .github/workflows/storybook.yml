@@ -19,7 +19,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "yarn"
 
       - name: Install dependencies
@@ -28,7 +28,6 @@ jobs:
 
       - name: Deploy
         run: |
-          export NODE_OPTIONS='--openssl-legacy-provider'
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           yarn storybook:deploy:action
         env:
