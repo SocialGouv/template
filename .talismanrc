@@ -1,6 +1,10 @@
 fileignoreconfig:
 - filename: .env.development
-  checksum: 44d017f8bd7ac1f3f4fb8b8175b3dddb6f160cf05b2738ec16b5b848aeb62d3f
+  checksum: f883cd5c4caa0fd48b4c2d995fc352b3d6d51dfa9d1d1eff7dabc27ef6209b3b
+- filename: .env.production
+  checksum: bb3f12e21d8a2e8c1bbac5f4af2761981672f7abfe43be7040953fe0c72062be
+- filename: .env.staging
+  checksum: 4edc189842e797a550ecb727c5792e810ec68d419fa22b4cc26a4f441aa62793
 - filename: .github/workflows/build.yml
   checksum: c2eaa7d33f20ce615a65740718a652474e5fe4ad0437374ca671bd73317cdd95
 - filename: .github/workflows/e2e.yml
@@ -21,6 +25,8 @@ fileignoreconfig:
   checksum: 7c55475ff28dbfa46c9c5715918add6a0202eafddca3cf9d35ebcdd443d76ffd
 - filename: pages/mui.tsx
   checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
+- filename: src/pages/404.tsx
+  checksum: 400fc3df3902e3d2054546c1b6aba713a397345d2ab8ce0f06080e15b29cdd60
 scopeconfig:
 - scope: node
 version: "1.0"

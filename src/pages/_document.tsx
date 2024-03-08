@@ -6,14 +6,7 @@ const { getColorSchemeHtmlAttributes, augmentDocumentForDsfr } =
 
 export default function Document(props: DocumentProps) {
   return (
-    <Html
-      {...getColorSchemeHtmlAttributes(props)}
-      //NOTE: Always show vertical scrollbar to avoid layout shift when modals are opened.
-      style={{
-        overflow: "-moz-scrollbars-vertical",
-        overflowY: "scroll",
-      }}
-    >
+    <Html {...getColorSchemeHtmlAttributes(props)}>
       <Head />
       <body>
         <Main />

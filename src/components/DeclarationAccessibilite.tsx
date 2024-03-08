@@ -1,10 +1,10 @@
 export const DeclarationAccessibilite = ({
   produit = "[PRODUIT]",
-  organisme = "Fabrique numérique des ministères sociaux",
+  organisme = "[SPONSOR]",
   date = "9 décembre 2021",
   conformite = "non conforme",
   audited = false,
-  email = "contact@fabrique.social.gouv.fr",
+  email = "contact@xxx.fr",
 }) => {
   return (
     <div>

@@ -2,6 +2,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import { Table } from "@codegouvfr/react-dsfr/Table";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 
 const URL = [
@@ -42,22 +43,22 @@ const Confidentiality: NextPage = () => {
             éléments sont indispensables pour nous permettre de retrouver votre
             recherche - par voie électronique à l’adresse suivante&nbsp;:{" "}
             <a
-              title="Envoyer un mail à template@fabrique.social.gouv.fr"
-              href="mailto:template@fabrique.social.gouv.fr"
+              title="Envoyer un mail à contact@[produit].beta.gouv.fr"
+              href="mailto:contact@[produit].beta.gouv.fr"
             >
-              template@fabrique.social.gouv.fr
+              contact@[produit].beta.gouv.fr
             </a>
             <br />
             ou par voie postale&nbsp;:
           </p>
           <address className="fr-mb-2w">
-            Direction des systèmes d’information
+            [XXX]
             <br />
-            Ministère des affaires sociales et de la santé
+            [XXX]
             <br />
-            39-43 Quai André Citroën
+            [XXX]
             <br />
-            75015 PARIS
+            [XXX]
           </address>
           <p>
             Vous êtes également en droit de saisir la Commission Nationale de
@@ -71,39 +72,10 @@ const Confidentiality: NextPage = () => {
             .
           </p>
           <h2>Hébergement</h2>
-          {/* <Table
-            rowKey={(row) => row.name}
-            data={[
-              {
-                name: "Microsoft Azure",
-                country: "France",
-                treatment: "Hébergement",
-                urlName: "Déclaration de confidentialité Microsoft",
-              },
-            ]}
-            columns={[
-              { name: "name", label: "Partenaire" },
-              { name: "country", label: "Pays destinataire" },
-              {
-                name: "treatment",
-                label: "Traitement réalisé",
-              },
-              {
-                name: "urlName",
-                label: "Garantie",
-                render: ({ urlName }: { urlName: string }) => (
-                  <a
-                    title={urlName}
-                    target="_blank"
-                    rel="nofollow, noopener, noreferrer"
-                    href={URL.find((v) => v.name === urlName)?.value}
-                  >
-                    {urlName}
-                  </a>
-                ),
-              },
-            ]}
-          />*/}
+          <Table
+            headers={["Nom", "Pays", "Traitement", "Conditions"]}
+            data={[["[XXX]", "[XXX]", "[XXX]", "[XXX]"]]}
+          />
           <h2>Cookies</h2>
           <p>
             Un cookie est un fichier déposé sur votre terminal lors de la visite
@@ -115,30 +87,17 @@ const Confidentiality: NextPage = () => {
             Nous collectons donc des données par l’intermédiaire de dispositifs
             appelés “cookies” permettant d’établir des mesures statistiques.
           </p>
-          {/*<Table
-            rowKey={(row) => row.name}
-            data={[
-              {
-                type: "Mesure d’audience anonymisée",
-                name: "Matomo",
-                months: "13 mois",
-                purpose: "Mesure d’audience",
-                editor: "Matomo & Fabrique numérique",
-                country: "France",
-              },
+          <Table
+            headers={[
+              "Nom",
+              "Durée de conservation",
+              "Finalité",
+              "Editeur",
+              "Pays",
             ]}
-            columns={[
-              { name: "type", label: "Catégorie de cookie" },
-              { name: "name", label: "Nom du cookie" },
-              {
-                name: "months",
-                label: "Délai de conservation",
-              },
-              { name: "purpose", label: "Finalités" },
-              { name: "editor", label: "Éditeur" },
-              { name: "country", label: "Destination" },
-            ]}
-          />*/}
+            data={[["[XXX]", "[XXX]", "[XXX]", "[XXX]", "[XXX]"]]}
+          />
+
           <p>
             L’accès aux informations contenues dans les cookies est limité aux
             seules personnes autorisées au sein de la Fabrique numérique. En
@@ -159,7 +118,7 @@ const Confidentiality: NextPage = () => {
           <iframe
             title="matomo optout"
             style={{ border: 0, width: "100%" }}
-            src="https://matomo.fabrique.social.gouv.fr/index.php?module=CoreAdminHome&action=optOut&language=fr&backgroundColor=&fontColor=2f3b6c&fontSize=16px&fontFamily=sans-serif"
+            src="https://stats.beta.gouv.fr/index.php?module=CoreAdminHome&action=optOut&language=fr&backgroundColor=&fontColor=2f3b6c&fontSize=16px&fontFamily=sans-serif"
           />
           <p>
             Pour aller plus loin, vous pouvez consulter les fiches proposées par

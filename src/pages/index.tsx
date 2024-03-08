@@ -1,10 +1,13 @@
 import * as React from "react";
 import Head from "next/head";
 import { NextPage } from "next";
+import Stack from "@mui/material/Stack";
+
 import { push as matomoPush } from "@socialgouv/matomo-next";
+import { Accordion } from "@codegouvfr/react-dsfr/Accordion";
 import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { Button } from "@codegouvfr/react-dsfr/Button";
-import Stack from "@mui/material/Stack";
+import { fr } from "@codegouvfr/react-dsfr";
 
 const Home: NextPage = () => {
   const onClick1 = () => {
@@ -14,44 +17,113 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Template | Fabrique numérique des ministères sociaux</title>
+        <title>Template | beta.gouv.fr</title>
       </Head>
-      <Alert
-        closable
-        description="Everything went well"
-        severity="success"
-        title="Message successfully sent"
-      />
-      <div className="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mb-8w fr-mt-8w">
-        <div className="fr-col-12 fr-col-md-6">
-          <h1>
-            Template
-            <span className="fr-text--lead d-block fr-mt-3w">
-              <p>Template de la fabrique des ministères sociaux.</p>
-            </span>
-          </h1>
-          <p className="fr-mt-10w">
-            Pariatur veniam ipsum pariatur elit ullamco sit quis ipsum ad veniam
-            proident sunt. Qui ut irure in quis reprehenderit. Laborum anim ad
-            laboris ipsum magna ullamco consequat ex consectetur. Duis sit
-            adipisicing ipsum occaecat commodo consequat officia ea. Cupidatat
-            fugiat reprehenderit aliqua eiusmod mollit Lorem consectetur. Minim
-            elit proident eu qui exercitation mollit id esse velit et dolore
-            velit laboris. Ipsum occaecat Lorem occaecat magna excepteur veniam
-            ullamco cupidatat irure incididunt velit nulla.
-          </p>
-        </div>
-        <div className="fr-col-12 fr-col-offset-md-1 fr-col-md-4">
-          {/* eslint-disable-next-line jsx-a11y/img-redundant-alt*/}
-          {/* eslint-disable-next-line @next/next/no-img-element*/}
-          <img
-            className="fr-mt-2w"
-            src="https://dummyimage.com/300x300/188cf2/fff.png&amp;text=logo+1"
-            alt="My description"
-          />
+
+      <div className={fr.cx("fr-grid-row", "fr-grid-row--center")}>
+        <div className={fr.cx()}>
+          <h1>Template</h1>
+          Ce template minimal en Next.js met en oeuvre les pratiques
+          recommandées chez betagouv et peut vous faire <b>gagner du temps</b>.
+          <br />
+          <br />
+          Il permet de déployer très rapidement une application web à l'état de
+          l'art, qui respecte{" "}
+          <b>la conformité, l'accessibilité et la sécurité</b> attendues et
+          intègre nos outils standards.
+          <br />
+          <br />
+          Vous pouvez vous en servir comme base de départ ou comme référence
+          d'implémentation. <b>Les contributions sont bienvenues.</b>
+          <br />
+          <br />
+          <Accordion label="🇫🇷 Design système de l'état">
+            Intègre la dernière version du kit{" "}
+            <a
+              href="https://github.com/codegouvfr/react-dsfr"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              @codegouvfr/react-dsfr
+            </a>
+            . Compatible avec{" "}
+            <a href="https://mui.com" target="_blank" rel="noreferrer noopener">
+              la librairie MUI
+            </a>
+            .<br />
+            <br />
+            Le template est fourni 100% accessible.
+          </Accordion>
+          <Accordion label="📊 Matomo Analytics">
+            Intègre un tracker matomo avec le lien de désinscription
+            réglementaire dans la politique de confidentialité.
+          </Accordion>
+          <Accordion label="🚨 Alertes sentry">
+            Intègre une sonde sentry pour être alerté des erreurs applicatives
+            et monitorer les performances de votre application.
+          </Accordion>
+          <Accordion label="👮 Conformité juridique">
+            Les CGU, mentions légales et politique de confidentialité sont
+            fournies pré-rédigées.
+          </Accordion>
+          <Accordion label="✅ Standards beta">
+            Modèle de page de statistiques, de budget et page "SOS" fournies.
+          </Accordion>
+          <Accordion label="🔐 Sécurité">
+            <ul>
+              <li>Gestion des headers CSP</li>
+              <li>Image docker root-less</li>
+              <li>Pre-commit hooks anti fuite de secrets</li>
+            </ul>
+          </Accordion>
+          <Accordion label="🔎 Testing">
+            <ul>
+              <li>
+                Testing unitaire et de bout-en-bout intégré avec{" "}
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="https://cypress.io"
+                >
+                  Cypress.io
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="https://storybook.js.org/"
+                >
+                  Storybook
+                </a>{" "}
+                pour tester/review les composants en isolation
+              </li>
+              <li>CI de lint, test et scan statique</li>
+            </ul>
+          </Accordion>
+          <Accordion label="📦 Delivery">
+            <ul>
+              <li>
+                Workflows de release automatisés (
+                <a
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  href="https://github.com/semantic-release/semantic-release"
+                >
+                  semantic-release
+                </a>
+                )
+              </li>
+              <li>
+                Compatible scalingo, clever cloud avec des reviews-branches
+              </li>
+            </ul>
+          </Accordion>
         </div>
       </div>
-      <Stack spacing={2} sx={{ mt: 5 }} direction="row">
+
+      <h2 className={fr.cx("fr-mt-15w")}>Example intégrations</h2>
+      <Stack spacing={2} sx={{ mt: 2 }} direction="row">
         <Button title="Trigger sentry event" onClick={onClick1}>
           Trigger sentry error
         </Button>

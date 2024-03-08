@@ -19,13 +19,13 @@ const MentionsLegales: NextPage = () => {
         <div>
           <MentionPart
             title="Hébergement du site"
-            description="Le site est édité au sein de la Fabrique numérique des Ministères sociaux située :"
+            description="Le site est édité au sein de [XXX] :"
           >
             <address className="fr-mb-2w">
-              Tour Mirabeau <br />
-              39-43 Quai André Citroën <br />
-              75015 PARIS <br />
-              Téléphone: 01 40 56 60 00
+              [XXX] <br />
+              [XXX] <br />
+              [XXX] <br />
+              Téléphone: [XXX]
             </address>
           </MentionPart>
           <MentionPart
@@ -37,9 +37,9 @@ const MentionsLegales: NextPage = () => {
             description="Ce site est hébergé par :"
           >
             <p className="fr-mb-2w">
-              Microsoft Azure <br />
-              37 Quai du Président Roosevelt <br />
-              92130 Issy-les-Moulineaux
+              [XXX] <br />
+              [XXX] <br />
+              [XXX]
             </p>
           </MentionPart>
           <MentionPart

@@ -713,7 +713,7 @@ const { RecipeReviewCard } = (() => {
     };
 
     return (
-      <Card sx={{ maxWidth: 345, mt: 7 }}>
+      <Card sx={{ maxWidth: 700, mt: 7 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
