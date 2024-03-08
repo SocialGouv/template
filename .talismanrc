@@ -27,6 +27,8 @@ fileignoreconfig:
   checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
 - filename: src/pages/404.tsx
   checksum: 400fc3df3902e3d2054546c1b6aba713a397345d2ab8ce0f06080e15b29cdd60
+- filename: src/pages/500.tsx
+  checksum: a01d633e47ed30a19f3b180f6e3dd71c072917de7519d5b8f0417a89467d11a8
 scopeconfig:
 - scope: node
 version: "1.0"
