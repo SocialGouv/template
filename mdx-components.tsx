@@ -30,8 +30,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         const headers = head.props.children.props.children.map(
           (child: any) => child.props.children
         );
-        const data = body.props.children.map((row) =>
-          row.props.children.map((cell) => cell.props.children)
+        const data = body.props.children.map((row: any) =>
+          row.props.children.map((cell: any) => cell.props.children)
         );
         return <Table headers={headers} data={data} />;
       }
@@ -42,8 +42,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         props.href &&
         (props.href?.startsWith("http") || props.href?.startsWith("//"))
       ) {
+        //@ts-ignore
         return <Link {...props} target="_blank" rel="noopener noreferrer" />;
       }
+      //@ts-ignore
       return <Link {...props} />;
     },
     blockquote: (props) => {

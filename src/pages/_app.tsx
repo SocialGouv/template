@@ -211,6 +211,7 @@ function App({ Component, pageProps }: AppProps) {
       }}
     >
       <Layout>
+        {/*@ts-ignore*/}
         <Component {...pageProps} />
       </Layout>
     </div>
