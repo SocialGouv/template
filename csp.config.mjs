@@ -1,10 +1,10 @@
 const ContentSecurityPolicy = `
-  default-src 'self' *.fabrique.social.gouv.fr;
-  img-src 'self' data: *.fabrique.social.gouv.fr https://dummyimage.com/;
-  script-src 'self' *.fabrique.social.gouv.fr ${
+  default-src 'self' *.gouv.fr;
+  img-src 'self' data: *.gouv.fr;
+  script-src 'self' *.gouv.fr ${
     process.env.NODE_ENV !== "production" && "'unsafe-eval' 'unsafe-inline'"
   };
-  frame-src 'self' *.fabrique.social.gouv.fr;
+  frame-src 'self' *.gouv.fr;
   style-src 'self' 'unsafe-inline';
   font-src 'self' data: blob:;
 `;

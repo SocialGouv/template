@@ -163,20 +163,17 @@ const Layout = ({ children }: { children: ReactNode }) => {
             },
             isActive: router.asPath === "/mui",
           },
+          {
+            text: "Article",
+            linkProps: {
+              href: "/article",
+            },
+            isActive: router.asPath === "/article",
+          },
         ]}
         quickAccessItems={[headerFooterDisplayItem]}
       />
-      <div
-        className={fr.cx("fr-container", "fr-container--fluid", "fr-p-5w")}
-
-        // css({
-        //   margin: "auto",
-        //   maxWidth: 1000,
-        //   ...fr.spacing("padding", {
-        //     topBottom: "10v",
-        //   }),
-        // })}
-      >
+      <div className={fr.cx("fr-container", "fr-container--fluid", "fr-p-5w")}>
         {children}
       </div>
       <Footer

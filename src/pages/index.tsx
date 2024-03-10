@@ -33,7 +33,16 @@ const Home: NextPage = () => {
           <br />
           <br />
           Vous pouvez vous en servir comme base de départ ou comme référence
-          d'implémentation. <b>Les contributions sont bienvenues.</b>
+          d'implémentation.{" "}
+          <b>
+            <a
+              href="https://github.com/betagouv/template"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Les contributions sont bienvenues.
+            </a>
+          </b>
           <br />
           <br />
           <Accordion label="🇫🇷 Système de design de l'état (DSFR)">
@@ -64,7 +73,7 @@ const Home: NextPage = () => {
             Intègre une sonde sentry pour être alerté en temps réel des erreurs
             applicatives et monitorer les performances de votre service.
           </Accordion>
-          <Accordion label="👮 Conformité juridique">
+          <Accordion label="⚖️ Conformité juridique">
             Des modèles pré-rédigés pour :
             <ul>
               <li>Déclaration d'accessibilité numérique</li>
