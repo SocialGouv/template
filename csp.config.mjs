@@ -9,4 +9,4 @@ const ContentSecurityPolicy = `
   font-src 'self' data: blob:;
 `;
 
-module.exports = ContentSecurityPolicy;
+export default ContentSecurityPolicy;

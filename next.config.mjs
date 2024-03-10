@@ -1,13 +1,25 @@
-const { withSentryConfig } = require("@sentry/nextjs");
+import { withSentryConfig } from "@sentry/nextjs";
+import createMDX from "@next/mdx";
+import remarkGfm from "remark-gfm";
+import ContentSecurityPolicy from "./csp.config.mjs";
 
-const { version } = require("./package.json");
+import pkg from "./package.json" assert { type: "json" };
 
-const ContentSecurityPolicy = require("./csp.config");
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+  },
+});
+
+const version = pkg.version;
 
 /** @type {import('next').NextConfig} */
 const moduleExports = {
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   reactStrictMode: true,
   swcMinify: true,
+  output: "export",
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(woff2|webmanifest)$/,
@@ -28,6 +40,6 @@ const moduleExports = {
   transpilePackages: ["@codegouvfr/react-dsfr", "tss-react"],
 };
 
-module.exports = {
-  ...withSentryConfig(moduleExports, { silent: true }),
+export default {
+  ...withMDX(withSentryConfig(moduleExports, { silent: true })),
 };

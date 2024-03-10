@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import Link from "next/link";
+
 import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 import { push } from "@socialgouv/matomo-next";
@@ -23,7 +25,7 @@ const NotFound: NextPage = () => {
             <p className="fr-text--xl">
               Impossible de trouver la ressource demandée.
               <br />
-              Ré-essayez en passant par la <a href="/">Page d'accueil</a>.
+              Ré-essayez en passant par la <Link href="/">Page d'accueil</Link>.
             </p>
           </div>
           <div className="fr-server__image fr-col-12 fr-col-md-3">

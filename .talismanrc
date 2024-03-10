@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: .env.development
   checksum: f883cd5c4caa0fd48b4c2d995fc352b3d6d51dfa9d1d1eff7dabc27ef6209b3b
 - filename: .env.production
-  checksum: bb3f12e21d8a2e8c1bbac5f4af2761981672f7abfe43be7040953fe0c72062be
+  checksum: b0bed73a6579de408405809f6bb0f724ac9a395b66fa182e39692be4bfd3697a
 - filename: .env.staging
   checksum: 4edc189842e797a550ecb727c5792e810ec68d419fa22b4cc26a4f441aa62793
 - filename: .github/workflows/build.yml
@@ -26,9 +26,9 @@ fileignoreconfig:
 - filename: pages/mui.tsx
   checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
 - filename: src/pages/404.tsx
-  checksum: 400fc3df3902e3d2054546c1b6aba713a397345d2ab8ce0f06080e15b29cdd60
+  checksum: 96dab70b40d454f6d746ebd1c300f491ca82744cf52f3c0a3e05a039513cc4c1
 - filename: src/pages/500.tsx
-  checksum: a01d633e47ed30a19f3b180f6e3dd71c072917de7519d5b8f0417a89467d11a8
+  checksum: 0304444e184bbaca79130a05014bbbc9434958bc89a23d1af59ec8cdceba2f4c
 scopeconfig:
 - scope: node
 version: "1.0"

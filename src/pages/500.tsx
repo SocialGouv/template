@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 import { push } from "@socialgouv/matomo-next";
@@ -11,7 +12,6 @@ const Error500: NextPage = () => {
 
   return (
     <div>
-      <button onClick={()=>{throw new Error("pouet")}>xxx</button>
       <div className="fr-container fr-my-6w">
         <div className="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
           <div className="fr-server__body fr-col-12 fr-col-md-8">
@@ -25,7 +25,7 @@ const Error500: NextPage = () => {
               Nos équipes ont été notifiées et interviendront dans les meilleurs
               délais.
               <br />
-              Ré-essayez en passant par la <a href="/">Page d'accueil</a>.
+              Ré-essayez en passant par la <Link href="/">Page d'accueil</Link>.
             </p>
           </div>
           <div className="fr-server__image fr-col-12 fr-col-md-3">

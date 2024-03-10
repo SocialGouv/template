@@ -5,12 +5,7 @@ export const filePath = path.join(__dirname, "../public/robots.txt");
 
 export const generateRobotsTxt = (isOnProduction: boolean, host: string) => {
   const robotsDev = ["User-agent: *", "Disallow: /"].join("\n");
-  const robotsProd = [
-    "User-agent: *",
-    "Allow: /",
-    "",
-    `Sitemap: https://${host}/sitemap.xml`,
-  ].join("\n");
+  const robotsProd = ["User-agent: *", "Allow: /"].join("\n");
 
   const robot = isOnProduction ? robotsProd : robotsDev;
 
@@ -22,7 +17,7 @@ const run = () => {
     process.env.PRODUCTION ? true : false,
     process.env.NEXT_PUBLIC_SITE_URL ?? "localhost"
   );
-  console.log("Robots.txt generated");
+  console.log(`Robots.txt generated, production:${!!process.env.PRODUCTION}`);
 };
 
 run();

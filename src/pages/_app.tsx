@@ -99,6 +99,12 @@ const bottomLinks = [
     },
   },
   {
+    text: "SOS",
+    linkProps: {
+      href: "/sos",
+    },
+  },
+  {
     text: "Contribuer sur GitHub",
     linkProps: {
       href: `${process.env.NEXT_PUBLIC_APP_REPOSITORY_URL}${
@@ -161,13 +167,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
         quickAccessItems={[headerFooterDisplayItem]}
       />
       <div
-        className={css({
-          margin: "auto",
-          maxWidth: 1000,
-          ...fr.spacing("padding", {
-            topBottom: "10v",
-          }),
-        })}
+        className={fr.cx("fr-container", "fr-container--fluid", "fr-p-5w")}
+
+        // css({
+        //   margin: "auto",
+        //   maxWidth: 1000,
+        //   ...fr.spacing("padding", {
+        //     topBottom: "10v",
+        //   }),
+        // })}
       >
         {children}
       </div>

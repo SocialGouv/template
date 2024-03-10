@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Table from "@codegouvfr/react-dsfr/Table";
 import Callout from "@codegouvfr/react-dsfr/Callout";
 
-const Budget: NextPageWithLayout = () => (
+const Budget: NextPage = () => (
   <div>
     <Head>
       <title>Budget</title>
@@ -63,12 +63,7 @@ const Budget: NextPageWithLayout = () => (
         ["Design", "25 000 €", "25 000 €", "43 000 €"],
         ["Logiciels", "-", "12 000 €", "12 000 €"],
         ["Hébergement", "1000 €", "3000 €", "3000 €"],
-        [
-          <strong>Total TTC</strong>,
-          <strong>XXX 000 €</strong>,
-          <strong>XXX 000 €</strong>,
-          <strong>XXX 000 €</strong>,
-        ],
+        ["Total TTC", "XXX 000 €", "XXX 000 €", "XXX 000 €"],
       ]}
     ></Table>
     <br />

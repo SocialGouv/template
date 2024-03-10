@@ -27,17 +27,16 @@ const Home: NextPage = () => {
           recommandées chez betagouv et peut vous faire <b>gagner du temps</b>.
           <br />
           <br />
-          Il permet de déployer très rapidement une application web à l'état de
-          l'art, qui respecte{" "}
-          <b>la conformité, l'accessibilité et la sécurité</b> attendues et
-          intègre nos outils standards.
+          Il permet de déployer rapidement une application web à l'état de
+          l'art, qui respecte nos standards de{" "}
+          <b>conformité, accessibilité et sécurité</b>.
           <br />
           <br />
           Vous pouvez vous en servir comme base de départ ou comme référence
           d'implémentation. <b>Les contributions sont bienvenues.</b>
           <br />
           <br />
-          <Accordion label="🇫🇷 Design système de l'état">
+          <Accordion label="🇫🇷 Système de design de l'état (DSFR)">
             Intègre la dernière version du kit{" "}
             <a
               href="https://github.com/codegouvfr/react-dsfr"
@@ -52,22 +51,34 @@ const Home: NextPage = () => {
             </a>
             .<br />
             <br />
-            Le template est fourni 100% accessible.
+            Le template est livré 100% accessible.
           </Accordion>
           <Accordion label="📊 Matomo Analytics">
-            Intègre un tracker matomo avec le lien de désinscription
-            réglementaire dans la politique de confidentialité.
+            Intègre le tracker matomo pour analyser l'usage du service.
+            <br />
+            <br />
+            Le lien de désinscription réglementaire est intégré dans la
+            politique de confidentialité.
           </Accordion>
           <Accordion label="🚨 Alertes sentry">
-            Intègre une sonde sentry pour être alerté des erreurs applicatives
-            et monitorer les performances de votre application.
+            Intègre une sonde sentry pour être alerté en temps réel des erreurs
+            applicatives et monitorer les performances de votre service.
           </Accordion>
           <Accordion label="👮 Conformité juridique">
-            Les CGU, mentions légales et politique de confidentialité sont
-            fournies pré-rédigées.
+            Des modèles pré-rédigés pour :
+            <ul>
+              <li>Déclaration d'accessibilité numérique</li>
+              <li>Conditions d'utilisation</li>
+              <li>Mentions légales</li>
+              <li>Politique de confidentialité</li>
+            </ul>
           </Accordion>
           <Accordion label="✅ Standards beta">
-            Modèle de page de statistiques, de budget et page "SOS" fournies.
+            <ul>
+              <li>Page de statistiques pour suivres les KPIs</li>
+              <li>Page de budget pour exposer son budget</li>
+              <li>Page SOS pour venir en aide aux usager(e)s</li>
+            </ul>
           </Accordion>
           <Accordion label="🔐 Sécurité">
             <ul>
@@ -122,7 +133,7 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <h2 className={fr.cx("fr-mt-15w")}>Example intégrations</h2>
+      <h2 className={fr.cx("fr-mt-15w")}>Exemples d'intégrations</h2>
       <Stack spacing={2} sx={{ mt: 2 }} direction="row">
         <Button title="Trigger sentry event" onClick={onClick1}>
           Trigger sentry error
