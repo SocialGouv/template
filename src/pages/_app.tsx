@@ -5,14 +5,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { createEmotionSsrAdvancedApproach } from "tss-react/next";
+import { useStyles } from "tss-react/dsfr";
 import { createNextDsfrIntegrationApi } from "@codegouvfr/react-dsfr/next-pagesdir";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { fr } from "@codegouvfr/react-dsfr";
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
-import { init } from "@socialgouv/matomo-next";
+import { SkipLinks } from "@codegouvfr/react-dsfr/SkipLinks";
 import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
-import { useStyles } from "tss-react/dsfr";
+
+import { init } from "@socialgouv/matomo-next";
 
 declare module "@codegouvfr/react-dsfr/next-pagesdir" {
   interface RegisterLink {
@@ -136,6 +138,22 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Template Next.js beta.gouv.fr" />
       </Head>
+      <SkipLinks
+        links={[
+          {
+            anchor: "#fr-header-main-navigation",
+            label: "Menu",
+          },
+          {
+            anchor: "#content",
+            label: "Contenu",
+          },
+          {
+            anchor: "#fr-footer",
+            label: "Pied de page",
+          },
+        ]}
+      />
       <Header
         brandTop={brandTop}
         serviceTitle="Nom du service numérique"
@@ -173,7 +191,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
         ]}
         quickAccessItems={[headerFooterDisplayItem]}
       />
-      <div className={fr.cx("fr-container", "fr-container--fluid", "fr-p-5w")}>
+      <div
+        className={fr.cx("fr-container", "fr-container--fluid", "fr-p-5w")}
+        id="content"
+      >
         {children}
       </div>
       <Footer
