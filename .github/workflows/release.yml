@@ -12,6 +12,4 @@ jobs:
     steps:
       - uses: socialgouv/workflows/actions/semantic-release@v1
         with:
-          github-token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
-          author-name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
-          author-email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
