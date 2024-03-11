@@ -17,7 +17,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           build: yarn build
-          start: yarn start
+          start: npx serve@latest out
           component: false
           install-command: yarn --immutable
         env:
