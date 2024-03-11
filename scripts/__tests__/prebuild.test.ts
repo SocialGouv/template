@@ -9,12 +9,7 @@ describe("robots.txt", () => {
   });
   it("should generate production robots.txt", () => {
     const host = "localhost";
-    const robotsProd = [
-      "User-agent: *",
-      "Allow: /",
-      "",
-      `Sitemap: https://${host}/sitemap.xml`,
-    ].join("\n");
+    const robotsProd = ["User-agent: *", "Allow: /"].join("\n");
     generateRobotsTxt(true, host);
     expect(fs.writeFileSync).toHaveBeenCalledWith(filePath, robotsProd);
   });
