@@ -2,7 +2,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Table from "@codegouvfr/react-dsfr/Table";
-import Callout from "@codegouvfr/react-dsfr/Callout";
+import CallOut from "@codegouvfr/react-dsfr/CallOut";
 
 const Budget: NextPage = () => (
   <div>
@@ -67,14 +67,14 @@ const Budget: NextPage = () => (
       ]}
     ></Table>
     <br />
-    <Callout title="À propos de la TVA">
+    <CallOut title="À propos de la TVA">
       Contrairement aux entreprises du secteur privé, les administrations ne
       peuvent pas récupérer la TVA supportée sur leurs achats dans le cadre de
       leur activité. Le montant TTC inclut la TVA au taux de 20%.
       <br />
       La TVA est collectée et reversée à l’État et diminue donc le montant du
       budget utilisable sur le projet.
-    </Callout>
+    </CallOut>
   </div>
 );
 

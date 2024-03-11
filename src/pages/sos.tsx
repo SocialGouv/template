@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Table from "@codegouvfr/react-dsfr/Table";
-import Callout from "@codegouvfr/react-dsfr/Callout";
 import { fr } from "@codegouvfr/react-dsfr";
 
 const SosPage: NextPage = () => (

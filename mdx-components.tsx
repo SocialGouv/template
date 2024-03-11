@@ -2,7 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 
-import { CallOut } from "@codegouvfr/react-dsfr/Callout";
+import { CallOut } from "@codegouvfr/react-dsfr/CallOut";
 import { Table } from "@codegouvfr/react-dsfr/Table";
 import { fr } from "@codegouvfr/react-dsfr";
 
